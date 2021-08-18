@@ -1,0 +1,180 @@
+
+'private final static' attribute vs 'private final' attribute:
+
+    In general, static means "associated with the type itself,
+        rather than an instance of the type."
+
+    That means you can reference a static variable without having ever created an
+        instances of the type, and any code referring to the variable is referring to
+        the exact same data.
+
+        Compare this with an instance variable: in that case, there's one independent version of
+            the variable per instance of the class.
+
+        So for example:
+
+            Test x = new Test();
+            Test y = new Test();
+
+            x.instanceVariable = 10;
+            y.instanceVariable = 20;
+
+            System.out.println(x.instanceVariable);
+
+        prints out 10:
+
+            y.instanceVariable and
+
+            x.instanceVariable are separate,
+
+            because x and y refer to different objects.
+
+    -------
+
+    // No initialization when is declared
+    private final int number;
+
+    public MyClass(int n) {
+       // The variable can be assigned in the constructor, but then
+       // not modified later.
+       number = n;
+    }
+
+    e.g.
+
+        Class Test{
+          public final int a;
+        }
+
+        Test t1  = new Test();
+        t1.a = 10;  //fixed
+
+        Test t2  = new Test();
+        t2.a = 20;  //fixed
+
+        Thus each instance has different value of field a.
+
+-------
+
+Final static variable:
+
+    Static variable:
+
+        When the value of a variable is not varied, then it is a not good choice to go
+            for instance variable.
+
+        At that time we can add static modifier to that variable.
+
+        Whenever we declare variable as static, then at the class level a single variable is
+            created which is shared with the objects.
+
+        Any change in that static variable reflect to the other objects operations.
+
+        If we won’t initialize a static variable, then by default JVM will provide a default
+            value for static variable.
+
+        ------
+
+        But when we declare a static variable with final modifier then we should take care
+            of the following conventions:
+
+            Declaring variables only as static can lead to change in their values by one or
+                more instances of a class in which it is declared.
+
+            Declaring them as static final will help you to create a CONSTANT.
+
+            Only one copy of variable exists which can’t be reinitialize.
+
+-------
+
+Important points about final static variable:
+
+    Initialization of variable Mandatory:
+
+        If the static variable declared as final, then we have to perform initialization
+            explicitly whether we are using it or not and JVM won’t provide any default value
+            for the final static variable.
+
+    // Java program to illustrate the behavior of
+    // final static variable
+
+    class Test {
+        final static int x;
+        public static void main(String[] args)
+        {
+        }
+    }
+
+    Output:
+
+        error: variable x not initialized in the default constructor
+
+    -------
+
+    Initialization before class loading:
+
+        For final static variable, it is compulsory that we should perform
+            initialization before class loading completion.
+
+        We can initialize a final static variable at the time of declaration.
+
+    // Java program to illustrate that final
+    // static variable can be initialized
+    // at the time of declaration
+
+    class Test {
+        final static int x = 10;
+        public static void main(String[] args)
+        {
+            System.out.println(x);
+        }
+    }
+
+    -------
+
+    Initialize inside a static block:
+
+        We can also initialize a final static variable inside a static block because we
+            should initialize a final static variable before class and we know that
+            static block is executed before main() method.
+
+    // Java program to illustrate that final
+    // static variable can be initialized
+    // inside static block
+
+    class Test {
+        final static int x;
+        static
+        {
+            x = 10;
+        }
+        public static void main(String[] args)
+        {
+            System.out.println(x);
+        }
+
+    -------
+
+    Apart from the above mentioned methods, if we try to initialize a final static variable
+        anywhere else then we will get compile time error.
+
+    // Java program to illustrate
+    // that we can't declare
+    // final static variable
+    // within any non-static blocks or methods
+
+    class Test {
+        final static int x;
+        public static void m()
+        {
+            x = 10;
+        }
+        public static void main(String[] args)
+        {
+            System.out.println(x);
+        }
+    }
+
+    Output:
+
+        error: cannot assign a value to final variable x

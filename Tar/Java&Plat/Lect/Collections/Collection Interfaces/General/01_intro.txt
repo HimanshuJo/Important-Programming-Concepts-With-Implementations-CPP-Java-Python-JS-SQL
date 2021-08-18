@@ -1,0 +1,78 @@
+
+The 'Collections Framework' defines several core interfaces.
+
+The 'Collection Interfaces' determine the fundamental nature of the
+    collection classes.
+
+    Put differently, the concrete classes simply provide different
+        implementations of the standard interfaces.
+
+The interfaces that underpin collections are as follows:
+
+    Interfaces:
+
+        Collection:
+
+            It enables us to work with groups of objects
+
+            It is at the top of the collections hierarchy
+
+        Dequeue:
+
+            It extends 'Queue' to handle a double-ended queue
+
+        List:
+
+            It extends 'Collection' to handle sequences (list of objects)
+
+        NavigableSet:
+
+            It extends 'SortedSet (I)' to handle retrieval of elements based on closest-match searches
+
+        Queue:
+
+            It extends 'Collection' to handle special types of lists in which elements are
+                removed only from the head
+
+        Set:
+
+            It extends 'Collection' to handle sets, which must contain unique elements
+
+        SortedSet:
+
+            It extends 'Set' to handle sorted sets
+
+-------
+
+In addition to the collection interfaces, collections also use the:
+
+    Comparator,
+
+        defines how two objects are compared;
+
+    RandomAccess,
+
+        a list indicates that it supports efficient, random access to its elements.
+
+    For enumerating the objects within a collection
+
+        Iterator,
+        ListIterator and
+        Spliterator
+
+    -------
+
+    To provide the greatest flexibility in their use, the collection interfaces
+        allow some methods to be optional.
+
+        The optional methods enable you to modify the contents of a collection.
+
+        Collections that support these methods are called modifiable.
+
+            Collections that do not allow their contents to be changed are called
+                unmodifiable.
+
+                If an attempt is made to use one of these methods on an unmodifiable
+                    collection, an 'UnsupportedOperationException' is thrown.
+
+                All the built-in collections are modifiable.

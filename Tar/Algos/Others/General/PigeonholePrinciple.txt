@@ -1,0 +1,101 @@
+
+The Pigeonhole Principle:
+
+	If k + 1 or more pigeons are distributed among k pigeonholes, then at least one pigeonhole contains two or more
+		pigeons
+
+		Proof:
+
+			The contrapositive of the statement is:
+
+				If each pigeonhole contains at most one pigeon, then there are at most k pigeons.
+
+-------
+
+Pigeonhole Principle (General):
+	If n or more pigeons are distributed among k > 0 pigeonholes, then at least one pigeonhole contains
+		at least math.ceil(n / k)
+
+	Proof:
+
+		Suppose each pigeonhole contains at most Math.ceil(n / k) - 1 pigeons
+
+		Then the total number of pigeons is at most 
+			k * (Math.ceil(n/k) - 1) 
+			< k(n/k) 
+			= n pigeons
+
+-------
+
+Suppose a flock of 20 pigeons flies into a set of 19 pigeonholes to roost.
+
+	Because there are 20 pigeons but only 19 pigeonholes, at least one of these 19 pigeonholes must have
+		two pigeons in it.
+
+	So, this principle in general states that, if there are more pigeons than the pigeonholes, then there must be
+		at least one pigeonhole with at least two pigeons in it
+
+	-------
+
+	Theorem:
+
+		1. If "A" is the average number of pigeons per hole, where A is not an integer then,
+			* At least one pigeon hole contains ceil(A) [smallest integer greater than or equal to A] pigeons
+
+			* Remaining pigeon holes contains at most floor(A) [largest integer less than or equal to A] pigeons
+
+		2. We can say that, if n + 1 objects are put into n boxes, then at least one box contains two or more objects
+
+		-------
+
+		The abstract formulation of the principle:
+			Let X and Y be finite sets and let f: A -> B be a function:
+
+				a. If X has more elements than Y, then f is not one-to-one
+
+				b. If X and Y have the same number of elements and f is onto, then f is one-to-one
+
+				c. If X and Y have the same number of elements and f is one-to-one, then f is onto
+
+		-------
+
+		Pigeonhole principle is one of the simplest but most useful ideas in mathematics.
+
+			E.g. 1: If (kn + 1) pigeons are kept in n pigeon holes where K is a positive integer, what is the
+					average number of pigeons per pigeon hole?
+
+			Sol. Average number of pigeons per hole = (kn + 1) / n
+													= k + 1/n
+
+			 	Therefore there will be at least one pigeonhole which will contain at least (k + 1) pigeons
+			 		i.e ceil[k + 1/n]
+
+			 		and remaining will contain at most k, i.e. floor [k + 1/n] pigeons
+
+		 		hence, minimum number of pigeons required to ensure that at least one pigeon hole contains (k + 1) pigeons
+		 			is (kn + 1)
+
+	-------
+
+	Example 2:
+
+		A bag contains 10 red marbles, 10 white marbles, and 10 blue marbles.
+
+		What is the minimum no. of marbles you have to choose randomly from the bag to ensure that we get 4 marbles
+			of the same color?
+
+	Solution:
+
+		Applying pigeonhole principle:
+
+			No. of colors (pigeonholes) n = 3
+
+			No. of marbles (pigeons) k + 1 = 4
+
+			Therefore the minimum no. of marbles required = kn + 1
+				By simplifying we get kn + 1 = 10
+
+					as k = 3
+					   n = 3
+
+					   => kn + 1 = 3*3 + 1 = 10

@@ -1,0 +1,28 @@
+
+Spring MVC gives us a special class named 'ModelAndView'
+
+    which can hold two things
+
+        1. View
+
+        2. Data
+
+    we can add multiple data with the help of
+
+        addObject() method
+
+-------
+
+Why do we need a service layer, instead let the controller communicate directly to a 'Repo' for CRUD operations:
+
+    Because as a controller, we are always not sure that the data is coming from the database
+
+        sometimes data might come from the network, or sometimes data come from the input provided by the user
+
+            so we need to process something and that processing should be done in the service layer
+
+        In case the data is coming from the repository, then the service layer will interact with the repo
+
+-------
+
+@RequestParam is something with which we can fetch the value from a client

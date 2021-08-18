@@ -1,0 +1,89 @@
+
+Comparable (I):
+
+    Present in java.lang package
+
+    it contains only one method
+
+        compareTo()
+
+    -------
+
+    public int compareTo(Object obj)
+
+        How to call this method:
+
+            we can call:
+
+                obj.compareTo(obj2)
+
+            If we compare two objects, how many options are there:
+
+                1. obj1 should come after obj2
+
+                2. obj1 should come before obj2
+
+                3. or obj1 == obj2
+
+                so to cover three options boolean return type we can't take, therefore the return type is
+                    int
+
+-------
+
+obj1.compareTo(obj2)
+
+    it returns '-ve' value
+
+        iff obj1 has to come before obj2 (in our sorting)
+
+    it returns '+ve' value
+
+        iff obj1 has to come after obj2
+
+    it return 0 value
+
+        iff obj1 is equal to obj2
+
+-------
+
+If we do:
+
+    System.out.println("A".compareTo(null));  // it will throw null pointer exception
+
+-------
+
+How comparable is related to TreeSet:
+
+    TreeSet t = new TreeSet();  // default natural sorting order
+
+    t.add("B");
+    t.add("Z");  --> here JVM will call "Z".compareTo("B")  --> returns +
+    t.add("A");
+
+    System.out.println(t);
+
+        // whenever we are adding second element in the TreeSet, comparison is required
+        // whenever we are inserting objects into the TreeSet, and we are depending on the default
+            natural sorting order; compulsory the object should be
+                'homogenous' and 'comparable'
+
+                because internally JVM is going to use compareTo method
+
+                    e.g. obj1.compareTo(obj2);
+
+                        which element is the obj1, and which element is obj2
+
+                            whichever element we are trying to insert is the
+
+                                obj1
+
+                            whichever element is already inserted is the
+
+                                obj2
+
+-------
+
+* If we are not satisfied with default natural sorting order or if the default natural sorting
+    order is not already available, then we can define our own customized sorting by using 'Comparator'
+
+* Comparable meant for default natural sorting order, whereas Comparator is meant for customized sorting order

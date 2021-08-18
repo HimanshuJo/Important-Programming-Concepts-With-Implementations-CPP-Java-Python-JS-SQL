@@ -1,0 +1,124 @@
+
+A constructor is a method which is called when an object of the class is instantiated.
+
+    It is used to set default values to the attributes of the class.
+
+    The name of the constructor is the same as the class name.
+
+    Also they can be overridden.
+
+-------
+
+Getters and setters are methods that are used to access the attributes of an object.
+
+    The attributes are mostly kept private.
+
+    So we cannot access them directly.
+
+    So the getter and setter are used to access them.
+
+    These methods are mostly public but never private.
+
+-------
+
+class Person
+{
+    private int id;
+    private String name;
+    private int age;
+    private String address;
+
+    //Constructor
+    public Person(int id)
+    {
+        this.id = id;
+        this.name = "Unknowm";
+        this.age = -1;
+        this.address = "Unknown";
+    }
+
+    //Overloaded Constructor
+    public Person(int id, String name, int age, String address)
+    {
+        this.id = id;
+        this.name = name
+        this.age = age;
+        this.address = address;
+    }
+
+    //Getter method for name
+    public String getName()
+    {
+        return name;
+    }
+
+    //Setter method for name
+    public String setName()
+    {
+        this.name = name;
+    }
+
+-------
+
+Why use getters and setters:
+
+    Encapsulation of behavior associated with getting or setting the property -
+        this allows additional functionality (like validation) to be added more easily later.
+
+    Hiding the internal representation of the property while exposing a property
+        using an alternative representation.
+
+    Insulating your public interface from change -
+        allowing the public interface to remain constant while the implementation changes
+        without affecting existing consumers.
+
+-------
+
+Example 2:
+
+    public String name = "Hemnshh J";
+
+    // caller:
+    String name = X.name;   //(X is a object instance);
+    X.name = "Hemnshh J";
+
+    -------
+
+    private String name = "Hemnshh";
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    // caller:
+    String name = X.getname();
+    X.setName("Hemnshh J");
+
+-------
+
+Importance:
+
+    1. Realization:
+
+        The main difference between making a field public vs. exposing it through getters/setters
+            is holding control over the property.
+
+        If you make a field public, it means you provide direct access to the caller.
+
+        Then, the caller can do anything with your field, either knowingly or unknowingly.
+            For example, one can set a field to a null value, and if you use that field in another
+            method, it may blow up that method with a null pointer exception.
+
+        -------
+
+        But, if you provide a getter/setter, you provide them indirect access while taking
+            full control.
+
+            The only way to set a value is through setter, and you get a value through a getter,
+                so now you have exactly one entry and one exit point for your field,
+                as getter/setters are methods, which allows blocks of code,
+                so you can do validation checks on them!

@@ -1,0 +1,216 @@
+
+If I want to develop a JDBC application, then I require several classes and interfaces
+    which can be used to develop JDBC based application
+
+    All these classes and interfaces is nothing but JBDC API
+
+    -------
+
+    JDBC API defines several classes and interfaces which can be used for database communication
+
+    -------
+
+    Who is going to use JDBC API:
+
+        Programmers
+
+        Driver Software Vendor
+
+            These persons are responsible to develop driver software
+
+            -------
+
+            How are they going to develop driver softwares:
+
+                By implementing interfaces present inside JDBC API
+
+-------
+
+JDBC API contains two packages:
+
+    1. java.sql
+
+        It contains some basic classes and interfaces which can be used for database communication
+
+    2. javax.sql
+
+        Advanced JDBC programming
+
+-------
+
+Summary:
+
+    JDBC API provides several classes and interfaces
+
+    Programmers can use these classes and interfaces to communicate with the database
+
+    Driver software vendor can use JDBC API while developing driver software
+
+    JDBC API contains 2 packages
+
+        java.sql package
+
+            It contains basic classes and interfaces which can be used for database communication
+
+            Important Interfaces:
+
+                Driver
+
+                Connection
+
+                Statement
+
+                PreparedStatement
+
+                CallableStatement
+
+                ResultSet
+
+            Important classes:
+
+                DriverManager
+
+                Date
+
+                Time
+
+                TimeStamp
+
+                Types
+
+                ...
+
+
+        javax.sql package
+
+            It contains more advances classes and interfaces which can be used for database communication
+
+            It contains multiple sub-packages
+
+                javax.sql.rowset
+
+                javax.sql.rowset.serial
+
+                javax.sql.rowset.spi
+
+            Important Interfaces:
+
+                DataSource
+
+                    used for connection pulling concept
+
+                RowSet
+
+                    alternating to ResultSet
+
+                RowSetListener
+
+                ConnectionEventListener
+
+                ...
+
+            Important classes:
+
+                RowSetEvent
+
+                ConnectionEvent
+
+                ...
+
+-------
+
+* Inside JDBC API there are several Interfaces are there
+
+    Driver, Connection, Statement, PreparedStatement, ResultSet etc.
+
+    -------
+
+    Who is responsible to provide implementation for these:
+
+        Driver Software Vendor is responsible to provide the implementation for the same
+
+        Most of the time, Driver Software are being developed by Database Vendor
+
+-------
+
+Example: Suppose we have one Java Application, and it wants to communicate with the Database
+
+            If we want to communicate with the database, compulsory 'Driver Software' must be required
+
+                Driver Software can convert Java calls into Database specific calls, and database specific calls
+                    into Java calls
+
+                Driver Software is nothing but collection of implementation classes of JDBC API
+
+                        Java App.  -->  Driver Software  -->  Database
+
+                    For example:
+
+                        Driver Software for Oracle means Collection of implementation classes of JDBC,
+                            which can be used to communicate with the Oracle Database
+
+-------
+
+Example:
+
+    Suppose we have a Driver Software which can be used to communicate with the database from
+        a Java application, and from database to the Java application
+
+        Inside the Driver Software there are multiple classes available:
+
+            e.g.
+
+                Implementation class of Driver Interface
+
+                Implementation class of Statement Interface
+
+                Implementation class of ResultSet
+
+                Implementation class of PreparedStatement
+
+                Implementation class of RowSet etc.
+
+            So whatever Interfaces are there inside JDBC API, for all those interfaces implementation classes
+                are required
+
+                a group of implementation classes is nothing but a Driver Software
+
+            Among all those classes, there is one special class is there, and every driver software is identified with
+                that special class
+
+                That special class is Driver class
+
+-------
+
+Type 1 Driver Software
+
+    Provided by Sun-Microsystems as a part of JDK only
+
+    Also known as JDBC-ODBC bridge driver
+
+    So here compulsory one Driver class must be there
+
+        That driver class is:
+
+            Sun.jdbc.odbc.JdbcOdbcDriver (here Sun.jdbc.odbc --> is a package name and JdbcOdbcDriver is class name)
+            
+
+Type 4 Driver of Oracle
+
+    Also known as 'Thin Driver'
+
+    Provided by Oracle Corporation to communicate with Oracle database
+
+    So here also compulsory one Driver class must be there
+
+        That driver class is:
+
+            oracle.jdbc.OracleDriver
+
+-------
+
+Summary:
+
+    Every Driver Software is identified with a special class which is nothing but a Driver class
+
+    It is the implementation of 'java sql Driver interface'

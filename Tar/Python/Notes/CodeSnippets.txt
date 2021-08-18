@@ -1,0 +1,38 @@
+
+Loop backwards:
+
+    for x in reversed(whatever):
+        do_something()
+
+-------
+
+range() function syntax and arguments:
+
+    range(start, stop[, step])
+
+        It takes three arguments.
+
+            Out of the three 2 arguments are optional. I.e., start and step are the optional arguments.
+
+        A 'start' argument is a starting number of the sequence. i.e.,
+            lower limit.
+
+            By default, it starts with 0 if not specified.
+
+        A 'stop' argument is an upper limit. i.e., generate numbers up to this number,
+            The range() doesn’t include this number in the result.
+
+            So the last number is stop - step.
+
+        The 'step' is a difference between each number in the result.
+
+            The default value of the step is 1 if not specified.
+
+-------
+
+Python String isalpha():
+
+    In Python, isalpha() is a built-in method used for string handling.
+
+    The isalpha() methods returns “True” if all characters in the string are alphabets,
+        Otherwise, It returns “False”.

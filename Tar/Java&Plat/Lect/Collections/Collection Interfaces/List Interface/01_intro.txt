@@ -1,0 +1,201 @@
+
+List (Interface):
+
+    The List interface extends Collection and declares the behavior of a collection
+        that stores a sequence of elements.
+
+    Elements can be inserted or accessed by their position in the list,
+        using a zero-based index.
+
+    A list may contain duplicate elements.
+
+    List is a generic interface that has this declaration:
+
+        interface List<E>  // E specifies the type of the objects that the list will hold
+
+    -------
+
+    In addition to the methods defined by the Collection, List defines some of its own
+
+        Several of these methods will throw an
+
+            'UnsupportedOperationException' if the list cannot be modified
+
+        and
+
+            'ClassCastException' when one object is incompatible with another
+
+        some methods will throw
+
+            'IndexOutOfBoundException' if an attempt is made to store a null object
+                and null elements are not allowed in the list
+
+        and
+
+            'IllegalArgumentException' is thrown if an invalid argument is used
+
+-------
+
+List methods:
+
+    1. void add(int index, E obj)
+
+        Inserts obj into the invoking list at the index passed in index
+
+        Any preexisting elements at or beyond the point of insertion are shifted up
+
+            Thus no elements are overwritten
+
+    2. boolean addAll(int index, Collection<? extends E> c)
+
+        Inserts all the elements of c into the invoking list at the index passed in the index
+
+        Any preexisting elements at or beyond the point of insertion are shifted up
+
+        Thus no elements are overwritten
+
+        Returns true if the invoking list changes and returns false otherwise
+
+    3. static <E> List<E> copyOf(Collection<? extends E> from)
+
+        Returns a list that contains the same elements as that specified by from
+
+        The returned list is unmodifiable
+
+        Null values are not allowed
+
+    4. E get(int index)
+
+        Returns the objects stored at the specified index within the invoking collection
+
+    5. int indexOf(Object obj)
+
+        Returns the index of the first instance of obj in the invoking list
+
+        If obj is not an element of the list, -1 is returned
+
+    6. ListIterator<E> listIterator()
+
+        Returns an iterator to the start of the invoking list
+
+    7. ListIterator<E> listIterator(int index)
+
+        Returns an iterator to the invoking list that begins at the specified index
+
+    8. static <E> List<E> of(parameter-list)
+
+        Creates an unmodifiable list containing the elements specified in parameter-list
+
+        Null elements are not allowed
+
+        Many overloaded versions are provided
+
+    9. E remove(int index)
+
+        Removes the element at position index from the invoking list and returns the deleted
+            element
+
+        The resulting list is compacted
+
+            That is, the indexes of subsequent elements are decremented by one
+
+    10. default void replaceAll(UnaryOperator<E> opToApply)
+
+        Updates each element in the list with the value obtained from the 'opToApply' function
+
+    11. E set(int index, E obj)
+
+        Assigns obj to the location specified by index within the invoking list
+
+        Returns the old value
+
+    12. default void sort(Comparator<? super E> comp)
+
+        Sort the list using the comparator specified by comp
+
+    13. List<E> subList(int start, int end)
+
+        Returns a list that includes elements from the start to 'end - 1'
+
+        Elements in the returned list are also referenced by the invoking object
+
+-------
+
+To the versions of add( ) and addAll( ) defined by Collection,
+    List adds the methods
+
+        add(int, E)
+        addAll(int, Collection)
+
+    These methods insert elements at the specified index
+
+    -------
+
+    Also, the semantics of add(E) and addAll(Collection) defined by Collection are
+        changed by List so that they add elements to the end of the list.
+
+        You can modify each element in the collection by using
+
+            replaceAll( )
+
+    -------
+
+    To obtain the object stored at a specific location, call
+
+            get( )
+
+        with the index of the object
+
+    To assign a value to an element in the list, call
+
+            set( )
+
+        specifying the index of the object to be changed
+
+    To find the index of an object, use
+
+        indexOf() or lastIndexOf( )
+
+    -------
+
+    You can obtain a sublist of a list by calling
+
+            subList( )
+
+        specifying the beginning and ending indexes of the sublist
+
+-------
+
+Beginning with JDK 9, List includes the of( ) factory method, which has a
+    number of overloads
+
+    Each version returns an unmodifiable, value-based collection that is
+        comprised of the arguments that it is passed
+
+    The primary purpose of 'of( )' is to provide a convenient, efficient way to create a small List
+        collection.
+
+        There are 12 overloads of 'of( )'
+
+        One takes no arguments and creates an empty list:
+
+            static <E> List<E> of( )
+
+        Ten overloads take from 1 to 10 arguments and create a list that contains the
+            specified elements
+
+            static <E> List<E> of(E obj1)
+
+            static <E> List<E> of(E obj1, E obj2)
+
+            static <E> List<E> of(E obj1, E obj2, E obj3)
+
+            ...
+
+            static <E> List<E> of(E obj1, E obj2, E obj3, E obj4, E obj5, E obj6
+                                    E obj7, E obj8, E obj9, E obj10)
+
+        The final 'of()' overload specifies a varargs parameter that take an arbitrary
+            number of elements or an array of elements
+
+                static<E> List<E> of(E ... objs)

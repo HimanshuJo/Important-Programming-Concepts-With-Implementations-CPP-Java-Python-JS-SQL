@@ -1,0 +1,11 @@
+# log of a number base 2
+
+import math
+print(math.log(num, 2))
+
+# ceil of a number
+
+-------
+
+import math
+print(math.ceil(x))

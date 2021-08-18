@@ -1,0 +1,238 @@
+
+What is identifier?
+
+    which can be used for identification purpose
+
+    a name in Java program is called identifier which can be used for identification purpose
+
+        it can be a class name, method name, variable name or label name
+
+
+        e.g. class Test
+
+            {
+                public static void main(String[] args)
+                {
+                    int x = 10;
+                    System.out.println('Hello');
+                }
+            }
+
+        here 5 identifiers (Test, main, String, args, x)
+
+-------
+
+Rules for defining Java identifiers:
+
+    what we can use:
+
+        small letters (a-z)
+        capital letters (A-Z)
+        0-9
+        $
+        _
+
+    Except these there will always be compile time error
+
+    e.g. of valid identifier
+
+        total_number
+        total123
+
+    e.g. of invalid identifier
+
+        total#
+        123total  --> identifier should not start with digits
+
+    Java identifiers are case-sensitive and Java language itself treated as
+        case-sensitive programming language
+
+        class Test
+        {
+            int number = 10;
+            int Number = 20;
+            int NUMBER = 30;
+        }
+
+    In Java there is no length limit for the identifiers
+
+    Java reserved words or keywords can't be used as identifiers
+
+        e.g. int if = 20;  --> invalid
+
+    class Test
+    {
+        public static void main(String[] args)
+        {
+            int String = 888;  --> valid but not a good practice as String is a predefined class name
+            int Runnable = 999;  --> valid but not a good practice as Runnable is a predefined interface name
+            System.out.println(String);
+            System.out.println(Runnable);
+        }
+    }
+
+    All pre-defined Java class names and interface names we can use as identifiers, even though it is valid
+        but it is not a good programming practice because it reduces readability and creates confusion
+
+        e.g. Integer, Float etc.
+
+-------
+
+In any language (e.g. programming language Java) some words are reserved to represent some meaning or
+    functionality
+
+    e.g. In English we have numerous reserved words (cat, dog etc. --> to represent an animal)
+
+    In Java we have 53 reserved keywords
+
+        keywords (if a reserved word is associated with some functionality it is called keyword)  --> 50
+
+            here 48 are used keywords (e.g. if, else, switch ... etc.)
+
+            2 are unused keywords (goto, const)
+
+        reserved literals (if a reserved is only there to represent some value but not functionality)  --> 3
+
+            (true  --> to represent a boolean value, false, null)
+
+-------
+
+Keywords for data-types (8):
+
+    byte, short, int, long, float, double, boolean, char
+
+Keywords for flow-control (11):
+
+    if,
+    else,
+    switch,
+    case,
+    default,
+    while,
+    do,
+    for,
+    break,
+    continue,
+    return
+
+Keywords for modifiers (11):
+
+    public, private, protected, static, final, abstract, synchronized, native, strictfp(Java 1.2v),
+    transient, volatile
+
+Keyword for exception handling (6):
+
+    try, catch, finally, throw, throws, assert(Java 1.4v)
+
+Keywords for classes (6):
+
+    class, interface, extends, implements, package, import
+
+Keywords for objects:
+
+    new, instanceof, super, this
+
+** Delete keyword is not there in Java, because destruction of useless objects is the responsibility
+    of garbage collector
+
+Keyword for return type:
+
+    void
+
+        in Java return type is mandatory, if a method does not return anything then we have to declare
+            that method with 'void' return type
+
+        but in C language return type is optional and default return type is int
+
+Unused keywords (2):
+
+    goto, const
+
+    Java (Sun) banned goto keyword, as usage of goto created several problems in old languages
+
+    To define a constant, already 'final' keyword is there
+
+    goto and const are unused keywords and if we are trying to use them we will get compile time error
+
+    -------
+
+    reserved literals (true, false, null)
+
+        true and false are the values for boolean data-type
+
+        null is default value for object reference
+
+enum keyword (Java 1.5v)
+
+    if we want to define a group of named constants
+
+    e.g.
+
+    enum  month
+    {
+        JAN, FEB, ... DEC;
+    }
+
+Conclusions:
+
+    all 53 reserved keywords contain only alphabet keywords, lower case characters
+
+    in Java we have only new keyword and there is no delete keyword in Java because destruction of
+        useless objects is the responsibility of garbage collector
+
+    some new Java keywords
+
+        e.g. strictfp  --> came in Java 1.2v
+             assert  --> came in Java 1.4v
+             enum  --> came in Java 1.5v
+
+    In Java we can use:
+
+        strictfp but not strictFp
+
+        instanceof but not instanceOf
+
+        synchronized but not synchronize
+
+        extends but not extend
+
+        implements but not implement
+
+        import but not imports
+
+        const but not constant
+
+-------
+
+Qs: Which of the following list contains only Java reserved words?
+
+    1. new, delete  --> in Java delete is not there
+
+    2. goto, constant  --> in Java we have const
+
+    3. break, continue, return, exit  --> exit is a method but not a reserved word
+
+    4. final, finally, finalize  --> finalize is a method
+
+    5. throw, throws, thrown  --> thrown is not there in Java
+
+    6. notify, notifyAll  --> both are methods but not keywords
+
+    7. implements, extends, imports  --> in Java we have import but not imports
+
+    8. sizeof, instanceof  --> in Java sizeof is not present
+
+    9. instanceOf, strictFp  --> in Java we have instanceof and strictfp
+
+    10. byte, short, Int  --> in Java we have int, not Int
+
+-------
+
+Qs. Which of the following are Java reserved words?
+
+    public  --> valid
+    static  --> valid
+    void  --> valid
+    main  --> not a reserved word but a name of the method
+    String  --> name of predefined class
+    args  --> name of the variable

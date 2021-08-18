@@ -1,0 +1,50 @@
+
+The Java.util.ArrayDeque.push(E element) method is used to push an element into the Deque. 
+
+	The operation is similar to the operation in the stack. The element gets pushed onto the top of the deque.
+
+-------
+
+Syntax:
+
+	Array_Deque.push(E element)
+
+Parameters: The parameter element is of the type ArrayDeque and refers to the element to be pushed into the deque.
+
+Return Value: The method does not return any value.
+
+Exceptions: The method throws NullPointerException if the passed parameter is NULL.
+
+-------
+
+import java.util.*;
+
+public class ArrayDequeDemo {
+	public static void main(String args[])
+	{
+		// Creating an empty ArrayDeque
+		Deque<String> de_que = new ArrayDeque<String>();
+
+		// Use add() method to add elements into the Deque
+		de_que.add("Welcome");
+		de_que.add("To");
+		de_que.add("Geeks");
+		de_que.add("4");
+		de_que.add("Geeks");
+
+		// Displaying the initial ArrayDeque
+		System.out.println("Initial Deque: " + de_que);
+
+		// Pushing elements into the deque
+		de_que.push("Hello");
+		de_que.push("World");
+
+		// Displaying the final ArrayDeque
+		System.out.println("Final Deque: " + de_que);
+	}
+}
+
+Output:
+
+Initial Deque: [Welcome, To, Geeks, 4, Geeks]
+Final Deque: [World, Hello, Welcome, To, Geeks, 4, Geeks]

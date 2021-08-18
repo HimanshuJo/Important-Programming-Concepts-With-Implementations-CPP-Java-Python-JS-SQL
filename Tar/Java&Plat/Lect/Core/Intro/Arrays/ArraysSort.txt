@@ -1,0 +1,228 @@
+
+Sorting an array of objects:
+
+	Suppose we have an array of custom objects of type Employee:
+
+		public class Employee {
+	    private String name;
+	    private int age;
+	    private int salary;
+	 
+	    public Employee(String name, int age, int salary) {
+	        this.name = name;
+	        this.age = age;
+	        this.salary = salary;
+	    }
+	 
+	    // getters and setters...
+	}
+
+	Now we want to sort all the employees in the array by their salary in ascending order
+
+		To do so it requires the Employee class to implement the 'Comparable' interface and
+			override the 'compareTo()' method as follows
+
+		public class Employee implements Comparable<Employee> {
+
+			@Override
+			public int compareTo(Employee employee) {
+				return this.salary - employee.salary;  // from lowest to highest order
+
+				// if result is < 0 that means left side salary is lower and comes before
+				// if result is > 0 that means left side salaray is biiger and must come after
+				// if result is = 0 that means both are equal and can be placed adjacent
+			}
+		}
+
+	Use of Comparable interface is necessay so that the array can be sorted according to the
+		natural ordering of its elements.
+
+		The natural ordering is defined by implementation of the compareTo() method which
+			determines how the current object (obj1) is compared to another (obj2) of the same type
+
+		The order is based on return value (an integer number, say x) of the compareTo() method
+
+			****
+
+			obj1 > obj2 if x > 0
+
+			obj1 < obj if x < 0
+
+			obj1 equals obj2 if x = 0
+
+	-------
+
+	Employee[] employees = new Employee[4];
+ 
+	employees[0] = new Employee("Tom", 45, 80000);
+	employees[1] = new Employee("Sam", 56, 75000);
+	employees[2] = new Employee("Alex", 30, 120000);
+	employees[3] = new Employee("Peter", 25, 60000);
+	 
+	System.out.println("Before sorting: " + Arrays.toString(employees));
+	 
+	Arrays.sort(employees);
+	 
+	System.out.println("After sorting: " + Arrays.toString(employees));
+
+	-------
+
+	public String toString() {
+    	return String.format("(%s, %d)", name, salary);
+	}
+
+	-------
+
+	Before sorting: [(Tom, 80000), (Sam, 75000), (Alex, 120000), (Peter, 60000)]
+	After sorting: [(Peter, 60000), (Sam, 75000), (Tom, 80000), (Alex, 120000)]
+
+-------
+
+Some core classes in JDK already implemented the Comparable interface (e.g. String, Date)
+	and primitive wrappers: Integer, Long, Double etc.
+
+	so that we can sort array of these types naturally
+
+	
+	Sorting on Strings:
+
+		String[] fruits = {"Orange", "Grape", "Apple", "Lemon", "Banana"};
+	 
+		System.out.println("Before sorting: " + Arrays.toString(fruits));
+		 
+		Arrays.sort(fruits);
+		 
+		System.out.println("After sorting: " + Arrays.toString(fruits));
+
+		-------
+
+		Before sorting: [Orange, Grape, Apple, Lemon, Banana]
+		After sorting: [Apple, Banana, Grape, Lemon, Orange]
+
+	-------
+
+	Sorting on Dates:
+
+		Date [] datesArr = new Date[3];
+		DateFormatter dateformatter = new SimpleDateFormatter("yyyy-MM-dd");
+
+		try {
+			datesArr[0] = dateformatter.parse("2013-09-30");
+			datesArr[1] = dateformatter.parse("2013-07-06");
+			datesArr[2] = dateformatter.parse("2013-11-28");
+		} catch (ParseException ex) {
+			System.err.print(ex);
+		}
+
+		System.out.println("Before sorting: " + Arrays.toString(dates));
+ 
+		Arrays.sort(dates);
+		 
+		System.out.println("After sorting: " + Arrays.toString(dates));
+
+-------
+
+	Consistency with equals() method
+
+		It is strongly recommended that implementation of the compareTo() method of a class must be consistent
+			with its equal() method when the objects are used in sorted maps or sorted sets
+
+			That means 
+
+				obj1.compareTo(obj2) == 0 must have the same boolean value as 
+
+				obj1.equals(obj2)
+
+-------
+
+Sorting an array using a Comparator:
+
+	Besides using the Comparable implementation approach, it's also possible to sort an array
+		of Objects by passing an implementation of the 'java.util.Comparator' interface
+		to the Arrays.sort() method
+
+
+			Arrays.sort(array, Comparator)
+
+		The Comparator interface defines a 'compare()' method that imposes a total ordering on
+			some collections of objects
+
+			its purpose is similar to the Comparable's compareTo() method, but it is independent
+				of the objects being compared
+
+			For example, the following comparator does the same thing as the Employee's compareTo() method
+
+
+		import java.util.Comparator
+
+
+		public class EmployeeSalaryComparator implements Comparator<Employee> {
+
+			@Override
+			public int compare(Employee emp1, Employee emp2) {
+				return emp1.getSalary() - emp2.getSalary();
+			}
+		}
+
+		And we pass this comparator to the Arrays.sort() method
+
+			Arrays.sort(employee, new EmployeeSalaryComparator());
+
+		-------
+
+		Employee[] newEmployees = new Employee[4];
+ 
+		newEmployees[0] = new Employee("Tom", 45, 80000);
+		newEmployees[1] = new Employee("Sam", 56, 75000);
+		newEmployees[2] = new Employee("Alex", 30, 120000);
+		newEmployees[3] = new Employee("Peter", 25, 60000);
+		 
+		System.out.println("Before sorting: " + Arrays.toString(newEmployees));
+		 
+		Arrays.sort(newEmployees, new EmployeeSalaryComparator());
+		 
+		System.out.println("After sorting: " + Arrays.toString(newEmployees));
+
+		Output:
+			
+		Before sorting: [(Tom, 80000), (Sam, 75000), (Alex, 120000), (Peter, 60000)]
+		After sorting: [(Peter, 60000), (Sam, 75000), (Tom, 80000), (Alex, 120000)]
+
+		-------
+
+		In essence we get the same result as the result of implementing the Comparable Interface
+			However, using Comparator we don't need to make the Employee class implements the
+			Comparable interface, because the objects ordering is imposed by the comparator itself
+			not by the objects being compared
+
+			In addition we can create another comparator to sort the array on different fields
+				when needed
+
+				import java.util.Comparator
+
+				public class EmployeeAgeComparator implements Comparator<Employee> {
+
+					@Override
+					public int compare(Employee emp1, Employee emp2) {
+						return emp1.getAge() - emp2.getAge();
+					}
+				}
+
+-------
+
+// an array of ints
+int[] arr = {1, 2, 3, 4, 5, 6};
+
+int[] arrDesc = Arrays.stream(arr).boxed()
+    .sorted(Collections.reverseOrder())
+    .mapToInt(Integer::intValue)
+    .toArray();
+
+System.out.println(Arrays.toString(arrDesc)); // outputs [6, 5, 4, 3, 2, 1]
+
+
+	OR
+
+int[] arrDesc = Arrays.stream(arr).boxed()
+			   .sorted(Collections.reverseOrder())
+			   .mapToInt(i -> i).toArray();

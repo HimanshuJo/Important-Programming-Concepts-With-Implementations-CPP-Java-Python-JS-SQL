@@ -1,0 +1,44 @@
+
+Method 1:
+
+	Here's a method to swap two variables in java in just one line using bitwise XOR(^) operator.
+
+	class Swap
+	{
+	   public static void main (String[] args)
+	   {
+	      int x = 5, y = 10;
+	      x = x ^ y ^ (y = x);
+	      
+	      System.out.println("New values of x and y are "+ x + ", " + y);
+	   }
+	} 
+
+	Output:
+
+	New values of x and y are 10, 5
+
+-------
+
+Method 2:
+
+	Use this one-liner for any primitive number class including double and float:
+
+	a += (b - (b = a));
+
+	For example:
+
+	double a = 1.41;
+	double b = 0;
+	a += (b - (b = a));
+	System.out.println("a = " + a + ", b = " + b);
+
+	Output is a = 0.0, b = 1.41
+
+-------
+
+Info:
+
+	There are no pointers in Java
+
+	However, every variable that contains an object is a reference to that object

@@ -1,0 +1,146 @@
+
+Type 1 and Type 2 drivers are almost same:
+
+    Java Application  --> Type-2 Driver  --> Vendor Provided   --> Database
+    (JDBC)            <--                <-- Database specific
+                                             Native Libraries  <--
+
+-------
+
+Java Application communicates with Type-2 driver
+
+    Type 2 drivers converts JDBC calls into Database specific Native Libraries calls
+
+    These calls can be understandable directly by the Database
+
+    -------
+
+    This driver also known as 'Partly Java Native API driver'
+
+    On the client machine we're required to install these native libraries
+
+-------
+
+    Client side:
+
+        Java Application  --> Type-2 Driver  --> Vendor Provided
+        (JDBC)            <--                <-- Database specific
+                                                 Native Libraries
+
+    Server side:
+
+        Database
+
+-------
+
+Advantages:
+
+    When compared with the Type-1 driver, this driver is relatively performance wise good
+
+        as, here there is one one level conversion is required from JDBC to native library
+            calls
+
+    For the type-2 no ODBC driver is required
+
+        Type-2 driver converts JDBC calls into Database specific native library calls
+            which can be understandable by the database
+
+    When compared with the Type-1 driver:
+
+        Type-1 uses ODBC driver internally, and ODBC will work only for windows machines
+
+            So type-1 driver is strictly windows platform dependent driver
+
+        However, Type-2 driver, even it is platform dependent (as internally it uses
+            native libraries), but we can use type-2 for any platforms (it is not just reserved
+            for windows machines)
+
+    Here portability is more
+
+-------
+
+Limitations:
+
+    Among all the 4 drivers, there is one biggest drawback for type-2 drivers
+
+        Type-2 driver is 'database dependent' driver, and 'platform dependent' driver also
+
+            Type-2 driver internally communicates with the native libraries
+                which are provided by the database vendors
+
+            So it is communicating directly with the database specific libraries
+
+                Hence, it is database dependent driver
+
+            -------
+
+            e.g. Today I'm using oracle, tomorrow if I want to use MYSQL compulsory
+                    I've to change my driver
+
+                That's why migrating from one database to another database will become
+                    very difficult
+
+        Type-2 driver is not completely implemented in Java
+
+            therefore it's a platform dependent driver
+
+                for Windows one type-2 driver I've to use
+
+                for Linux another type-2 driver I've to use etc.
+
+        Here, there is no guarantee that every database vendor will provide these drivers
+
+    -------
+
+    Type-2 driver is only driver which is database-dependent and platform-dependent
+
+-------
+
+OCI driver
+
+    it is a type-2 driver provided by the oracle people to communicate with the
+        oracle database
+
+    OCI driver internally uses OCI libraries (these libraries are the C language functions)
+        to communicate with the database
+
+    By using this driver, Java application can communicate with the Oracle database
+
+    OCI driver and the OCI libraries
+
+        these two things are available in the jar files form
+
+        we're required to place those files in the class_path
+
+        -------
+
+        these jar files are:
+
+            ojdbc14.jar  --> for oracle 10g (it internally uses java 1.4 version)
+
+            ojdbc6.jar  --> for oracle 11g (it internally uses java 1.6 version)
+
+            ojdbc7.jar  --> for oracle 12c (it internally uses java 1.7 version)
+
+-------
+
+Java Application  --> OCI Driver (Type-2)  --> OCI Libraries  --> Oracle Database
+(JDBC)            <--                      <--                <--
+
+OCI Driver converts JDBC calls into OCI library calls
+
+    These OCI library calls can be understandable by the Oracle database
+
+-------
+
+OCI (Oracle Call Interface)
+
+    It is a type-2 driver provided by Oracle
+
+    It internally uses OCI libraries to communicate with the database
+
+    OCI libraries contain C language functions
+
+    OCI driver and corresponding OCI libraries are available in some jar files
+
+        hence we've to place these jar files in the class-path

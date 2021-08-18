@@ -1,0 +1,123 @@
+
+HashMap merge(key, value, BiFunction):
+
+	the merge(Key, Value, BiFunctional) method of HashMap class is used to combine multiple mapped
+		values for a key using the given mapping function
+
+	Bucket is always an index of array, that array is called table in HashMap implementation
+
+	So table[0] is referred to bucket0
+	   table[1] is referred to bucket1 and so on
+
+   -------
+
+   If the key is not present or is associated with null, it simply outputs the key along with the
+   corresponding value in the HashMap as a new entry
+
+   However, if the key already holds some value that Remapping function merges both the old and new
+   	values with the given key
+
+   	In case the key is null, it is always mapped to bucket 0, as hash is not calculated for null keys
+   		due to 'NullPointerException'
+
+   -------
+
+   Syntax:
+
+   	public V merge(K key, V value, BiFunction remappingFunction)
+
+------
+
+Parameters:
+
+	Key:
+
+		which is the key for which we have a particular value
+
+		If two keys have the same value then they are merged
+
+	Value:
+
+		which is the index corresponding to the particular key which is stored in the bucket
+
+	BiFunction
+
+		which is the function having two arguments to be used for calculating the new mapping from the old
+			value and given value
+
+-------
+
+Return Value:
+
+	This method returns the key along with its value if the key is not present or is associated with null
+
+	If the key already holds any value, it merges the old value with the new value using the mapping technique
+
+-------
+
+import java.util.*;
+
+public class CFG {
+	public static void main(String[] args) {
+		HashMap<Integer, String> map1 = new HashMap<>();
+		map1.put(1, "L");
+		map1.pu(2, "M");
+		map2.put(3, "N");
+
+		HashMap<Integer, String> map2 = new HashMap<>();
+		map2.put(1, "B");
+		map2.put(2, "G");
+		map.put(3, "R");
+
+		System.out.println("HashMap1: " + map1.toString());
+		System.out.println("HashMap2: " + map2.toString());
+
+		// provide value for new key which is absent using computeIfAbsent method
+		map2.forEach(key, value) -> 
+								map1.merge(key, value, (v1, v2) -> v1.equalsIgnoreCase(v2) ? v1 : v1 + ", " + v2);
+
+		System.out.println("New HashMap " + map1);		
+	}
+}
+
+Output:
+
+	HashMap1: {1=L, 2=M, 3=N}
+	HashMap2: {1=B, 2=G, 3=R}
+	New HashMap: {1=L,B, 2=M,G, 3=N,R}
+
+-------
+
+Using map merge demonstrating computeIfAbsent(Key, Function)
+
+import java.util.*;
+
+public class CFG {
+	public static void main(String[] args) {
+		HashMap<Integer, String> map1 = new HashMap<>();
+		map1.put(1, "Ram");
+		map1.put(2, "Rohan");
+		map1.put(3, "Shivam");
+
+		HashMap<Integer, String> map2 = new HashMap<>();
+		map2.put(1, "Tushar");
+		map2.put(10, "Satya");
+		map2.put(12, "Sundar");
+
+		System.out.println("HashMap1: " + map1.toString());
+		System.out.println("HashMap2: " + map2.toString());
+
+		// provide value for new key which is absent using computeIfAbsent method
+		map2.forEach(key, value) ->
+								map1.merge(key, value, (v1, v2) -> v1.equalsIgnoreCase(v2) ? v1 : v1 + ", " + v2);
+
+		System.out.println("New HashMap: " + map1);
+
+	}
+}
+
+Output:
+
+	HashMap1: {1=Ram, 2=Rohan, 3=Shivam}
+	HashMap2: {1=Tushar, 10=Satya, 12=Sundar}
+	New HashMap: {1=Ram, Tusahr, 2=Rohan, 3=Shivam, 10=Satya, 12=Sundar}

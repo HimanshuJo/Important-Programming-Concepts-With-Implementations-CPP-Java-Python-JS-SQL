@@ -1,0 +1,59 @@
+
+Comparable vs Comparator
+
+    Exactly when we should go for Comparable, and when should we go for Comparator
+
+        So for pre-defined Comparable classes
+
+                e.g. String
+
+            default natural sorting order is already present
+
+                e.g. for String, the default natural sorting order as Alphabetical Order is
+                        already present
+
+                if we're not satisfied for that type of sorting, then we can define our own sorting by using
+                    Comparator concept
+
+        -------
+
+        For pre-defined non-Comparable classes
+
+            e.g. StringBuffer --> default natural sorting order is not present
+
+            if we want any type of sorting, compulsory we should go for 'Comparator' concept
+
+        -------
+
+        Now suppose I don't want to consider the pre-defined classes
+
+            I want to consider my own classes
+
+                e.g. Employee class
+
+            So for these type of classes, whether we should go for Comparable or Comparator,
+                we should have clarity
+
+            -------
+
+            There are normally 2 persons who are involved in writing or using custom classes,
+                one who actually writes the class and one who actually use the class
+
+                e.g. String class  --> written by Sun corporation's API developer
+
+                     Programmers  --> are using these classes
+
+                So the person, who is writing the custom class, he is responsible to
+                    define the default natural sorting order, by implementing 'Comparable Interface'
+
+                    e.g. Suppose we've 1000 members (with names), the most commonly required sorting order is
+                            according to the alphabetical order
+
+                         so the programmer will implement the Comparable Interface to define the natural
+                            sorting order
+
+                The person who is using our class, if he/she is satisfied with the default natural sorting
+                    order, then happily he/she can go for that
+
+                    otherwise, he/she can define his/her own sorting by using 'Comparator' concept
+

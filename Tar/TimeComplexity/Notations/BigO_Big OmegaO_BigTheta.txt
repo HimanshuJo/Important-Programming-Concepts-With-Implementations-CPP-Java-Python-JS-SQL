@@ -1,0 +1,110 @@
+
+Big Oh notation (O):
+
+	Big oh notation is used to describe asymptotic upper bound. 
+
+	Mathematically, if f(n) describe running time of an algorithm; 
+		f(n) is O(g(n)) if there exist positive constant C and no such that 
+
+			0 <= f(n) <= c g(n) for all n >= n0
+
+	n = used to give upper bound an a function.
+
+	If a function is O(n), it is automatically O(n-square) as well ! 
+
+-------
+
+Big Omega notation (Ω):
+
+	Just like O notation provide an asymptotic upper bound, 
+		Ω notation provides asymptotic lower bound. 
+
+	Let f(n) define running time of an algorithm; 
+
+		f(n) is said to be Ω(g(n)) if there exists positive constant C and (n 0) such that:
+
+			O <= C g(n) <= f(n) for all n >= n0
+
+	n = used to given lower bound on a function
+
+	If a function is O(n-square) it is automatically O(n) as well.
+
+-------
+
+ Big Theta notation (Θ):
+
+ 	Let f(n) define running time of an algorithm. 
+
+		f(n) is said to be Θ(g(n)) if f(n) is O(g(n)) and f(n) is Ω(g(n)) 
+
+	Mathematically:
+
+		O <= f(n) <= C 1 g(n) for n >= n0
+
+		O <= C 2 g(n) <= f(n) for n >= n0
+
+The equation simply means there exist positive constants C1 and C2 such that
+	f(n) is sandwich between C2 g(n) and C1 g(n).
+
+-------
+
+Difference Between Big oh, Big Omega and Big Theta:
+ 
+	Big Oh 
+
+		It is like <=
+			
+		Rate of growth of an algorithm is less than or equal to a specific value
+
+		The upper bound of algorithm is represented by Big O notation. 
+
+			Only the above function is bounded by Big O.
+			
+			Asymptotic upper bond is given by Big O notation.
+
+		Big oh (O) – Worst case	Big Omega
+
+		Big-O is a measure of the longest amount of time it could possibly take for the algorithm to complete.
+
+		Mathematically – Big Oh is:
+			0 <= f(n) <= c g(n) for all n >= n0
+
+	-------
+
+	Big Omega
+
+	 	It is like >= 
+		
+		Rate of growth is greater than or equal to a specified value
+
+		The algorithm’s lower bound is represented by Omega notation. 
+
+			The asymptotic lower bond is given by Omega notation
+
+		Big Omega (Ω) – Best case
+
+		Big- Ω is take a small amount of time as compare to Big-O it could possibly take for the algorithm to complete.
+
+		Mathematically – Big Omega is:
+
+			O<= C g(n) <= f(n) for all n >= n0
+
+	-------
+
+	Big Theta
+
+		It is like == 
+		
+		Meaning the rate of growth is equal to a specified value
+
+		The bounding of function from above and below is represented by theta notation. 
+
+			The exact asymptotic behavior is done by this theta notation.
+
+		Big Theta (Θ) – Average case
+
+		Big- Θ is take very short amount of time as compare to Big-O and Big-? it could possibly take for the algorithm to complete.
+
+		Mathematically – Big Theta is:
+
+			O<= C2 g(n) <= f(n) <= C1 g(n) for n >= n0

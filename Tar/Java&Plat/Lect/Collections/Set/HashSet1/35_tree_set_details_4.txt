@@ -1,0 +1,87 @@
+
+While inserting elements into the TreeSet, internally JVM is always going to call
+    compareTo() method, if we are depending on default natural sorting order
+
+    If we are depending on default natural sorting oder, compulsory the object should be:
+
+        homogeneous and comparable
+
+    -------
+
+    Sometimes, the requirement is other than default natural sorting order or
+        default natural sorting order is not available
+
+        then we should go for Comparator(I)
+
+            This interface is defined for customized sorting
+
+-------
+
+Comparator(I):
+
+    meant for customized sorting order
+
+    present in java.util package
+
+    it contains two methods:
+
+        1. compare()
+
+        2. equals()
+
+    -------
+
+    compare()  --> very similar to compareTo() method
+
+-------
+
+compare():
+
+    public int compare(Object obj1, Object obj2)
+
+        it returns '-ve' value
+
+            iff obj1 has to come before obj2 (in our sorting)
+
+        it returns '+ve' value
+
+            iff obj1 has to come after obj2
+
+        it return 0 value
+
+            iff obj1 is equal to obj2
+
+-------
+
+equals():
+
+    public boolean equals()
+
+-------
+
+* Whenever we are providing implementation for Comparator Interface:
+
+    compulsory we should provide implementation only for compare() method
+
+    equals method implementation is optional
+
+    -------
+
+    Here we can argue that we are violating interface rule
+
+        no.
+
+        e.g.
+
+            class MyComparator implements Comparator {
+                compare() {} // implementation goes here
+
+                equals() {}  // this implementation is optional
+            }
+
+        MyComparator class is the child class of Object
+
+            Object class already contains equals method
+
+                This equals method from the object class by default is available to every Java class
+                    through inheritance

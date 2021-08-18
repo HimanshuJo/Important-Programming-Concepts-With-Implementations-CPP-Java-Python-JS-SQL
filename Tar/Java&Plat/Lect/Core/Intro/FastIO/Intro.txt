@@ -1,0 +1,277 @@
+
+BufferedReader (fast, but not recommended as it requires a lot of typing): 
+
+	The Java.io.BufferedReader class
+
+		reads text from a character-input stream, buffering characters to provide for the efficient reading of characters, arrays, and lines. 
+
+		With this method, we will have to parse the value every time for the desired type. 
+
+		Reading multiple words from a single line adds to its complexity because of the use of Stringtokenizer and hence this is not recommended. 
+
+		These get accepted with a running time of approx 0.89 s.but still as you can see it requires a lot of typing altogether and therefore method 3 is recommended.
+
+	-------
+
+	import java.io.BufferedReader;
+	import java.io.IOException;
+	import java.io.InputStreamReader;
+	import java.util.StringTokenizer;
+	 
+	public class Main {
+	    public static void main(String[] args)
+	        throws IOException
+	    {
+	        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+	        StringTokenizer st = new StringTokenizer(br.readLine());
+	        int n = Integer.parseInt(st.nextToken());
+	        int k = Integer.parseInt(st.nextToken());
+	        int count = 0;
+	        while (n-- > 0) {
+	            int x = Integer.parseInt(br.readLine());
+	            if (x % k == 0)
+	                count++;
+	        }
+	        System.out.println(count);
+	    }
+	}
+
+-------
+
+Userdefined FastReader Class (which uses bufferedReader and StringTokenizer): 
+
+	This method uses the time advantage of BufferedReader and StringTokenizer and the advantage of user-defined methods for less typing and therefore a faster input altogether. 
+
+	These get accepted with a time of 1.23 s and this method is very much recommended as it is easy to remember and is fast enough to meet the needs of most of the question in competitive coding.
+
+	-------
+
+	import java.io.BufferedReader;
+	import java.io.IOException;
+	import java.io.InputStreamReader;
+	import java.util.Scanner;
+	import java.util.StringTokenizer;
+
+	public class Main {
+		static class FastReader {
+			BufferedReader br;
+			StringTokenizer st;
+
+			public FastReader()
+			{
+				br = new BufferedReader(new InputStreamReader(System.in));
+			}
+
+			String next()
+			{
+				while (st == null || !st.hasMoreElements()) {
+					try {
+						st = new StringTokenizer(br.readLine());
+					}
+					catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
+				return st.nextToken();
+			}
+
+			int nextInt() { return Integer.parseInt(next()); }
+
+			long nextLong() { return Long.parseLong(next()); }
+
+			double nextDouble()
+			{
+				return Double.parseDouble(next());
+			}
+
+			String nextLine()
+			{
+				String str = "";
+				try {
+					str = br.readLine();
+				}
+				catch (IOException e) {
+					e.printStackTrace();
+				}
+				return str;
+			}
+		}
+
+		public static void main(String[] args)
+		{
+			FastReader s = new FastReader();
+			int n = s.nextInt();
+			int k = s.nextInt();
+			int count = 0;
+			while (n-- > 0) {
+				int x = s.nextInt();
+				if (x % k == 0)
+					count++;
+			}
+			System.out.println(count);
+		}
+	}
+
+-------
+
+Using Reader Class: 
+
+	There is yet another fast way through the problem, I would say the fastest way but is not recommended since it requires very cumbersome methods in its implementation. 
+
+	It uses inputDataStream to read through the stream of data and uses read() method and nextInt() methods for taking inputs. 
+
+	This is by far the fastest ways of taking input but is difficult to remember and is cumbersome in its approach. 
+
+	Below is the sample program using this method. 
+
+	These get accepted with a surprising time of just 0.28 s. 
+
+	Although this is ultra-fast, it is clearly not an easy method to remember.
+
+	-------
+
+	import java.io.DataInputStream;
+	import java.io.FileInputStream;
+	import java.io.IOException;
+	import java.io.InputStreamReader;
+	import java.util.Scanner;
+	import java.util.StringTokenizer;
+
+	public class Main {
+		static class Reader {
+			final private int BUFFER_SIZE = 1 << 16;
+			private DataInputStream din;
+			private byte[] buffer;
+			private int bufferPointer, bytesRead;
+
+			public Reader()
+			{
+				din = new DataInputStream(System.in);
+				buffer = new byte[BUFFER_SIZE];
+				bufferPointer = bytesRead = 0;
+			}
+
+			public Reader(String file_name) throws IOException
+			{
+				din = new DataInputStream(new FileInputStream(file_name));
+				buffer = new byte[BUFFER_SIZE];
+				bufferPointer = bytesRead = 0;
+			}
+
+			public String readLine() throws IOException
+			{
+				byte[] buf = new byte[64];
+				int cnt = 0, c;
+				while ((c = read()) != -1) {
+					if (c == '\n') {
+						if (cnt != 0) {
+							break;
+						}
+						else {
+							continue;
+						}
+					}
+					buf[cnt++] = (byte)c;
+				}
+				return new String(buf, 0, cnt);
+			}
+
+			public int nextInt() throws IOException
+			{
+				int ret = 0;
+				byte c = read();
+				while (c <= ' ') {
+					c = read();
+				}
+				boolean neg = (c == '-');
+				if (neg)
+					c = read();
+				do {
+					ret = ret * 10 + c - '0';
+				} while ((c = read()) >= '0' && c <= '9');
+
+				if (neg)
+					return -ret;
+				return ret;
+			}
+
+			public long nextLong() throws IOException
+			{
+				long ret = 0;
+				byte c = read();
+				while (c <= ' ')
+					c = read();
+				boolean neg = (c == '-');
+				if (neg)
+					c = read();
+				do {
+					ret = ret * 10 + c - '0';
+				} while ((c = read()) >= '0' && c <= '9');
+				if (neg)
+					return -ret;
+				return ret;
+			}
+
+			public double nextDouble() throws IOException
+			{
+				double ret = 0, div = 1;
+				byte c = read();
+				while (c <= ' ')
+					c = read();
+				boolean neg = (c == '-');
+				if (neg)
+					c = read();
+
+				do {
+					ret = ret * 10 + c - '0';
+				} while ((c = read()) >= '0' && c <= '9');
+
+				if (c == '.') {
+					while ((c = read()) >= '0' && c <= '9') {
+						ret += (c - '0') / (div *= 10);
+					}
+				}
+
+				if (neg)
+					return -ret;
+				return ret;
+			}
+
+			private void fillBuffer() throws IOException
+			{
+				bytesRead = din.read(buffer, bufferPointer = 0,
+									BUFFER_SIZE);
+				if (bytesRead == -1)
+					buffer[0] = -1;
+			}
+
+			private byte read() throws IOException
+			{
+				if (bufferPointer == bytesRead)
+					fillBuffer();
+				return buffer[bufferPointer++];
+			}
+
+			public void close() throws IOException
+			{
+				if (din == null)
+					return;
+				din.close();
+			}
+		}
+
+		public static void main(String[] args)
+			throws IOException
+		{
+			Reader s = new Reader();
+			int n = s.nextInt();
+			int k = s.nextInt();
+			int count = 0;
+			while (n-- > 0) {
+				int x = s.nextInt();
+				if (x % k == 0)
+					count++;
+			}
+			System.out.println(count);
+		}
+	}

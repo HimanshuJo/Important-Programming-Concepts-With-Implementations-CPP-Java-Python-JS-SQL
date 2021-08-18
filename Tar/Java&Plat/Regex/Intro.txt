@@ -1,0 +1,118 @@
+
+Regex examples:
+
+    A simple example for a regular expression is a (literal) string
+
+    For example, the Hello World regex matches the "Hello World" string
+
+    -------
+
+    1. this is text
+
+        Matches exactly "this is text"
+
+    2. this\s+is\s+text
+
+        Matches the word "this" followed by one or more whitespace characters
+            followed by the word "is" followed by one or more whitespace characters
+            followed by the word "text"
+
+    3. ^\d+(\.\d+)?
+
+        ^ defines that the pattern must start at beginning of a new line
+
+        \d+ matches one or several digits
+
+        The ? makes the statement in brackets optional
+
+        \. matches "."
+
+        Parentheses are used for grouping
+
+-------
+
+Common matching symbols:
+
+    .  Matches any character
+
+    ^regex
+
+        Finds regex that must match at the beginning of the line
+
+    regex$
+
+        Finds regex that must match at the end of the line
+
+    [abc]
+
+        Set definition, can match the letter a or b or c
+
+    [abc][vz]
+
+        Set definition, can match a or b or c followed by either v or z
+
+    [^abc]
+
+        When a caret appears as the first character inside square brackets,
+            it negates the pattern.
+
+        This pattern matches any character except a or b or c
+
+    [a-d1-7]
+
+        Ranges: matches a letter between a and d and figures from 1 to 7, but not d1
+
+    X|Z
+
+        Finds X or Z
+
+    XZ
+
+        Finds X directly followed by Z
+
+    $
+
+        Checks if a line end follows
+
+-------
+
+Meta characters:
+
+    The following meta characters have a pre-defined meaning and make certain common
+        patterns easier to use.
+
+        For example, you can use \d as simplified definition for [0..9]
+
+    -------
+
+    \d
+
+        Any digit, short for [0-9]
+
+    \D
+
+        A non-digit, short for [^0-9]
+
+    \s
+
+        A whitespace character, short for [\t\n\x0b\r\f]
+
+    \S
+
+        A non-whitespace character, short for [^\s]
+
+    \w
+
+        A word character, short for [a-zA-Z_0-9]
+
+    \W
+
+        A non-word character [^\w]
+
+    \S+
+
+        Several non-whitespace characters
+
+    \b
+
+        Matches a word boundary where a word character is [a-zA-Z0-9_]

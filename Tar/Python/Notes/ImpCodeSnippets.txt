@@ -1,0 +1,499 @@
+
+Python ord()
+
+  The ord function returns an integer representing the Unicode character
+
+    ord(ch)  # takes a single parameter
+
+    -------
+
+    print(ord('5'))    # 53
+    print(ord('A'))    # 65
+    print(ord('$'))    # 36
+
+-------
+
+List:
+
+  How to get array elements:
+
+    word[0:2]  # characters from position 0 (included) to 2 (excluded)
+
+    word[:2]   # character from the beginning to position 2 (excluded)
+
+    word[4:]   # characters from position 4 (included) to the end
+
+    word[-2:]  # characters from the second-last (included) to the end
+
+  -------
+
+  How to find difference between two lists:
+
+    temp1 = [x, y, z]
+    temp2 = [a, b, z]
+  	temp3 = [item for item in temp1 if item not in temp2]
+
+  -------
+
+  Remove Items in a list using different ways:
+
+      Remove all items:
+
+        clear()
+
+      Remove an item by index and get its value:
+
+        pop(<index_here>)
+
+      Remove an item by value:
+
+        remove(<value_here>)
+
+      Remove items by index or slice:
+
+        del <list_name>(<index or slice>)
+
+          You can also specify step as [start:stop:step]
+
+      Remove multiple items that meet the condition: List comprehensions
+
+          e.g.: [i for i in l if i % 2 == 0]
+                [i for i in l if i % 2 != 0]
+
+  -------
+
+  How to get last X elements from a list:
+
+    my_list[-X:]
+
+  -------
+
+  Get indices of the top N values of a list:
+
+    sorted(range(len(<list_name>)), key=lambda i: <list_name>[i])[-<value>:]
+
+  -------
+
+  How to generate all permutations of a list:
+
+    import itertools
+    list(itertools.permutations([1, 2, 3]))
+
+  -------
+
+  How to insert at a particular position in a python list?
+
+    list.insert(position, element)
+
+  -------
+
+  How to find minimum element in a py list:
+
+    min(<list_name>)
+         or
+    <list_name>.sort()
+    *<list_name>[:1]
+
+  -------
+
+  How to find largest element in a py list:
+
+    <list_name>.sort()
+    <list_name>[-1]
+        or
+    max(<list_name>)
+
+  -------
+
+  How to extract a column from a multi-dimensional array:
+
+    e.g.: a = [[1, 2], [2, 3], [3, 4]]
+          [row[0] for row in a]
+
+  -------
+
+  How to create an empty list:
+
+    [None for _ in range(10)]
+
+  -------
+
+  Using List as Queue:  # "First-in, first-out".
+
+    from collections import deque
+
+    queue = deque(["Ram", "Tarun", "Asif", "John"])
+    queue.append("Akbar")  # deque(['Ram', 'Tarun', 'Asif', 'John', 'Akbar'])
+    print(queue.popleft())  # Ram
+
+  -------
+
+  How to find the frequency of elements in a list:
+
+    import collections
+
+    a = [1,1,1,1,2,2,2,2,3,3,4,5,5]
+
+    counter = collections.Counter(a)
+    print(counter)
+
+    # Counter({1: 4, 2: 4, 3: 2, 5: 2, 4: 1})
+
+    -------
+
+    get the key whose value is 1:
+
+      key_whose_count_is_1 = next(k for k, v in counter.items() if v == 1)
+
+  -------
+
+  How to add two lists element-wise in Python:
+
+    Use zip():
+
+      list1 = [1, 2, 3]
+
+      list2 = [4, 5, 6]
+
+      sum_list = []
+
+      for (item1, item2) in zip(list1, list2):
+
+        sum_list.append(item1+item2)
+
+      print(sum_list)
+
+    -------
+
+    Use list comprehension:
+
+      list1 = [1, 2, 3]
+
+      list2 = [4, 5, 6]
+
+      sum_list = [a + b for a, b in zip(list1, list2)]
+
+      print(sum_list)
+
+  -------
+
+  How to find sum of an array in python:
+
+    arr = [12, 3, 4, 15]
+
+    # sum() is an inbuilt function in python that adds
+    # all the elements in list, set and tuples and returns
+    # the value
+
+    ans = sum(arr)
+
+  -------
+
+  Print all possible combinations of an array:
+
+    # Function which returns subset or r length from n
+
+    from itertools import combinations
+
+    def rSubset(arr, r):
+
+        # return list of all subsets of length r
+        # to deal with duplicate subsets use
+        # set(list(combinations(arr, r)))
+
+        return list(combinations(arr, r))
+
+    # Driver Function
+    if __name__ == "__main__":
+        arr = [1, 2, 3, 4]
+        r = 2
+        print rSubset(arr, r)
+
+  -------
+
+  How to print entire 2-D array in python:
+
+    T = [[11, 12, 5, 2], [15, 6,10], [10, 8, 12, 5], [12,15,8,6]]
+
+    for r in T:
+        for c in r:
+            print(c, end = " ")
+        print()
+
+  -------
+
+  Using List as Stack:  #  “Last-in, first-out”.
+
+    stack = ["Amar", "Akbar", "Anthony"]
+    stack.append("Ram")  # ['Amar', 'Akbar', 'Anthony', 'Ram']
+    print(stack)
+    print(stack.pop())  # Ram
+
+  -------
+
+  How to enumerate a list:
+
+    L = ['apples', 'bananas', 'oranges']
+
+    for idx, val in enumerate(L):
+      print("index is %d and value is %s" % (idx, val))
+
+  -------
+
+  How to enumerate a List of Tuples:
+
+    L = [('Matt', 20), ('Karim', 30), ('Maya', 40)]
+
+    for idx, val in enumerate(L):
+      name = val[0]
+      age = val[1]
+      print("index is %d, name is %s, and age is %d" \
+             % (idx, name, age))
+
+  -------
+
+  How to move element to end of the list:
+
+    test_list = ['3', '5', '7', '9', '11']
+    test_list.append(test_list.pop(test_list.index(5)))
+
+  -------
+
+  How to find difference between consecutive elements in a list (without index getting out of bound:
+
+    a = [1, 2, 3, 4, 5]
+    [x - a[i - 1] for i, x in enumerate(a) if i > 0]
+
+  -------
+
+  Looping in a List:
+
+    Method-I:
+
+      # This first creates a range corresponding to the indexes in our list (0 to len(colors) - 1)
+
+        colors = ["red", "green", "blue", "purple"]
+
+        for i in range(len(colors)):
+            print(colors[i])
+
+    Method-II:
+
+      # Here we don’t actually care about the indexes in our loop
+
+        colors = ["red", "green", "blue", "purple"]
+
+        for color in colors:
+            print(color)
+
+    Method-III:
+
+      # 'enumerate' function allows us to loop over a list and retrieve both the index and the
+          value of each item in the list
+
+          presidents = ["Washington", "Adams", "Jefferson", "Madison", "Monroe", "Adams", "Jackson"]
+
+          for num, name in enumerate(presidents, start=1):
+
+              print("President {}: {}".format(num, name))
+
+    Method-IV:
+
+      # 'zip' function allows us to loop over multiple lists at the same time:
+
+        colors = ["red", "green", "blue", "purple"]
+
+        ratios = [0.2, 0.3, 0.1, 0.4]
+
+        for color, ratio in zip(colors, ratios):
+            print("{}% {}".format(ratio * 100, color))
+
+-------
+
+How to remove string control characters (\n \t \r) in python?
+
+     regex = re.compile(r'[\n\r\t]')
+     s = regex.sub(" ", s)
+
+-------
+
+Dict:
+
+  How to find unique values in a list of dict:
+
+    lis = [{"abc":"movies"}, {"abc": "sports"}, {"abc": "music"}, {"xyz": "music"}, {"pqr":"music"},
+    {"pqr":"movies"},{"pqr":"sports"}, {"pqr":"news"}, {"pqr":"sports"}]
+
+    s = set( val for dic in lis for val in dic.values())
+
+  -------
+
+  How to add new items to a python dictionary:
+
+    my_dict = {}
+    my_dict['new_key_here'] = value_here
+
+  -------
+
+  How to get maximum value in a python dictionary:
+
+    Tv = {'BreakingBad': 100, 'GameOfThrones': 1292, 'TMKUC' : 88}
+
+    Keymax = max(Tv, key=Tv.get)
+    print(Keymax)
+
+  -------
+
+  How to Sort a Dictionary by key:
+
+    wordsFreqDict = {
+      "hello": 56,
+      "at" : 23 ,
+      "test" : 43,
+      "this" : 43
+      }
+
+    for key in sorted(wordsFreqDict.keys()) :
+      print(key , " :: " , wordsFreqDict[key])
+
+  -------
+
+  Sort Dictionary contents by keys using dict.items():
+
+    '''
+     Iterate over a  list of tuple i.e. key / value pairs, sorted by default 0th index i.e. key
+     and print the key value pairs in sorted order of keys
+
+    '''
+    for elem in sorted(wordsFreqDict.items(), reverse=False) :
+        print(elem[0] , " :: " , elem[1] )
+
+           'OR'
+
+    [ print(key , " :: " , value) for (key, value) in sorted(wordsFreqDict.items()) ]
+
+-------
+
+Set:
+
+  emptySet = set()  # Initialize an empty set
+
+  # Initialize set with values
+
+    graphicDesigner = {'InDesign', 'Photoshop', 'Acrobat', 'Premiere', 'Bridge'}
+    graphicDesigner.add('Illustrator')  # add a value to a set
+    graphicDesigner.remove('Illustrator')  # remove a value from a set
+
+  -------
+
+  sets = set([8, 16, 24, 1, 25, 3, 10, 65, 55])
+  max(sets)  # find max element in a set
+  min(sets)  # find min element in a set
+
+-------
+
+How to convert a character to it's ASCII value:
+
+  print("The ASCII value of 9 is", ord('9'))
+
+-------
+
+How to get the absolute path of a file:
+
+  import os
+  print(os.path.abspath(__file__))  # os contain one 'path' sub module and that module has a 'abspath' method
+
+  -------
+
+  to get the directory of the file:
+
+  import os
+  print(os.path.dirname(os.path.abspath(__file__)))  # get the directory name of the absolute path
+      or
+  BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+  print(BASE_DIR)
+  TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')  # please join the 'base dir' with a template folder
+
+-------
+
+import datetime
+
+date = datetime.datetime.now()
+h = int(date.strftime('%H'))
+
+-------
+
+How to use constructors in Python:
+
+  class Addition:
+      first = 0
+      second = 0
+      answer = 0
+
+      # parameterized constructor
+      def __init__(self, f, s):
+          self.first = f
+          self.second = s
+
+      def display(self):
+          print("First number = " + str(self.first))
+          print("Second number = " + str(self.second))
+          print("Addition of two numbers = " + str(self.answer))
+
+      def calculate(self):
+          self.answer = self.first + self.second
+
+  obj = Addition(1000, 2000)
+  obj.calculate()
+  obj.display()
+
+-------
+
+String:
+
+  Convert a list of characters into a string:
+
+    def convert(s):
+
+      str1 = ""
+      return(str1.join(s))
+
+    s = ['g', 'e', 'e', 'k', 's', 'f', 'o', 'r', 'g', 'e', 'e', 'k', 's']
+
+  -------
+
+  Convert list of strings and characters to list of characters:
+
+    test_list = [ 'gfg', 'i', 's', 'be', 's', 't']
+
+    # printing original list
+    print (str(test_list))
+
+    # using join()
+    # to convert list of string and characters
+    # to list of characters
+
+    res = list(''.join(test_list))
+
+  -------
+
+  Convert a string into list and then back to string:
+
+      def GetInput(self, X): # here X is a string
+        my_input = []
+        for i in range(len(X)):
+            my_input.insert(i, "0")
+
+        return ''.join([str(elem) for elem in my_input])
+
+  -------
+
+  How do you change one character in a string in Python:
+
+    s = "HeLLO!"
+    i = 1
+    c = 'E'
+    s = s[:i] + c + s[i+1:]
+    print(s)
+    OUTPUT:
+       HELLO!

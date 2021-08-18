@@ -1,0 +1,45 @@
+
+2. List (I):
+
+        So we know collection is a group of individual objects
+
+            if we want to represent a group of individual objects, as a single entity
+                then we should go for collection
+
+            in that group of individual objects, if our requirement is:
+
+                    duplicates are allowed
+
+                    insertion order must be preserved
+
+                then we should go for List Interface
+
+        List Interface is a child interface of Collection interface only
+
+        For this interface, there are 4 implementation classes:
+
+            1. ArrayList
+
+            2. LinkedList
+
+            3. Vector
+
+                4. Stack
+
+-------
+
+Versions:
+
+    Collection (I)  --> 1.2 v
+
+        List (I)  --> 1.2 v
+
+            ArrayList (1.2 v)
+
+            LinkedList (1.2 v)
+
+            Vector (1.0 v)
+
+                Stack (1.0 v)
+
+    Therefore Vector and Stack are known as Legacy classes

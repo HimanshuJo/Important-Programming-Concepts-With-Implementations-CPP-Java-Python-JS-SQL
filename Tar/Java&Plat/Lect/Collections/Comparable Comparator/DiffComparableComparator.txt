@@ -1,0 +1,45 @@
+
+key differences between Comparable and Comparator:
+
+    The most valuable difference is that:
+
+        Comparable is meant for 'default natural sorting order'
+
+        Comparator is meant for 'Customizable sorting order'
+
+-------
+
+Comparison table of Comparable and Comparator:
+
+    Comparable:
+
+        1. It is meant for default natural sorting order
+
+        2. It is present in java.lang package
+
+        3. It contains only one method:
+
+            compareTo()
+
+        4. All wrapper classes and String class implements Comparable
+
+    Comparator:
+
+        1. It is meant for customized sorting order
+
+        2. It is present in java.util package
+
+        3. It contains two methods:
+
+            a. compare()
+
+            b. equals()
+
+        4. Most of the time we can say, there is no pre-defined class that implements
+            Comparator
+
+            But if we search very carefully there are two classes which implements Comparator
+
+                a. Collator
+
+                b. RuleBasedCollator

@@ -1,0 +1,93 @@
+
+As a part of standard steps to develop an application, there are three steps:
+
+    1. Load and register driver class
+
+    2. Establish connection between Java application and database
+
+    3. To send our SQL query some vehicles must be required
+
+        so creation of statement object
+
+    4. Prepare my SQL query and I've to send it to the database
+
+        Prepare, Send and Execute SQL query
+
+-------
+
+Type of SQl commands:
+
+    1. DDL (Data Definition Language) Commands
+
+        e.g. create table, alter table, drop table etc.
+
+    2. DML (Data Manipulation Language) commands
+
+        e.g. insert, delete, update
+
+    3. DQL (Data Query Language) commands
+
+        e.g. select
+
+    4. DCL (Data Control language) commands
+
+        e.g. alter password, grant access etc.
+
+    5. Data Administration commands
+
+        start audit
+
+        stop audit
+
+        ...
+
+    6. Transaction control commands
+
+        commit, rollback, savepoint etc.
+
+-------
+
+being Java developer I require only two types of commands
+
+    Select queries
+
+        these are basically DQL
+
+            e.g. select * from employees;
+
+    Non-select queries
+
+        insert, delete, update etc.
+
+-------
+
+Basic SQL commands:
+
+    1. To create a table
+
+        // to create a table what columns I want:
+
+            movie number, movie name, hero, heroine
+
+        create table movies(movie_number number, movie_name varchar2(10),
+            hero varchar2(10), heroine varchar2(10))
+
+    2. To delete/drop a table
+
+        drop table movies;
+
+    3. To insert rows into table
+
+        insert into movies values(1, 'Bahubali', 'Prabhas', 'Anushka');
+
+    4. To update data in the database
+
+        update movies set heroine='Tamannah' where movie_number=1; or movie_name='Bahubali';
+
+    5. To delete a row from the database
+
+        delete from movies where movie_number=2;
+
+    6. To select data
+
+        select * from movies;

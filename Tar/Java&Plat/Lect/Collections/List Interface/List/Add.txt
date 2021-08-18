@@ -1,0 +1,64 @@
+
+The java.util.ArrayList.add(int index, E elemen) method
+	inserts the specified element E at the specified position in this list.
+
+	It shifts the element currently at that position (if any) and any subsequent 
+	elements to the right (will add one to their indices).
+
+-------
+
+Declaration
+
+	Following is the declaration for java.util.ArrayList.add() method
+
+		public void add(int index, E element)
+
+Parameters
+
+    index − The index at which the specified element is to be inserted.
+
+    element − The element to be inserted.
+
+Return Value
+
+	This method does not return any value.
+
+Exception
+
+	IndexOutOfBoundsException − if the index is out of range.
+
+-------
+
+Example
+
+	import java.util.ArrayList;
+
+	public class ArrayListDemo {
+	   public static void main(String[] args) {
+
+	      // create an empty array list with an initial capacity
+	      ArrayList<Integer> arrlist = new ArrayList<Integer>(5);
+
+	      // use add() method to add elements in the list
+	      arrlist.add(15);
+	      arrlist.add(22);
+	      arrlist.add(30);
+	      arrlist.add(40);
+
+	      // adding element 25 at third position
+	      arrlist.add(2,25);
+	        
+	      // let us print all the elements available in list
+	      for (Integer number : arrlist) {
+	         System.out.println("Number = " + number);
+	      }  
+	   }
+	}
+
+	Output
+
+	Number = 15
+	Number = 22
+	Number = 25
+	Number = 30
+	Number = 40

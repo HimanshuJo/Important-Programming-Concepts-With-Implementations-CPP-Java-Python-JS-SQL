@@ -1,0 +1,195 @@
+
+Use Abstract Classes:
+
+    When the requirement is such that we need to implement the same functionality
+        in every subclass for a specific operation (implement the method) and
+        different functionality for some other operations (only method signatures)
+
+    We can extend max of one abstract class, but can implement more than one interface
+
+    -------
+
+    An abstract class, in contrast to an Interface, provides more structure.
+
+        It usually defines some default implementations and provides some tools useful
+            for a full implementation
+
+        The catch is, code (or the class) using it must use your class as the base
+
+        That may be highly inconvenient if the other programmers wanting to use your package
+            have already developed their own class hierarchy independently
+
+            In Java, a class can inherit from only one base class
+
+    -------
+
+    1. A class can extend at most one abstract class
+
+    2. An abstract class can contain code
+
+    3. An abstract class can define both static and instance constants (final)
+
+    4. An abstract class can define instance variables
+
+    5. Modification of existing abstract class code has ripple effects
+        on extending classes (implementation maintenance)
+
+    6. Adding a new method to an abstract class has no ripple effect on extending classes
+
+    7. An abstract class can implement an interface
+
+    8. Abstract classes can implement private and protected methods
+
+-------
+
+Use Interface:
+
+    If you need to put the signature to be same (and implementation different)
+        so that you can comply with interface implementation
+
+    We can extend max of one abstract class, but can implement more than one interface
+
+    -------
+
+    An interface allows somebody to start from scratch to implement your interface or
+        implement your interface in some other code whose original or primary purpose was
+        quite different from your interface.
+
+        To them, your interface is only incidental, something that have to add on to the their
+            code to be able to use your package.
+
+        The disadvantage is every method in the interface must be public
+
+        You might not want to expose everything
+
+    -------
+
+    1. A class can implement multiple interfaces
+
+    2. An interface cannot provide any code at all
+
+    3. An interface can only define public static final constants
+
+    4. An interface cannot define instance variables
+
+    5. Adding a new method has ripple effects on implementing classes (design maintenance)
+
+    6. JAXB cannot deal with interfaces
+
+    7. An interface cannot extends or implement an abstract class
+
+    8. All interface methods are public
+
+-------
+
+Using Both:
+
+    You're a software developer at an investment bank, and need to build a system that
+        places orders into a market
+
+        Your interface captures the most general idea of what a trading system does,
+
+        Interface:
+
+            1) Trading system places orders
+
+            2) Trading system receives acknowledgements
+
+        and can be captured in an interface, ITradeSystem
+
+            public interface ITradeSystem{
+
+                 public void placeOrder(IOrder order);
+                 public void ackOrder(IOrder order);
+
+            }
+
+    Now engineers working at the sales desk and along other business lines can start
+        to interface with your system to add order placement functionality to their existing apps
+
+        And you haven't even started building yet! This is the power of interfaces
+
+    So you go ahead and build the system for stock traders;
+        they've heard that your system has a feature to find cheap stocks and are very
+        eager to try it out!
+
+        You capture this behavior in a method called findGoodDeals(),
+            but also realize there's a lot of messy stuff that's involved in
+            connecting to the markets.
+
+            For example, you have to open a SocketChannel,
+
+                public class StockTradeSystem implements ITradeSystem {
+
+                    @Override
+                    public void placeOrder(IOrder order);
+                         getMarket().place(order);
+
+                    @Override
+                    public void ackOrder(IOrder order);
+                         System.out.println("Order received" + order);
+
+                    private void connectToMarket();
+                       SocketChannel sock = Socket.open();
+                       sock.bind(marketAddress);
+                       <LOTS MORE MESSY CODE>
+                    }
+
+                    public void findGoodDeals();
+                       deals = <apply magic wizardry>
+                       System.out.println("The best stocks to buy are: " + deals);
+                    }
+
+            The concrete implementations are going to have lots of these messy methods like
+                connectToMarket(), but findGoodDeals() is all the traders actually care about
+
+            Now here's where abstract classes come into play
+
+                Your boss informs you that currency traders also want to use your system
+                    And looking at currency markets, you see the plumbing is nearly identical to stock markets
+
+                In fact, connectToMarket() can be reused verbatim to connect to foreign exchange markets
+
+                However, findGoodDeals() is a much different concept in the currency arena
+
+                So before you pass off the codebase to the foreign exchange wiz kid across the ocean,
+                    you first refactor into an abstract class, leaving findGoodDeals() unimplmented
+
+                        public abstract class ABCTradeSystem implements ITradeSystem {
+
+                            public abstract void findGoodDeals();
+
+                            @Override
+                            public void placeOrder(IOrder order);
+                                 getMarket().place(order);
+
+                            @Override
+                            public void ackOrder(IOrder order);
+                                 System.out.println("Order received" + order);
+
+                            private void connectToMarket();
+                               SocketChannel sock = Socket.open();
+                               sock.bind(marketAddress);
+                               <LOTS MORE MESSY CODE>
+                            }
+
+                Your stock trading system implements findGoodDeals() as you've already defined,
+
+                    public class StockTradeSystem extends ABCTradeSystem {
+
+                        public void findGoodDeals();
+                           deals = <apply magic wizardry>
+                           System.out.println("The best stocks to buy are: " + deals);
+                        }
+
+                but now the FX whiz kid can build her system by simply providing an
+                    implementation of findGoodDeals() for currencies;
+
+                    she doesn't have to reimplement socket connections or even the interface methods!
+
+                        public class CurrencyTradeSystem extends ABCTradeSystem {
+
+                            public void findGoodDeals();
+                               ccys = <Genius stuff to find undervalued currencies>
+                               System.out.println("The best FX spot rates are: " + ccys);
+                            }

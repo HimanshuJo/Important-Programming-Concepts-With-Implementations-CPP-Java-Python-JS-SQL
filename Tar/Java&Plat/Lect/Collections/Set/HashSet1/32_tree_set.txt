@@ -1,0 +1,93 @@
+
+TreeSet (c):
+
+    Underlying data structure for the TreeSet is balanced tree
+
+    Duplicates are not allowed
+
+    Insertion oder is not preserved
+
+    All elements will be inserted according to some sorting order
+
+    Here heterogeneous objects are 'not' allowed  --> also in TreeMap
+
+        if by mistake we add heterogeneous objects, at run time we're going to get
+            Run time exception
+
+    Null values are excepted
+
+-------
+
+4 TreeSet Constructors:
+
+    1. TreeSet t = new TreeSet();
+
+            creates an empty tree set objects where:
+
+                elements will be inserted according to 'default natural sorting order'
+
+                if it is a number:
+
+                    then ascending order
+
+                if it is a string:
+
+                    then alphabetically order
+
+    -------
+
+    Sometimes the requirement is, the default natural sorting order is not required
+
+        all objects are required to insert according to some customized sorting
+
+            e.g. all employees should be inserted according to salary or id
+
+    2. TreeSet t =  new TreeSet(Comparator c);
+
+            // customized sorting order described by comparator object
+
+    -------
+
+    3. TreeSet t = new TreeSet(Collection c);
+
+        // we can pass any collection object, and an equivalent TreeSet object is going to be created
+
+    -------
+
+    4. TreeSet t = new TreeSet(SortedSet s);
+
+        // for the given sorted set object we can create an equivalent TreeSet object
+
+-------
+
+import java.util.*;
+
+class TreeSetDemo {
+    public static void main(String[] args) {
+        TreeSet t =  new TreeSet();
+        t.add("A");  // unicode is 65
+        t.add("a");  // unicode is 97
+        t.add("B");
+        t.add("Z");
+        t.add("L");
+        t.add(new Integer(10));  // not allowed --> in TreeSet heterogeneous objects are not allowed
+            // Class Cached Exception
+        t.add(null);  // not allowed  --> Null Pointer Exception
+        System.out.println(t);  // [A, B, L, Z, a]
+
+    }
+}
+
+-------
+
+For a non-empty TreeSet, if we are trying to insert null
+
+    compulsory a comparison is required
+
+    whether null will be before or after an element
+
+        therefore Null Pointer Exception
+
+-------
+
+Insertion of null as a first value is OK, as no comparison is required

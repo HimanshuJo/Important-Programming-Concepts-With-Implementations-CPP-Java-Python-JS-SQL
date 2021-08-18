@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:h="http://xmlns.jcp.org/jsf/html">
+<h:head>
+    <title>Algos Checking</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</h:head>
+<h:body>
+    <div class="loader"></div>
+    <header id="header">
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <a class="navbar-brand" href="#" id="header-logo">
+                <img src="https://raw.githubusercontent.com/orbitthemes/Orbit-Themes/master/assets/logo.png" class="img-fluid" width="200" alt="Orbit Themes" />
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#">Disabled</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown01">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" />
+                    <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </div>
+        </nav>
+    </header>
+    <main id="main" role="main">
+        <div class="jumbotron my-5">
+            <div class="container">
+                <h1 class="display-3">Hello, Algo World!</h1>
+                <p>
+                    <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+                </p>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row text-center py-5">
+                <div class="col-md-4">
+                    <f:view>
+                        <h:form id="form_palin">
+                            <h3 style="color: black">Please enter a number!</h3> <br />
+                            <p>Please check if a number if palindrome or not!</p> <br />
+                            <h:inputText id="name" value="#{demoAlgos.num}"></h:inputText>
+                            <br />
+                            <hr />
+                            <h:commandButton action="#{demoAlgos.displayFirstAlgoRes}" value="Clicke Me!" style="margin-right: 2px"></h:commandButton>
+                            <h:commandButton value="Clike Ajax!">
+                                <f:ajax execute="@form" render="form_palin" listener="#{demoAlgos.ajaxPerformFibonnaciOperation(event)}" />
+                            </h:commandButton>
+                            <br />
+                            <hr />
+                            <h3 style="color: black">Please check your result:</h3> <br />
+                            <h:outputText id="result" value="#{demoAlgos.getResult()}" />
+                            <h:messages infoStyle="color: blue" globalOnly="true" />
+                            <br />
+                            <hr />
+                        </h:form>
+                    </f:view>
+                    <br />
+                </div>
+                <div class="col-md-4">
+                    <f:view>
+                        <h:form id="form_0">
+                            <h3 style="color: black">Please enter a String of parenthesis! e.g. {, ], (</h3> <br />
+                            <p>Please check if a sequence of opening and closing parenthesis is valid or not!</p> <br />
+                            <h:inputText id="name" value="#{demoAlgos.text}"></h:inputText>
+                            <br />
+                            <hr />
+                            <h:commandButton action="#{demoAlgos.displaySecondAlgoRes}" value="Clicke Me!" style="margin-right: 2px"></h:commandButton>
+                            <h:commandButton value="Clike Ajax!">
+                                <f:ajax execute="@form" render="form_0" listener="#{demoAlgos.ajaxPerformStringOperation(event)}" />
+                            </h:commandButton>
+                            <br />
+                            <hr />
+                            <h3 style="color: black">Please check your result:</h3> <br />
+                            <h:outputText id="result" value="#{demoAlgos.isNewResult()}" />
+                            <br />
+                            <h:messages infoStyle="color: blue" globalOnly="true" />
+                            <br />
+                            <hr />
+                        </h:form>
+                    </f:view>
+                </div>
+                <div class="col-md-4">
+                    <f:view>
+                        <h:form id="form_1">
+                            <h3 style="color: black">Please enter a String!</h3> <br />
+                            <p>Please Check length of longest common sequence!</p> <br />
+                            <h:inputText id="name" value="#{demoAlgos.inputString}"></h:inputText>
+                            <br />
+                            <hr />
+                            <h:commandButton action="#{demoAlgos.displayLongestStringSubsequenceRes()}" value="Clicke Me!" style="margin-right: 2px"></h:commandButton>
+                            <h:commandButton value="Clike Ajax!">
+                                <f:ajax execute="@form" render=":form_1" listener="#{demoAlgos.ajaxPerformLongestStringSubsequencesRes(event)}" />
+                            </h:commandButton>
+                            <br />
+                            <hr />
+                            <h3 style="color: black">Please check your result:</h3> <br />
+                            <h:outputText id="result" value="#{demoAlgos.getResultString()}" />
+                            <br />
+                            <h:messages infoStyle="color: blue" globalOnly="true" />
+                            <br />
+                            <hr />
+                        </h:form>
+                    </f:view>
+                </div>
+                <div class="col-md-4">
+                    <f:view>
+                        <h:form id="form_3">
+                            <h3 style="color: black">Please select your choice!</h3> <br />
+                            <h:selectManyCheckbox value="#{yourAlgoChoice.trees}">
+                                <f:selectItems value="#{yourAlgoChoice.treesAlgorithms}" />
+                            </h:selectManyCheckbox>
+                            <h:commandButton action="testAlgos" value="Submit" />
+                        </h:form>
+                    </f:view>
+                </div>
+            </div>
+        </div>
+        <a href="#" class="btn btn-primary scrollUp">
+            <i class="fa fa-arrow-circle-o-up"></i>
+        </a>
+    </main>
+    <!-- Footer -->
+    <footer id="footer">
+        <p class="copyright">Made with
+            <i class="fa fa-heart"></i> By
+            <a target="_blank" title="Orbit Themes" href="http://www.orbitthemes.com">Orbit Themes</a>
+            <span id="currentYear"></span> All Rights Reserved.
+        </p>
+        <div class="social">
+            <a traget="_blank" href="https://facebook.com/orbitthemes" title="facebook">
+                <i class="fa fa-facebook"></i>
+            </a>
+            <a traget="_blank" href="https://twitter.com/orbitthemes" title="twitter">
+                <i class="fa fa-twitter"></i>
+            </a>
+            <a traget="_blank" href="https://plus.google.com/+orbitthemes" title="Google+" target="_blank">
+                <i class="fa fa-google-plus"></i>
+            </a>
+            <a traget="_blank" href="https://github.com/orbitthemes" title="github" target="_blank">
+                <i class="fa fa-github"></i>
+            </a>
+            <a traget="_blank" href="https://www.behance.net/orbitthemes" title="Behance" target="_blank">
+                <i class="fa fa-behance"></i>
+            </a>
+            <a traget="_blank" href="https://dribbble.com/orbitthemes" title="Dribbble" target="_blank">
+                <i class="fa fa-dribbble"></i>
+            </a>
+            <a traget="_blank" href="https://www.pinterest.com/orbitThemes/" title="Pinterest" target="_blank">
+                <i class="fa fa-pinterest"></i>
+            </a>
+            <a traget="_blank" href="https://www.reddit.com/user/orbitthemes" title="Reddit" target="_blank">
+                <i class="fa fa-reddit"></i>
+            </a>
+            <a traget="_blank" href="https://orbitthemes.com/blog/" title="RSS" target="_blank">
+                <i class="fa fa-rss"></i>
+            </a>
+        </div>
+    </footer>
+    <!-- jQuery first, then Bootstrap JS. -->
+    <script src="dist/jquery/jquery.min.js"></script>
+    <script src="dist/popper/popper.min.js" integrity=""></script>
+    <script src="dist/bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/main.min.js"></script>
+</h:body>
+
+</html>

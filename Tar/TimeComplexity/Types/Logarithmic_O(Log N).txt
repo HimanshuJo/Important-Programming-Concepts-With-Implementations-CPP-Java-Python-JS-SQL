@@ -1,0 +1,42 @@
+
+Logarithmic Time — O(log n)
+
+    An algorithm is said to have a logarithmic time complexity when it reduces the size of
+        the input data in each step (it don’t need to look at all values of the input data)
+
+    For example:
+
+        for index in range(0, len(data), 3):
+            print(data[index])
+
+    -------
+
+    Algorithms with logarithmic time complexity are commonly found in operations on
+        binary trees or when using binary search.
+
+    Let’s take a look at the example of a binary search, where we need to find the position
+        of an element in a sorted list:
+
+        def binary_search(data, value):
+            n = len(data)
+            left = 0
+            right = n - 1
+            while left <= right:
+                middle = (left + right) // 2
+                if value < data[middle]:
+                    right = middle - 1
+                elif value > data[middle]:
+                    left = middle + 1
+                else:
+                    return middle
+            raise ValueError('Value is not in the list')
+
+        if __name__ == '__main__':
+            data = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+            print(binary_search(data, 8))
+
+    -------
+
+    It is important to understand that an algorithm that must access all elements of its
+        input data cannot take logarithmic time, as the time taken for reading input of
+        size n is of the order of n.

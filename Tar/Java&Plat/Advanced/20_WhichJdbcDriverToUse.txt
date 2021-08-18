@@ -1,0 +1,44 @@
+
+Suppose in my project I'm using just only one database:
+
+    example: Oracle database
+
+    here we're not going to change our database at all, therefore
+        highly recommended to go for 'Type-4' driver
+
+    -------
+
+    best example:
+
+        Suppose we've a standalone application (applications which are running on single machine)
+            or small-scale web applications
+
+        for these types of projects, type-4 driver is the best suitable driver
+
+-------
+
+Suppose I'm working on very big enterprise application (e.g. a mobile application)
+    in that lakhs of customers will be there
+
+    Customers information I've to store in the Oracle database
+
+        however, for the billing and the call information, I've to store them in the
+            MySql database
+
+    Hence, in this case we're using multiple databases, therefore here it is not recommended
+        to use Type-4 driver.
+
+        It is highly recommended to use Type-3 driver
+
+            Because in the type-3 driver, the biggest advantage is:
+
+                for all the databases only one driver is enough
+
+                As type-3 driver is database-independent driver
+
+    -------
+
+    So, it doesn't matter how many databases we use, only one type-3 driver is required
+
+        e.g. large scale web application or
+             enterprise applications

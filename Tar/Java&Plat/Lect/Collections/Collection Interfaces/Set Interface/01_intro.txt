@@ -1,0 +1,70 @@
+
+The Set interface defines a set.
+
+    It extends Collection and specifies the behavior of a collection that does not
+        allow duplicate elements.
+
+        Therefore, the add( ) method returns false if an attempt is made to add
+            duplicate elements to a set.
+
+        With two exceptions, it does not specify any additional methods of its own.
+
+    Set is a generic interface that has this declaration:
+
+        interface Set<E>
+
+            Here, E specifies the type of objects that the set will hold
+
+-------
+
+Beginning with JDK 9, Set includes the 'of( )' factory method,
+    which has a number of overloads
+
+    Each version returns an unmodifiable, value-based collection that is comprised of
+        the arguments that it is passed.
+
+    The primary purpose of 'of( )' is to provide a convenient, efficient way to create a small Set
+        collection.
+
+    There are 12 overloads of 'of( )'
+
+        One takes no arguments and creates an empty set.
+
+            It is shown here:
+
+                static <E> Set<E> of()
+
+        Ten overloads take from 1 to 10 arguments and create a list that contains the specified
+            elements
+
+            static <E> Set<E> of(E obj1)
+
+            static <E> Set<E> of(E obj1, E obj2)
+
+            static <E> Set<E> of(E obj1, E obj2, E obj3)
+
+            ...
+
+            static <E> Set<E> of(E obj1, E obj2, E obj3, E obj4, E obj5, E obj6
+                                    E obj7, E obj8, E obj9, E obj10)
+
+        The final of() overload specifies a varargs parameter that takes an arbitrary
+            number of elements or an array of elements
+
+            static <E> Set<E> of(E ... objs)
+
+        -------
+
+        For all versions, null elements are not allowed
+
+        -------
+
+        Beginning with JDK 10, Set includes the static 'copyOf( )'' method
+
+            static <E> Set<E> copyOf(Collection <? extends E> from)
+
+                It returns a set that contains the same elements as 'from'
+
+                null values are not allowed
+
+                The returned set is unmodifiable

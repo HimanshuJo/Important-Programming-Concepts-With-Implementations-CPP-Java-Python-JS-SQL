@@ -1,0 +1,79 @@
+
+Basic concepts of JDBC Application:
+
+    Driver  --> Translator
+
+    Connection  --> Road
+
+    Statement  --> Vehicle
+
+    ResultSet  --> Box
+
+-------
+
+Driver:
+
+    To convert Java Application calls into database specific calls, database specific calls into Java calls,
+        some translator must be required which is nothing but driver
+
+-------
+
+Connection:
+
+    Java Application wants to communicate with the database, for that some network socket is required, which is
+        nothing but connection object
+
+-------
+
+Statement:
+
+    To send our sql query from Java application to the database, and to bring results from database to
+        Java application, some vehicle must be required.
+
+    That vehicle is nothing but statement
+
+-------
+
+ResultSet:
+
+    After executing our sql query, database engine will place the results inside a box
+        that box in itself is nothing but resultSet
+
+-------
+
+Steps to develop JDBC application:
+
+    1. Load and Register driver
+
+    2. Establish connection between Java application and database
+
+    3. Creation of Statement Object
+
+    4. Send and Execute SQL query
+
+    5. Process result from resultSet
+
+    6. Close connection
+
+-------
+
+Example:
+
+    import java.sql.*;
+
+    class JDBCDemo
+    {
+        public static void main(String[] args) throws Exception
+        {
+            Class.forName("oracle.jdbc.OracleDriver");  // Class.forName is used to load any Java class
+            Connection con = DriverManager.getConnection(url, username, password);
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("SELECT * from employees");
+            while(rs.next())
+            {
+                System.out.println(rs.getInt(1) + "..." + rs.getString(2) + "..." + rs.getDouble(3)
+                    + "..." + rs.getString(4));
+            }
+            con.close();
+        }
+    }

@@ -1,0 +1,3 @@
+/*
+Project for solving project Euler problems
+*/

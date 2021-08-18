@@ -1,0 +1,170 @@
+
+Bases Greater than 10
+
+	What happens when you need more than 10 digits?
+
+	Because base 10 is general decimal, after that it changes:
+
+-------
+
+Undecimal (Base 11)
+
+	Undecimal (Base 11) needs one more digit than Decimal, so "A" is used, like this:
+
+	Decimal: 	0 	1 	2 	3 	4 	5 	6 	7 	8 	9 	10 	11 	12 	...
+	Undecimal: 	0 	1 	2 	3 	4 	5 	6 	7 	8 	9 	A 	10 	11 	...
+
+-------
+
+Duodecimal (Base 12)
+
+	Duodecimal (Base 12) needs two more digits than Decimal, so "A" and "B" are used:
+
+	Decimal: 		0 	1 	2 	3 	4 	5 	6 	7 	8 	9 	10 	11 	12 	13 	...
+	Duodecimal: 	0 	1 	2 	3 	4 	5 	6 	7 	8 	9 	A 	B 	10 	11 	...
+
+-------
+
+Hexadecimal (Base 16)
+
+	Because there are more than 10 digits, hexadecimal is written using letters as well, like this:
+
+	Decimal: 		0 	1 	2 	3 	4 	5 	6 	7 	8 	9 	10 	11 	12 	13 	14 	15 	16 	17 	...
+	Hexadecimal: 	0 	1 	2 	3 	4 	5 	6 	7 	8 	9 	A 	B 	C 	D 	E 	F 	10 	11 	...
+
+-------
+
+Vigesimal (Base 20)
+
+	With vigesimal, the convention is that I is not used because it looks like 1, so J=18 and K=19, as in this table:
+
+	Decimal: 	0 	1 	2 	3 	4 	5 	6 	7 	8 	9 	10 	11 	12 	13 	14 	15 	16 	17 	18 	19 	20 	...
+	Vigesimal: 	0 	1 	2 	3 	4 	5 	6 	7 	8 	9 	A 	B 	C 	D 	E 	F 	G 	H 	J 	K 	10 	...
+
+-------
+
+Letters (Base 26)
+
+	With "Base 26", you use the letters of the alphabet (not 0 to 9).
+
+	Some people start with A=0, B=1, etc. But it seems more natural to use A=1, B=2, etc, as everyone thinks that A is the first letter, B is the second, and so on.
+
+	So I use the A=1, B=2, convention, and I use "Z" for Zero! Like this:
+
+	Decimal: 	0 	1 	2 	3 	4 	5 	6 	7 	8 	9 	10 	11 	12 	13 	14 	15 	16 	17 	18 	19 	20 	21 	22 	23 	24 	25 	26
+	
+	Base 26: 	Z 	A 	B 	C 	D 	E 	F 	G 	H 	I 	J 	K 	L 	M 	N 	O 	P 	Q 	R 	S 	T 	U 	V 	W 	X 	Y 	AZ
+
+-------
+
+Why we are using HEXADECIMAL values for computer addressing?
+
+	The main reason why we use hexadecimal numbers is because it provides a more human-friendly representation and is much easier to express binary number representations in hex than it is in any other base number system
+
+	Lets take an example, using a byte.
+
+		1 Byte = 8 bits. It can store the values from 0 to 255 (0000 0000 to 1111 1111 in binary). 
+
+		Each hexadecimal digit represents four binary digits, also called Nibble. (1 Byte = 2 Nibbles)
+
+			For example, a single byte can have values ranging from 0000 0000 to 1111 1111 in binary form and 
+
+				can be easily represented as 00 to FF in hexadecimal.
+	-------
+
+ 	Expressing numbers in binary is not easy for us. 
+
+ 	You can not tell your friend that my mobile number is 1001 1111 1010 0101. 
+ 		You cannot use these type of numbers daily for 'n' number of contacts. Thus, we need more easy expression.
+
+	 	Since a byte is 8 bits, it makes sense to divide that up into two groups, 
+
+	 		the top 4 bits and 
+
+	 		the low 4 bits. 
+
+ 		Since 4 bits gives you the possible range from 0 – 15, a base 16 system is easier to work with, especially if you are only familiar with alphanumeric characters.
+
+	-------
+
+	It’s easier to express a binary value to another person as “B” then it is to express it as “1011”. 
+
+		This way I can simple use 2 hex values to represent a byte and have it work cleanly. 
+
+		This way if I am piss poor at math, I only need to memorize the multiplication tables up to 15. 
+
+			So if I have a hex value of EC, I can easily determine that 14 * 12 = 206 in decimal, 
+				and can easily write it out in binary as 1100 1110. 
+
+				Trying to convert from binary would require me to know what each place holder represents, and add all the values together (128 + 64 + 8 + 4 + 2 = 206). 
+
+				It’s much easier to work with binary through hex than any other base system.
+
+	-------
+
+	There are several uses for hexadecimals in computing:
+
+		1. HTML / CSS Colour Codes
+
+			Hexadecimal numbers are used to represent colours within HTML or CSS.
+
+			The 6 digit hex colour code should be considered in three parts.
+
+		    	First two digits represents the amount of red in the colour (max FF, or 255)
+
+		    	The next two digits represent the amount of green in the colour (max FF, or 255)
+
+		    	The final two digits represent the amount of blue in the colour (max FF, or 255)
+
+	    	-------
+
+			By changing the intensities of red, green and blue, we can create almost any colour.
+
+				E.g. orange can be represented as #FFA500, which is (255 red, 165 green, 0 blue)
+
+		2. MAC Addresses
+
+			A Media Access Control (MAC) address is a number which uniquely identifies a device on the internet. 
+
+			It relates to the network interface card (NIC) inside of the device.
+
+				e.g. B4-CD-C7-4A-8B-D2
+				
+				Expressing MAC addresses in hexadecimal format makes them easier to read and work with.
+
+		3.Assembly Code and Memory Dumps
+
+			Hexadecimals have advantage over binary due to:
+
+			    They are easier and faster to work with, taking up less screen space
+			    Mistakes are less likely and easier to trace/ debug
+			    
+-------
+
+How to convert from hex to decimal?
+
+	A regular decimal number is the sum of the digits multiplied with power of 10.
+
+		137 in base 10 is equal to each digit multiplied with its corresponding power of 10:
+
+			137(base 10) = 1×10^2 + 3×10^1 + 7×10^0 = 100+30+7
+
+	-------
+
+	Hex numbers are read the same way, but each digit counts power of 16 instead of power of 10.
+
+	For hex number with n digits:
+
+		dn-1 ... d3 d2 d1 d0
+
+	Multiply each digit of the hex number with its corresponding power of 16 and sum:
+
+		decimal = dn-1×16^(n-1) + ... + d3×16^3 + d2×16^2 + d1×16^1 + d0×16^0
+
+	-------
+
+	Example #1
+
+		3B in base 16 is equal to each digit multiplied with its corresponding 16n:
+
+		3B(base 16) = 3×16^1 + 11×16^0 = 48+11 = 5910

@@ -1,0 +1,107 @@
+
+Usually we can use executeQuery for select operations
+
+But what if I want to use executeQuery for non-select operations:
+
+executeQuery loop holes:
+
+    ResultSet rs = st.executeQuery("update employees set esal = 7777 where ename = "Sachin");
+
+    -------
+
+    If we use executeQuery() for non-select operations:
+
+        the result is varied from driver-to-driver (we can't expect for every driver the same behavior)
+
+            suppose if I use type 1 driver of oracle,
+
+                then we'll get SQL Exception
+
+            -------
+
+            suppose if I use type 4 driver of oracle,
+
+                then we'll get an empty ResultSet
+
+                    but by mistake if I'm trying to access this empty ResultSet
+
+                        then we'll get SQL Exception
+
+-------
+
+import java.sql.*;
+
+public class ExecuteMethodLoopHoles2T1 {
+    public static void main(String[] args) throws Exception {
+        String driver = "su.jdbc.odbc.JdbcOdbcDriver";  // type-1 driver
+        // String driver = "oracle.jdbc.OracleDriver";
+        String jdbc_url = "";
+        String user = "";
+        String pwd = "";
+        Class.forName(driver);
+        Connection con = DriverManager.getConnection(jdbc_url, user, pwd);
+        Statement st = con.createStatement();
+        ResultSet rs = st.executeQuery("update employees set esal=7777 where ename='Sachin'");
+        // while (rs.next()) {
+
+        //}
+        con.close;
+    }
+}
+
+-------
+
+executeUpdate() is always applicable for non-select queries,
+
+    by mistake if I'm using executeUpdate() method for select queries
+
+        int x = st.executeUpdate("select * from employees");
+
+            here the result is varied from driver to driver
+
+        -------
+
+        If I use Type-1 driver of oracle:
+
+            we'll get SQL exception saying no row count was used
+
+        If I use Type-4 driver of oracle:
+
+            we won't get any exception, simply it's going to tell
+
+            we will get number of rows selected
+
+-------
+
+import java.util.*;
+
+public class ExecuteMethodLoopHoles3T1 {
+    public static void main(String[] args) throws Exception {
+        String driver = "sun.jdbc.odbc.JdbcOdbcDriver";
+        String jdbc_url = "";
+        String user = "";
+        String pwd = "";
+        Class.forName(driver);
+        Connection con = DriverManager.getConnection();
+        Statement st = con.createStatement();
+        int rowCount = st.executeUpdate("select * from employees");
+        System.out.println(rowCount);
+        con.close;
+    }
+}
+
+-------
+
+executeUpdate() method for DDL queries:
+
+    int rowCount = st.executeUpdate("create table emp(eno number)");
+
+    -------
+
+    if I use type-1 driver of oracle
+
+        we'll get -1
+
+    if I use type-4 driver of oracle
+
+        we'll get 0

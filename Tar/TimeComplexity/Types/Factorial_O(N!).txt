@@ -1,0 +1,29 @@
+
+Factorial — O(n!)
+
+    An algorithm is said to have a factorial time complexity when it grows in a
+        factorial way based on the size of the input data,
+
+        for example:
+
+            2! = 2 x 1 = 2
+            3! = 3 x 2 x 1 = 6
+            4! = 4 x 3 x 2 x 1 = 24
+            5! = 5 x 4 x 3 x 2 x 1 = 120
+            6! = 6 x 5 x 4 x 3 x 2 x 1 = 720
+            7! = 7 x 6 x 5 x 4 x 3 x 2 x 1 = 5.040
+            8! = 8 x 7 x 6 x 5 x 4 x 3 x 2 x 1 = 40.320
+
+    As you may see it grows very fast, even for a small size input.
+
+    A great example of an algorithm which has a factorial time complexity is the
+        Heap’s algorithm, which is used for generating all possible permutations of n objects.
+
+    -------
+
+    Heap found a systematic method for choosing at each step a pair of elements to switch,
+        in order to produce every possible permutation of these elements exactly once.
+
+    Example:
+
+        Traveling Salesman Problem.

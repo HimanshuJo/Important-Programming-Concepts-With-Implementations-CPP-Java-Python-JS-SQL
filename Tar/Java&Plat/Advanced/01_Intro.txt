@@ -1,0 +1,89 @@
+
+With Core Java we can develop only standalone applications
+
+    These types of application are running on single machine (or computer)
+
+    There are two types of stand-alone applications (desktop applications):
+
+        1. GUI Based applications
+
+        2. CUI Based applications (Console Applications)
+
+            From the command prompt whatever we are executing
+
+                e.g. java test.java
+
+-------
+
+In Java if we want to develop web applications:
+
+    then we should go for the following technologies:
+
+        1. JDBC (Java Database Connectivity)
+
+        2. Servlets
+
+        3. JSPs
+
+-------
+
+JSP:
+
+    Suppose we have a website, where we have a login page, welcome page, error credentials page etc.
+
+        so all the pages which the end user is able to see, are by default considered as
+
+            View Component (contains presentation logic)
+
+        In Java if we want to develop such type of view components, then we should go for JSP
+
+            JSP (Java Server Pages)  --> meant for presentation logic
+
+            so in essence in a Java web application we will have different web pages such as:
+
+                login.jsp
+                index.jsp
+                error.jsp
+                ...
+
+-------
+
+Servlet:
+
+    Whenever we provide login credentials to a website,
+
+        in the background the authentication and verification is done; the steps basically involves:
+
+            - read data
+
+            - compare data with the database values
+
+                - if valid
+
+                    - perform user's operation
+
+                - else
+
+                    - display error page
+
+        so in essence a web component is processing our request
+
+            the component which is working internally to process our request is called Servlet
+
+            therefore, wherever processing logic is required better to go for Servlet
+
+        sometimes servlet can take help from normal Java classes for business logic
+
+            those java classes are known as 'Model Components'
+
+-------
+
+JDBC:
+
+    Sometimes Servlet is required to communicate with the database
+
+        or a Java component is required to communicate with the database
+
+            so if we want to communicate with the database from Java application
+
+                then we should go for JDBC

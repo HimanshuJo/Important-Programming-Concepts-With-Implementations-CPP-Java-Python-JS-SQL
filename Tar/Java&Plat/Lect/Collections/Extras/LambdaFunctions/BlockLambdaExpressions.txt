@@ -1,0 +1,105 @@
+
+The body of the lambdas shown in the preceding examples consist of a single
+    expression.
+
+    These types of lambda bodies are referred to as expression bodies,
+        and lambdas that have expression bodies are sometimes called expression
+        lambdas.
+
+    In an expression body, the code on the right side of the lambda
+        operator must consist of a single expression.
+
+        While expression lambdas are quite useful, sometimes the situation will require
+            more than a single expression.
+
+        To handle such cases, Java supports a second type of lambda
+            expression in which the code on the right side of the lambda operator consists
+            of a block of code that can contain more than one statement.
+
+        This type of lambda body is called a block body.
+
+        Lambdas that have block bodies are sometimes referred to as block lambdas.
+
+    -------
+
+    A block lambda expands the types of operations that can be handled within a
+        lambda expression because it allows the body of the lambda to contain multiple
+        statements.
+
+        For example, in a block lambda you can declare variables, use
+            loops, specify if and switch statements, create nested blocks, and so on.
+
+    A block lambda is easy to create.
+
+        Simply enclose the body within braces as you would any other block of statements.
+
+        Aside from allowing multiple statements, block lambdas are used much like
+            the expression lambdas just discussed.
+
+            One key difference, however, is that you must explicitly use a
+                return statement to return a value.
+
+            This is necessary because a block lambda body does not represent a single expression.
+
+    -------
+
+    Example:
+
+        interface NumericFunc {
+            int func(int n);
+        }
+
+        class BlockLambdaDemo {
+            public static void main(String[] args) {
+
+                // Block lambda computes the factorial of an int value
+                NumericFunc factorial = (n) -> {
+                    int result = 1;
+                    for (int i = 1; i <= n; i++)
+                        result = i * result;
+                    return result;
+                };
+
+                System.out.println("The factorial of 3 is: " + factorial.func(3));
+                }
+        }
+
+        -------
+
+        In the program, notice that the block lambda declares a variable called
+            result, uses a for loop, and has a return statement.
+
+            These are legal inside a block lambda body.
+
+            In essence, the block body of a lambda is similar to a
+                method body.
+
+                When a return statement occurs within a lambda expression,
+                    it simply causes a return from the lambda.
+
+                It does not cause an enclosing method to return.
+
+    -------
+
+    Example2:
+
+        interface StringFunc {
+            String func(String n);
+        }
+
+        class BlockLambdaDemo2 {
+            public static void main(String[] args) {
+
+                // this block reverses the characters in a string
+                StringFunc reverse = (str) -> {
+                    String result = "";
+                    int i;
+
+                    for (i = str.length() - 1; i >= 0; i--)
+                        result += str.charAt(i);
+                    return result;
+                };
+
+                System.out.println("Lambda reversed is " + reverse.func("Lambda"));
+            }
+        }

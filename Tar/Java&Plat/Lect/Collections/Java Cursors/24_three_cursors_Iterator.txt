@@ -1,0 +1,96 @@
+
+Iterator:
+
+    So the problems with Enumeration were:
+
+        1. It is only applicable for legacy classes
+
+            It is not applicable for ArrayList, LinkedList etc.
+
+        2. By using Enumeration, we are able to perform only read operations
+
+            If an object is no longer required, we can't perform remove operation
+
+    To overcome these limitations, we should consider Iterator
+
+    -------
+
+    Advantages of Iterator:
+
+        1. It is applicable for any collection class
+
+            it is a universal cursor
+
+        2. By using Iterator, we can perform both read and remove operations
+
+-------
+
+How to create Iterator Object:
+
+    Collection Interface contain Iterator method, to get Iterator object
+
+        public Iterator iterator()
+
+        e.g.
+
+            Iterator itr = c.iterator();  // here c is any collection object
+
+    -------
+
+    Various methods:
+
+        1. public boolean hasNext()
+
+        2. public Object next()
+
+        3. public void remove()
+
+-------
+
+import java.util.*;
+
+class IteratorDemo
+{
+
+    public static void main(String[] args)
+    {
+        ArrayList al =  new ArrayList();
+
+        for(int i = 0; i <= 10; i++)
+        {
+            l.add(i);
+        }
+
+        System.out.println(l);  // output is: [0, 1, 2, 3 ..., 10]
+
+        Iterator itr = l.iterator();
+
+        while(itr.hasNext())
+        {
+            Integer I = (Integer) itr.next();
+            
+            if (I % 2 == 0)
+                System.out.println(I);
+            else
+                itr.remove();
+        }
+
+        System.out.println(l);
+    }
+}
+
+-------
+
+Various problems with the Iterator:
+
+    1. Single direction cursors
+
+        Enumeration and Iterator are always moving towards forward direction
+
+    2. No replace operations
+
+        By using Iterator we can perform either read, or remove operations
+
+    3. In ability to add elements while iterating
+
+        Addition of new objects

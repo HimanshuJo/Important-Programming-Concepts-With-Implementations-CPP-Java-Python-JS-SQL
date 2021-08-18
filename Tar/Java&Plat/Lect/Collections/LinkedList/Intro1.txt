@@ -1,0 +1,412 @@
+
+The LinkedList class extends AbstractSequentialList and implements the
+    List, Deque, and Queue interfaces.
+
+    It provides a linked-list data structure.
+
+    LinkedList is a generic class that has this declaration:
+
+        class LinkedList<E>
+
+            Here E specifies the type of objects that the list will hold
+
+-------
+
+LinkedList has the two constructors shown here:
+
+    LinkedList( )
+
+        The first constructor builds an empty linked list.
+
+    LinkedList(Collection<? extends E> c)
+
+        The second constructor builds a linked list that is initialized with the
+            elements of the collection c.
+
+-------
+
+Because LinkedList implements the Deque interface, we have access to the
+    methods defined by Deque.
+
+    For example, to add elements to the start of a list, you can use:
+
+        addFirst( ) or offerFirst( ).
+
+    To add elements to the end of the list, use:
+
+        addLast( ) or offerLast( ).
+
+    To obtain the first element, you can use
+
+        getFirst( ) or peekFirst( ).
+
+    To obtain the last element, use
+
+        getLast( ) or peekLast( ).
+
+    To remove the first element, use
+
+        removeFirst( ) or pollFirst( ).
+
+    To remove the last element, use
+
+        removeLast( ) or pollLast( ).
+
+-------
+
+import java.util.*;
+
+public class Test {
+
+    public static void main(String args[])
+    {
+        // Creating object of the
+        // class linked list
+        LinkedList<String> ll = new LinkedList<String>();
+
+        // Adding elements to the linked list
+        ll.add("A");
+        ll.add("B");
+        ll.addLast("C");
+        ll.addFirst("D");
+        ll.add(2, "E");
+
+        System.out.println(ll);
+
+        ll.remove("B");
+        ll.remove(3);
+        ll.removeFirst();
+        ll.removeLast();
+
+        System.out.println(ll);
+    }
+}
+
+Output: 
+
+[D, A, E, B, C]
+[A]
+
+-------
+
+Because LinkedList implements the List interface,
+    calls to add(E) append items to the end of the list, as do calls to addLast( ).
+
+    To insert items at a specific location, use the
+        add(int, E) form of add( )
+
+-------
+
+Some Important points on LinkedList:
+
+    If we talk about ArrayList,
+
+        ArrayList is the best choice when we want to retrieve elements
+
+        ArrayList is the worst choice when we want to insert, or delete elements in the middle
+
+    -------
+
+    So, if insertion and deletion in the middle is our most common operation
+
+        then LinkedList is the BEST choice
+
+    -------
+
+    In LinkedList, the elements won't be stored in the consecutive memory locations
+
+        e.g.  [prev]x[next]  --> [prev]y[next]  --> [prev]z[next]  --> [prev]m[next] ...
+
+                x might be at Dortmund
+                y might be at Paderborn
+                z might be at Hannover
+                m might be at Berlin
+
+        Now comes my requirement
+            l.add(1, 'n');  // add 1 in the 1th index place
+
+                so first we create a node n
+                    [prev]n[next]
+
+                then
+                    x[next]  --> [prev]n or [prev]n  <-- [next]x
+
+                    [next]n  --> [prev]y or [prev]y  <-- [next]n
+
+-------
+
+Where LinkedList is the worst choice?
+
+    If we want to retrieve the first element, LinkedList will get 0 sec
+
+    If we want to retrieve the second element, LinkedList has to ask the first element
+        as first element stores info. about the location of the second element
+
+        Hence performance is very bad here
+
+-------
+
+Important Conclusions:
+
+    Underlying data structure for the LinkedList is the 'DoublyLinkedList'
+
+    Insertion order is maintained (as it is an implementation class for List Interface)
+
+    Duplicates are allowed
+
+    Heterogeneous elements are allowed
+
+    null insertion is possible
+
+    It implements Serializable and Cloneable Interfaces
+
+    It doesn't implement RandomAccess Interface
+
+-------
+
+* Whatever methods defined in the Collection framework happily we can use them in the LinkedList
+
+* Whatever methods defined in the List interface also happily we can use them in the LinkedList
+
+* LinkedList class has its own methods as well
+
+    Small tasks:
+
+        Write a program for an Array based implementation of Stack and Queue
+
+        Write a program for LinkedList based implementation of Stack and Queue
+
+-------
+
+Usually LinkedList class is used to develop 'stacks' (LIFO) and 'queues' (FIFO)
+
+    To provide suppose for this requirement LinkedList contain 6 specific methods
+
+        these methods are applicable for only LinkedList Based object
+
+            void addFirst(Object o)
+
+            void addLast(Object o)
+
+            Object getFirst()
+
+            Object getLast()
+
+            Object removeFirst()
+
+            Object removeLast()
+
+-------
+
+Constructors:
+
+    1. LinkedList l = new LinkedList();  // creates an empty LinkedList object
+
+    2. LinkedList l =  new LinkedList(Collection c);
+
+        // for any collection we can create an equivalent LinkedList object
+
+-------
+
+import java.util.*;
+
+class LinkedListDemo
+{
+    public static void main(String[] args)
+    {
+        LinkedList l = new LinkedList();
+        l.add("himanshh");
+        l.add(30);
+        l.add(null);
+        l.set(0, "Software");  // purpose of set element is to replace
+        l.add(0, "joshi");
+        l.removeLast();
+        l.addFirst("CCC");
+        System.out.println(l);
+    }
+}
+
+-------
+
+Array implementation of Queues:
+
+    In queue, insertion and deletion happens at the opposite ends
+
+    To implement a queue using array:
+
+        we firstly create an array 'arr' of size n
+
+        we take two variables 'front' and 'rear'
+
+            both of which will be initialized to 0 (queue is initially empty)
+
+        rear is index upto which elements are stored in the array
+
+        front is the index of the first element of the array
+
+    Some of the implementation of queue are as follows:
+
+        a. Enqueue
+
+            Addition of an element to the queue
+
+            Adding an element will be performed after checking whether the queue is full or not
+
+            If rear < n
+
+                indicates that the array is not full
+
+                then we store the element at:
+
+                    arr[rear]
+
+                    ++rear
+
+            But if rear == n
+
+                then it is said to be an overflow condition as the array is full
+
+        -------
+
+        b. Dequeue
+
+            Removal of an element from the queue
+
+            An element can only be deleted when there is at least an element to delete
+
+                i.e rear > 0
+
+            Now element at
+
+                arr[front] can be deleted but all the remaining elements have to be shifted to the left
+                    by one position in order for the dequeue operation to delete the second element
+                    from the left on another dequeue operation
+        -------
+
+        c. Front
+
+            Get the front element from the queue
+
+                i.e arr[front] if the queue is not empty
+
+        -------
+
+        d. Display
+
+            Print all the elements of the queue
+
+            If the queue is non-empty, traverse and print all the elements from
+
+                index front to rear
+
+-------
+
+Program: Array based implementation of Queue:
+
+    class Queue {
+
+        private static int front, rear, capacity;
+        private static int queue[];
+
+        Queue(int c) {
+            front = rear = 0;
+            capacity = c;
+            queue = new int[capacity];
+        }
+
+        // function to insert an element
+        // at the rear of the queue
+        static void queueEnqueue(int data) {
+            // check queue is full or not
+            if (capacity == rear) {
+                System.out.printf("\nQueue is full\n");
+                return;
+            } // insert element at the rear
+            else {
+                queue[rear] = data;
+                rear++;
+            }
+        }
+
+        // function to delete an element
+        // from the front of the queue
+        static void queueDequeue() {
+            // if queue is empty
+            if (front == rear) {
+                System.out.printf("\nQueue is empty\n");
+            } // shift all the elements from index 2 till rear
+            // to the right by one
+            else {
+                for (int i = 0; i < rear - 1; i++) {
+                    queue[i] = queue[i + 1];
+                }
+
+                // store 0 at rear indicating there's no element
+                if (rear < capacity) {
+                    queue[rear] = 0;
+                }
+
+                // decrement rear
+                rear--;
+            }
+        }
+
+        // print queue elements
+        static void queueDisplay() {
+            int i;
+            if (front == rear) {
+                System.out.printf("\nQueue is Empty\n");
+            }
+
+            // traverse front to rear and print elements
+            for (i = front; i < rear; i++) {
+                System.out.printf(" %d <-- ", queue[i]);
+            }
+        }
+
+        // print front of queue
+        static void queueFront() {
+            if (front == rear) {
+                System.out.printf("\nQueue is Empty\n");
+                return;
+            }
+            System.out.printf("\nFront Element is: %d", queue[front]);
+        }
+    }
+
+    class StaticQueueinjava {
+
+        // Driver code
+        public static void main(String[] args) {
+            // Create a queue of capacity 4
+            Queue q = new Queue(4);
+
+            // print Queue elements
+            Queue.queueDisplay();
+
+            // inserting elements in the queue
+            Queue.queueEnqueue(20);
+            Queue.queueEnqueue(30);
+            Queue.queueEnqueue(40);
+            Queue.queueEnqueue(50);
+
+            // print Queue elements
+            Queue.queueDisplay();
+
+            // insert element in the queue
+            Queue.queueEnqueue(60);
+
+            // print Queue elements
+            Queue.queueDisplay();
+
+            Queue.queueDequeue();
+            Queue.queueDequeue();
+            System.out.printf("\n\nafter two node deletion\n\n");
+
+            // print Queue elements
+            Queue.queueDisplay();
+
+            // print front of the queue
+            Queue.queueFront();
+        }
+    }

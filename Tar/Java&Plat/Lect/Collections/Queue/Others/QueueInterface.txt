@@ -1,0 +1,378 @@
+
+The Queue interface present in the java.util package and extends the Collection interface
+    is used to hold the elements about to be processed in FIFO (First In First Out) order.
+
+    It is an ordered list of objects with its use limited to insert elements at the end of the list
+        and deleting elements from the start of the list, (i.e.), it follows the FIFO or
+        the First-In-First-Out principle.
+
+-------
+
+Being an interface the queue needs a concrete class for the declaration and the most
+    common classes are the 'PriorityQueue' and 'LinkedList' in Java.
+
+    It is to be noted that both the implementations are not thread safe.
+
+    PriorityBlockingQueue is one alternative implementation if thread safe implementation is needed.
+
+-------
+
+Iterable (Interface)
+
+    Collection (interface) extends Iterable
+
+        Queue (interface) extends Collection
+
+            PriorityQueue (class) implements Queue
+
+            Deque (interface) extends Queue
+
+                LinkedList (class) implements Deque
+
+                ArrayDeque (class) implements Deque
+
+-------
+
+The Queue Interface is declared as:
+
+    public interface Queue extends Collection
+
+-------
+
+Creating Queue Objects:
+
+    Since queue is an interface, objects cannot be created of the type queue.
+
+        We also need a class which extends this list in order to create an object
+
+        And also, after the introduction of Generics in Java 1.5, it is possible to restrict the
+            type of object that can be stored in the Queue
+
+            This type-safe queue can be defined as:
+
+                Queue<Obj> queue =  new PriorityQueue<Obj>();
+
+    -------
+
+    Example of a Queue:
+
+        import java.util.LinkedList;
+        import java.util.Queue;
+
+        public class QueueExample {
+
+            public static void main(String[] args)
+            {
+                Queue<Integer> q = new LinkedList<>();
+
+                for(int i = 0; i < 5; i++)
+                    q.add(i);  // adding elements {0, 1, 2, 3, 4} to the queue
+
+                int remove_q_element = q.remove();  // removing the head element of the queue
+
+                int head = q.peek();  // view the head of the queue
+
+                int size = q.size();  // view the size of the queue
+            }
+        }
+
+-------
+
+Operations on Queue Interface:
+
+    1. Adding Elements:
+
+        In order to add elements in a queue, we can use the add() method
+
+        Insertion order is not retained in the PriorityQueue
+
+        The elements are stored based on the priority order is ascending by default
+
+    -------
+
+    Example:
+
+        import java.util.*;
+
+        public class CFG {
+            public static void main(String[] args)
+            {
+                Queue<String> pq = new PriorityQueue<>();
+
+                pq.add("Geeks");
+                pq.add("For");
+                pq.add("Geeks");
+            }
+        }
+
+    2. Removing Elements:
+
+        In order to remove elements from a queue, we can use the remove() method
+
+        If there are multiple such objects, then the first occurrence of the objects is removed
+
+        Apart from that, poll() method is also used to remove the head and return it
+
+        -------
+
+        Example:
+
+            import java.util.*;
+
+            public class CFG {
+
+                public static void main(String args[])
+                {
+                    Queue<String> pq = new PriorityQueue<>();
+
+                    pq.add("Geeks");
+                    pq.add("For");
+                    pq.add("Geeks");
+
+                    pq.remove("Geeks");
+                    pq.poll();
+                }
+            }
+
+    3. Iterating the Queue:
+
+        There are multiple ways to iterate through the Queue
+
+        The most famous way is to convert the queue to the array and traverse using
+            the for loop
+
+            However, the queue has also an inbuilt iterator which can be used to iterate through the queue
+
+        -------
+
+        Example:
+
+        import java.util.*;
+
+        public class CFG {
+
+            public static void main(String args[])
+            {
+                Queue<String> pq = new PriorityQueue<>();
+
+                pq.add("Geeks");
+                pq.add("For");
+                pq.add("Geeks");
+
+                Iterator iterator = pq.iterator();
+
+                while(iterator.hasNext())
+                {
+                    System.out.println(iterator.next());
+                }
+            }
+        }
+
+-------
+
+Characteristics of a Queue:
+
+    1. The Queue is used to insert elements at the end of the queue and removes from the beginning
+        of the queue.
+
+        It follows FIFO concept
+
+    2. The Java Queue supports all methods of Collection interface including insertion, deletion etc.
+
+    3. LinkedList, ArrayBlockingQueue and PriorityQueue are the most frequently used implementation
+
+    4. If any null operation is performed on BlockingQueues, NullPointerException is thrown
+
+    5. The Queues which are available in java.util package are Unbounded Queues
+
+    6. The Queues which are available in java.util.concurrent package are the Bounded Queues
+
+    7. All Queues except the Deques supports insertion and removal at the tail and head of the queues
+        respectively.
+
+        The Deques support element insertion and removal at both the ends
+
+-------
+
+Classes which implement the Queue Interface:
+
+    1. PriorityQueue:
+
+        PriorityQueue class which is implemented in the collection framework provides us a way
+            to process the objects based on the priority.
+
+        It is known that a queue follows 'First-In-First-Out' algorithm, but sometimes the elements of
+            the queue are needed to be processed according to the priority, that’s when the
+            PriorityQueue comes into play.
+
+    -------
+
+    Example:
+
+        import java.util.*;
+
+        class CFG {
+
+            public static void main(String args[])
+            {
+                Queue<Integer> pQueue = new PriorityQueue<Integer>();
+
+                pQueue.add(10);
+                pQueue.add(20);
+                pQueue.add(15);
+
+                System.out.println(pQueue.peek());  // Printing the top element of the PriorityQueue
+
+                // Printing the top element and removing it from the PriorityQueue container
+                System.out.println(pQueue.poll());
+
+                // Printing the top element again
+                System.out.println(pQueue.peek());
+
+            }
+        }
+
+    2. LinkedList
+
+        It is a class which is implemented in the collection framework which inherently implements
+            the linked list data structure
+
+        It is linear data structure where the elements are not stored in contiguous locations and
+            every element is a separate object with a data part and address part
+
+        The elements are linked using pointers and addresses
+
+        Each element is known as a node.
+
+            Due to dynamicity and ease of insertions and deletions, they are preferred over the arrays
+                or queues
+
+        -------
+
+        Example:
+
+            import java.util.*;
+
+            class CFG {
+
+                public static void main(String[] args)
+                {
+                    Queue<Integer> l1 =  new LinkedList<Integer>();
+                    l1.add(10);
+                    l1.add(20);
+                    l1.add(15);
+
+                    // Printing the top elements of the LinkedList
+                    System.out.println(l1.peek());
+
+                    // Printing the top elements and removing it from the LinkedList container
+                    System.out.println(l1.poll());
+
+                    // printing the top element again
+                    System.out.println(l1.peek());
+                }
+            }
+
+    3. PriorityBlockingQueue
+
+        * It is to be noted that both the implementations, the PriorityQueue and LinkedList are not
+            thread safe
+
+        PriorityBlockingQueue is one alternative implementation if thread-safe implementation is needed.
+
+        PriorityBlockingQueue is an unbounded blocking queue that uses the same ordering rules as class
+            PriorityQueue and supplies blocking retrieval operations.
+
+        Since it is unbounded, adding elements may sometimes fail due to resource exhaustion resulting
+            in OutOfMemoryError
+
+        -------
+
+        Example:
+
+            import java.util.concurrent.PriorityBlockingQueue;
+            import java.util;
+
+            class CFG {
+
+                public static void main(String[] args)
+                {
+                    Queue<Integer> pbq = new PriorityBlockingQueue<Integer>();
+
+                    // Adding items to the pbq using add()
+
+                    pbq.add(10);
+                    pbq.add(20);
+                    pbq.add(15);
+
+                    // Printing the top element of the PriorityBlockingQueue
+                    System.out.println(pbq.peek());
+
+                    // Printing the top element and removing it from the PriorityBlockingQueue
+                    System.out.println(pbq.poll());
+
+                    // Printing the top element again
+                    System.out.println(pbq.peek());
+                }
+            }
+
+-------
+
+Method of Queue Interface:
+
+    The queue interface inherits all the methods present in the collections interface while implementing
+        the following methods
+
+    1. add(element)
+
+        This method is used to add elements at the tail of queue
+
+        More specifically, at the last of linked list if it is used, or according to the priority
+            in case of priority queue implementation
+
+    2. element()
+
+        This method is similar to peek()
+
+        It throws NoSuchElementException when the queue is empty
+
+    3. offer(element)
+
+        This method is used to insert an element in the queue
+
+        This method is preferable to add() method since this method does not throws an exception
+            when the capacity of the container is full since it returns false
+
+    4. poll()
+
+        This method removes and returns the head of the queue.
+
+        it return null if the queue is empty
+
+    5. remove()
+
+        This method removes and returns the head of the queue.
+
+        It throws NoSuchElementException when the queue is empty
+
+-------
+
+Queue.add
+
+    Inserts the specified element into this queue if it is possible to do so immediately
+        without violating capacity restrictions, returning true upon success and
+        throwing an IllegalStateException if no space is currently available.
+
+    Returns: true (as specified by Collection.add(E))
+
+    Throws: IllegalStateException - if the element cannot be added at this time due to capacity restrictions.
+
+Queue.offer
+
+    Inserts the specified element into this queue if it is possible to do so immediately without
+        violating capacity restrictions.
+
+    When using a capacity-restricted queue, this method is generally preferable to add(E),
+        which can fail to insert an element only by throwing an exception.
+
+    Returns: true if the element was added to this queue, else false.

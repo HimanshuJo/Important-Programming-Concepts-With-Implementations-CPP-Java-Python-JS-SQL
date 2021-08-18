@@ -1,0 +1,14 @@
+
+// Remove an element at a particular index in a char array:
+
+public char[] removeChar(char[] original, int location_to_remove) {
+    char[] result = new char[original.length - 1];
+    int last_insert = 0;
+    for (int i = 0; i < original.length; i++) {
+        if (i == location_to_remove) {
+            i++;
+        }
+        result[last_insert++] = original[i];
+    }
+    return result;
+}

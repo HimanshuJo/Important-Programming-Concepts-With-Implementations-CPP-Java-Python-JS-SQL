@@ -1,0 +1,28 @@
+
+>> is the arithmetic shift, and >>> is the logical shift
+
+-------
+
+Arithmetic Shift:
+
+	In an arithmetic shift, the sign bit is extended to preserve the signedness of the number
+
+	For example:
+
+		-2 represented in 8 bits would be 11111110 (because the most significant bit has the negative weight)
+
+		shifting it right one bit using the arithmetic shift would give you 11111111
+
+			in decimal: 
+
+				(11111111)₂ = (1 × 2⁷) + (1 × 2⁶) + (1 × 2⁵) + (1 × 2⁴) + (1 × 2³) + (1 × 2²) + (1 × 2¹) + (1 × 2⁰) = (255)₁₀
+
+-------
+
+Logical Right Shift:
+
+	logical right shift however, does not care that the value could possibly represent a signed number
+
+	it simply moves everything to the right and fills in from the left with 0's
+
+	shifting our -2 right one bit using logical shift would give 0111111

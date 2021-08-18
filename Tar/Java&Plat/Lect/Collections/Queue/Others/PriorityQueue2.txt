@@ -1,0 +1,177 @@
+
+A regular queue follows a first in first out ( FIFO ) structure. 
+
+	This means that if 3 messages – m1, m2 and m3 – go into the queue in that order, 
+		then they come out of the queue in the exact same order.
+
+-------
+
+Why do we need queues?
+
+	Let us say that we have data producers ( for example, when a user clicks on a web page ) 
+		which are extremely fast. 
+
+		But then we want to consume this data at a slower pace later.
+
+	In this case, the producer would push all of the messages into the queue, 
+		and a consumer would consume these messages later from the queue at a slower pace.
+
+-------
+
+What is a priority queue?
+
+	As mentioned earlier, a regular queue has a first in first out structure. 
+
+	But in some scenarios we want to process messages in a queue based on their 
+		priority and not based on when the message entered the queue.
+
+	Priority queues help consumers consume the higher priority messages 
+		first followed by the lower priority messages.
+
+-------
+
+If we do not tell the priority queue how to prioritize its content, 
+	it used a default natural ordering.
+
+-------
+
+What about having a custom ordering?
+
+	This is possible as well, and we can do it with the help of a comparator.
+
+	Let's create an integer priority queue now. 
+		But this time let's get the result in descending order of value.
+
+	In order to achieve this, first we need to create an integer comparator:
+
+		static class CustomIntegerComparator implements Comparator<Integer> {
+
+			@Override
+			public int compare(Integer o1, Integer o2) {
+				return o1 < o2 ? 1 : -1;
+			}
+		}
+
+		-------
+
+		By using o1 < o2 ? 1 : -1 we will get the result in descending order. 
+
+		If we had used o1 > o2 ? 1 : -1, then we would have gotten the result in ascending order
+
+		-------
+
+		Now that we have the comparator, we need to add this comparator to the priority queue.
+
+			Queue<Integer> testIntegersPQ = new PriorityQueue<>(new CustomIntegerComparator());
+
+-------
+
+Priority queue with Java objects
+
+	Up to this point, we've seen how we can use strings and integers with priority queues.
+
+	In real life applications we would generally be using priority queues with custom Java objects.
+
+	Let's first create a class called CustomerOrder which is used to store customer order details:
+
+		public class CustomerOrder implements Comparable<CustomerOrder> {
+	    
+		    private int orderId;
+		    private double orderAmount;
+		    private String customerName;
+
+		    public CustomerOrder(int orderId, double orderAmount, String customerName) {
+		        this.orderId = orderId;
+		        this.orderAmount = orderAmount;
+		        this.customerName = customerName;
+		    }
+
+		    @Override
+		    public int compareTo(CustomerOrder o) {
+		        return o.orderId > this.orderId ? 1 : -1;
+		    }
+
+		    @Override
+		    public String toString() {
+		        return "orderId:" + this.orderId + ", orderAmount:" + this.orderAmount + ", customerName:" + customerName;
+		    }
+
+		    public double getOrderAmount() {
+		        return orderAmount;
+		    }
+		}
+
+	-------
+
+	This is a simple Java class to store customer orders. 
+
+	This class implements comparable interface, so that we can decide on what basis this object needs to be ordered in the priority queue.
+
+	The ordering is decided by the compareTo function in the above code.
+
+		The line o.orderId > this.orderId ? 1 : -1 
+			instructs that the orders should be sorted based on descending order of the orderId field
+
+	Below is the code which creates a priority queue for the CustomerOrder object:
+
+		CustomerOrder c1 = new CustomerOrder(1, 100.0, "customer1");
+		CustomerOrder c2 = new CustomerOrder(3, 50.0, "customer3");
+		CustomerOrder c3 = new CustomerOrder(2, 300.0, "customer2");
+
+		Queue<CustomerOrder> customerOrders = new PriorityQueue<>();
+		customerOrders.add(c1);
+		customerOrders.add(c2);
+		customerOrders.add(c3);
+
+		while (!customerOrders.isEmpty()) {
+			System.out.println(customerOrders.poll());
+		}
+
+	-------
+
+	When we run this code we get the following output:
+
+		orderId:3, orderAmount:50.0, customerName:customer3
+		orderId:2, orderAmount:300.0, customerName:customer2
+		orderId:1, orderAmount:100.0, customerName:customer1
+
+-------
+
+What if we want to prioritize based on orderAmount?
+
+	This is again a real life scenario. 
+
+	Let's say that by default the CustomerOrder object is prioritized by the orderId. 
+
+	But then we need a way in which we can prioritize based on orderAmount.
+
+	You may immediately think that we can modify the compareTo function in the 
+		CustomerOrder class to order based on orderAmount.
+
+	But the CustomerOrder class may be used in multiple places in the application, 
+		and it would interfere with the rest of the application 
+		if we modify the compareTo function directly.
+
+	-------
+
+	The solution to this is pretty simple: we can create a new custom comparator 
+		for the CustomerOrder class and use that along with the priority queue
+
+	Below is the code for the custom comparator:
+
+		static class CustomerOrderComparator implements Comparator<CustomerOrder> {
+
+	        @Override
+	        public int compare(CustomerOrder o1, CustomerOrder o2)
+	        {
+	            return o1.getOrderAmount() < o2.getOrderAmount() ? 1 : -1;
+	        }
+    	}
+
+	-------
+
+	This is very similar to the custom integer comparator we saw earlier.
+
+		The line o1.getOrderAmount() < o2.getOrderAmount() ? 1 : -1; 
+
+		indicates that we need to prioritize based on descending order of orderAmount.

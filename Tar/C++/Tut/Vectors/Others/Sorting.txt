@@ -1,0 +1,37 @@
+
+Sorting a vector in C++ can be done by using std::sort(). 
+
+	It is defined in<algorithm> header. 
+
+	To get a stable sort std::stable_sort is used. 
+
+	It is exactly like sort() but maintain the relative order of equal elements. 
+
+	Quicksort(), mergesort() can also be used, as per requirement.
+
+-------
+
+Sorting a vector in descending order can be done by using std::greater <>()
+
+-------
+
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int main()
+{
+    vector<int> v = {10, 9, 8, 6, 7, 2, 5, 1};
+    cout << "Elements before sorting" << endl;
+    for (const auto &i : v)
+    {
+        cout << i << ' ' << endl;
+    }
+    cout << "Elements after sorting" << endl;
+    sort(v.begin(), v.end(), greater<>());
+    for (const auto &i : v)
+        cout << i << ' ' << endl;
+    return 0;
+}

@@ -1,0 +1,22 @@
+
+Collection:
+
+    It is an interface
+
+    If we want to represent a group of individual objects as a single entity, then we should go for collection
+
+-------
+
+Collections:
+
+    It is a class
+
+    It is a utility class which defines several utility methods (sorting, searching, shuffling etc.)
+        for collection object
+
+        e.g. Suppose I've an ArrayList
+
+                ArrayList never talks about sorting
+
+                But if we want to do sorting, then Collections.sort(<arg>) method we can call, and pass
+                    this ArrayList as an argument

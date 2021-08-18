@@ -1,0 +1,57 @@
+
+Quasilinear Time — O(n log n):
+
+    An algorithm is said to have a quasilinear time complexity when each operation
+        in the input data have a logarithm time complexity.
+
+        It is commonly seen in sorting algorithms (e.g. mergesort, timsort, heapsort).
+
+    For example:
+
+        for each value in the data1 (O(n)) use the binary search (O(log n)) to
+            search the same value in data2.
+
+                for value in data1:
+                    result.append(binary_search(data2, value))
+
+-------
+
+Another, more complex example, can be found in the Mergesort algorithm.
+
+    Mergesort is an efficient, general-purpose, comparison-based sorting algorithm which has
+        quasilinear time complexity, let’s see an example:
+
+        def merge_sort(data):
+            if len(data) <= 1:
+                return
+            mid = len(data) // 2
+            left_data = data[:mid]
+            right_data = data[mid:]
+            merge_sort(left_data)
+            merge_sort(right_data)
+            left_index = 0
+            right_index = 0
+            data_index = 0
+            while left_index < len(left_data) and right_index < len(right_data):
+                if left_data[left_index] < right_data[right_index]:
+                    data[data_index] = left_data[left_index]
+                    left_index += 1
+                else:
+                    data[data_index] = right_data[right_index]
+                    right_index += 1
+                data_index += 1
+            if left_index < len(left_data):
+                del data[data_index:]
+                data += left_data[left_index:]
+            elif right_index < len(right_data):
+                del data[data_index:]
+                data += right_data[right_index:]
+
+        if __name__ == '__main__':
+            data = [10, 9, 8, 7, 6]
+            merge_sort(data)
+            print(data)
+
+        Output:
+
+            [6, 7, 8, 9, 10]

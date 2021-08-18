@@ -1,0 +1,80 @@
+
+LinkedHashSet  --> child class of HashSet
+
+    it came in 1.4 v
+
+-------
+
+Difference between LinkedHashSet and HashSet
+
+    I want to represent a group of individual objects where:
+
+            duplicate keys are not allowed
+
+            insertion order 'must be' preserved
+
+        then we should go for LinkedHashSet
+
+    In HashSet, insertion order is not preserved
+
+-------
+
+HashSet:
+
+    Underlying data structure for HashSet is 'Hashtable'
+
+    Insertion order not preserved
+
+    Introduced in 1.2 v
+
+
+LinkedHashSet:
+
+    Underlying data structure for LinkedHashSet is
+        'Hashtable' + 'LinkedList'
+
+    Insertion order is preserved
+
+    Introduced in 1.4 v
+
+-------
+
+import java.util.*;
+
+class HashSetDemo {
+    public static void main(String[] args) {
+        LinkedHashSet h =  new LinkedHashSet();
+        h.add("B");
+        h.add("C");
+        h.add("D");
+        h.add(null);
+        h.add(10);
+        System.out.println(h.add("Z"));  // false
+        System.out.println(h);  // [B, C, D, null, 10]
+    }
+}
+
+-------
+
+Where we can use LinkedHashSet concept properly:
+
+    In general we have two types of Memories:
+
+        Primary Memory  --> RAM
+
+            it is very faster
+
+        Secondary Memory  --> HDD
+
+            it is not very faster
+
+        therefore, to balance that performance difference between RAM and HDD in the middle we've
+            cache memory
+
+            in the cache memory:
+
+                    duplicates are not allowed
+
+                    order is important
+
+                so that the repeated results we are going to keep inside cache

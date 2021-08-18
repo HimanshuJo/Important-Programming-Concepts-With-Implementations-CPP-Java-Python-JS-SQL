@@ -1,0 +1,35 @@
+
+Long parseUnsignedLong():
+
+	The parseUnsignedLong() method of Java Long class is used to parse the Char Sequence argument in the form of
+		signed long in the specified radix which begins from the specified 
+		beginIndex and extending till endIndex-1.
+
+	Syntax:
+
+	    public static long parseUnsignedLong(CharSequence s, 
+	    										int beginIndex, 
+	    										int endIndex, 
+	    										int radix) 
+			throws NumberFormatException
+
+		-------
+
+		The above method requires four parameters:
+
+		    The Char Sequence 's' which contains the long representation that needs to be parsed.
+		    The beginning index.
+		    The ending index.
+		    The radix which is used during parsing.
+
+-------
+
+The parseUnsignedLong(String s) method of Java Long class 
+	
+	is used to parse the given string argument as an unsigned decimal long. 
+
+	The characters in the string must be decimal digit except the first character which can be ASCII plus sign.
+
+	Syntax:
+
+	    public static long parseUnsignedLong(String s) throws NumberFormatException  

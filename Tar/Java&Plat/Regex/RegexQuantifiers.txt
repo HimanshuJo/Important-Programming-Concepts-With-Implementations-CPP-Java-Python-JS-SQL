@@ -1,0 +1,62 @@
+
+Regex Quantifiers specify the number of occurrences of a character
+
+    It comprises of various methods
+
+        a. X?
+
+            X occurs once or not at all
+
+        b. X+
+
+            X occurs more than one times
+
+        c. X*
+
+            X occurs zero or more times
+
+        d. X{n}
+
+            X occurs n times only
+
+        e. X{n,}
+
+            X occurs n or more times only
+
+        f. X{y, z}
+
+            X occurs at least y times but less than z times
+
+    -------
+
+    import java.util.regex.*;
+
+    public class Quant {
+
+        public static void main(String[] args) {
+
+            System.out.println(Pattern.matches("[ayz]?", "a"));  // true (a or y or z comes one time)
+
+            System.out.println(Pattern.matches("[ayz]?", "ay"));  // false (a or y or z must come one time)
+
+            System.out.println(Pattern.matches("[ayz]?", "ayz"));  // false (a or y or z must come one time)
+
+            System.out.println(Pattern.matches("[ayz]?", "aaa"));  // false (a comes more than one times)
+
+            System.out.println(Pattern.matches("[ayz]?", "ayyyyzz"));  // false (a, y and z comes more than one time)
+
+            System.out.println(Pattern.matches("[ayz]?", "annta"));  // false (a comes more than one time)
+
+            System.out.println("-------");
+
+            System.out.println(Pattern.matches("[amn]+", "amnamnv"));
+                // false (a or m or n comes more than once but v is an additional character in the strings)
+
+            System.out.println(Pattern.matches("[amn]+", "aa"));
+                // true (a or m or n comes more than once)
+
+            System.out.println(Pattern.matches("[amn]+", "aamm"));
+                // true (a or m or n comes more than once)
+        }
+    }
+

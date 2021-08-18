@@ -1,0 +1,127 @@
+
+Optional:
+
+    is a container object used to contain not-null objects.
+
+    Optional object is used to represent null with absent value.
+
+    This class has various utility methods to facilitate code to handle values
+        as ‘available’ or ‘not available’ instead of checking null values.
+
+        It is introduced in Java 8 and is similar to what Optional is in Guava.
+
+-------
+
+Class Declaration
+
+    Following is the declaration for java.util.Optional<T> class −
+
+        public final class Optional<T> extends Object
+
+-------
+
+Class Method
+
+    static <T> Optional<T> empty()
+
+        Returns an empty Optional instance.
+
+    boolean equals(Object obj)
+
+        Indicates whether some other object is "equal to" this Optional.
+
+    Optional<T> filter(Predicate<? super <T> predicate)
+
+        If a value is present and the value matches a given predicate,
+            it returns an Optional describing the value, otherwise returns an empty Optional.
+
+    <U> Optional<U> flatMap(Function<? super T,Optional<U>> mapper)
+
+        If a value is present, it applies the provided Optional-bearing mapping function to it,
+            returns that result, otherwise returns an empty Optional.
+
+    T get()
+
+        If a value is present in this Optional, returns the value, otherwise throws NoSuchElementException.
+
+    int hashCode()
+
+        Returns the hash code value of the present value, if any, or 0 (zero) if no value is present.
+
+    void ifPresent(Consumer<? super T> consumer)
+
+        If a value is present, it invokes the specified consumer with the value, otherwise does nothing.
+
+    boolean isPresent()
+
+        Returns true if there is a value present, otherwise false.
+
+    <U>Optional<U> map(Function<? super T,? extends U> mapper)
+
+        If a value is present, applies the provided mapping function to it,
+            and if the result is non-null, returns an Optional describing the result.
+
+    static <T> Optional<T> of(T value)
+
+        Returns an Optional with the specified present non-null value.
+
+    static <T> Optional<T> ofNullable(T value)
+
+        Returns an Optional describing the specified value, if non-null, otherwise returns an empty Optional.
+
+    T orElse(T other)
+
+        Returns the value if present, otherwise returns other.
+
+    T orElseGet(Supplier<? extends T> other)
+
+        Returns the value if present, otherwise invokes other and returns the result of that invocation.
+
+    <X extends Throwable> T orElseThrow(Supplier<? extends X> exceptionSupplier)
+
+        Returns the contained value, if present, otherwise throws an exception to be created by the provided supplier.
+
+    String toString()
+
+        Returns a non-empty string representation of this Optional suitable for debugging.
+
+-------
+
+import java.util.Optional;
+
+public class Java8Tester {
+
+   public static void main(String args[]) {
+      Java8Tester java8Tester = new Java8Tester();
+      Integer value1 = null;
+      Integer value2 = new Integer(10);
+
+      //Optional.ofNullable - allows passed parameter to be null.
+
+      Optional<Integer> a = Optional.ofNullable(value1);
+
+      //Optional.of - throws NullPointerException if passed parameter is null
+
+      Optional<Integer> b = Optional.of(value2);
+
+      System.out.println(java8Tester.sum(a,b));
+   }
+
+   public Integer sum(Optional<Integer> a, Optional<Integer> b) {
+
+      //Optional.isPresent - checks the value is present or not
+
+      System.out.println("First parameter is present: " + a.isPresent());
+      System.out.println("Second parameter is present: " + b.isPresent());
+
+      //Optional.orElse - returns the value if present otherwise returns
+      //the default value passed.
+
+      Integer value1 = a.orElse(new Integer(0));
+
+      //Optional.get - gets the value, value should be present
+
+      Integer value2 = b.get();
+      return value1 + value2;
+   }
+}

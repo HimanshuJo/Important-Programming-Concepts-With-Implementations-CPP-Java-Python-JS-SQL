@@ -1,0 +1,318 @@
+
+Primitive Arrays:
+
+  Remove an element at a particular index in a primitive array:
+
+      public int [] removeTheElement(int [] arr, int index) {
+
+        if (arr == mull || index < 0 || index >= arr.length) {
+          return arr;
+        }
+
+        int [] anotherArray = new int[arr.length - 1];
+        System.arrayCopy(arr, 0, anotherArray, 0, index);
+        System.arrayCopy(arr, index + 1, anotherArray, index, arr.length - index - 1);
+        return anotherArray;
+      }
+    }
+
+  -------
+
+  Get individual rows in a 2 D array:
+
+      int[][] accounts = {{1, 5}, {7, 3}, {3, 5}};
+
+      for (int [] account: accounts) {
+        int sum = IntStream.of(account).sum();
+      }
+
+  -------
+
+  Find the sum of an array:
+
+      int [] arr = {1, 2, 3, 4, 5, 6};
+
+      int sum = IntStream.Of(arr).sum();
+
+  -------
+
+  Find max element in a primitive array:
+
+    Ist Solution:
+
+      import java.util.Arrays;
+      import java.util.Collections;
+      import org.apache.commons.lang.ArrayUtils;
+
+      int [] arr = {129, 2, 4433, 23, 123};
+
+      List arr_list = Arrays.asList(ArrayUtils.toObject(arr));
+
+      Collections.max(arr_list);
+
+    -------
+
+    IInd Solution:
+
+      import java.util.Arrays;
+      import java.util.IntSummaryStatistics;
+
+      int [] arr = {129, 2, 4433, 23, 123};
+
+      IntSummaryStatistics arr_stat = Arrays.stream(arr).summaryStatistics();
+
+      int min = arr_stat.getMin();
+      int max = arr_stat.getMax();
+
+    -------
+
+    Reverse an input string of array of characters:
+
+      class Solution {
+          public void reverseString(char[] s) {
+              int left = 0;
+              int right = s.length - 1;
+              while (left < right) {
+                  char tmp = s[left];
+                  s[left++] = s[right];
+                  s[right--] = tmp;
+              }
+          }
+      }
+
+-------
+
+Time:
+
+  Java.lang.System.nanoTime():
+
+    it returns the current value of the most precise available system timer, in nano seconds
+
+    Program:
+
+      import java.lang.*;
+
+      public class SystemDemo {
+
+         public static void main(String[] args) {
+
+            long startTime = System.nanoTime();
+            my_static_method();
+            long stopTime = System.nanoTime();
+            nano_time = stopTime - startTime
+
+            // converting nano time to seconds
+            double seconds = (double) nano_time / 1_000_000_000.0;
+
+            System.out.println("Execution time of this method in nanoseconds is: " + nano_time);
+            System.out.println("Execution time of this method in seconds is: " + seconds);
+
+            // returns the current value of the system timer, in milliseconds
+            System.out.print("time in milliseconds = ");
+            System.out.println(System.currentTimeMillis());
+         }
+      }
+
+-------
+
+Strings:
+
+  Remove specific char from string:
+
+      NewString = OldString.replaceAll("char", "");
+
+  -------
+
+  Convert String to Char Array Using Java 8 Stream:
+
+      String techioStr = "TechIO Playground";
+
+      techioStr.chars()  // IntStream
+           .mapToObj(x -> (char) x)  //Stream<Character>
+          .forEach(System.out::println);
+
+  -------
+
+  Convert String to Char Array using .toCharArray()
+
+      String techioStr = "TechIO Playground";
+
+      char[] techioCharArray = techioStr.toCharArray();
+
+      for (char techioChar : techioCharArray) {
+
+        System.out.println(techioChar);
+
+      }
+
+  -------
+
+  How to count frequency of characters in a string?
+
+    Sol 1:
+
+      HashMap<Character, Integer> map = new HashMap<Character, Integer>();
+
+      String s = "aasjjikkk";
+
+      for (int i = 0; i < s.length(); i++) {
+        char c = s.charAt(i);
+        Integer val = map.get(c);
+        if (val != null) {
+            map.put(c, new Integer(val + 1));
+        }
+        else {
+           map.put(c, 1);
+        }
+      }
+
+    -------
+
+    Sol 2:
+
+      Map<Character, Integer> map = new HashMap<>();
+
+      for (char ch : input.toCharArray())
+        map.put(ch, map.getOrDefault(ch, 0) + 1);
+
+  -------
+
+  javap java.lang.String // to print more info about String class
+
+  javap java.lang.StringBuffer
+
+  -------
+
+  Java String compareTo();
+
+    The java string compareTo() method compares the given string with current string lexicographically.
+
+      It returns positive number, negative number or 0.
+
+    It compares strings on the basis of Unicode value of each character in the strings.
+
+    If first string is lexicographically greater than second string,
+      it returns positive number (difference of character value).
+
+    If first string is less than second string lexicographically, it returns negative number
+      and if first string is lexicographically equal to second string, it returns 0.
+
+-------
+
+The java.lang.Math.abs() returns the absolute value of a given argument.
+
+  If the argument is not negative, the argument is returned.
+
+  If the argument is negative, the negation of the argument is returned.
+
+-------
+
+Math pow() method:
+
+  The java.lang.Math.pow() is used to calculate a number raise to the power of some other number.
+
+  This function accepts two parameters and returns the value of first parameter raised to the second parameter.
+
+  There are some special cases as listed below:
+
+    If the second parameter is positive or negative zero then the result will be 1.0.
+    If the second parameter is 1.0 then the result will be same as that of the first parameter.
+    If the second parameter is NaN then the result will also be NaN.
+
+  -------
+
+  import java.lang.Math;
+
+  class Gfg {
+
+      public static void main(String args[])
+      {
+          double a = 30;
+          double b = 2;
+
+          System.out.println(Math.pow(a, b));
+
+          a = 3;
+          b = 4;
+
+          System.out.println(Math.pow(a, b));
+
+          a = 2;
+          b = 6;
+
+          System.out.println(Math.pow(a, b));
+      }
+  }
+
+  Output:
+
+    900.0
+    81.0
+    64.0
+
+-------
+
+Map:
+
+  Create a dictionary in Java:
+
+    Map<String, String> dictionary = new HashMap<String, String>();
+
+-------
+
+Stack:
+
+  Stack size():
+
+    import java.util.*;
+
+    public class StackDemo {
+
+        public static void main(String args[])
+        {
+            // Creating an empty Stack
+            Stack<String> stack = new Stack<String>();
+
+            // Use add() method to add elements into the Stack
+            stack.add("Welcome");
+            stack.add("To");
+            stack.add("Geeks");
+            stack.add("4");
+            stack.add("Geeks");
+
+            // Displaying the Stack
+            System.out.println("Stack: " + stack);
+
+            // Displaying the size of Stack
+            System.out.println("The size is: " + stack.size());
+        }
+    }
+
+  -------
+
+  Remove an element from stack in Java:
+
+    An element can be removed from a stack using the java.util.Stack.pop() method.
+
+    This method requires no parameters and it removes the element at the top of the stack.
+
+    It returns the element that was removed.
+
+    import java.util.Stack;
+
+    public class Demo {
+       public static void main (String args[]) {
+
+          Stack stack = new Stack();
+
+          stack.push("Apple");
+          stack.push("Mango");
+          stack.push("Guava");
+          stack.push("Pear");
+          stack.push("Orange");
+
+          System.out.println("The stack elements are: " + stack);
+          System.out.println("The element that was popped is: " + stack.pop());
+          System.out.println("The stack elements are: " + stack);
+       }
+    }

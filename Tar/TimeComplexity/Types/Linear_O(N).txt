@@ -1,0 +1,13 @@
+
+Linear Time — O(n)
+
+    An algorithm is said to have a linear time complexity when the running time
+        increases at most linearly with the size of the input data.
+
+        This is the best possible time complexity when the algorithm must examine
+            all values in the input data.
+
+    For example:
+
+        for value in data:
+            print(value)

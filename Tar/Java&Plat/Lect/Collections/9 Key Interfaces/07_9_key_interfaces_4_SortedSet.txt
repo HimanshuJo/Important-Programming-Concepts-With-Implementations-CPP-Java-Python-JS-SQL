@@ -1,0 +1,22 @@
+
+4. SortedSet (I):
+
+    It is a child interface of Set
+
+    Sometimes my requirement is, I want to represent a number of individual objects where:
+
+            duplicates are not allowed
+
+            all objects must be inserted according to some sorting order
+
+        then we should go for SortedSet
+
+-------
+
+Versions:
+
+    Collection (I)  --> 1.2 v
+
+        Set (I)  --> 1.2 v
+
+            SortedSet (I)  --> 1.2 v

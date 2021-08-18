@@ -1,0 +1,105 @@
+
+Comparison table of Set (I) implemented classes:
+
+    Property  --> Underlying data structure
+
+        HashSet
+
+            HashTable
+
+        LinkedHashSet
+
+            Hybrid data structure (Hashtable + LinkedList)
+
+        TreeSet
+
+            BalancedTree
+
+    -------
+
+    Property  --> Insertion order
+
+        HashSet
+
+            Not preserved
+
+                here all elements will be inserted according to hashcode of the objects
+
+        LinkedHashSet
+
+            Preserved
+
+        TreeSet
+
+            Not applicable (no such terminology)
+
+    -------
+
+    Property  --> Sorting order
+
+        HashSet
+
+            Not applicable (no such terminology)
+
+        LinkedHashSet
+
+            Not applicable (no such terminology)
+
+        TreeSet
+
+            Applicable
+
+    -------
+
+    Property  --> Heterogeneous objects
+
+        HashSet
+
+            Allowed
+
+        LinkedHashSet
+
+            Allowed
+
+        TreeSet
+
+            Not allowed
+
+                However, in one special case it is allowed
+
+                    if we're defining our own sorting by Comparator, then
+                        heterogeneous objects are allowed
+
+    -------
+
+    Property  --> Duplicate Objects
+
+        HashSet
+
+            Not Allowed
+
+        LinkedHashSet
+
+            Not Allowed
+
+        TreeSet
+
+            Not Allowed
+
+    -------
+
+    Property  --> Null Acceptance
+
+        HashSet
+
+            Allowed, but only once
+
+        LinkedHashSet
+
+            Allowed, but only once
+
+        TreeSet
+
+            Allowed, but only for empty TreeSet
+                as first element null is allowed and in all
+                other cases we'll get NullPointerException

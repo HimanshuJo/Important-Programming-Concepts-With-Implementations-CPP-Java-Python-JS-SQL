@@ -1,0 +1,34 @@
+
+3. Set (I):
+
+        Sometimes the requirement is:
+
+            no duplicates are allowed
+
+            insertion order is not necessary to maintain
+
+        Set is a child interface of Collection only
+
+            If we want to represent a group of individual objects as a single entity, where:
+
+                duplicates are not allowed and
+
+                insertion order is not preserved
+
+        There are 2 implementation classes for Set
+
+            a. HashSet
+
+                b. LinkedHashSet (Child class of HashSet)
+
+-------
+
+Versions:
+
+    Collection (I)  --> 1.2 v
+
+        Set (I)  --> 1.2 v
+
+            HashSet  --> 1.2 v
+
+                LinkedHashSet  --> 1.4 v

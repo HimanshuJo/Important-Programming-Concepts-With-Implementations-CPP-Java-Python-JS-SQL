@@ -1,0 +1,14 @@
+
+Dependencies Required:
+
+    Spring Web
+
+    Lombok
+
+    Spring Security
+
+    Spring Data JPA
+
+    MySQL Driver
+
+    Java Mail Sender

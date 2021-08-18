@@ -1,0 +1,32 @@
+
+Quadratic Time — O(n²)
+
+    An algorithm is said to have a quadratic time complexity when it needs to
+        perform a linear time operation for each value in the input data,
+
+        for example:
+
+            for x in data:
+                for y in data:
+                    print(x, y)
+
+    -------
+
+    Bubble sort is a great example of quadratic time complexity since for each value
+        it needs to compare to all other values in the list,
+
+        let’s see an example:
+
+            def bubble_sort(data):
+                swapped = True
+                while swapped:
+                    swapped = False
+                    for i in range(len(data)-1):
+                        if data[i] > data[i+1]:
+                            data[i], data[i+1] = data[i+1], data[i]
+                            swapped = True
+
+            if __name__ == '__main__':
+                data = [9, 1, 7, 6, 2, 8, 5, 3, 4, 0]
+                bubble_sort(data)
+                print(data)

@@ -1,0 +1,69 @@
+
+What is JDBC:
+
+    It is a technology which can be used to communicate with database from Java Application
+
+    -------
+
+    Example:
+
+        Suppose we have a java Application that wants to communicate with a database
+
+            then JDBC will act as a middle man to do the communication between the
+                java application and the database
+
+    JDBC is also a part of Java SE
+
+    It is also a specification or guidelines defined by Java vendor (Oracle Corporation)
+
+        The implementation for the same is provided by Database vendor (e.g. MySQL, Postgres etc.)
+
+            The database provided implementation is called Driver Software
+
+-------
+
+JDBC features:
+
+    1. It is a standard API
+
+        It is never going to change database to database
+
+        e.g. If we use an Oracle database, for that
+
+                Connection, Statement, ResultSet is same
+
+            If we use MySQL database, for that also
+
+                Connection, Statement, ResultSet is same
+
+        Connection, Statement, ResultSet --> these database related words are same for any database
+
+        -------
+
+        Once I write a JDBC application for one database (e.g. MySQL), I can very easily (without rewriting
+            the same application) the same application I can use for another database also
+
+        -------
+
+        Therefore JDBC is a database independent API
+
+    2. To do the communication between a Java Application and a database
+
+        driver software is required
+
+            Database vendor is responsible for providing that driver software
+
+            Most of the driver softwares or most of the drivers are developed by using Java language only
+
+        -------
+
+        So this JDBC driver has certain advantages:
+
+            a. It is database independent technology
+
+            b. It is platform independent technology
+
+    3. Basic database operations such as CRUD (Create data or insert operation, Retrieve or read also known as select
+        , Update, Delete)
+
+        can be performed very easily by using JDBC API's

@@ -1,0 +1,181 @@
+
+Variable-Length Arguments in Python with *args and **kwargs
+
+-------
+
+Introduction:
+
+    Some functions have no arguments, others have multiple
+
+    There are times we have functions with arguments we don't know about beforehand
+
+        We may have a variable number of arguments because we want to offer a flexible API to
+            other developers or we don't know the input size
+
+        With Python, we can create functions to accept any amount of arguments
+
+-------
+
+Using Many Arguments with *args:
+
+    Let's implement a function that finds the minimum value between two numbers:
+
+        def my_min(num1, num2):
+            if num1 < num2:
+                return num1
+            return num2
+
+        my_min(23, 50)
+
+    If we would like to find a minimum of 3 numbers, we can add another argument to my_min()
+        and more if-statements
+
+        If our minimum function needs to find the lowest number of any indeterminate amount, we can use a list:
+
+            def my_min(nums):
+                result = nums[0]
+                for num in nums:
+                    if num < result:
+                        result = num
+                return result
+
+            my_min(4, 5, 6, 7, 2)
+
+    -------
+
+    Variable-length arguments, varargs for short, are arguments that can take an
+        unspecified amount of input
+
+        When these are used, the programmer does not need to wrap the data in a list or an alternative sequence
+
+    -------
+
+    In Python, varargs are defined using the *args syntax
+
+        Let's reimplement our my_min() function with *args:
+
+            def my_min(*args):
+                result = args[0]
+                for num in args:
+                    if num < result:
+                        result = num
+                return result
+
+            my_min(4, 5, 6, 7, 2)
+
+        -------
+
+        Note:
+
+            args is just a name, you can name that vararg anything
+                as long as it is preceded by a single asterisk (*)
+
+            It's best practice to keep naming it args to make it immediately recognizable
+
+        Any argument that comes after *args must be a named argument -
+            an argument that's referenced by its name instead of its position
+
+        *args is internally a Tuple, which is an iterable sequence similar to lists
+
+        With *args, we can accept multiple arguments in sequence as is done in my_min()
+
+            These arguments are processed by their position
+
+            If we wanted to take multiple arguments, but reference them by their name
+
+                we can use 'kwargs'
+
+-------
+
+Using Many Named Arguments with **kwargs:
+
+    Python can accept multiple keyword arguments, better known as **kwargs
+
+    It behaves similarly to *args, but stores the arguments in a dictionary instead of tuples:
+
+        def kwarg_type_test(**kwargs):
+            print(kwargs)
+
+        kwarg_type_test(a="hi")
+        kwarg_type_test(roses="red", violets="blue")
+
+    By using a dictionary, **kwargs can preserve the names of the arguments,
+        but it would not be able to keep their position
+
+    -------
+
+    Note:
+
+        Like args, you can use any other name than kwargs
+
+            However, best practice dictates that you should consistently use kwargs
+
+    Since **kwargs is a dictionary, you can iterate over them like any other using the .items() method:
+
+        def kwargs_iterate(**kwargs):
+            for i, k in kwargs.items():
+                print(i, '=', k)
+
+        kwargs_iterate(hello='world')
+
+    -------
+
+    Keyword arguments are useful when you aren't sure if an argument is going to be available
+
+        For example, if we had a function to save a blog post to a database, we would save the information
+            like the content and the author
+
+            A blog post may have tags and categories, though those aren't always set.
+
+            We can define a function like this:
+
+                def save_blog_post(content, author, tags=[], categories=[]):
+                    pass
+
+            -------
+
+            Alternatively, we allow the function caller to pass any amount of arguments,
+                and only associate tags and categories if they're set:
+
+                def save_blog_post(content, author, **kwargs):
+                    if kwargs.get('tags'):
+                        # Save tags with post
+                        pass
+
+                    if kwargs.get('categories'):
+                        # Save categories with post
+                        pass
+
+-------
+
+Combining Varargs and Keyword Arguments:
+
+    Quite often we want to use both *args and **kwargs together, especially when writing
+        Python libraries or reusable code
+
+        Lucky for us, *args and **kwargs play nicely together, and we can use them in the following way:
+
+            def combined_varargs(*args, **kwargs):
+                print(args)
+                print(kwargs)
+
+            combined_varargs(1, 2, 3, a="hi")
+
+    -------
+
+    When mixing the positional and named arguments, positional arguments must come before named arguments
+
+        Furthermore, arguments of a fixed length come before arguments with variable length
+
+        Therefore, we get an order like this:
+
+        Known positional arguments
+            *args
+
+        Known named arguments
+            **kwargs
+
+        A function with all types of arguments can look like this:
+
+            def super_function(num1, num2, *args, callback=None, messages=[], **kwargs):
+                pass

@@ -1,0 +1,158 @@
+
+Pop:
+
+	The Java.util.ArrayDeque.pop() method in Java is used to pop an element from the deque. 
+
+	The element is popped from the top of the deque and is removed from the same.
+
+	-------
+
+	Syntax:
+
+		Array_Deque.pop()
+
+	Parameters: The method does not take any parameters.
+
+	Return Value: This method returns the element present at the front of the Deque.
+
+	Exceptions: The method throws NoSuchElementException is thrown if the deque is empty.
+
+	-------
+
+	import java.util.*;
+
+	public class ArrayDequeDemo {
+		public static void main(String args[])
+		{
+			// Creating an empty ArrayDeque
+			Deque<String> de_que = new ArrayDeque<String>();
+
+			// Use add() method to add elements
+			de_que.add("Welcome");
+			de_que.add("To");
+			de_que.add("Geeks");
+			de_que.add("For");
+			de_que.add("Geeks");
+
+			// Displaying the ArrayDeque
+			System.out.println("Initial ArrayDeque: " + de_que);
+
+			// Removing elements using pop() method
+			System.out.println("Popped element: " + de_que.pop());
+			System.out.println("Popped element: " + de_que.pop());
+
+			// Displaying the ArrayDeque after pop
+			System.out.println("Deque after operation "
+							+ de_que);
+		}
+	}
+
+	Output:
+
+		Initial ArrayDeque: [Welcome, To, Geeks, For, Geeks]
+		Popped element: Welcome
+		Popped element: To
+		Deque after operation [Geeks, For, Geeks]
+
+-------
+
+Remove:
+
+	1. Java.util.ArrayDeque.remove() 
+	
+		The Java.util.ArrayDeque.remove() method is used to remove the element present at the head of the Deque.
+
+		Syntax:
+
+			Array_Deque.remove()
+
+		Parameters: The method does not take any parameters.
+
+		Return Value: This method returns the element present at the head of the Deque.
+
+		Exceptions: The method throws NoSuchElementException is thrown if the deque is empty.
+
+		-------
+
+		import java.util.*;
+
+		public class ArrayDequeDemo {
+			public static void main(String args[])
+			{
+				// Creating an empty ArrayDeque
+				Deque<String> de_que = new ArrayDeque<String>();
+
+				// Use add() method to add elements into the Deque
+				de_que.add("Welcome");
+				de_que.add("To");
+				de_que.add("Geeks");
+				de_que.add("For");
+				de_que.add("Geeks");
+
+				// Displaying the ArrayDeque
+				System.out.println("Initial ArrayDeque: " + de_que);
+
+				// Removing elements using remove() method
+				de_que.remove();
+				de_que.remove();
+
+				// Displaying the ArrayDeque after removal
+				System.out.println("ArrayDeque after removing "
+								+ "elements: " + de_que);
+			}
+		}
+
+		Output:
+
+			Initial ArrayDeque: [Welcome, To, Geeks, For, Geeks]
+			ArrayDeque after removing elements: [Geeks, For, Geeks]
+
+	-------
+
+	2. Java.util.ArrayDeque.remove(Object)
+
+		The Java.util.ArrayDeque.remove(Object) method is used to remove a particular element from an ArrayDeque.
+
+		Syntax:
+
+			Priority_Queue.remove(Object O)
+
+		Parameters: The parameter O is of the type of ArrayDeque and specifies the element to be removed from the ArrayDeque.
+
+		Return Value: This method returns True if the specified element is present in the Deque else it returns False.
+
+		-------
+		
+		import java.util.*;
+
+		public class ArrayDequeDemo {
+			public static void main(String args[])
+			{
+				// Creating an empty ArrayDeque
+				Deque<String> de_que = new ArrayDeque<String>();
+
+				// Use add() method to add elements into the Deque
+				de_que.add("Welcome");
+				de_que.add("To");
+				de_que.add("Geeks");
+				de_que.add("For");
+				de_que.add("Geeks");
+
+				// Displaying the ArrayDeque
+				System.out.println("Initial ArrayDeque: " + de_que);
+
+				// Removing elements using remove() method
+				de_que.remove("Geeks");
+				de_que.remove("For");
+				de_que.remove("Welcome");
+
+				// Displaying the ArrayDeque after removal
+				System.out.println("ArrayDeque after removing "
+								+ "elements: " + de_que);
+			}
+		}
+
+		Output:
+
+			Initial ArrayDeque: [Welcome, To, Geeks, For, Geeks]
+			ArrayDeque after removing elements: [To, Geeks]

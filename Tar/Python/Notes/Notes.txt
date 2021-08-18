@@ -1,0 +1,538 @@
+
+Python3:
+
+    It is developed as independent language
+    Py3 and Py2 are not compatible
+
+------
+
+Py3 is not an enhanced version of Py2
+
+    There is no guaranteed compatibility between py2 and py3
+
+    Any organization who was using Python 2.x version, migrating their project to 3.x needs lots of changes.
+
+    Python 3 supports modern techniques like AI, machine learning, and data science
+
+    Python 3 is supported by a large Python developer's community. Getting support is easy.
+
+------
+
+Python REPL Tool:  # Python IDLE
+
+    Read Evaluate Print Loop  # Python shell
+
+        e.g. print("hello world")
+
+            Py shell in this case will --> read this line, evaluate this line and print the corresponding
+                output after printing, it is ready to read the next line
+
+    To exit from python shell:
+
+        exit()
+
+-------
+
+Python is a general purpose high level programming language
+
+    A general-purpose programming language is a programming language designed to be used for writing software
+        in the widest variety of application domains (a general-purpose language).
+
+        A general-purpose programming language has this status because it does not include language constructs
+            designed to be used within a specific application domain.
+
+        It is developed by Guido Van Rossam in the year 1989 while working at NRI Netherlands
+
+            However, to the public python was available on the 20th Feb. 1991
+
+-------
+
+C and Java are 'statically' typed languages
+
+Python is 'dynamically' typed programming language
+
+-------
+
+Why name Python:
+
+    There was a popular TV show in BBC --> named Monty Python's Circus 1969 - 1974
+
+-------
+
+Python has borrowed its features from different programming languages:
+
+    1. Functional programming from C
+        without a need of any class we can execute a function
+
+    2. OOP from C++
+
+    3. Scripting language features from Perl and Shell script
+
+    4. Modular programming features from Modula-3
+        here modular means program is divided into different modules
+
+    5. Python is both Procedural oriented and Object Oriented
+
+        e.g. C language is 'procedural oriented' but not 'object oriented'
+                Procedures, also known as routines, subroutines, or functions,
+                    simply contain a series of computational steps to be carried out.
+
+            Java is 'objected oriented' but not 'procedural oriented'
+                object-oriented programming is to break down a programming task into objects
+                that expose behavior (methods) and data (members or attributes) using interfaces.
+
+    6. Dynamically typed and Interpreted
+
+    7. Extensible  --> we can use other language programs in a python code
+
+    8. Embedded  --> py programs can be used (plugin) with other languages also
+
+    9. Extensive library support is there
+
+    -------
+
+    Most of its syntax borrowed from C language and ABC language
+
+    It is also an interpreted language; we don't need to compile the code we just execute it.
+
+    -------
+
+    We can use python in number of application:
+
+        1. Desktop Applications
+        2. Web Applications
+        3. Database Applications
+        4. Networking Applications
+        5. Games
+        5. Data Analysis
+        6. Machine Learning
+        7. To developed AI applications
+        8. For IOT applications
+
+-------
+
+Cons of Python:
+
+    1. Performance is not very good as it is an interpreted programming language
+        Interpreted programming language can see just one line at a time
+
+    2. Mobile applications not frequently developed using python
+
+-------
+
+Standard flavors of Python:
+
+    1. CPython  --> can be used to work with C language applications
+    2. Jython or JPython  --> can be used with Java applications
+    3. IronPython  --> developed to work with Microsoft C# applications
+    4. Pypy  --> (Inside PVM (Python Virtual Machine) JIT compiler is there)
+                 therefore better performance than normal python version
+    5. RubyPython  --> to work with ruby based applications
+    6. AnacondaPython  --> to handle big data
+    7. Stackless  --> python for concurrency
+
+-------
+
+Python versions:
+
+    Python 1.0 introduced in Jan 1994  --> almost gone
+    Python 2.0 introduced in October 2000
+    Python 3.0 introduced in December 2008
+
+    As a general software rule:
+        any new version should provide support for old version programs
+
+    However, in python there is no such support for Backward compatibility
+        e.g. long data type is available in python 2 but not in python 3
+
+-------
+
+Identifiers:
+
+    How to identify different people --> with the help of name
+
+    Similarly 'name' in python program is called identifier
+        It may be a:
+            variable name,
+            class name or
+            method name
+
+        e.g. x = 10  # here 'x' is the identifier
+            def f1():  # name of the function is 'f1'
+                pass
+            class Test(Exception):  # here 'Test' class is the child class of 'Exception'
+
+    -------
+
+    To give a (good and valid) name to our child we follow certain rules and regulations
+        Similarly, in python names also we have to follow certain rules and regulations
+
+    Rules to define python identifier:
+
+        1. An Identifier can include:
+            a. Alphabet symbols (both upper case and lower case)
+            b. Digits (0-9)
+            c. Underscore (_)  # if an identifier starts with an '_' it indicates it is private
+                               # if an identifier starts with an '__' it is strongly private
+                               # if an identifier starts with an '__' then 'someName' and ends with '__'
+                                        e.g. __main__  --> language specific identifier
+                                            magic methods and the overloaded operators
+            Symbols like '$' are not allowed because python is implemented internally in that style
+
+        2. Identifier should not starts with digits
+
+        3. Python identifiers are case-sensitive
+            Python itself is a case sensitive language
+            therefore total = 10  # valid
+                      TOTAL = 20  # valid
+
+        4. Keywords can't be used as a identifier (e.g. if, def etc.)
+
+        5. How many symbols and characters are allowed in a python identifier:
+            32 or 64, 64 or 128, 128 or 256
+
+            There is no length limit for a python identifier
+
+-------
+
+Python 'collections' --> High-performance container datatypes
+
+    This module implements specialized container datatypes providing alternatives to python's
+        general built-in containers
+
+            dict, list, set and tuple
+
+    1. namedtuple ()
+
+        factory function for creating tuple subclasses with named fields
+
+            Named tuples assign meaning to each position in a tuple and allow for more readable,
+                self-documenting code.
+
+            They can be used wherever regular tuples are used, and they add the ability to access
+                fields by name instead of position index.
+
+-------
+
+inside 'test.txt'
+
+    import os
+
+    print(__file__)  # to print the name of the file
+
+    print(os.path.abspath(__file__))  # os contain a path sub-module named path, and it contains a abspath() method
+                                      # print the absolute path of file
+
+    print(os.path.dirname(os.path.abspath(__file__)))  # print the directory associated of the file whose
+                                                            abs path is also known
+
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+    TEMPLATE_DIR = os.path.join(BASE_DIR, templates)  # Join BASE_DIR with templates
+
+-------
+
+Unsigned Integers:
+
+    Unsigned Integers (often called "uints") are just like integers (whole numbers) but have the property
+        that they don't have a + or - sign associated with them.
+
+    Thus they are always non-negative (zero or positive).
+
+    We use uint's when we know the value we are counting will always be non-negative.
+
+        For example, if we are counting the number of players in a game, we could use a uint because
+            there will always be 0 or more players.
+
+-------
+
+What does if __name__ == “__main__”: do
+
+    Whenever the Python interpreter reads a source file, it does two things:
+
+        it sets a few special variables like __name__, and then
+
+        it executes all of the code found in the file.
+
+    -------
+
+    Let's see how this works:
+
+        # Suppose this is foo.py.
+
+        print("before import")
+        import math
+
+        print("before functionA")
+        def functionA():
+            print("Function A")
+
+        print("before functionB")
+        def functionB():
+            print("Function B {}".format(math.sqrt(100)))
+
+        print("before __name__ guard")
+        if __name__ == '__main__':
+            functionA()
+            functionB()
+        print("after __name__ guard")
+
+    -------
+
+    Special Variables
+
+        When the Python interpeter reads a source file, it first defines a few special variables.
+
+            In this case, we care about the __name__ variable.
+
+    -------
+
+    When your Module is the Main Program
+
+        If you are running your module (the source file) as the main program, e.g.
+
+            python foo.py
+
+        the interpreter will assign the hard-coded string "__main__" to the __name__ variable, i.e.
+
+        # It's as if the interpreter inserts this at the top of your module when run as the main program.
+
+            __name__ = "__main__"
+
+    -------
+
+    When your Module is imported by another
+
+        On the other hand, suppose some other module is the main program and it imports your module.
+
+            This means there's a statement like this in the main program, or in some other module
+                the main program imports
+
+        # Suppose this is in some other main program.
+
+            import foo
+
+        The interpreter will search for your foo.py file (along with searching for a few other variants),
+            and prior to executing that module, it will assign the name "foo" from the import statement
+            to the __name__ variable, i.e.
+
+        # It's as if the interpreter inserts this at the top of your module when it's imported from another module
+
+            __name__ = "foo"
+
+    -------
+
+    Executing the Module's Code
+
+        After the special variables are set up, the interpreter executes all the code in the module,
+            one statement at a time.
+
+        Always
+
+            It prints the string "before import" (without quotes).
+
+            It loads the math module and assigns it to a variable called math.
+
+                This is equivalent to replacing import math with the following
+                    (note that __import__ is a low-level function in Python that takes a string and
+                    triggers the actual import):
+
+            # Find and load a module given its string name, "math",
+            # then assign it to a local variable called math.
+
+                math = __import__("math")
+
+            It prints the string "before functionA".
+
+            It executes the def block, creating a function object, then assigning that function object to a
+                variable called functionA.
+
+            It prints the string "before functionB".
+
+            It executes the second def block, creating another function object, then assigning it to a
+                variable called functionB.
+
+            It prints the string "before __name__ guard".
+
+        Only when your module is the Main Program
+
+            If your module is the main program, then it will see that __name__ was indeed set to "__main__"
+                and it calls the two functions, printing the strings "Function A" and "Function B 10.0".
+
+        Only When Your Module Is Imported by Another
+
+            (instead) If your module is not the main program but was imported by another one,
+                then __name__ will be "foo", not "__main__", and it'll skip the body of the if statement.
+
+        Always
+
+            It will print the string "after __name__ guard" in both situations.
+
+    -------
+
+    Why Does It Work This Way?
+
+        Well, sometimes you want to write a .py file that can be both used by other programs and/or modules
+            as a module, and can also be run as the main program itself.
+
+            Examples:
+
+                Your module is a library, but you want to have a script mode where it runs some unit
+                    tests or a demo.
+
+                Your module is only used as a main program, but it has some unit tests, and the testing framework
+                    works by importing .py files like your script and running special test functions.
+
+                    You don't want it to try running the script just because it's importing the module.
+
+                Your module is mostly used as a main program, but it also provides a programmer-friendly API
+                    for advanced users.
+
+                Beyond those examples, it's elegant that running a script in Python is just setting up a
+                    few magic variables and importing the script.
+
+                    "Running" the script is a side effect of importing the script's module.
+
+-------
+
+pprint — Data pretty printer
+
+    The pprint module provides a capability to “pretty-print” arbitrary Python data structures in a form
+        which can be used as input to the interpreter.
+
+    If the formatted structures include objects which are not fundamental Python types, the representation
+        may not be loadable.
+
+    This may be the case if objects such as files, sockets or classes are included, as well as many other
+        objects which are not representable as Python literals.
+
+    The formatted representation keeps objects on a single line if it can, and breaks them onto multiple
+        lines if they don’t fit within the allowed width. Construct PrettyPrinter objects explicitly
+        if you need to adjust the width constraint.
+
+-------
+
+Python's main libraries
+
+Some important libraries:
+
+    numpy : numerical processing (inspired by Matlab)
+
+    scipy: scientific computing in general, scipy.stats in particular for stochastic and statistic functions
+
+    matplotlib : the plotting library for Python
+
+    Pandas might also be worth a look if you are interested in processing data
+
+-------
+
+Difference between == and is operator in Python:
+
+    The '=='' operator compares the values of both the operands and checks for value equality.
+
+    Whereas 'is' operator checks whether both the operands refer to the same object or not.
+
+    list1 = []
+    list2 = []
+    list3=list1
+
+    if (list1 == list2):
+        print("True")
+    else:
+        print("False")
+
+    if (list1 is list2):
+        print("True")
+    else:
+        print("False")
+
+    if (list1 is list3):
+        print("True")
+    else:
+        print("False")
+
+    list3 = list3 + list2
+
+    if (list1 is list3):
+        print("True")
+    else:
+        print("False")
+
+    -------
+
+    Output:
+
+        True  # Output of the first if condition is “True” as both list1 and list2 are empty lists.
+
+        False # Second if condition shows “False” because two empty lists are at different memory locations.
+                Hence list1 and list2 refer to different objects.
+                We can check it with id() function in python which returns the “identity” of an object.
+
+        True  # Output of the third if condition is “True” as both list1 and list3 are pointing to the same object.
+
+        False  # Output of the fourth if condition is “False” because concatenation of two list is
+                always produce a new list.
+
+-------
+
+Using defaultdict in python:
+
+    Dictionaries are a convenient way to store data for later retrieval by name (key).
+
+    Keys must be unique, immutable objects, and are typically strings.
+
+    The values in a dictionary can be anything.
+
+        For many applications the values are simple types such as integers and strings.
+
+    -------
+
+    It gets more interesting when the values in a dictionary are collections (lists, dicts, etc.)
+
+    In this case, the value (an empty list or dict) must be initialized the first time a given key is used.
+
+    While this is relatively easy to do manually, the defaultdict type automates and simplifies
+        these kinds of operations.
+
+    A defaultdict works exactly like a normal dict, but it is initialized with a
+        function (“default factory”) that takes no arguments and provides the default value for a
+        nonexistent key.
+
+    A defaultdict will never raise a KeyError.
+
+        Any key that does not exist gets the value returned by the default factory.
+
+    -------
+
+    >>> from collections import defaultdict
+
+    >>> s = 'mississippi'
+    >>> d = defaultdict(int)
+    >>> for k in s:
+    ...     d[k] += 1
+    ...
+    >>> d.items()
+    [('i', 4), ('p', 2), ('s', 4), ('m', 1)]
+
+    >>> s = [('yellow', 1), ('blue', 2), ('yellow', 3), ('blue', 4), ('red', 1)]
+    >>> d = defaultdict(list)
+    >>> for k, v in s:
+    ...     d[k].append(v)
+    ...
+    >>> d.items()
+    [('blue', [2, 4]), ('red', [1]), ('yellow', [1, 3])]
+
+    -------
+
+    defaultdict means that if a key is not found in the dictionary, then instead of a
+        KeyError being thrown, a new entry is created.
+
+        The type of this new entry is given by the argument of defaultdict.
+
+    For example:
+
+        somedict = {}
+        print(somedict[3]) # KeyError
+
+        someddict = defaultdict(int)
+        print(someddict[3]) # print int(), thus 0

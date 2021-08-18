@@ -1,0 +1,75 @@
+
+What is the need of Collections framework:
+
+    Firstly what is the biggest advantage of an Array:
+
+        with just a single variable we can represent number of values
+
+            e.g. int [] Student s = new Student[1000];
+
+                 s[0] = new Student();
+                 s[1] = new Customer();  // invalid, compile time error (incompatible types)
+
+    -------
+
+    But there are also number of problems with the arrays:
+
+        1. Arrays are fixed in size
+
+            suppose we allocated 1000 memory allocations and in the run time used only 2, then the rest 998
+                memory locations are waste
+
+        2. Arrays can hold only homogeneous data elements
+
+            s[0] =  new Student();
+            s[1] = new Customer();  // invalid, compile time error (incompatible types)
+
+            However, we can solve this problem by using Object type arrays
+
+            Object[] a = new Object[1000];
+            a[0] =  new Student();  // valid, Student is of object type
+            a[1] =  new Customer();  // valid, Customer is also of object type
+
+        3. Arrays concept is not based on some standard data structure
+
+            but every collection class is implemented based on some standard data structure
+
+            therefore, underlying data structure is not there for arrays, so ready-made method support
+                we can't expect from arrays
+
+                we need to write code for searching, sorting, replacing elements etc.
+
+            -------
+
+            However, if we consider collections every collection class is implemented based on some standard
+                data structure
+
+                for every requirement, ready-made method support we can expect
+
+                e.g.
+
+                    Suppose I want to insert all elements in some sorting order
+
+                        so in this case we will consider TreeSet
+
+                            TreeSet automatically insert elements in some sorting order
+
+                    -------
+
+                    Suppose I want to search whether a particular element is there or not
+
+                        Collection already contain one method 'contains()'
+
+                            so for every requirement ready-made method support we can expect in Collections
+
+-------
+
+Advantages of Collections:
+
+    1. Collections are growable in nature
+
+    2. Collections can hold both homogeneous and heterogeneous data type
+
+    3. Every collection class is implemented based on some standard data structure
+
+        read-made method support we can expect for every requirement

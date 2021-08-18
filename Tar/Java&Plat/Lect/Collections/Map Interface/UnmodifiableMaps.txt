@@ -1,0 +1,46 @@
+
+Unmodifiable Maps:
+
+    The
+
+        Map.of,
+        Map.ofEntries, and
+        Map.copyOf
+
+    static factory methods provide a convenient way to create unmodifiable maps.
+
+    The Map instances created by these methods have the following characteristics:
+
+        1. They are unmodifiable.
+
+            Keys and values cannot be added, removed, or updated.
+
+            Calling any mutator method on the Map will always cause UnsupportedOperationException
+                to be thrown.
+
+            However, if the contained keys or values are themselves mutable, this may cause the Map to
+                behave inconsistently or its contents to appear to change.
+
+        2. They disallow null keys and values.
+
+            Attempts to create them with null keys or values result in NullPointerException.
+
+        3. They are serializable if all keys and values are serializable.
+
+        4. They reject duplicate keys at creation time.
+
+            Duplicate keys passed to a static factory method result in IllegalArgumentException.
+
+        5. The iteration order of mappings is unspecified and is subject to change.
+
+        6. They are value-based.
+
+            Callers should make no assumptions about the identity of the returned instances.
+
+            Factories are free to create new instances or reuse existing ones.
+
+            Therefore, identity-sensitive operations on these instances
+                (reference equality (==), identity hash code, and synchronization)
+                are unreliable and should be avoided.
+
+        7. They are serialized

@@ -1,0 +1,23 @@
+
+The LinkedHashSet class extends HashSet and adds no members of its own
+
+    It is a generic class that has this declaration:
+
+        class LinkedHashSet<E>
+
+            Here, E specifies the type of objects that the set will hold
+
+    Its constructors parallel those in HashSet
+
+-------
+
+LinkedHashSet maintains a linked list of the entries in the set, in the order
+    in which they were inserted
+
+    This allows insertion-order iteration over the set
+
+    That is, when cycling through a LinkedHashSet using an iterator, the elements
+        will be returned in the order in which they were inserted.
+
+    This is also the order in which they are contained in the string returned by toString()
+        when called on a 'LinkedHashSet' object

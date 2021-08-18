@@ -1,0 +1,92 @@
+
+S1: (Create packages inside com.example.demo  --> api, service, dao, model)
+
+    "We create a entity inside 'model'
+
+    'dao' will get things from model
+
+    'service' will get things from dao
+
+    'api' will get things from service"
+
+    -------
+
+    1. Create a model (what you want to store in the database) with some fields and variables
+
+    2. Define an actual Interface that will allow us to have any implementation for our database
+
+        Inside 'dao'
+
+        This will be the actual interface where we are going to define the operations allowed or the
+            actual contract for anyone that wishes to implement this interface
+
+            We can then use 'dependency injection' to switch between implementations with just
+                few lines of code
+
+        for example:
+
+            for a database, a method should be there to 'insert' an entity into the actual database
+
+    3. Define a class (inside 'dao') that will implement the interface
+
+        Implement required methods
+
+    4. Define the actual service (basically a view or a business login)
+
+        create appropriate class(e.g. how to insert a new person)
+
+    5. Implement the actual 'api'
+
+        appropriate controllers
+
+    4. Make the appropriate classes 'beans'
+
+        we have to tell spring that a certain class (class that is implementing the actual 'dao' interface class)
+            needs to be instantiated as a bean so that we can inject it in other classes
+
+        using annotation @Repository or @Component
+
+            but @Repository makes it obvious that this class is served as a repository
+
+    5. Configure the actual service
+
+        use annotation @Service
+
+        use annotation @Autowired in the appropriate constructor
+
+            use annotation @Qualifier to distinguish between different implementation of the interface
+
+    6. Configure actual api
+
+        in the class inside api package
+
+            we can define http methods (get, post, delete, put)
+
+                suppose we have different clients (Android, React etc.)
+
+                    they have to issue some request to our backend
+
+            in the class we have to specify that certain method will be served as 'post' or 'put' or 'get or 'delete
+
+            or we have to make our class available as a 'rest controller'
+
+            therefore we have to use special annotation @RestController
+        use annotation @Autowired in the appropriate constructor
+
+-------
+
+Dependency Injection:
+
+    Suppose we want to have postgres implementation
+
+-------
+
+How to spin up the actual jars
+
+    These jars will be deployed to our server and have our application up and running
+
+-------
+
+Inside resources folder:
+
+    application.properties this is the file where we define the connection or details to our database

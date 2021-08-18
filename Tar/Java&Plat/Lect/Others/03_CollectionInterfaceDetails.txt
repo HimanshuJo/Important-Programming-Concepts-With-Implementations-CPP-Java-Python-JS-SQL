@@ -1,0 +1,68 @@
+
+1. Collection (Interface)
+
+    If we want to represent a group of individual objects as a single entity,
+        then we should go for collection
+
+    In general, Collection is the root interface of Collection Framework
+
+    Collection interface defines the most common methods, which are applicable for any collection object
+
+    -------
+
+    What methods are there inside Collection interface:
+
+        add(Object o)  // adding an object
+
+        addAll(Collection c)  // adding a group of objects
+
+        remove(Object o)  // remove a particular object
+
+        removeAll(Collection c)  // remove a group of objects
+
+        clear()  // remove all objects from the invoking collection
+
+        retainAll(Collection c)  // except some objects, remove all other objects
+
+        isEmpty()  // check if the invoking collection is empty or not
+
+        size()  // return number of elements held in the invoking collection
+
+        contains(Object o)  // check if a particular object is there in the invoking collection
+
+        containsAll(Object o)  // check if a group of objects is present in the invoking collection
+
+        Object [] a = c.toArray();  // convert the invoking collection to array
+
+        Iterator = iterator();  // to get all the objects present in a collection one by one
+
+-------
+
+boolean add(Object o)
+
+boolean addAll(Collection c)
+
+boolean remove(Object o)
+
+boolean removeAll(Collection c)
+
+boolean retainAll(Collection c)  // to remove all objects except those present in c
+
+void clear()
+
+boolean contains(Object o)
+
+boolean containsAll(Collection c)
+
+boolean isEmpty()
+
+int size();
+
+Object[] toArray();
+
+Iterator iterator()
+
+-------
+
+Note: Collection interface doesn't contain any method to retrieve objects
+        there is no concrete class which implements collection class directly

@@ -1,0 +1,27 @@
+
+Constant Time — O(1):
+
+    An algorithm is said to have a constant time when it is not dependent on the input data (n).
+
+    No matter the size of the input data, the running time will always be the same.
+
+    For example:
+
+            if a > b:
+                return True
+            else:
+                return False
+
+    -------
+
+    Now, let’s take a look at the function get_first which returns the first element of a list:
+
+        def get_first(data):
+            return data[0]
+
+        if __name__ == '__main__':
+            data = [1, 2, 9, 8, 3, 4, 7, 6, 5]
+            print(get_first(data))
+
+    Independently of the input data size, it will always have the same running time since
+        it only gets the first value from the list.

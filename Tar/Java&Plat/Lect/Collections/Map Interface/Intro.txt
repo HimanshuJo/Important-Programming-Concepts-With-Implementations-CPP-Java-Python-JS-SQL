@@ -1,0 +1,131 @@
+
+Module:
+
+    java.base
+
+Package:
+
+    java.util
+
+-------
+
+All known Subinterfaces:
+
+    Bindings
+
+    ConcurrentMap<K, V>
+
+    ConcurrentNavigableMap<K, V>
+
+    NavigableMap<K, V>
+
+    SortedMap<K, V>
+
+-------
+
+All known Implementing Classes:
+
+    1. AbstractMap
+
+    2. Attributes
+
+    3. AuthProvider
+
+    4. ConcurrentHashMap
+
+    5. ConcurrentSkipListMap
+
+    6. EnumMap
+
+    7. HashMap
+
+    8. HashTable
+
+    9. Headers
+
+    10. IdentityHashMap
+
+    11. LinkedHashMap
+
+    12. PrinterStateReasons
+
+    13. Properties
+
+    14. Provider
+
+    15. RenderingHints
+
+    16. SimpleBindings
+
+    17. TabularDataSupport
+
+    18. TreeMap
+
+    19. UIDefaults
+
+    20. WeakHashMap
+
+-------
+
+public interface Map<K,​V>
+
+    This interface takes the place of the Dictionary class, which was a
+        totally abstract class rather than an interface
+
+    Note:
+
+        Great care must be exercised if mutable objects are used as map keys
+
+        The behavior of a map is not specified if the value of an object is changed in a manner
+            that affects equals comparisons while the object is a key in the map
+
+        A special case of this prohibition is that it is not permissible for a map to contain itself as a key
+
+        While it is permissible for a map to contain itself as a value, extreme caution is advised:
+            the equals and hashCode methods are no longer well defined on such a map
+
+    All general-purpose map implementation classes should provide two "standard" constructors:
+
+        a void (no arguments) constructor which creates an empty map, and
+
+        a constructor with a single argument of type Map, which creates a new map with the same
+            key-value mappings as its argument
+
+        In effect, the latter constructor allows the user to copy any map, producing an equivalent
+            map of the desired class
+
+    The "destructive" methods contained in this interface, that is, the methods that modify the
+        map on which they operate, are specified to throw 'UnsupportedOperationException' if
+        this map does not support the operation
+
+    Some map implementations have restrictions on the keys and values they may contain
+
+        For example, some implementations prohibit null keys and values, and some have
+            restrictions on the types of their keys
+
+        Attempting to insert an ineligible key or value throws an unchecked exception,
+            typically NullPointerException or ClassCastException
+
+        Attempting to query the presence of an ineligible key or value may throw an exception,
+            or it may simply return false;
+
+            some implementations will exhibit the former behavior and some will exhibit the latter
+
+    -------
+
+    Many methods in Collections Framework interfaces are defined in terms of the equals method
+
+        For example, the specification for the
+
+            containsKey(Object key) method says:
+
+                "returns true if and only if this map contains a mapping for a key k such that
+                    (key==null ? k==null : key.equals(k))."
+
+    Some map operations which perform recursive traversal of the map may fail with an exception
+        for self-referential instances where the map directly or indirectly contains itself
+
+        This includes the clone(), equals(), hashCode() and toString() methods
+
+        Implementations may optionally handle the self-referential scenario,
+            however most current implementations do not do so

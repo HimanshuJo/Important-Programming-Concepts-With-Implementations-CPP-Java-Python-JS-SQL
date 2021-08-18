@@ -1,0 +1,65 @@
+
+The java.util.ArrayDeque.addFirst(Object element) method in Java is used to insert 
+	a specific element at the front of this deque.
+
+Syntax:
+
+	Array_Deque.addFirst(Object element)
+
+Parameters:
+	
+	The parameter element is of the type ArrayDeque and refers to the element to be added.
+
+Return Value:
+
+	The function does not return any value.
+
+Exceptions:
+
+	The method throws NullPointerException if the passed parameter is NULL.
+
+-------
+
+// Java code to illustrate addFirst()
+import java.util.*;
+
+public class ArrayDequeDemo {
+	public static void main(String args[])
+	{
+		// Creating an empty ArrayDeque
+		Deque<Integer> de_que = new ArrayDeque<Integer>();
+
+		// Use add() method to add elements into the Deque
+		de_que.add(10);
+		de_que.add(15);
+		de_que.add(30);
+		de_que.add(20);
+		de_que.add(5);
+
+		// Displaying the ArrayDeque
+		System.out.println("ArrayDeque: " + de_que);
+
+		// Adding elements at front
+		de_que.addFirst(40);
+		de_que.addFirst(50);
+		de_que.addFirst(60);
+		de_que.addFirst(70);
+
+		// Displaying the ArrayDeque
+		System.out.println("ArrayDeque_front_addition: " + de_que);
+
+		// Adding elements using add()
+		de_que.add(1);
+		de_que.add(2);
+		de_que.add(3);
+
+		// Displaying the final ArrayDeque
+		System.out.println("Final ArrayDeque: " + de_que);
+	}
+}
+
+Output:
+
+ArrayDeque: [10, 15, 30, 20, 5]
+ArrayDeque_front_addition: [70, 60, 50, 40, 10, 15, 30, 20, 5]
+Final ArrayDeque: [70, 60, 50, 40, 10, 15, 30, 20, 5, 1, 2, 3]

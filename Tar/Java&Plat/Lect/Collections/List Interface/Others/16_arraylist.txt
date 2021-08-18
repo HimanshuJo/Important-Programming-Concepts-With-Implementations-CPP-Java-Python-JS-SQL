@@ -1,0 +1,175 @@
+
+Every Collection class is implemented based on some standard data structure
+
+ArrayList:
+
+    Underlying data structure for ArrayList is 'Resizable Array' or 'Growable Array'
+
+    Duplicates are allowed
+
+    Insertion order is preserved
+
+    Heterogeneous Objects happily we can insert (**)
+
+        In total collection framework, everywhere heterogeneous objects are allowed except two places
+
+                TreeSet
+
+                TreeMap
+
+            As, in TreeSet and TreeMap, the objects are going to be stored in some sorting order
+
+                to arrange elements in some kind of sorting order, compulsory we required to compare
+                    Objects
+
+                to compare objects(e.g. whether an objects has to come before an element or after an element)
+                    we need to compare two objects
+
+                if we need to compare two objects compulsory both the objects should be homogeneous
+
+    'null' insertion is possible
+
+-------
+
+Constructors:
+
+    1. ArrayList al =  new ArrayList();  // an empty arraylist object
+
+        // default initial capacity of this ArrayList is 10;
+            // if I try to insert 11th element (ArrayList reaches its max capacity)
+        // then a bigger ArrayList object is going to be created; copy all the elements and the 11th element
+            // will be placed
+        // Reassign reference variable to the new Object; old object is by default eligible for garbage
+            // collection
+
+        // the new capacity of the ArrayList is 'current capacity * 3 / 2 + 1'
+
+    -------
+
+    2. ArrayList al = new ArraList(int initialCapacity);  // performance of the system will be improved
+
+    -------
+
+    3. ArrayList al = new ArrayList(Collection c);
+
+        // for any collection object (e.g. LinkedList, ArrayList, vector etc.), if we want to create an equivalent
+            // array list object
+
+        // this type of constructor is meant for interconversion between collection objects
+
+-------
+
+import java.util.*;
+
+class ArrayListDemo {
+    public static void main(String[] args)
+    {
+        ArrayList l =  new ArrayList();
+        l.add("A");
+        l.add("10");
+        l.add("A");
+        l.add(null);
+        System.out.println(l);  // here output will be [A, 10, A, null]
+        l.add(2, "M");
+        l.add("N");
+        System.out.println(l);
+    }
+}
+
+* why are we getting square bracket notations for this arraylist
+
+    whenever we are trying to print any object reference; internally 'toString()' method will be called
+        e.g. System.out.println(l.toString())
+
+    in every collection, the 'toString' method has been implemented via the following means:
+
+        [ Open Square brackets First Element, Second Element ... Close Square Bracket ]
+
+-------
+
+Important Conclusions about ArrayList:
+
+    1. Mostly for which purpose we can use Collection:
+
+            The equivalent term in C++ is container
+
+                In c++ containers are used to hold data and to transfer data across the network
+
+            -------
+
+            Therefore to hold and to transfer objects from one place to another place
+
+                However, to transfer objects from one place to another place across the network
+
+                    compulsory the object should be 'serializable object'
+
+                To provide support for this requirement, every collection class (e.g. ArrayList, Vector etc.)
+
+                    already implements 'Serializable Interface'
+
+                Therefore, ArrayList is Serializable
+
+    2. Suppose I've an object that contains no. of students objects, and I want to send this object
+        across a network
+
+        The object is already Serializable, so it can happily travel across the network
+
+            after reaching across the network, the receiver got the ArrayList object
+
+                But most of the time, the receiver won't perform any operations directly on this object
+
+                    because if something goes wrong, then we may not recover the original data
+
+            That's why after the object is received by the receiver
+
+                immediately the receiver is going to create exactly duplicate object for this
+
+                    Therefore the process of creating exactly duplicate objects is called 'Cloning'
+
+        Hence, Cloning is a very basic requirement for Collections
+
+        Every Collection class already implements 'Cloneable Interface'
+
+    3. Only ArrayList class and Vector class implements 'RandomAccess Interface'
+
+        The advantage is that, any random element we can access with the same speed
+
+        -------
+
+        Does LinkedList implements RandomAccess  --> No
+
+        Hence, if our frequent operation is retrieval operation
+
+            ArrayList is the best choice
+
+        -------
+
+        RandomAccess is available in java.util package
+
+            it contains 0 methods
+
+            it is just a 'marker interface'
+
+-------
+
+Qs:
+
+    ArrayList l1 =  new ArrayList();
+
+    LinkedList l2 =  new LinkedList();
+
+    System.out.println(l1 instanceof Serializable);  --> true
+
+    System.out.println(l2 instance of Cloneable);  --> true
+
+    System.out.println(l1 instanceof RandomAccess);  --> true
+
+    System.out.println(l2 instanceof RandomAccess);  --> false
+
+-------
+
+When is ArrayList the worst choice?
+
+    If our most common operation is insertion in the middle
+
+    If our most common operation is deletion in the middle

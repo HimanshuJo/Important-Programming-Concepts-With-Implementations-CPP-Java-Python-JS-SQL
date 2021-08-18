@@ -1,0 +1,113 @@
+
+Try Catch in Java – Exception handling:
+
+    try {
+         //statements that may cause an exception
+    }
+
+    catch (exception(type) e(object))‏ {
+         //error handling code
+    }
+
+    -------
+
+    If an exception occurs in try block then the control of execution is passed to the
+        corresponding catch block.
+
+    A single try block can have multiple catch blocks associated with it, you should place the
+        catch blocks in such a way that the generic exception handler catch block is at the
+        last(see in the example below).
+
+    The generic exception handler can handle all the exceptions but you should place is at the end,
+        if you place it at the before all the catch blocks then it will display the generic message.
+
+        You always want to give the user a meaningful message for each type of exception rather
+            then a generic message.
+
+        class Example1 {
+
+           public static void main(String args[]) {
+
+              int num1, num2;
+
+              try {
+                 /* We suspect that this block of statement can throw
+                  * exception so we handled it by placing these statements
+                  * inside try and handled the exception in catch block
+                  */
+                 num1 = 0;
+                 num2 = 62 / num1;
+
+                 System.out.println(num2);
+                 System.out.println("Hey I'm at the end of try block");
+              }
+
+              catch (ArithmeticException e) {
+                 /* This block will only execute if any Arithmetic exception
+                  * occurs in try block
+                  */
+                 System.out.println("You should not divide a number by zero");
+              }
+
+              catch (Exception e) {
+                 /* This is a generic Exception handler which means it can handle
+                  * all the exceptions. This will execute if the exception is not
+                  * handled by previous catch blocks.
+                  */
+                 System.out.println("Exception occurred");
+              }
+
+              System.out.println("I'm out of try-catch block in Java.");
+           }
+        }
+
+    -------
+
+    Multiple catch blocks in Java:
+
+        1. As I mentioned above, a single try block can have any number of catch blocks.
+
+        2. A generic catch block can handle all the exceptions.
+
+            Whether it is:
+
+                ArrayIndexOutOfBoundsException or
+                ArithmeticException or
+                NullPointerException or
+
+                any other type of exception, this handles all of them.
+
+            If you are wondering why we need other catch handlers when we have a generic that can handle all.
+
+            This is because in generic exception handler you can display a message but you are not sure
+                for which type of exception it may trigger so it will display the same message for all
+                the exceptions and user may not be able to understand which exception occurred.
+
+            Thats the reason you should place is at the end of all the specific exception catch blocks
+
+        class Example2 {
+
+           public static void main(String args[]){
+
+             try {
+                 int a[] = new int[7];
+                 a[4] = 30/0;
+                 System.out.println("First print statement in try block");
+             }
+
+             catch(ArithmeticException e) {
+                System.out.println("Warning: ArithmeticException");
+             }
+
+             catch(ArrayIndexOutOfBoundsException e) {
+                System.out.println("Warning: ArrayIndexOutOfBoundsException");
+             }
+
+             catch(Exception e) {
+                System.out.println("Warning: Some Other exception");
+             }
+
+           System.out.println("Out of try-catch block...");
+
+          }
+        }

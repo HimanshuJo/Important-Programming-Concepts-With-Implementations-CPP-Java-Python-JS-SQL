@@ -1,0 +1,79 @@
+
+The SortedSet interface extends Set and declares the behavior of a set sorted in
+    ascending order
+
+    SortedSet is a generic interface that has this declaration:
+
+        interface SortedSet<E>
+
+            Here, E specifies the type of objects that the set will hold
+
+-------
+
+In additions to the methods specified by Set, the SortedSet interface declares
+    some additional methods
+
+    Several of these methods throw a 'NoSuchElementException' when no items are contained
+        in the invoking set
+
+    A 'ClassCastException' is thrown when an object is incompatible with the elements in
+        a set
+
+    A 'NullPointerException' is thrown if an attempt is made to use a null object and null is
+        not allowed in the set
+
+    An 'IllegalArgumentException' is thrown if an invalid argument is used
+
+-------
+
+Methods:
+
+    1. Comparator<? super E> comparator()
+
+            Returns the invoking sorted set's comparator
+
+            If the natural ordering is used for this set, null is returned
+
+    2. E first()
+
+            Returns the first element in the invoking sorted set
+
+    3. SortedSet<E> headSet(E end)
+
+            Returns a SortedSet containing those elements less than 'end'
+                that are contained in the invoking sorted set
+
+            Elements in the returned sorted set are also referenced by the invoking
+                sorted set
+
+    4. E last()
+
+            Returns the last element in the invoking set
+
+    5. SortedSet<E> subSet(E start, E end)
+
+            Returns a SortedSet that includes those elements between start, end - 1
+
+            Elements in the returned collection are also referenced by the invoking object
+
+    6. SortedSet<E> tailSet(E start)
+
+            Returns a SortedSet that contains those elements greater than or equal to
+                start that are contained in the sorted set
+
+            Elements in the returned set also referenced by the invoking object
+
+-------
+
+SortedSet defines several methods that make set processing more convenient.
+
+    To obtain the first object in the set, call first( )
+
+    To get the last element, use last( )
+
+    You can obtain a subset of a sorted set by calling subSet(), specifying the
+        first and last object in the set.
+
+    If you need the subset that starts with the first element in the set, use headSet( )
+
+    If you want the subset that ends the set, use tailSet( )

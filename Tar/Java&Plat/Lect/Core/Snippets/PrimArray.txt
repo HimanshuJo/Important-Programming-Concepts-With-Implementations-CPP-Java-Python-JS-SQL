@@ -1,0 +1,19 @@
+
+Copy one primitive array to another:
+
+    int [] nums = {1, 2, 3, 4, 5};
+    int [] nums_ = new int[nums.length];
+
+    System.arraycopy(nums, 0, nums_, 0, nums.length);
+
+-------
+
+Convert primitive array to List:
+
+    public static <T> List<T> convertArrayToList(T array[]) {
+        List<T> list = new ArrayList<>();
+        for (T t : array) {
+            list.add(t);
+        }
+        return list;
+    }

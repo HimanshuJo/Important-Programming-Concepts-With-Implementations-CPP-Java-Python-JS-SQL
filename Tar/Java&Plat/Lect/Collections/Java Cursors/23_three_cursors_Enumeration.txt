@@ -1,0 +1,72 @@
+
+To retrieve elements from the collection one by one, 3 cursors are available in Java
+
+    1. Enumeration
+
+    2. Iterator
+
+    3. List Iterator
+
+-------
+
+Enumeration:  --> came in 1.0 v
+
+    To retrieve elements from the collection object one by one
+
+    We can get Enumeration object by using:
+
+        Elements methods (that is present in Vector class)
+
+            Enumeration e = v.elements();  // v here is any vector object
+
+    -------
+
+    Various methods that can be applied in the Enumeration object:
+
+        1. public boolean hasMoreElements();
+
+        2. public Object nextElement();
+
+-------
+
+E.g.:
+
+    import java.util.*;
+
+    class EnumerationDemo
+    {
+        public static void main(String[] args)
+        {
+            Vector v = new Vector();
+
+            for(int i = 0; i <= 10; i++)
+            {
+                v.addElement(i);
+            }
+
+            System.out.println(v);  // output will be [0, 1, 2, ... 10]
+
+            Enumeration e = v.elements();
+
+            while(e.hasMoreElements())
+            {
+                // return type of nextElement is Object type; hence we need to do typecasting
+                Integer I = (Integer) e.nextElement();
+                
+                if(I % 2 == 0)
+                    System.out.println(I);
+            }
+        }
+    }
+
+-------
+
+Enumeration imp points:
+
+    Limitations of Enumeration:
+
+        * Enumeration concept is applicable only for legacy classes and hence it is not a universal cursor
+
+        * By using Enumeration we can get only read access and we can't perform remove operation
+
+    To overcome above limitations of Enumeration we should got for Iterator

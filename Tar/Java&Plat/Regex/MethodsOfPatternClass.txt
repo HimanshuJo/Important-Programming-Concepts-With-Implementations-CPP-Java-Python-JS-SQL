@@ -1,0 +1,100 @@
+
+Creating a Pattern with Flags
+
+The Pattern class defines an alternate compile method that accepts a set of flags affecting the way the pattern is matched. 
+
+The flags parameter is a bit mask that may include any of the following public static fields:
+
+    Pattern.CANON_EQ:
+
+    	Enables canonical equivalence. 
+
+    	When this flag is specified, two characters will be considered to match if, and only if, their full canonical decompositions match. 
+
+    	The expression "a\u030A", for example, will match the string "\u00E5" when this flag is specified. 
+
+    	By default, matching does not take canonical equivalence into account. Specifying this flag may impose a performance penalty.
+
+	-------
+
+    Pattern.CASE_INSENSITIVE:
+
+    	Enables case-insensitive matching. 
+
+    	By default, case-insensitive matching assumes that only characters in the US-ASCII charset are being matched.
+
+    	Unicode-aware case-insensitive matching can be enabled by specifying the UNICODE_CASE flag in conjunction with this flag. 
+
+    	Case-insensitive matching can also be enabled via the embedded flag expression (?i). Specifying this flag may impose a slight performance penalty.
+
+	-------
+
+    Pattern.COMMENTS:
+
+    	Permits whitespace and comments in the pattern. 
+
+    	In this mode, whitespace is ignored, and embedded comments starting with # are ignored until the end of a line. 
+
+    	Comments mode can also be enabled via the embedded flag expression (?x).
+
+	-------
+
+    Pattern.DOTALL:
+
+    	Enables dotall mode. 
+
+    	In dotall mode, the expression . matches any character, including a line terminator. 
+
+    	By default this expression does not match line terminators. 
+
+    	Dotall mode can also be enabled via the embedded flag expression (?s). (The s is a mnemonic for "single-line" mode, which is what this is called in Perl.)
+
+	-------
+
+    Pattern.LITERAL:
+
+    	Enables literal parsing of the pattern. 
+
+    	When this flag is specified then the input string that specifies the pattern is treated as a sequence of literal characters. 
+
+    	Metacharacters or escape sequences in the input sequence will be given no special meaning. 
+
+    	The flags CASE_INSENSITIVE and UNICODE_CASE retain their impact on matching when used in conjunction with this flag. 
+
+    	The other flags become superfluous. 
+
+    	There is no embedded flag character for enabling literal parsing.
+
+	-------
+
+    Pattern.MULTILINE:
+
+    	Enables multiline mode. 
+
+    	In multiline mode the expressions ^ and $ match just after or just before, respectively, a line terminator or the end of the input sequence. 
+
+    	By default these expressions only match at the beginning and the end of the entire input sequence. 
+
+    	Multiline mode can also be enabled via the embedded flag expression (?m).
+
+	-------
+
+    Pattern.UNICODE_CASE:
+
+    	Enables Unicode-aware case folding. 
+
+    	When this flag is specified then case-insensitive matching, when enabled by the CASE_INSENSITIVE flag, is done in a manner consistent with the Unicode Standard. 
+
+    	By default, case-insensitive matching assumes that only characters in the US-ASCII charset are being matched.
+
+    	Unicode-aware case folding can also be enabled via the embedded flag expression (?u).
+
+    	Specifying this flag may impose a performance penalty.
+
+	-------
+
+    Pattern.UNIX_LINES:
+
+    	Enables UNIX lines mode.
+
+    	In this mode, only the '\n' line terminator is recognized in the behavior of ., ^, and $. UNIX lines mode can also be enabled via the embedded flag expression (?d).

@@ -1,0 +1,176 @@
+
+Spring Framework:
+
+    In the year 2000, if we wanted to create a Java project in Enterprise, we were using a lot of Java EE
+        features (one of them is EJB)
+
+        But while working on EJB's we were working on entities so they were heavy
+
+    So came the concept POJO
+
+        here we achieve the same feature with the help of POJO (included in Spring framework)
+
+    Spring has many features:
+
+        working with POJO's
+
+        Dependency Injection
+
+        MVC
+
+        REST
+
+        Security
+
+        Batch
+
+        Data
+
+        AOP
+
+        ...
+
+    So, with Spring framework we can achieve any business purpose
+
+    The best part of Spring framework is that it can integrate with other frameworks as well
+
+        e.g. Hibernate, Struts etc.
+
+    -------
+
+    Spring Boot:
+
+        As a developer we are still using Spring framework, but to help us we have 'Spring Boot'
+
+            Spring Boot says he developer, you don't need to worry about adding jar files, doing
+                configurations etc.
+
+            Spring Boot provides dependency as well as configurations
+
+            The main idea of Spring Boot is to provide the developer the production ready applications.
+
+        So the moment we create Spring Boot project we don't need to do any configurations.
+
+            It is runnable and we can deploy it on the server
+
+        Spring Boot provides us an embedded server
+
+            That means the application jar files that we will create, inside those we will be having
+                our server (e.g. Tomcat)
+
+        Suppose we want to modify our configurations
+
+            suppose we want some manual configurations
+
+            Spring Boot doesn't provide us the XML files
+
+                There is a special file in Spring Boot called 'application.properties'
+
+                    here we can add the properties that we want
+
+        -------
+
+        Dependency Injection:
+
+            Often in advance projects we use 'Design Patterns'
+
+                one of the design pattern which we come across is 'Dependency Injection'
+
+            Often in OOP when we write code, we also build objects
+
+                these objects are dependent on some other objects
+
+                so in the end we have an Object Graph
+
+                e.g. Suppose we are a Laptop manufacturer
+
+                        in Laptop we have certain parts (e.g. we have RAM, hard-drive, screen etc.)
+
+                        all these components are not build by the same company
+
+                            e.g.
+
+                                if we have a mac (apple won't be building all these parts on its own
+                                    and depend on other companies for the same)
+
+                                in the same way we have dependencies of various objects with one another
+
+            -------
+
+            class Laptop
+             {
+
+                HitachiHD obj1 = new HitachiHD();
+
+             }
+
+             What if we want to change our hard-drive in future
+
+             We want to achieve here loose-coupling
+
+                Loose coupling means one object is not totally depend on other object, and it may get replaced
+
+                That's why we use the concept of 'Abstraction'
+
+                    so for example for each hard-drive class we have an Interface 'HardDrive'
+
+                        all the hard-drive classes e.g. HitachiHD, SamsungHD etc. implement this HardDrvie class
+
+            class Laptop
+             {
+
+                HardDrive obj1 = new HitachiHD();
+
+             }
+
+             but here again we are hard-coding our specific hard-drive e.g. with 'new' operator
+
+                the moment we use 'new' we are going for tight-coupling
+
+                we want someone else to give us those dependencies
+
+                    the laptop object (obj1) is dependent here on the hard-drive object
+
+                    we want some external service to inject the required dependencies
+
+            -------
+
+            Dependency Injection Containers (Spring Container):
+
+                They are responsible to create an object for us, and then they will be injecting in our class
+
+            -------
+
+            How to do dependency injection in Spring Boot framework?
+
+                @component
+                class HitachiHD implements HardDrive
+                {
+
+                    ...
+
+                }
+
+                writing @component makes them dependent (a component of a Spring framework which will be generated
+                    as per the requirement)
+
+            To make the above example loosely coupled:
+
+                class Laptop
+                {
+                    @Autowired
+                    HardDrive obj1;  // this class needs a hard-drive and there is already a component available
+                                    // so lets connect them
+                }
+
+            -------
+
+            This whole setup is very helpful in 'testing'
+
+                For example suppose we want to test our laptop and not the hard-drive (which is already tested by Apple)
+
+                    So in case of Java, we have a class and this class is working with the database object
+
+                        so we just want to test this class and not the database object
+
+                            so here we can create a 'Mock Object' of this class only if they are loosely coupled

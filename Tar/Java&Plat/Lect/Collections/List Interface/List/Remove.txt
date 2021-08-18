@@ -1,0 +1,76 @@
+
+The remove(int index) method present in java.util.ArrayList class removes the element at the specified position 
+in this list and shifts any subsequent elements to the left (i.e. subtracts one from their indices).
+
+Syntax : 
+
+	public removed_element remove(int index)
+
+Parameters: 
+
+	The index of the element to be removed.
+
+Return Type: 
+
+	This method returns the element that was removed from the list.
+
+Exception: 
+
+	This method throws IndexOutOfBoundsException if the index is out of range.
+
+-------
+
+// Java program to remove an element
+// from an specified index from
+// an ArrayList.
+
+import java.util.ArrayList;
+
+public class GFG {
+	public static void main(String[] arg)
+	{
+
+		// creating an empty ArrayList with an initial
+		// capacity of 5
+		ArrayList<String> flower = new ArrayList<String>(5);
+
+		// using add() method to add elements in the
+		// ArrayList flower
+		flower.add("red-rose");
+		flower.add("tulip");
+		flower.add("sun-flower");
+		flower.add("marie-gold");
+		flower.add("orchid");
+
+		// printing the size of the ArrayList flower
+		System.out.println("Size of list: "
+						+ flower.size());
+
+		// printing the ArrayList flower
+		System.out.println("Flower ArrayList = " + flower);
+
+		// Removing element at 3rd position from ArrayList
+		// flower
+		System.out.println(
+			"Removing element at index = 2 ");
+		flower.remove(2);
+
+		System.out.println("After removing element");
+
+		// printing the size of the ArrayList flower
+		System.out.println("Size of list: "
+						+ flower.size());
+
+		// printing the ArrayList flower
+		System.out.println("Flower ArrayList = " + flower);
+	}
+}
+
+Output
+
+Size of list: 5
+Flower ArrayList = [red-rose, tulip, sun-flower, marie-gold, orchid]
+Removing element at index = 2 
+After removing element
+Size of list: 4
+Flower ArrayList = [red-rose, tulip, marie-gold, orchid]

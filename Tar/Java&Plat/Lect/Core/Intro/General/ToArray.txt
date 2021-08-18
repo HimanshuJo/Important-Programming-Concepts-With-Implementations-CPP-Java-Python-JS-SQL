@@ -1,0 +1,77 @@
+
+java.util.ArrayList.toArray(T[]):
+
+    this method 'returns an array' containing all of the elements
+        in this list in a proper sequence (from first to last element)
+
+    -------
+
+    Some important points about ArrayList.toArray():
+
+        the runtime type of the returned array is that of the specified array
+
+        if the list fits in the specified array, it is returned therein
+
+            otherwise a new array is allocated with the runtime type of the specified array
+                and the size of this list
+
+-------
+
+Declaration:
+
+    Following is the declaration for java.util.ArrayList.toArray() method
+
+        public <T> T[] toArray(T[] a)
+
+-------
+
+Parameters:
+
+    a:
+
+        this is the array into which the elements of the list are to be stored, if it is
+            big enough;
+
+        otherwise a new array of the same runtime type is allocated for this purpose
+
+-------
+
+Return Value:
+
+    this method returns an array containing the elements of the list
+
+-------
+
+Exception:
+
+    * ArrayStoreException
+
+        If the runtime type of the specified array is not a supertype of the runtime type of
+            every element in this list
+
+    * NullPointerException
+
+        If the specified is null
+
+-------
+
+Example:
+
+    import java.util.ArrayList;
+
+    public class ArrayListDemo {
+        public static void main(String[] args) {
+
+            ArrayList<Integer> arrlist = new ArrayList<>();
+            arrlist.add(10);
+            arrlist.add(20);
+            arrlist.add(31);
+            arrlist.add(49);
+
+            Integer list2[] = new Integer[arrlist.size()];
+
+            // the runtime type of the returned array is that of the specified array
+            // so in this case, the returned array will be of type Integer
+            list2 = arrlist.toArray(list2);
+        }
+    }

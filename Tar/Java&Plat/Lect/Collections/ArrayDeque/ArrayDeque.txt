@@ -1,0 +1,65 @@
+
+ArrayDeque class extends AbstractCollection and implements the Deque
+    interface
+
+    It adds no methods of its own
+
+    ArrayDeque creates a dynamic array and has no capacity restrictions
+
+        (The Deque interface supports implementations that restrict capacity,
+            but does not require such restrictions)
+
+    ArrayDeque is a generic class that has this declaration:
+
+        class ArrayDeque<E>
+
+            Here, E specifies the type of objects stored in the collection
+
+-------
+
+ArrayDeque defines the following constructors:
+
+    ArrayDeque( )
+
+        The first constructor builds an empty deque
+
+        Its starting capacity is 16
+
+    ArrayDeque(int size)
+
+        This constructor builds a deque that has the specified initial capacity
+
+    ArrayDeque(Collection<? extends E> c)
+
+        Third constructor creates a deque that is initialized with the elements of the
+            collection passed in c
+
+        In all cases, the capacity grows as needed to handle the
+            elements added to the deque
+
+-------
+
+// Program to demonstrate ArrayDeque by using it to create a stack
+
+import java.util.*;
+
+class ArrayDequeDemo {
+    public static void main(String[] args) {
+        // Creating an array deque
+
+        ArrayDeque<String> adq = new ArrayDeque<>();
+
+        // Using an ArrayDeque like a Stack
+
+        adq.push("A");
+        adq.push("B");
+        adq.push("D");
+        adq.push("E");
+        adq.push("F");
+        System.out.println("Pooping the stack: ");
+
+        while(adq.peek() != null) {
+            System.out.println(adq.pop() + " ");
+        }
+    }
+}

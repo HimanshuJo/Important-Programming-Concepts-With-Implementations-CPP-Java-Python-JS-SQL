@@ -1,0 +1,48 @@
+
+6. Queue (I):
+
+    Sometimes my requirement is, I want to represent a group of individual objects where:
+
+        all objects I want to represent prior to processing
+
+        so, before processing if I want to represent a group of individual objects, then we should consider
+
+            Queue (I)
+
+    It is a child interface of Collection
+
+        if we want to represent a group of individual objects, prior to processing then we should consider Queue
+
+            e.g. suppose I want to send a mail for 10 thousand members, so all mail id's I've to store somewhere
+
+                    to the mail id_1 our mail will be triggered first, then id_2 etc.
+
+                    so in this case, I'm storing all these mail id's before sending my mail
+
+                        also in which order I've inserted in the same order I've to take out (FIFO)
+
+    Queue Interface has 4 implementation classes:
+
+        PriorityQueue
+
+        BlockingQueue
+
+            LinkedBlockingQueue
+
+            PriorityBlockingQueue
+
+-------
+
+Versions:
+
+    Collection (I)  --> 1.2 v
+
+        Queue (I)  --> 1.5 v
+
+            PriorityQueue  --> 1.5 v
+
+            BlockingQueue  --> 1.5 v
+
+                LinkedBlockingQueue  --> 1.5 v
+
+                PriorityBlockingQueue  --> 1.5 v

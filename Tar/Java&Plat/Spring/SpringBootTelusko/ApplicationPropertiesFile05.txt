@@ -1,0 +1,33 @@
+
+Consider two scenarios:
+
+    Normally in Spring Boot we don't always put all our pages in 'webapp' folder
+
+        as it is a public folder, we sometimes want to move our pages to more private folders
+
+    Also while return a .jsp file in a method we don't always put the .jsp extension
+
+        we can specify the name of the file without extension
+
+    -------
+
+    So in this case to do any configuration, we have a special file in
+
+        src/main/resources  --> 'application.properties'
+
+-------
+
+Different properties:
+
+    1. Prefix
+
+        Path (dir. e.g. where to look for the template) of a page is defined with the help of a prefix
+
+            e.g. spring.mvc.view.prefix=/pages/
+
+    2. Suffix
+
+        Extension of a page is defined with the help of a suffix
+
+            e.g. spring.mvc.view.suffix=.jsp
+

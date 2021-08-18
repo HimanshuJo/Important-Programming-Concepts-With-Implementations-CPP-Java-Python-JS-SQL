@@ -1,0 +1,22 @@
+
+num += 1 is rather equivalent to ++num.
+
+All those expressions (num += 1, num++ and ++num) increment the value of num by one,
+    but the value of num++ is the value num had before it got incremented.
+
+Illustration:
+
+int a = 0;
+int b = a++; // now b == 0 and a == 1
+int c = ++a; // now c == 2 and a == 2
+int d = (a += 1); // now d == 3 and a == 3
+
+-------
+
+prefix and postfix operations are perfect candidates for exam questions.
+
+a = 0;
+b = a++;  // use the value and then increment --> a: 1, b: 0
+
+a = 0;
+b = ++a;  // increment and then use the value --> a: 1, b: 1

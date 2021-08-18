@@ -1,0 +1,88 @@
+
+Enumeration:
+
+    Applicable For
+
+        only for legacy classes
+
+    Movement
+
+        only forward direction (single direction)
+
+    Accessibility
+
+        only read access
+
+    How to get it?
+
+        by using elements method of Vector class
+
+    Methods
+
+        2 methods:
+
+            hasMoreElements()
+
+            nextElement()
+
+    Is it legacy?
+
+        Yes, it came in 1.0 version
+
+
+Iterator:
+
+    Applicable For
+
+        any collection class
+
+    Movement
+
+        only forward direction (single direction)
+
+    Accessibility
+
+        both read and remove
+
+    How to get it?
+
+        by using iterator method of Collection interface
+
+    Methods
+
+        3 methods:
+
+            hasNext()
+            next()
+            remove()
+
+    Is it legacy?
+
+        No, it came in 1.2 version
+
+
+ListIterator:
+
+    Applicable For
+
+        only for List implemented classes
+
+    Movement
+
+        both forward and backward direction (bi-directional)
+
+    Accessibility
+
+        read, remove, replace(set), and addition
+
+    How to get it?
+
+        by using ListIterator method of List interface
+
+    Methods
+
+        9 methods
+
+    Is it legacy?
+
+        No, it also came in 1.2 v

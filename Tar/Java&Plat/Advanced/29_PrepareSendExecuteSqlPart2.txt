@@ -1,0 +1,128 @@
+
+From a Java developer point of view:
+
+    all SQL queries are divided into 2 categories
+
+        1. Select queries
+
+            e.g. select * from movies;
+
+            -------
+
+            when I execute select query, the outcome will be data
+                Data --> a group of records
+
+                In JDBC this group of records we can represent with the help of
+                    'result set'
+
+        2. Non-select queries
+
+            These are mostly DML commands (Data Manipulation Commands)
+
+                e.g. insert, delete, update etc.
+
+                    insert into movies(4, 'Spider', 'Mahesh', 'Rakul');
+
+            If I execute this non-select query, the message I'll get is
+
+                one row created
+
+            delete from movies where movie_number=4;
+
+                If I execute this non-select query, the message I'll get is
+
+                        no_of_rows deleted
+
+            -------
+
+            so after executing the non-select queries, mostly the outcome will be:
+                a numeric value + some message
+
+--------
+
+Now suppose I create a 'Statement' object:
+
+    the main purpose to use the Statement is for:
+
+        sending our sql queries to the database
+
+    -------
+
+    Statement st = con.createStatement();
+
+    -------
+
+    also our sql queries are also ready
+
+        once the statement object is ready and the sql query is also ready
+
+            now we want to execute this query
+
+        In JDBC to execute our sql query, there are mainly 3 execute methods are there:
+
+            The Statement interface defines these three methods
+
+                1. executeQuery()
+
+                2. executeUpdate()
+
+                3. execute()
+
+-------
+
+1. executeQuery():
+
+    We can use executeQuery methods to execute select queries
+
+        e.g. select * from movies;
+
+        as an output, I'll get a group of records
+
+            In JDBC a group of records can be represented by 'Result Set'
+
+    The return type of executeQuery() is ResultSet
+
+    -------
+
+    Complete prototype:
+
+        public ResultSet executeQuery(String sqlQuery) throws SQLException
+
+
+    -------
+
+    ResultSet rs =  st.executeQuery(select * from movies);
+
+-------
+
+2. executeUpdate():
+
+    It is applicable for non-select operations
+
+        e.g. DML queries (insert, delete, update etc.)
+
+    example:
+
+        delete from movies where movie_number > 10;
+
+            the query might return
+
+                3 rows deleted
+
+                so I always get a number + some message
+                    (the number basically represents the no. of rows affected)
+
+    Hence, the return type of update method is always 'int'
+
+    -------
+
+    Complete prototype:
+
+        public int executeUpdate(String sqlQuery) throws SQLException
+
+            executeUpdate() is applicable for non-select queries
+
+    -------
+
+    int x = st.executeUpdate("delete from employees where esal > 10,000");
+

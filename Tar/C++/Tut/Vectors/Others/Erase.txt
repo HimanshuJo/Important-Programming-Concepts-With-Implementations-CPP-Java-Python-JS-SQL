@@ -1,0 +1,133 @@
+vector::erase()
+
+	erase() function is used to remove elements from a container from the specified position or range.
+
+Syntax : 
+
+	1. vectorname.erase(position)
+	2. vectorname.erase(startingposition, endingposition)
+
+Parameters :
+	Position of the element to be removed in the form of iterator.
+	or the range specified using start and end iterator.
+
+Result :
+	Elements are removed from the specified
+	position of the container.
+
+-------
+
+Examples: 
+
+Input  : myvector= {1, 2, 3, 4, 5}, iterator= myvector.begin()+2
+         myvector.erase(iterator);
+Output : 1, 2, 4, 5
+
+Input  : myvector= {1, 2, 3, 4, 5, 6, 7, 8}, iterator1= myvector.begin()+3, iterator2= myvector.begin()+6
+         myvector.erase(iterator1, iterator2);
+Output : 1, 2, 3, 7, 8
+
+-------
+
+Errors and Exceptions
+	1. It has a no exception throw guarantee if the position is valid. 
+	2. Shows undefined behavior otherwise.
+
+-------
+
+// CPP program to illustrate
+// working of erase() function
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main()
+{
+	vector<int> myvector{ 1, 2, 3, 4, 5 };
+	vector<int>::iterator it;
+
+	it = myvector.begin();
+	myvector.erase(it);
+
+	// Printing the Vector
+	for (auto it = myvector.begin(); it != myvector.end(); ++it)
+		cout << ' ' << *it;
+	return 0;
+}
+
+Output: 
+
+2 3 4 5
+
+-------
+
+Removing elements within a range:
+
+// CPP program to illustrate
+// Implementation of erase() function
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main()
+{
+	vector<int> myvector{ 1, 2, 3, 4, 5 };
+	vector<int>::iterator it1, it2;
+
+	it1 = myvector.begin();
+	it2 = myvector.end();
+	it2--;
+	it2--;
+
+	myvector.erase(it1, it2);  // [it1, it2)
+
+	// Printing the Vector
+	for (auto it = myvector.begin(); it != myvector.end(); ++it)
+		cout << ' ' << *it;
+	return 0;
+}
+
+Output: 
+
+4 5
+
+-------
+
+Application 
+Given a list of integers, remove all the even elements from the vector and print the vector. 
+
+Input  :1, 2, 3, 4, 5, 6, 7, 8, 9
+Output :1 3 5 7 9
+Explanation - 2, 4, 6 and 8 which are even are erased from the vector
+
+Algorithm 
+	1. Run a loop till the size of the vector. 
+	2. Check if the element at each position is divisible by 2, if yes, remove the element and decrement iterator. 
+	3. Print the final vector.
+
+// CPP program to illustrate
+// Application of erase() function
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main()
+{
+	vector<int> myvector{ 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+
+	for (auto i = myvector.begin(); i != myvector.end(); ++i) {
+		if (*i % 2 == 0) {
+			myvector.erase(i);
+			i--;
+		}
+	}
+
+	// Printing the vector
+	for (auto it = myvector.begin(); it != myvector.end(); ++it)
+		cout << ' ' << *it;
+	return 0;
+}
+
+Output: 
+
+1 3 5 7 9

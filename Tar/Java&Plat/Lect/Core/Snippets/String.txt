@@ -1,0 +1,68 @@
+
+How to count occurrences of a substring in string in Java?
+
+	1) Count occurrence of a substring in a string using the indexOf method:
+
+		public class Main {
+			public static void main(String[] args) {
+				String str = "JAVAProgrammingLanguage";
+
+				String strFind = "JAVA";
+
+				int count = 0, fromIndex = 0;
+
+				while ((fromIndex = str.indexOf(strFind, fromIndex)) != -1) {
+					count++;
+					fromIndex++;
+				}
+
+				System.out.println(count);
+			}
+		}
+
+	We started off with having the count and fromIndex as 0
+
+		fromIndex holds the index position from where we want to search the substring
+
+		In the while loop, we find the substring, 
+			assign the index of next occurrence to fromIndex
+			and check if the returned value if greater than -1
+
+		The indexOf method returns -1, if the substring is not found in the string,
+			otherwise it returns the index of the substring
+
+	-------
+
+	2) Using the split method
+
+		String str = "JAVAProgrammingLanguage";
+
+		int count = (str.split("JAVA", -1).length) - 1;
+
+	The split method in essence returns an array of matching string parts
+
+	So basically we are splitting a string with the substring we want to find and checking
+		how many array elements it has returned
+
+	-------
+
+	3) Using regular expressions
+
+		String str = "JAVAProgrammingLanguage";
+
+		int count = 0, startIndex = 0;
+
+		Pattern p = Pattern.compile("JAVA", Pattern.LITERAL);
+		Matcher m = p.matcher(str);
+
+		while(m.find(startIndex)) {
+			count++;
+			startIndex = m.start() + 1;
+		}
+
+		System.out.println(count);
+
+	The approach is very similar to the indexOf approach except that it uses the find method
+		of the Matcher class to find a match
+
+	The Pattern.LITERAL flag will ignore regular expression metacharacters and treat them as literal

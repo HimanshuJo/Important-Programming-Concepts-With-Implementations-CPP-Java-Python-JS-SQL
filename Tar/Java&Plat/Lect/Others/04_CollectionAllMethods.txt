@@ -1,0 +1,120 @@
+
+1. boolean add(Object obj)
+
+    Adds obj to the invoking collection
+
+    Returns true if obj was added to the collection
+
+    Returns false if obj is already a member of the collection
+
+        or if the collection doesn't allow duplicates
+
+-------
+
+2. boolean addAll(Collection c)
+
+    Adds all the elements of c to the invoking collection
+
+    Returns true if the operation succeeds (i.e if the elements were added)
+
+        otherwise it returns false
+
+-------
+
+3. void clear()
+
+    Removes all the elements from the invoking collection
+
+-------
+
+4. boolean contains(Object obj)
+
+    Returns true if obj is an element of the invoking collection
+
+        otherwise it returns false
+
+-------
+
+5. boolean containsAll(Collection c)
+
+    Returns true if the invoking collection contains all the elements of c
+
+        otherwise it returns false
+
+-------
+
+6. boolean equals(Object obj)
+
+    Returns true if the invoking collection and obj are equal
+
+        otherwise it return false
+
+-------
+
+7. int hashCode()
+
+    Returns the hash code for the invoking collection
+
+-------
+
+8. boolean isEmpty()
+
+    Returns true if the invoking collection is empty
+
+        otherwise, it returns false
+
+-------
+
+9. Iterator iterator()
+
+    Returns an iterator for the invoking collection
+
+-------
+
+10. boolean remove(Object obj)
+
+    Removes one instance of obj from the invoking collection
+
+    Returns true if the element was removed
+
+        otherwise it returns false
+
+-------
+
+11. boolean removeAll(Collection c)
+
+    Removes all elements of c from the invoking collection
+
+    Returns true if the collection changed (i.e elements were removed)
+
+        otherwise it returns false
+
+-------
+
+12. boolean retainAll(Collection c)
+
+    Removes all elements from the invoking collection except those in c
+
+    Returns true if the collection changed (i.e elements were removed)
+
+        otherwise it returns false
+
+-------
+
+13. int size()
+
+    Returns the number of elements held in the invoking collection
+
+-------
+
+14. Object [] toArray()
+
+    Returns an array that contains all the elements stored in the invoking collection
+
+    The array elements are the copies of the collection elements
+
+-------
+
+15. Object [] toArray(Object array[])
+
+    Returns an array containing only those collection elements whose type matches that of the array

@@ -1,0 +1,55 @@
+
+Snippet 1:
+
+    int x = getVal();
+
+    if (x == 0) {
+        // something
+        x == 1;
+    } else if (x == 1) {
+        // something else
+    }
+
+-------
+
+Snippet 2:
+
+    int x = getVal();
+
+    if (x == 0) {
+        // something
+        x == 1;
+    }
+    if (x == 1) {
+        // something
+    }
+
+-------
+
+In the first case, only one of "Something" or "Something else" will occur
+
+In the second case, due to the side effects of the first block, the condition in the second
+    block will also be true
+
+Snippet 3:
+
+    int x = getVal();
+
+    if (x < 10) {
+        // something
+        x == 1;
+    } else if (x < 100) {
+        // do something else
+    } else if ( x < 1000) {
+        // do some more thing
+    }
+
+    // here if we don't use the 'else' clause, then as soon as one of the condition has matched,
+        the rest will too
+
+-------
+
+If we have multiple 'if' blocks then each will run independently
+
+However, in the 'if', 'else if' block, the 'else if' block is only executed if the previous
+    'if' condition has failed

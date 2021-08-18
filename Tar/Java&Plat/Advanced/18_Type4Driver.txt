@@ -1,0 +1,87 @@
+
+Architecture:
+
+
+    Java Application        -->  Type-4 Driver      -->  Database
+    internally it uses      <--                     <--
+    JDBC
+
+-------
+
+Client Side:
+
+
+    Java Application        -->  Type-4 Driver
+    internally it uses      <--
+    JDBC
+
+-------
+
+Type-4 driver can communicate directly with the database, by using database specific
+    native protocols (provided by the database vendors)
+
+    In essence it doesn't require any extra component
+
+    Type-4 driver converts JDBC calls into database specific calls directly
+
+This driver is also known as 'Pure Java' driver
+
+    as it is completely developed in Java only
+
+    Hence, it is a platform independent driver
+
+-------
+
+This driver sometimes also known as 'Native Protocol' driver
+
+    as internally it is going to use database vendor provided native protocol
+        to communicate with the database
+
+-------
+
+This driver sometimes also known as 'Thin Driver'
+    or light weighted
+
+-------
+
+Advantages:
+
+    Only one level conversion is required, therefore performance too good
+
+        when compared with
+
+            Type-1 where 2 conversions are required
+
+            Type-2 where 1 conversion is required but it's platform dependent and database dependent
+
+            Type-3 two conversions are required
+
+    Platform independent driver
+
+    No requirement of:
+
+        ODBC driver
+        Native Libraries (like type-2 driver)
+        Middle-ware server (like type-3 driver)
+
+-------
+
+Limitations:
+
+    It's database dependent driver
+
+    Most commonly used driver
+
+-------
+
+An example of the type-4 driver:
+
+    Suppose I want to communicate with an oracle database, therefore I need an oracle
+        type-4 driver
+
+    then immediately, oracle provided type-4 driver is called 'Thin Driver'
+
+    -------
+
+    If I ask MySql people to provide type-4 driver, then MySQL will provide:
+        'Connector/J' driver for mySQL

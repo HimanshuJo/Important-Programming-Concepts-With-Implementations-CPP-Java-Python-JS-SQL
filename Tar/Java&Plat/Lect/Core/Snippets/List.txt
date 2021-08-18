@@ -1,0 +1,380 @@
+
+Various methods:
+
+    1. Copy Constructor:
+
+        Using the ArrayList constructor in Java, a new list can be initialized with
+            the elements from another collection.
+
+        ArrayList cloned = new ArrayList(collection c);
+
+            where c is the collection containing
+            elements to be added to this list.
+
+        -------
+
+        // Create a list
+        List<String> original = Arrays.asList("GeeksForGeeks", "A Computer Science", "Portal");
+
+        // Clone the list
+        List<String> cloned_list = new ArrayList<String>(original);
+
+    -------
+
+    2. Using addAll() method:
+
+        The List class has a method called addAll(), which appends all the elements of one collection to the list.
+
+        boolean addAll(Collection c);
+
+            where c is the collection containing
+            elements to be added to this list.
+
+        -------
+
+        // Create a list
+        List<String> original = Arrays.asList("GeeksForGeeks", "A Computer Science", "Portal");
+
+        List<String> cloned_list = new ArrayList<String>();
+
+        // Cloning a list
+        cloned_list.addAll(original);
+
+    -------
+
+    3. Using streams in Java 8
+
+        Using the Streams API introduced in JAVA 8, cloning of a list is possible.
+
+        The collect() method (along with toList() method) is used to clone a list.
+
+        -------
+
+        // Create a list
+        List<String> original = Arrays.asList("GeeksForGeeks", "A Computer Science", "Portal");
+
+        // Clone a list
+        List<String> cloned_list = original.stream().collect(Collectors.toList());
+
+    -------
+
+    4. Using the clone method:
+
+        Clone() method of a class in Java is used to create a new instance of a class of the
+            current object and initialized all its fields with the contents of the specified object.
+
+        To clone a list, one can iterate through the original list and use the clone method to copy
+            all the list elements and use the add method to append them to the list.
+
+        -------
+
+        Syntax:
+
+            protected Object clone() throws CloneNotSupportedException
+
+        -------
+
+        Approach:
+
+            a. Create a cloneable class, which has the clone method overridden
+
+            b. Create a list of the class objects from an array using the asList method
+
+            c. Create an empty list
+
+            d. Loop through each element of the original list, and invoke the class object's clone()
+                method
+
+                which returns the class instance and use the add() method to append it to the new list
+
+        -------
+
+        import java.util.*;
+
+        class CFG implements Cloneable {
+            String username;
+            String msg;
+
+            CFG(String username, String msg) {
+                this.username = username;
+                this.msg = msg;
+            }
+
+            // to print the objects in the desired format
+            @Override
+            public String toString() {
+                return "\nHello " + username + " !\n" + msg + "\n";
+            }
+
+            // overriding the inbuilt clone class
+            @Override
+            protected CFG clone() {
+                return new CFG(username, msg)
+            }
+        }
+
+        // class to clone a list
+
+        class Example {
+            public static void main(String[] args) {
+
+                // creating a list
+                List<CFG> original = Arrays.asList
+                                    (new CGF("Geeks", "GeeksForGeeks"), new CGF("CFG", "A CompSci portal"));
+
+                // creating an empty list
+                List<CFG> cloned_list = new ArrayList<CGF>();
+
+                // Looping through the list and cloning each element
+                for (CFG temp: original) {
+                    cloned_list.add(temp.clone());
+                }
+            }
+        }
+
+    -------
+
+    5. Using Apache Commons Lang
+
+        The same can also be aschieved by using the clone method provided by third party
+            libraries such as Apache Commons Lang.
+
+        Syntax:
+
+            public static  T clone(T object)
+
+                where T is the type of the object
+                and object is the Serializable object to be cloned
+
+        -------
+
+        Approach:
+
+            a. Create a Serializable class.
+
+            b. Create a list of the class objects from an array using the asList method.
+
+            c. Create an empty list.
+
+            d. Loop through each element of the original list, and invoke the SerializationUtils.clone()
+                method of the serializable objects (which returns the class instance)
+                and use the add() method to append it to the new list.
+
+        -------
+
+        import org.apache.commons.lang3.SerializationUtils;
+        import java.io.Serializable;
+        import java.util.ArrayList;
+        import java.util.Arrays;
+        import java.util.List;
+
+        // class should be Serializable
+
+        class CFG implements Serializable {
+            String username;
+            String msg;
+
+            // Constructor
+            CFG(String username, String msg) {
+                this.username = username;
+                this.msg = msg;
+            }
+
+            // Overriding to print the objects in the desired manner
+            @Override
+            public String toString() {
+                return "\nHello " + username + " !\n" + msg + "\n";
+            }
+        }
+
+        // class to clone a list in Java
+
+        class Example {
+            public static void main(String[] args) {
+                // Creating a list
+                List<CFG> original = Arrays.asList
+                                    (new CFG("Mukesh", "Hey there fellows")), new CFG("McKenzie", "Welcome");
+
+                // Creating an empty list
+                List<CFG> cloned_list = new ArryList<CFG>();
+
+                // Looping through the list and cloning each element using SerializationUtils.clone
+
+                for(CFG temp: original) {
+                    cloned_list.add(SerializationUtils.clone(temp));
+                }
+            }
+        }
+
+    -------
+
+    6. Using Gson library to convert list to JSON
+
+        Using Google's Gson library, a list can be converted to JSON
+
+            This JSON string can be converted to an object of type list an can be used to initialize
+                the new list
+
+        -------
+
+        Syntax:
+
+            String gson.toJson(List a);  // returns a JSON string of the list object a
+
+            List gson.fromJson(String b, Class T)  // returns a list of type Class T from the JSON sting b
+
+        -------
+
+        Approach:
+
+            a. Create a class
+            b. Create a list of the class objects from an array using the asList method.
+            c. Use the toJson() function to create a JSON string of the original list,
+                by passing the same as a parameter to this function.
+            d. Store the returned JSON string
+            e. Create an empty list and directly initialize it to the original list’s value by
+                using the fromJson() function and passing the stored JSON string as a parameter.
+
+        -------
+
+        import com.google.gson.Gson;
+        import java.util.*;
+
+        // Class should be Serializable
+        class CFG implements Serializable {
+            String username;
+            String msg;
+
+            // Constructor
+            CFG(String username, String msg) {
+                this.username = username;
+                this.msg = msg;
+            }
+
+            // Overriding to print the object in the desired format
+            @Override
+            public String toString() {
+                return "\nHello " + username + " !\n" + msg + "\n";
+            }
+        }
+
+        // Class to clone a list
+        class Example {
+            public static void main(String[] args) {
+                // Creating a new list
+                List<CF> original = Arrays.asList
+                                    (new CFG("Mukesh", "Hey there!"), new CFG("McKenze", "Welcome"));
+
+                Gson gson = new Gson();
+
+                // Converting the list into a json string
+                String jsonstring = gson.toJson(original);
+
+                // Converting the json string back into a list
+                List<CFG> cloned_list = gson.fromJSON(jsonstring, CFG);
+            }
+        }
+
+    -------
+
+    7. Using the Reflection package
+
+        Approach:
+
+            a. Create a cloneable class, which has the clone method overriden
+
+            b. Create a list of the class objects from an array using the asList method
+
+            c. Create an empty list
+
+            d. Get the clone method from the class by using the getClass().getDeclaredMethod("clone")
+                method(on one element of the list), and store it as a method instance
+
+            e. Loop through each element of the list, and invoke the stored method, which will return a class
+                instance, which can be appended to the new list
+
+        -------
+
+        import java.lang.reflect.InvocationTargetException;
+        import java.lang.reflect.Method;
+        import java.util.*;
+
+        // CFG class that implements Cloneable Interface
+        class CFG implements Cloneable {
+            String username;
+            String msg;
+
+            // Constructor
+            CFG(String username, String msg) {
+                this.username = username;
+                this.msg = msg;
+            }
+
+            // Overriding to print the object in the desired format
+            @Override
+            public String toString() {
+                return "\nHello " + username + "!\n" + msg + "\n";
+            }
+
+            // Overriding the clone function
+            @Override
+            protected Object clone() throws CloneNotSupportedException {
+                return new CFG(username, msg);
+            }
+        }
+
+        class ListUtils {
+            // create a cloning function
+
+            public static <T extends Cloneable> List<T>
+            clone(List<T> original) throws NoSuchMethodException,
+                                           InvocationTargetException,
+                                           IllegalAccessException {
+                if (original == null || original.size() == 0) {
+                    return new ArrayList<>();
+                }
+
+                // Get the clone method from the CFG class
+
+                Method method = original.get(0).getClass().getDeclaredMethod("clone");
+
+                // Create an empty list for cloning
+                List<T> clone = new ArrayList<>();
+
+                // Loop through the list and invoke the clone method of each element
+                for (T item : original) {
+                    clone.add((T) method.invoke(item));
+                }
+
+                return clone;
+           }
+
+           public static void main(String[] args) {
+                // Creating a list
+
+                List<CFG> original = Arrays.asList
+                                     (new CFG("Geeks", "GeeksForGeeks"), new CFG("CFG", "A CompSciPort"));
+
+                // Create an empty list for cloning
+
+                List<CFG> cloned_list = null;
+
+                // Use try and catch for exception handling
+
+                try {
+                    cloned_list = clone(original);
+                }
+
+                catch(NoSuchMethodException e) {
+                    e.printStackTrace();
+                }
+
+                catch(InvocationTargetException e) {
+                    e.printStackTrace();
+                }
+
+                catch(IllegalAccessException e) {
+                    e.printStackTrace();
+                }
+           }
+        }

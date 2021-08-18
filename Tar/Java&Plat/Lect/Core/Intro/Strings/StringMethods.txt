@@ -1,0 +1,316 @@
+
+charAt()
+
+    returns the character at the specified index (position)
+
+    return type: char
+
+-------
+
+codePointAt()
+
+    returns the Unicode of the character at the specified index
+
+    return type: int
+
+-------
+
+codePointBefore()
+
+    returns the Unicode of the character before the specified index
+
+    return type: int
+
+-------
+
+codePointCount()
+
+    returns the Unicode in the specified text range of this String
+
+    return type: int
+
+-------
+
+compareTo()
+
+    compares two strings lexicographically
+
+    return type: int
+
+-------
+
+compareToIgnoreCase()
+
+    compares two strings lexicographically, ignoring case differences
+
+    return type: int
+
+-------
+
+concat()
+
+    appends a string to the end of another string
+
+    return type: String
+
+-------
+
+contains()
+
+    checks whether a string contains a sequence of characters
+
+    return type: boolean
+
+-------
+
+contentEquals()
+
+    checks whether a string contains the exact same sequence of characters of the specified
+        CharSequence or StringBuffer
+
+    return type: boolean
+
+-------
+
+copyValueOf()
+
+    returns a string that represents the characters of the character array
+
+    return type: String
+
+-------
+
+endsWith()
+
+    checks whether a string ends with the specified character(s)
+
+    return type: boolean
+
+-------
+
+endsWith()
+
+    checks whether a string ends with the specified character(s)
+
+    return type: boolean
+
+-------
+
+equals()
+
+    compares two strings
+
+    returns 'true' if the strings are equal, and false if not
+
+    return type: boolean
+
+-------
+
+equalsIgnoreCase()
+
+    compares two strings, ignoring case considerations
+
+    return type: boolean
+
+-------
+
+format()
+
+    returns a formatted string using the specified locale, format string, and arguments
+
+    return type: string
+
+-------
+
+getBytes()
+
+    encodes this string into a sequence of bytes using the named charset, storing the result
+    into a new byte array
+
+    return type: byte []
+
+-------
+
+getChars()
+
+    copies characters from a string into an array of chars
+
+    return type: void
+
+-------
+
+hashCode()
+
+    returns the hash code of a string
+
+    return type: int
+
+-------
+
+indexOf()
+
+    returns the position of the first found occurrence of specified character, in a string
+
+    return type: int
+
+-------
+
+intern()
+
+    returns the index within this string of the first occurrence of the specified character,
+        starting the search at the specified index
+
+    return type: String
+
+-------
+
+isEmpty()
+
+    checks whether a string is empty or not
+
+    return type: boolean
+
+-------
+
+lastIndexOf()
+
+    return the position of the last found occurrence of the specified characters in a string
+
+    return type: int
+
+-------
+
+length()
+
+    return the length of the string
+
+    return type: int
+
+-------
+
+matches()
+
+    searches a string for a match against a regular expression, and returns the matches
+
+    return type: boolean
+
+-------
+
+offsetByCodePoints()
+
+    returns the index within this String that is offset from the given index by codePointOffset code points
+
+    return type: int
+
+-------
+
+regionMatches()
+
+    tests if two string regions are equal
+
+    return type: boolean
+
+-------
+
+replace()
+
+    searches a string for a specified value, and returns a new string where the specified values are replaced
+
+    return type: String
+
+-------
+
+replaceFirst()
+
+    replaces the first occurrence of a substring that matches the given regular expression with the given
+        replacement
+
+    return type: String
+
+-------
+
+replaceAll()
+
+    replaces each substring of this string that matches the given regular expression with the given replacement
+
+    return type: String
+
+-------
+
+split()
+
+    splits a string into an array of substring
+
+    return type: String []
+
+-------
+
+startsWith()
+
+    checks whether a string starts with the specified characters
+
+    return type: boolean
+
+-------
+
+subSequence()
+
+    returns a new character sequence that is a subsequence of this sequence
+
+    return type: CharSequence
+
+-------
+
+subString()
+
+    extracts the characters from a string, beginning at a specified start position, and
+        through the specified number of character
+
+-------
+
+toCharArray()
+
+    converts the string into a new character array
+
+    return type: char []
+
+-------
+
+toLowerCase()
+
+    converts a string to lower case letters
+
+    return type: String
+
+-------
+
+toString()
+
+    returns the value of a String object
+
+    return type: String
+
+-------
+
+toUpperCase()
+
+    converts a string to upper case letters
+
+    return type: String
+
+-------
+
+trim()
+
+    removes the whitespace from both the ends of a string
+
+    return type: String
+
+-------
+
+valueOf()
+
+    returns the primitive value of a string object
+
+    return type: String
+

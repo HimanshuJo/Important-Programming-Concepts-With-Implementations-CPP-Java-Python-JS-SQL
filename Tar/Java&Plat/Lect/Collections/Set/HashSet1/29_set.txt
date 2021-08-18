@@ -1,0 +1,142 @@
+
+Collection (I):  --> 1.2 v
+
+    Set (I)  --> 1.2 v is the child interface of Collection Interface
+
+        For the set various implementation classes are there:
+
+            HashSet (c)  --> 1.2 v
+
+                LinkedHashSet (c)  --> 1.4 v
+
+            SortedSet (I)  --> 1.2 v
+
+                NavigableSet (I)  --> 1.6 v
+
+                    TreeSet (c)  --> 1.2 v
+
+-------
+
+What is Set and when we should go for Set:
+
+    Set is the child interface of collection
+
+    If we want to represent a group of individual objects, where
+
+        duplicates are not allowed
+
+        insertion order is not important (unlike List)
+
+    Set Interface doesn't contain any new methods
+
+        whatever the methods available or defined in collection, by default we've to use those
+            methods only
+
+-------
+
+HashSet (first implemented class of Set):
+
+    The underlying data structure for HashSet is 'HashTable'
+
+    Duplicates are not allowed
+
+        by mistake if we are trying to add duplicates, there will be no
+            compile time error or run time exception
+
+            simply add method returns boolean  --> boolean add("A");
+
+                so in this case, add method simply returns false
+
+    Insertion order is not preserved
+
+        but all objects will be inserted based on Hash codes of the object
+
+    Heterogeneous objects are allowed
+
+    Null insertion is possible
+
+    HashSet implements Serializable and Cloneable Interface, but not RandomAccess
+
+    If the objects are going to be stored based on the Hash codes, the advantage is that
+        search algorithm will become easy
+
+        So if or frequent operation is search operation, HashSet is the best choice
+
+-------
+
+Various constructors for the HashSet:
+
+    There are 4 constructors for the HashSet:
+
+    For all the hashing related data structures, all the constructors are common
+
+        * LinkedHashSet
+
+        * HashMap
+
+        * IdentityHashMap
+
+        * WeakHashMap
+
+        * HashTable
+
+    1. Constructor:
+
+        HashSet h = new HashSet();
+
+            creates an empty HashSet object with default initial capacity 16; and default
+                fill ratio is 0.75
+
+                Sometimes, fill ration is also known as Load Factor
+
+            -------
+
+            Suppose we've an ArrayList, the default initial capacity of the ArrayList is 10
+
+                if I try to insert the 11th element; once ArrayList reaches its max. capacity (100% loading)
+                    a bigger ArrayList object is going to be created
+
+            However, in the case of HashSet, after filling 75% ratio only, a new HashSet object is
+                going to be created
+
+                this 75% ratio is called the fill ratio
+
+    2. Constructor:
+
+        HashSet h = new HashSet(int initialCapacity);
+
+            creates a new HashSet object with our specified initialCapacity but load factor is
+                0.75
+
+    3. Constructor:
+
+        HashSet h = new HashSet(int initialCapacity, float loadFactor)
+
+            here instead of using 0.75 as the initial load factor, we're specifying our own
+                load factor
+
+    4. Constructor:
+
+        HashSet h = new HashSet(Collection c);
+
+            For any collection object, we can create a HashSet object
+
+    * the same constructors are also applicable for the other Hashing related data structure
+
+-------
+
+import java.util.*;
+
+class HashSetDemo {
+    public static void main(String[] args) {
+        LinkedHashSet h = new LinkedHashSet();
+        h.add("B");
+        h.add("C");
+        h.add("D");
+        h.add("Z");
+        h.add(null);
+        h.add(10);
+        System.out.println(h.add("Z")); // false
+        System.out.println(h);  // here output order is not known, as insertion order is not preserved
+    }
+}

@@ -1,0 +1,160 @@
+
+Suppose we have a family hierarchy and names in that hierarchy of the persons like this:
+
+    Great Great Grandfather (Sri Sri Sri Nagarjuna Rao Bhim ..)
+
+    Great Grandfather (Sri Sri Nagarjuna Rao ..)  --> Vector is like very old generation (1.0 v 1995)
+
+    Grandfather (Sri Nagarjuna ..)
+
+    Father (Nagajuna)
+
+    Son (Akhil)  --> ArrayList concept is like the new generation
+
+    -------
+
+    e.g.
+
+        ArrayList:
+
+            adding an element in ArrayList
+                add(Object o)
+
+            clearing all the element
+                clear()
+
+        Vector:
+
+             adding an element in Vector
+                addElement(Object o)
+
+            clearing all the elements
+                removeAllElements()
+
+-------
+
+Vector:
+
+    Underlying data structure is 're-sizable' array or 'grow-able' array
+
+    Duplicate are allowed
+
+    Insertion order is preserved
+
+    null insertion is possible
+
+    Heterogeneous objects are allowed
+
+        except 'TreeSet' and 'TreeMap' everywhere in collections heterogeneous objects are allowed
+
+    Implements 'Serializable' and 'Cloneable' Interface
+
+    Implements one special Interface called
+
+        RandomAccess Interface
+
+    Most of the methods present in the vector are 'synchronized'
+
+        Hence vector object is always thread safe
+
+    Vector is the best choice if we want to perform retrieval operation
+
+-------
+
+Vector specific methods:
+
+    Adding Elements:
+
+        add(Object o)  // Adding an object  --> available in 'Collection' Interface
+
+        add(int index, Object o)  // Adding an object at a particular index  --> available in 'List' Interface
+
+        addElement(Object o)  // Adding an object  --> 'Vector' specific method
+
+    -------
+
+    Removing Elements:
+
+        remove(Object o)  --> from 'Collection'
+
+        removeElement(Object o)  --> from 'Vector'
+
+        remove(int index)  --> from 'List'
+
+        removeElementAt(int index)  --> from 'Vector'
+
+        clear()
+
+        removeAllElements()  --> from 'Vector'
+
+    -------
+
+    To retrieve/accessing elements:
+
+        Object get(int index)  --> from 'Collection'
+
+        Object elementAt(int index)  --> from 'Vector'
+
+        Object firstElement()  --> from 'Vector'
+
+        Object lastElement()  --> from 'Vector'
+
+    -------
+
+    Other Methods:
+
+        int size();  // currently how many objects are there (e.g. in a capacity of 600, only 200 are there)
+
+        int capacity();  // total how many objects we can accommodate
+
+        Enumeration elements();  // get objects one by one from the vector
+
+-------
+
+Vector class constructors:
+
+    1. Vector v = new Vector();  // create an empty vector object with a default initial capacity of 10
+
+        // once vector reaches its max. capacity, and we try to insert one extra element
+
+            // a bigger vector object will be created, and copy all the values from the earlier vector
+
+            // then the next element will be inserted
+
+        // capacity of the newly created vector is 2 * current capacity
+
+    -------
+
+    2. Vector v = new Vector(int initialCapacity);
+
+    3. Vector v = new Vector(int initialCapacity, int incrementalCapacity);
+
+        // for the newly vector object how much increment I want
+
+        e.g. Vector v =  new Vector(1000, 5);
+
+            // here instead of doubling the vector capacity, the new vector object will have a size of 1005
+
+    4. Vector v = new Vector(Collection c):
+
+        // for any collection object can you please create an equivalent vector
+
+-------
+
+import java.util.*;
+
+class VectorDemo1
+{
+    public static void main(String[] args)
+    {
+        Vector v = new Vector();
+        System.out.println(v.capacity());
+        for(int i = 1; i <= 10; i++)
+        {
+            v.addElement(i);
+        }
+        System.out.println(v.capacity());
+        v.addElement("A");
+        System.out.println(v.capacity());  // double capacity
+    }
+}

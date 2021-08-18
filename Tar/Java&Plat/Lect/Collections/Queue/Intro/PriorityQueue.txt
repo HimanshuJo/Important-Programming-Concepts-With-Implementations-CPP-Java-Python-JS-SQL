@@ -1,0 +1,88 @@
+
+It extends the AbstractQueue and implements the Queue interface
+
+    It creates a queue that is prioritized based on the queue's comparator
+
+-------
+
+PriorityQueue is a generic class that has the following declaration:
+
+    class PriorityQueue<E>
+
+        Here, E specifies the type of objects stored in the queue
+
+    -------
+
+    PriorityQueue are dynamic, and they grow as necessary
+
+-------
+
+The constructors of PriorityQueue are as follows:
+
+    PriorityQueue( )
+
+        The first constructor builds an empty queue
+
+        Its starting capacity is 11
+
+    PriorityQueue(int capacity)
+
+        This constructor builds a queue that has the specified initial capacity.
+
+    PriorityQueue(Comparator<? super E> comp)
+
+        This constructor specifies a comparator
+
+    PriorityQueue(int capacity, Comparator<? super E> comp)
+
+        fourth builds a queue with the specified capacity and comparator
+
+    PriorityQueue(Collection<? extends E> c)
+
+        Creates a queue that is initialized with the elements of the collection passed in c
+
+        Capacity grows automatically as elements are added
+
+    PriorityQueue(PriorityQueue<? extends E> c)
+
+        Creates a queue that is initialized with the elements of the collection passed in c
+
+        Capacity grows automatically as elements are added
+
+    PriorityQueue(SortedSet<? extends E> c)
+
+        Creates a queue that is initialized with the elements of the collection passed in c
+
+        Capacity grows automatically as elements are added
+
+-------
+
+If no comparator is specified when a PriorityQueue is constructed, then the
+    default comparator for the type of data stored in the queue is used.
+
+    The default comparator will order the queue in ascending order.
+
+    Thus, the head of the queue will be the smallest value.
+
+    However, by providing a custom comparator, you can specify a different ordering scheme.
+
+        For example, when storing items that include a time stamp, you could prioritize the queue
+            such that the oldest items are first in the queue.
+
+    -------
+
+    We can obtain a reference to the comparator used by a PriorityQueue by calling its comparator() method
+
+        Comparator<? super E> comparator()
+
+        It returns the comparator.
+
+        If natural ordering is used for the invoking queue, null is returned
+
+    -------
+
+    Although we can iterate through a PriorityQueue using an iterator, the order of
+        that iteration is undefined
+
+        To properly use a PriorityQueue we must call methods such as
+            'offer()' and 'poll' which are defined by the Queue interface

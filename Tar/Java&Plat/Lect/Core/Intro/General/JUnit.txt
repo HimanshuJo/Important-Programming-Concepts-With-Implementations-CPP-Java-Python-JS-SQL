@@ -1,0 +1,111 @@
+
+JUnit
+
+    is an open source testing framework for Java
+
+    It is important for test-driven development
+
+    It is also considered as an instance of XUnit architecture
+
+    It is used for testing a small chunk of code or a unit
+
+    -------
+
+    JUnit is used to verify a small chunk of code by creating a path, function or a method
+
+    JUnit basically promotes the idea of 'test first' and 'code later'
+
+-------
+
+Advantages of JUnit:
+
+    It is one of the best testing framework that can be selected for an efficient testing process
+
+    More Application Developer IDEs includes JUnit
+
+    It also provides an AWT and Swing-based graphical test reporting mechanism
+
+    JUnit also provides a text-based command line
+
+    The open source community has extended JUnit by implementing a JUnitEE test framework that
+        enables it to test within the application server's container
+
+    A benchmark for testing in Java programming language
+
+-------
+
+Features:
+
+    JUnit test allows you to write codes faster, which increases quality
+
+    It is elegantly simple
+
+    It provides annotations to identify test methods
+
+    It provides test runners for running the tests
+
+    Tests can be run automatically
+
+    Tests can be organized into test suites
+
+-------
+
+The JUnit framework:
+
+    JUnit is a 'Regression Testing Framework' which is used to implement unit testing in Java
+
+    This framework allows quick and easy generation of test data and test cases
+
+    -------
+
+    Major features of JUnit test framework:
+
+        1. Test fixtures
+
+            They ensures that there is a well-known and fixed environment in which tests are run
+                so that results are repeatable
+
+            A fixture is a fixed state of a set of objects which is used as a baseline for running
+                the test cases
+
+            Two methods:
+
+                setUp()
+
+                    This method is run before the test invocation
+
+                    The annotation @before is used in this case
+
+                tearDown()
+
+                    Here @after annotation is used
+
+        2. Test suites
+
+            If we want to execute multiple test cases in a specific order, it can be done by combining
+                all the test cases in a single origin.
+
+                This origin is called the 'test suites'
+
+            To run the test suites we need to annotate the class using
+
+                    @Runwith
+
+                    @SuiteClasses
+
+        3. Test runners
+
+            The test runner is used to execute the test cases
+
+            JUnit provides a tool for the execution of the test cases
+
+            'JUnitCore' class is used in order to execute the tests
+
+            'runClasses' method is used to run one or several test cases
+
+                The return type of this method is the result object that is used to access information
+                    about the tests
+
+        4. JUnit classes
+
+            JUnit classes are used in writing and testing JUnits

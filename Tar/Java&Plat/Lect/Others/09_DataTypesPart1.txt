@@ -1,0 +1,198 @@
+
+Data Types:
+
+    in Java every variable and expression (e.g. if a, b, c are int types then a+b+c is also int type)
+        should have some type
+
+    each and every data type is strictly defined
+
+        e.g. byte
+
+                size is 1 byte or 8 bits
+
+                range is -128 (10_000_000) to 127
+
+        moreover, each and every assignment should be checked by compiler for type-compatibility
+
+            int x = 10.5;  --> invalid, but valid in C
+
+            boolean b = 0;  --> invalid, but valid in C
+
+    Java is strongly typed language (type checking in Java is very important)
+
+-------
+
+Is Java a pure object-oriented programming language
+
+    ans can be 'yes' and 'no' both
+
+    when compared with old programming languages such as C++, Java has more object oriented nature
+
+        but when we consider Java alone, there are n number of object-oriented features are not
+            supported by Java
+
+            e.g. operator overloading, multiple inheritance etc.
+
+    recommended ans is No
+
+        as in Java we are depending on primitive data-types
+
+            e.g. int x = 10;
+
+            if it is a pure object programming language then everything we have to talk in terms of
+                objects
+
+-------
+
+Primitive Data Types:  --> total 8
+
+    Among these there are some data types which talks about numbers such type of data types are by default
+        considered as 'Numeric Data Types'
+
+            When numbers have decimals in it, these are named as 'floats'
+
+                to represent them we have 'Floating-point data types'
+
+                    float
+
+                    double
+
+            When numbers have no decimals in it, these are known as 'integrals'
+
+                to represent them we have 'Integral data types'
+
+                    byte
+                    short
+                    int
+                    long
+
+    There are some data types which do not talks about numbers, these are 'Non-Numeric Data Types'
+
+        to represent characters we have char data type
+
+            char
+
+        to represent boolean we have boolean data type
+
+            boolean
+
+    -------
+
+    Except boolean and char, the remaining data types are considered as signed data types because we can
+        represent both the positive and negative numbers
+
+-------
+
+byte:
+
+    size is 1 byte (8 bits)
+
+    using 8 bits the max value we can represent is +127
+
+        positive numbers are represented directly in the memory
+
+        1st bit also known as MSB (Most Significant Bit) acts as signed bit
+
+            0 means + number
+            1 means - number
+
+        remaining 7 bits represents value
+
+            so we have 1, 1, 1, 1, 1, 1, 1 = (2^6 + 2^5 + 2^4 + 2^3 + 2^2 + 2^1 + 2^0)
+
+                = 64 + 32 + 16 + 8 + 4 + 2
+                = 127
+
+    using 8 bits the min value we can represent is -128
+
+        negative numbers are represented in 2's complement form
+
+        by using 2's complement form 7 bits are enough to represent -128
+
+    Range: -128 to +127
+
+    -------
+
+    byte b = 10;  --> valid
+
+    byte b = 127;  --> valid
+
+    byte b = 128;  --> invalid (compile time error saying possible loss of precision, found: int, required: byte)
+
+    byte b = 10.5;  --> invalid (compile time error saying possible loss of precision, found: double, required: byte)
+
+    byte b = true;  --> invalid (compile time error saying incompatible types, found: boolean, required: byte)
+
+    byte b = Durga;  --> invalid
+
+        (compile time error saying incompatible types, found: java.lang.String, required: byte)
+
+    -------
+
+    When to use byte data type?
+
+        If we want to handle data in the form of 'Streams' either from the file
+            (If I want to write data to the file, or I want to send my data across a network) or
+            from the network best suitable concept is 'byte' data type
+
+            because file supported form or network supported form is byte
+
+        In Java there are two types of Streams
+
+            character streams
+            byte streams
+
+        In Java we have 'file output stream' or fos (a class)
+
+            it can be used to write binary data to the file
+
+            fos contain a write method
+
+                fos.write(byte[] b);
+
+                    argument to the method is byte array
+
+                    it is always going to take byte array only because a sequence of bytes is the file or network
+                        supported form
+
+-------
+
+short:
+
+    size is 2 bytes (16 bits)
+
+    range is -2^15 to (2^15 - 1)
+
+        -32768 to 32767
+
+    -------
+
+    When to use short data type:
+
+        Java came in 1995
+
+            and at that time 16-bit processors were very popular (we had 8085, 8086 microprocessors)
+
+            so using short data type for read and write operations was very efficient
+
+-------
+
+int:
+
+    most commonly used data type in Java
+
+    size is 4 bytes (32 bits)
+
+    range is -2^31 to (2^31 - 1)
+
+        -2147483648 to 2147483647
+
+    int x = 2147483647;  --> valid
+
+    int x = 2147483648;  --> invalid
+
+        (compile time error saying possible loss of precision, integer number too large)
+
+    int x = 2147483648l;  --> valid
+
+        (compile time error saying possible loss of precision, found: long, required: int)

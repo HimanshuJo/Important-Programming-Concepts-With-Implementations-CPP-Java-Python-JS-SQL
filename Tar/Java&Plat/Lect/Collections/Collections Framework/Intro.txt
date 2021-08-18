@@ -1,0 +1,253 @@
+
+The java.util package contains one of Java’s most powerful subsystems: the Collections Framework
+
+    java.util
+
+        this important package contains a large assortment of classes and interfaces that
+            support a broad range of functionality
+
+        java.util has classes that generate
+            pseudorandom numbers,
+            manage date and time,
+            observe events,
+            manipulate sets of bits,
+            tokenize strings, and
+            handle formatted data
+
+-------
+
+The Collections Framework:
+
+    is a sophisticated hierarchy of interfaces and classes that
+        provide state-of-the-art technology for managing groups of objects.
+
+    Beginning with JDK 9, java.util is part of the java.base module.
+
+-------
+
+Top-level classes in java.util
+
+    AbstractCollection
+    AbstractList
+    AbstractMap
+    AbstractQueue
+    AbstractSequentialList
+    AbstractSet
+    ArrayDeque
+    ArrayList
+    Arrays
+    Base64
+    BitSet
+
+    -------
+
+    FormattableFlags
+    Formatter
+    GeorgianCalendar
+    HashMap
+    HashSet
+    HashTable
+    IdentityHashMap
+    IntSummaryStatistics
+    LinkedHashMap
+    LinkedHashSet
+    LinkedList
+
+    -------
+
+    Properties
+    PropertyPermission
+    PropertyResourceBundle
+    Random
+    ResourceBundle
+    Scanner
+    ServiceLoader
+    SimpleTimeZone
+    Spliterators
+    SplitableRandom
+    Stack
+
+    -------
+
+    Calender
+    Collections
+    Currency
+    Date
+    Dictionary
+    DoubleSummaryStatistics
+    EnumMap
+    EnumSet
+    EventListenerProxy
+    EventObject
+
+    -------
+
+    ListResourceBundle
+    Locale
+    LongSummaryStatistics
+    Objects
+    Observable
+    Optional
+    OptionalDouble
+    OptionalInt
+    OptionalLong
+    PriorityQueue
+
+    -------
+
+    StringJoiner
+    StringTokenizer
+    Timer
+    TimerTask
+    TimerZone
+    TreeMap
+    TreeSet
+    UUID
+    Vector
+    WeakHashMap
+
+-------
+
+Interfaces defined by java.util:
+
+    Collection
+    Comparator
+    Deque
+    Enumeration
+    EventListener
+    Formattable
+    Iterator
+    List
+    ListIterator
+    Map
+
+    -------
+
+    Map.Entry
+    NavigableMap
+    NavigableSet
+    Observer
+    PrimitiveIterator
+    PrimitiveInterator.OfDouble
+    PrimitiveInterator.OfInt
+    PrimitiveIterator.OfLong
+    Queue
+    RandomAccess
+
+    -------
+
+    ServiceLoader.Provider
+    Set
+    SortedMap
+    SortedSet
+    Spliterator
+    Spliterator.OfDouble
+    Spliterator.OfInt
+    Spliterator.OfLong
+    Spliterator.OfPrimitive
+
+-------
+
+Some very important classes and Interfaces are as follows:
+
+    List (Interface):
+
+        ArrayList (c)
+        LinkedList (c)
+        Vector (c)
+            Stack (c)
+
+    -------
+
+    Set (Interface):
+
+        HashSet (c)
+            LinkedHashSet (c)
+
+        SortedSet (Interface)
+            NavigableSet (Interface)
+                TreeSet (c)
+
+    -------
+
+    Queue (Interface):
+
+        PriorityQueue (c)
+        BlockingQueue (c)
+            LinkedBlockingQueue (c)
+            PriorityBlockingQueue (c)
+
+    -------
+
+    Map (Interface):
+
+        HashMap (c)
+        WeakhashMap (c)
+        IdentityHashMap (c)
+        HashTable (c)
+            Property (c)
+
+        SortedMap (Interface)
+            NavigableMap (Interface)
+                TreeMap (c)
+
+-------
+
+Prior to the Collections Framework, Java provided ad hoc classes such as:
+
+        Dictionary,
+        Vector,
+        Stack, and
+        Properties
+
+    to store and manipulate groups of objects.
+
+-------
+
+The Collections Framework was designed to meet several goals.
+
+    First, the framework had to be high-performance.
+
+    The implementations for the fundamental collections
+        (dynamic arrays, linked lists, trees, and hash tables) are highly efficient.
+
+-------
+
+Algorithms are another important part of the collection mechanism.
+
+    Algorithms operate on collections and are defined as static methods within the
+        Collections class.
+
+        Thus, they are available for all collections.
+
+        Each collection class need not implement its own versions.
+
+        The algorithms provide a standard means of manipulating collections.
+
+-------
+
+Another item closely associated with the Collections Framework is the
+    Iterator interface.
+
+    An iterator offers a general-purpose, standardized way of accessing the elements
+        within a collection, one at a time.
+
+    Thus, an iterator provides a means of enumerating the contents of a collection.
+
+    Because each collection provides an iterator, the elements of any collection
+        class can be accessed through the methods defined by Iterator.
+
+    Thus, with only small changes, the code that cycles through a set can also be
+        used to cycle through a list, for example.
+
+-------
+
+JDK 8 added another type of iterator called a spliterator.
+
+    In brief, spliterators are iterators that provide support for parallel iteration.
+
+    The interfaces that support spliterators are Spliterator and several nested interfaces
+        that support primitive types.
+
+    JDK 8 also added iterator interfaces designed for use with primitive types,
+        such as 'PrimitiveIterator' and 'PrimitiveIterator.OfDouble'.

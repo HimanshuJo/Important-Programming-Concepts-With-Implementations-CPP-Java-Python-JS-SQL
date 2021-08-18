@@ -1,0 +1,67 @@
+
+
+Table of common time complexities
+
+╔══════════════════╦═════════════════╗
+║       Name       ║ Time Complexity ║
+╠══════════════════╬═════════════════╣
+║ Constant Time    ║       O(1)      ║
+╠══════════════════╬═════════════════╣
+║ Logarithmic Time ║     O(log n)    ║
+╠══════════════════╬═════════════════╣
+║ Linear Time      ║       O(n)      ║
+╠══════════════════╬═════════════════╣
+║ Quasilinear Time ║    O(n log n)   ║
+╠══════════════════╬═════════════════╣
+║ Quadratic Time   ║      O(n^2)     ║
+╠══════════════════╬═════════════════╣
+║ Exponential Time ║      O(2^n)     ║
+╠══════════════════╬═════════════════╣
+║ Factorial Time   ║       O(n!)     ║
+╚══════════════════╩═════════════════╝
+
+-------
+
+O(n):  --> Linear Time
+
+    As the size of input increases, the amount of time to execute a particular function
+        increases linearly
+
+-------
+
+O(1):  --> Constant time
+
+    this is when the time it takes to complete a function does not increase at all, as the size of the
+        input increases
+
+-------
+
+O(n^2):  --> Quadratic time
+
+    time it takes to execute a function increases like a quadratic function
+
+-------
+
+Important Notes
+
+    It is important to note that when analyzing the time complexity of an algorithm with
+        several operations we need to describe the algorithm based on the largest complexity
+        among all operations.
+
+        For example:
+
+            def my_function(data):
+                first_element = data[0]  # O(1)
+                for value in data:
+                    print(value)  # O(n)
+                for x in data:
+                    for y in data:
+                        print(x, y)  # O(n^2)
+
+        my_function has multiple time complexities:
+            O(1) + O(n) + O(n²).
+
+            So, when increasing the size of the input data, the bottleneck of this
+                algorithm will be the operation that takes O(n²).
+
+            Based on this, we can describe the time complexity of this algorithm as O(n²).

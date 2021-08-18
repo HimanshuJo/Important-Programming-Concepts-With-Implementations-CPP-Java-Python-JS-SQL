@@ -1,0 +1,80 @@
+
+Spring Autowire:
+
+    In Java we have JVM
+
+        Inside that JVM we have a special container
+
+            'Spring Container'
+
+                This container has different objects
+
+                The objects which spring specify are known as 'Spring Bean'
+
+            How to create Spring Bean and when do they get created:
+
+                We have two different scope when we create Spring Bean
+
+                    1. Singleton scope
+
+                    2. Prototype scope
+
+            -------
+
+            When does the Spring container gets created:
+
+                ConfigurableApplicationContext context = SpringApplication.run(Class_nameApplication.class, args)
+
+                    run method returns us the context
+
+                    this is where it initialize the container
+
+                        and in this container it will try to create all the objects
+
+                            from all the objects means objects of only those classes which the developer has specified
+
+            How to make a class Spring component:
+
+                by using the annotation @Component
+
+                    import org.springframework.stereotype.Component;
+
+                    @Component
+                    public class Class_Name {
+                        ...
+                    }
+
+    -------
+
+    By default Spring framework uses the concept of 'Singleton Design Pattern'
+
+        That means it will give me the object pre-hand
+
+            we don't have to wait for the object creation
+
+    -------
+
+    When we use @Scope(value="prototype")
+
+        that means spring boot will not create the instance by default for us
+
+        the moment we ask for the instance (e.g. Alien a = context.getBean(Alien.class);), at that point
+            it will get the object for us
+
+    -------
+
+    When we say @Autowired
+
+        the spring boot framework try to connect to the dependency what is being required by a class
+
+            e.g. suppose an instance a1 of class Alien needs an instance l1 of class Laptop
+
+                    then the annotation @Autowired will search for the type
+
+                        the default name for the instance a1 is 'alien'
+
+                        the default name for the instance l1 is 'laptop'
+
+            If we want to search an instance by name:
+
+                for that we can use the annotation @Qualifier("laptop")

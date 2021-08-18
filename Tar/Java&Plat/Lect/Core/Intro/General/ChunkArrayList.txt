@@ -1,0 +1,79 @@
+
+Partitioning (also known as chunking)
+
+	is an operation that transforms a collection of elements into a collection of chunks of a given size. For instance, let’s say we have a list of 7 elements (incrementing numbers from 1 to 7) and we want to split it into a list of chunks of size 2.
+
+	[1,2,3,4,5,6,7] -> [[1,2], [3,4], [5,6], [7]]
+
+-------
+
+Let’s implement this operation using a new type of list, called Partition. 
+
+We will extend the AbstractList<List<T>> class, 
+	and we will implement two methods - get(int index) and size(). 
+
+	The whole idea here is to hide the original list inside this class and modify its behavior, 
+		so instead of returning single elements from the original list, we are going to 
+		return chunks of a given size.
+
+-------
+
+import java.util.AbstractList;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.Collectors;
+
+public final class Partition<T> extends AbstractList<List<T>> {
+
+    private final List<T> list;
+    private final int chunkSize;
+
+    public Partition(List<T> list, int chunkSize) {
+        this.list = new ArrayList<>(list);
+        this.chunkSize = chunkSize;
+    }
+
+    public static <T> Partition<T> ofSize(List<T> list, int chunkSize) {
+        return new Partition<>(list, chunkSize);
+    }
+
+    @Override
+    public List<T> get(int index) {
+        int start = index * chunkSize;
+        int end = Math.min(start + chunkSize, list.size());
+
+        if (start > end) {
+            throw new IndexOutOfBoundsException("Index " + index + " is out of the list range <0," + (size() - 1) + ">");
+        }
+
+        return new ArrayList<>(list.subList(start, end));
+    }
+
+    @Override
+    public int size() {
+        return (int) Math.ceil((double) list.size() / (double) chunkSize);
+    }
+}
+
+All we have to do is to override those two methods, and our list of elements starts 
+	behaving like a list of chunks of the input elements. 
+
+	Those overridden methods affect methods like 
+		toString(), forEach(), or iterator(). 
+
+		Let’s take a look at a simple usage example to see how this Partition object behaves:
+
+			-------
+
+			final List<Integer> numbers = Arrays.asList(1,2,3,4,5,6,7);
+
+			System.out.println(Partition.ofSize(numbers, 3));
+			System.out.println(Partition.ofSize(numbers, 2));
+
+			-------
+
+			[[1, 2, 3], [4, 5, 6], [7]]
+			[[1, 2], [3, 4], [5, 6], [7]]

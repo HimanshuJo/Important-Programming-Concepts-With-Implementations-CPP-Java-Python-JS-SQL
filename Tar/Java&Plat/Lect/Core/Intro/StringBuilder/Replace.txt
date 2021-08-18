@@ -1,0 +1,45 @@
+
+The replace(int start, int end, String str) method of StringBuilder class
+    is used to replace the characters in a substring of this sequence with characters
+    in the specified String.
+
+    The substring begins at the specified index start and extends to the character at index end – 1
+        or to the end of the sequence if no such character exists.
+
+    At first, the characters of substring are removed and the string passed as parameters are
+        inserted in place of those characters.
+
+    -------
+
+    Syntax:
+
+        public StringBuilder replace?(int start, int end, String str)
+
+    Parameters:
+
+        This method accepts three parameters:
+
+        start – Integer type value which refers to the starting index.
+        end – Integer type value which refers to the ending index.
+        str – String type value which refer to the String that will replace previous contents.
+
+    Exception:
+
+        If the start is negative, greater than length(), or greater than end then
+            StringIndexOutOfBoundsException.
+
+-------
+
+class GFG {
+    public static void main(String[] args)
+    {
+        StringBuilder str = new StringBuilder("WelcomeGeeks");
+
+        System.out.println("String = " + str.toString());
+
+        // replace Character from index 1 to 7 by "e are "
+        StringBuilder strReturn = str.replace(1, 7, "e are ");
+
+        System.out.println(strReturn.toString());  // We are Geeks
+    }
+}

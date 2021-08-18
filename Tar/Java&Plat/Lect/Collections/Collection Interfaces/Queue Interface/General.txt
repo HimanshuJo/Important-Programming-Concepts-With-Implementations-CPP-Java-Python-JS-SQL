@@ -1,0 +1,91 @@
+
+The Queue interface extends Collection and declares the behavior of a queue,
+    which is often a first-in, first-out list.
+
+    However, there are types of queues in which the ordering is based upon other criteria.
+
+    Queue is a generic interface that has the following declaration:
+
+        interface Queue<E>
+
+            E specifies the type of objects that the queue will hold
+
+-------
+
+Queue methods:
+
+    1. E element()
+
+        Returns the element at the head of the queue
+
+        The element is not removed
+
+        It throws 'NoSuchElementException' if the queue is empty
+
+    2. boolean offer(E obj)
+
+        Attempts to add obj to the queue
+
+        Returns true if obj was added and false otherwise
+
+    3. E peek()
+
+        Returns the elements at the head of the queue
+
+        It returns null if the queue is empty
+
+        The element is not removed
+
+    4. E poll()
+
+        Returns the element at the head of the queue, removing the element in the process
+
+        It returns null if the queue is empty
+
+    5. E remove()
+
+        Removes the element at the head of the queue, returning the element in the process
+
+        It throws 'NoSuchElementException' if the queue is empty
+
+-------
+
+Several methods throw a 'ClassCastException' when an object is
+    incompatible with the elements in the queue.
+
+A 'NullPointerException' is thrown if an attempt is made to store a null object
+    and null elements are not allowed in the queue.
+
+An 'IllegalArgumentException' is thrown if an invalid argument is used.
+
+An 'IllegalStateException' is thrown if an attempt is made to add an element to a
+    fixed-length queue that is full.
+
+'NoSuchElementException' is thrown if an attempt is made to remove an
+    element from an empty queue.
+
+-------
+
+Despite its simplicity, Queue offers several points of interest.
+
+    First, elements can only be removed from the head of the queue.
+
+    Second, there are two methods that obtain and remove elements:
+        poll( ) and remove( ).
+
+        The difference between them is that:
+
+            poll( ) returns null if the queue is empty, but
+
+            remove( ) throws an exception.
+
+    Third, there are two methods, element( ) and peek( ),
+        that obtain but don’t remove the element at the head of the queue.
+
+        They differ only in that element( ) throws an exception if the queue is empty, but
+            peek( ) returns null.
+
+    Finally, notice that offer( ) only attempts to add an element to a queue.
+
+        Because some queues have a fixed length and might be full,
+            offer( ) can fail.

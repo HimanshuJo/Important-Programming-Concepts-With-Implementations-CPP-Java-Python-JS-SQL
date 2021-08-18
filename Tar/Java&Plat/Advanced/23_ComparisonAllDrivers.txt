@@ -1,0 +1,165 @@
+
+Property: Conversion
+
+    Type-1:
+
+        From JDBC calls to ODBC calls
+
+    Type-2:
+
+        From JDBC calls to native library calls
+
+    Type-3:
+
+        From JDBC calls to middleware server specific calls
+
+    Type-4:
+
+        From JDBC calls to database specific calls
+
+-------
+
+Property: Implemented in
+
+    Type-1:
+
+        Only in Java (it is coming as a part of JDK)
+
+    Type-2:
+
+        Java + native languages
+
+    Type-3:
+
+        Only in Java
+
+    Type-4:
+
+        Only in Java
+
+-------
+
+Property: Architecture
+
+    Type-1:
+
+        2-tier
+
+    Type-2:
+
+        2-tier
+
+    Type-3:
+
+        3-tier
+
+    Type-4:
+
+        2-tier
+
+-------
+
+Property: is it platform independent or platform dependent
+
+    Type-1:
+
+        platform dependent
+
+            as it internally depends on ODBC driver
+
+            ODBC driver concept is applicable only for Windows machines
+
+    Type-2:
+
+        platform dependent
+
+            as it internally uses some native libraries (implemented in C or C++)
+
+    Type-3:
+
+        platform independent (completely developed in Java)
+
+    Type-4:
+
+        platform independent (completely developed in Java)
+
+-------
+
+Property: database dependent or database independent
+
+    Type-1:
+
+        database independent
+
+            as it never communicates directly with the database
+
+                internally it is communicating to the database via ODBC driver
+
+    Type-2:
+
+        database dependent
+
+            as it internally uses database specific native libraries
+
+    Type-3:
+
+        database independent
+
+            as it never communicates with the database directly
+
+                internally my middleware server is going to take care the communication
+
+    Type-4:
+
+        database dependent
+
+            it is communicating directly with the database
+
+-------
+
+Property: thin or thick
+
+    Type-1:
+
+        thick
+
+    Type-2:
+
+        thick
+
+    Type-3:
+
+        thick
+
+    Type-4:
+
+        thin
+
+            as it communicates directly with the database without taking support
+                of any other extra component
+
+-------
+
+Property: also known as
+
+    Type-1:
+
+        JDBC-ODBC Bridge driver (or) Bridge Driver
+
+    Type-2:
+
+        Native API -  partly JAVA Driver (or)
+
+            Native Driver
+
+    Type-3:
+
+        All Java Net protocol driver (or)
+            Network protocol driver (or)
+            middleware driver
+
+    Type-4:
+
+        All Java Native protocol driver (or)
+            Pure Java Driver (or)
+            Thin Driver

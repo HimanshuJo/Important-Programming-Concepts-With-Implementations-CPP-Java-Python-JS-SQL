@@ -1,0 +1,209 @@
+
+A PriorityQueue is used :
+
+	when the objects are supposed to be processed based on the priority. 
+
+	It is known that a Queue follows the First-In-First-Out algorithm, 
+		but sometimes the elements of the queue are needed to be processed according to the priority, that’s when the PriorityQueue comes into play. 
+
+	The PriorityQueue is based on the priority heap. 
+
+	The elements of the priority queue are ordered according to the natural ordering, 
+		or by a Comparator provided at queue construction time, depending on 
+		which constructor is used. 
+
+-------
+
+Declaration:
+
+	public class PriorityQueue<E> extends AbstractQueue<E> implements Serializable
+
+-------
+
+Types of PriorityQueue
+
+
+    Max Priority Queue
+    Min Priority Queue
+
+-------
+
+Example of Default Priority Queue:
+
+	import java.util.*;
+
+	class PriorityQueueDemo {
+
+		public static void main(String args[])
+		{
+			// Creating empty priority queue
+			PriorityQueue<Integer> pQueue = new PriorityQueue<Integer>();
+
+			// Adding items to the pQueue using add()
+			pQueue.add(10);
+			pQueue.add(20);
+			pQueue.add(15);
+			pQueue.add(5);
+
+			// Printing the top element of PriorityQueue
+			System.out.println(pQueue.peek());  // 5
+
+			// Printing the top element and removing it
+			// from the PriorityQueue container
+			System.out.println(pQueue.poll());  // 5
+
+			// Printing the top element again
+			System.out.println(pQueue.peek());  // 10
+		}
+	}
+
+	-------
+
+	Output
+
+		5
+		5
+		10
+
+	In Java, Priority Queue, by default implement 'min' Priority Queue, 
+
+	If we need to change the order of Priority Queue from min to max Priority Queue, 
+		then we use some methods as follows:
+
+		    Using default Comparator Collections.reverseOrder()
+
+		    Using custom Comparator
+
+		    Using lambda expression
+
+-------
+
+Method 1: Using default Comparator Collections.reverseOrder()
+
+	The Collections.reverseOrder() method is used to get a 
+		reverse behavior of the default comparator. 
+
+		This is a by default comparator in java.util package.
+
+	Example:
+
+	import java.util.*;
+
+	class PriorityQueueDemo {
+
+		// Main Method
+		public static void main(String args[])
+		{
+			// Creating empty priority queue
+			PriorityQueue<Integer> pQueue = new PriorityQueue<Integer>(Collections.reverseOrder());
+
+			// Adding items to the pQueue using add()
+			pQueue.add(10);
+			pQueue.add(20);
+			pQueue.add(15);
+			pQueue.add(5);
+
+			// Printing the top element of PriorityQueue
+			System.out.println(pQueue.peek());  // 20
+
+			// Printing the top element and removing it
+			// from the PriorityQueue container
+			System.out.println(pQueue.poll());  // 20
+
+			// Printing the top element again
+			System.out.println(pQueue.peek());  //15
+		}
+	}
+
+-------
+
+Method 2: Using custom Comparator
+
+
+	The java.util.PriorityQueue.comparator() method 
+		shares an important function of setting and returning the comparator that can be used to order the elements in a PriorityQueue. 
+
+	The method returns a null value if the queue follows the natural ordering pattern of the elements.
+
+	// Java program to demonstrate the
+	// working of PriorityQueue in revers order
+
+	import java.util.*;
+
+	public class PriorityQueueDemo {
+		
+		public static void main(String[] args)
+		{
+			// Creating empty priority queue
+			// with custom Comparator
+			PriorityQueue<Integer> pQueue = new PriorityQueue<Integer>(new Comparator<Integer>()
+					{
+						// Compare method for place element in
+						// revers order
+						public int compare(Integer a, Integer b)
+						{
+							if (a < b)
+								return 1;
+							if (a > b)
+								return -1;
+							return 0;
+						}
+					});
+
+			// Adding items to the pQueue using add()
+			pQueue.add(10);
+			pQueue.add(15);
+			pQueue.add(20);
+			pQueue.add(5);
+
+			// Printing the top element of PriorityQueue
+			System.out.println(pQueue.peek());  // 20
+
+			// Printing the top element and removing it
+			// from the PriorityQueue container
+			System.out.println(pQueue.poll());  // 20
+
+			// Printing the top element again
+			System.out.println(pQueue.peek());  // 15
+		}
+	}
+
+-------
+
+Method 3: Using lambda expression
+
+	Lambda expression since Java 8 has come to use, lambda function names its 
+		input parameters a and b and returns (b-a),
+
+		which is basically what the int comparator class does except it returns a-b.
+
+Example:
+
+	// Java program to demonstrate the
+	// working of PriorityQueue in revers order
+	import java.util.*;
+
+	class PriorityQueueDemo {
+
+		public static void main(String args[])
+		{
+			// Creating empty priority queue
+			PriorityQueue<Integer> pQueue = new PriorityQueue<Integer>((a, b) -> b - a);
+
+			// Adding items to the pQueue using add()
+			pQueue.add(10);
+			pQueue.add(20);
+			pQueue.add(15);
+			pQueue.add(5);
+
+			// Printing the top element of PriorityQueue
+			System.out.println(pQueue.peek());  // 20
+
+			// Printing the top element and removing it
+			// from the PriorityQueue container
+			System.out.println(pQueue.poll());  // 20
+
+			// Printing the top element again
+			System.out.println(pQueue.peek());  // 15
+		}
+	}

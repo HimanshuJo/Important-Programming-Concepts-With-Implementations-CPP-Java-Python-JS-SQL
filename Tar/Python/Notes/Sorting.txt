@@ -1,0 +1,72 @@
+
+Different Options:
+
+    insertion sorts,
+    selection sorts,
+    merge sorts,
+    quick sorts,
+    bubble sorts
+
+-------
+
+Sorting using selection sort:
+
+    selection sort repeatedly finds the minimum value from a list, and makes swaps until the list is sorted.
+
+        import numpy as np
+
+        def selection_sort(x):
+            for i in range(len(x)):
+                swap = i + np.argmin(x[i:])
+                (x[i], x[swap]) = (x[swap], x[i])
+            return x
+
+    Disadvantages:
+
+        Too slow to be useful for larger arrays
+
+        For a list of N values, it requires N loops, each of which does on order ∼N comparisons
+            to find the swap value.
+
+        In terms of the "big-O" notation often used to characterize these algorithms
+            selection sort averages O[N^2]
+
+            if you double the number of items in the list,
+                the execution time will go up by about a factor of four.
+
+-------
+
+Bogosort:
+
+    def bogosort(x):
+        while np.any(x[:-1] > x[1:]):
+            np.random.shuffle(x)
+        return x
+
+    Disadvantages:
+
+        it repeatedly applies a random shuffling of the array until the result happens
+            to be sorted.
+
+        With an average scaling of O[N×N!], (that's N times N factorial)
+            this should–quite obviously–never be used for any real computation.
+
+-------
+
+Fast Sorting in NumPy:
+
+    NumPy's np.sort function turns out to be much more efficient and useful for our purposes
+
+    By default np.sort uses an O[N log N],
+
+        quicksort algorithm, though mergesort and heapsort are also available
+
+            x = np.array([2, 1, 4, 3, 5])
+            np.sort(x)
+
+    -------
+
+    A related function is argsort, which instead returns the indices of the sorted elements:
+
+        x = np.array([2, 1, 4, 3, 5])
+        i = np.argsort(x)

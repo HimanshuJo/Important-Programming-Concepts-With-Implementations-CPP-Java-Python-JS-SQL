@@ -1,0 +1,108 @@
+
+ListIterator(I):  --> child interface of 'Iterator' only
+
+    The most powerful cursor
+
+    So, Iterator has some problems:
+
+        1. Iterator is only one directional cursor (same as Enumerator)
+
+        2. By using Iterator, we can only perform read and remove operations
+
+    -------
+
+    by using ListIterator we can:
+
+        move both in forward as well as backward direction
+
+        perform read, remove, replacement and addition of new object
+
+-------
+
+How to create ListIterator Object:
+
+    There is one method, 'listIterator' method is there in the list interface
+
+        public ListIterator listIterator()  // return type is ListIterator
+
+        e.g. ListIterator ltr =  l.listIterator();  // l is any list object
+
+-------
+
+Which methods are there in the ListIterator:
+
+    As ListIterator is the child interface of Iterator, therefore all the methods that are
+        available in the Iterator, are also there in the ListIterator
+
+    -------
+
+    Forward movement:
+
+        1. public boolean hasNext()
+
+        2. public Object next()
+
+        3. public int nextIndex()  // if the next element is there, what is it's index
+
+    Backward movement:
+
+        1. public boolean hasPrevious()
+
+        2. public Object previous()
+
+        3. public int previousIndex()
+
+    Other methods:
+
+        1. public void remove()
+
+        2. public void set(Object new)  // please replace current object with the new object
+
+        3. public void add(Object new)  // add a new object while iterating
+
+-------
+
+import java.util.*;
+
+class ListIteratorDemo
+{
+    public static void main(String[] args)
+    {
+        LinkedList l =  new LinkedList();
+        l.add("Balakrishna");
+        l.add("Vinki");
+        l.add("Chiru");
+        l.add("Naag");
+
+        System.out.println(l);  // output will be [Balakrishna, Vinki, Chiru, Naag]
+
+        // here the requirement is that I don't want all the object at once
+        // I want to get objects one by one, and
+        // while iterating one by one, some objects I required to replace, some objects are required to
+            // remove, some objects I want to add extra
+
+        ListIterator ltr = l.listIterator();  // ltr is now our ListIterator object
+
+        while(ltr.hasNext())
+        {
+            String s = (String) ltr.next();
+            if(s.equals("Vinki"))
+                ltr.remove();
+            else if(s.equals("Naag"))
+                ltr.add("Chaitu");
+            else if(s.equals("Chiru"))
+                ltr.set("Charan");
+        }
+
+        System.out.println(l); // output will be [Balakrishna, Charan, Naag, Chaitu]
+
+    }
+}
+
+-------
+
+Problems with ListIterator:
+
+    It is applicable only for List objects
+
+        It is not a universal cursor (can't be applied for TreeSet, HashSet etc.)

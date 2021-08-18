@@ -1,0 +1,75 @@
+
+Java Runtime Environment:
+
+    The Java Runtime Environment (JRE) released by Oracle is a freely available software distribution
+        containing a stand-alone JVM (HotSpot), the Java standard library (Java Class Library),
+        a configuration tool, and—until its discontinuation in JDK 9—a browser plug-in.
+
+    It is the most common Java environment installed on personal computers in the laptop and desktop form factor.
+
+    The JVM specification gives a lot of leeway to implementors regarding the implementation details.
+
+    Since Java 1.3, JRE from Oracle contains a JVM called HotSpot.
+
+    It has been designed to be a high-performance JVM.
+
+    To speed-up code execution, HotSpot relies on just-in-time compilation.
+
+    To speed-up object allocation and garbage collection, HotSpot uses generational heap.
+
+-------
+
+JVM:
+
+	A Java virtual machine (JVM) is a virtual machine that enables a computer to run Java programs as well as
+        programs written in other languages that are also compiled to Java bytecode.
+
+	The JVM is detailed by a specification that formally describes what is required in a JVM implementation.
+
+    Having a specification ensures interoperability of Java programs across different implementations so that
+        program authors using the Java Development Kit (JDK) need not worry about idiosyncrasies of the
+        underlying hardware platform.
+
+	The JVM reference implementation is developed by the OpenJDK project as open source code and includes
+        a JIT compiler called HotSpot.
+
+	The JVM verifies all bytecode before it is executed.
+
+    This verification consists primarily of three types of checks:
+
+    	Branches are always to valid locations
+
+    	Data is always initialized and references are always type-safe
+
+    	Access to private or package private data and methods is rigidly controlled
+
+    For each hardware architecture a different Java bytecode interpreter is needed.
+
+    When a computer has a Java bytecode interpreter, it can run any Java bytecode program,
+        and the same program can be run on any computer that has such an interpreter.
+
+-------
+
+Bytecode interpreter and just-in-time compiler:
+
+	When Java bytecode is executed by an interpreter, the execution will always be slower than the execution
+        of the same program compiled into native machine language.
+
+	This problem is mitigated by just-in-time (JIT) compilers for executing Java bytecode.
+
+    A JIT compiler may translate Java bytecode into native machine language while executing the program.
+
+    The translated parts of the program can then be executed much more quickly than they could be interpreted.
+
+    This technique gets applied to those parts of a program frequently executed.
+
+    This way a JIT compiler can significantly speed up the overall execution time.
+
+	There is no necessary connection between the Java programming language and Java bytecode.
+
+    A program written in Java can be compiled directly into the machine language of a real computer and
+        programs written in other languages than Java can be compiled into Java bytecode.
+
+	Java bytecode is intended to be platform-independent and secure.
+
+	Some JVM implementations do not include an interpreter, but consist only of a just-in-time compilers.

@@ -1,0 +1,63 @@
+
+Enumeration is an interface
+
+Iterator is an interface
+
+ListIterator is also an interface
+
+-------
+
+So for Enumeration, how are you getting it's object is:
+
+    we are not getting Enumeration interface object
+
+    for example suppose we've an enumeration object
+
+        Enumeration e = v.elements();  // here e is the reference variable for the returned object
+
+            // to get e's class name (e.getClass().getName());
+
+                output will be 'vector$1'
+                    ($ means inner class)
+                    (1, 2, 3 .. this type of convention is applicable for anonymous inner class)
+
+            // inside elements method there is a class that implements Enumeration,
+            // that implemented class object is going to be returned
+
+        and
+
+            class Vector
+            {
+                elements()
+                {
+                    class implements Enumeration
+                    {
+                        ...
+                    }
+
+                    return this.class Object
+                }
+            }
+
+-------
+
+import java.util.*;
+
+class CursorDemo
+{
+    public static void main(String[] args)
+    {
+        Vector v =  new Vector();
+        Enumeration e = v.elements();
+        Iterator itr = v.iterator();
+        ListIterator litr = v.listIterator();
+
+        System.out.println(e.getClass().getName());  // java.util.Vector$1
+
+        System.out.println(itr.getClass().getName());  // java.util.Vector$Itr
+
+        System.out.println(litr.getClass().getName());  // java.util.Vector$ListItr
+    }
+}
+
+so we are getting corresponding implemented class objects

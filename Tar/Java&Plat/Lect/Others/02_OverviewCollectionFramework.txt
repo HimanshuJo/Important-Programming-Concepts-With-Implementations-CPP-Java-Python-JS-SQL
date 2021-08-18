@@ -1,0 +1,168 @@
+
+* If we want to represent a group of individual objects as a single entity, then we should go for
+
+    Collection Interface
+
+-------
+
+* Suppose in this group of individual objects I want duplicates, and insertion order must be preserved
+
+        then we should go for 'List' Interface
+
+        The implementation classes for List Interface:
+
+            ArrayList
+
+            LinkedList
+
+            Vector
+
+                Stack
+
+-------
+
+* Sometimes I don't want duplicates, and I don't want the insertion order
+
+    then we should go for 'Set' Interface
+
+    The implementation classes for Set Interface:
+
+        HashSet
+
+            LinkedHashSet
+
+-------
+
+* Sometimes I don't want the duplicates and all the objects should be inserted according to some sorting order
+
+    then we should go for 'SortedSet' Interface
+
+-------
+
+* Sometimes I don't want the duplicates and I also want the navigation support (e.g. previous or next element etc.)
+
+    then we should go for 'NavigableSet' Interface
+
+    The implementation class for NavigableSet (I) is:
+
+        TreeSet
+
+-------
+
+* Sometimes prior to processing, if I want to represent a group of individual objects as a single entity
+
+    then we should go for 'Queue' Interface
+
+    The implementation classes for Queue (I) are:
+
+        PriorityQueue
+
+        BlockingQueue
+
+            PriorityBlockingQueue
+
+            LinkedBlockingQueue
+
+-------
+
+* Sometimes my requirement is that, I want to represent a group of individual objects as key, value pairs
+
+    then we should go for 'Map' Interface
+
+    The implementation classes for Map are as follows;
+
+        HashMap
+
+            LinkedHashMap
+
+        WeakHashMap
+
+        IdentityHashMap
+
+-------
+
+* Sometimes my requirement is that, I want to represent a group of individual objects as key, value pairs
+    according to some kind of sorting order of keys
+
+    then we should go for 'SortedMap' Interface
+
+-------
+
+* Sometimes my requirement is that, I want to represent a group of individual objects as key, value pairs
+    and I also want navigation support for that
+
+    then we should go for 'NavigableMap' Interface
+
+    The implementation class for NavigableMap is:
+
+        TreeMap
+
+-------
+
+* Sometimes my requirement is that I want old legacy maps
+
+    then we should go for 'Hashtable' (child of 'Dictionary')
+
+    child class of Hashtable is 'Properties'
+
+-------
+
+* If we consider total Collection framework, there are two areas where we're talking about sorting
+
+    SortedSet (I)
+
+    SortedMap (I)
+
+    However, if we want default natural sorting order
+
+        then we should go for 'Comparable' Interface
+
+    -------
+
+    On the other hand, if I want customizable sorting
+
+        then we should go for 'Comparator' Interface
+
+-------
+
+Collection is a group of individual objects:
+
+    Suppose I want to get these objects one by one from the collection
+
+        then 'cursors' concept is required
+
+    -------
+
+    How many cursors are there in Java:
+
+        1. Enumeration (I)
+
+        2. Iterator (I)
+
+        3. ListIterator (I)
+
+-------
+
+There are two utility classes present in the collections framework:
+
+    1. Collections
+
+        an utility class to define several utility methods for Collections objects
+
+    2. Arrays
+
+        a class to define several utility methods for array objects
+
+            e.g. suppose I want to perform sorting for array
+
+                    Arrays class contain sort method for that
+
+                 If I want to perform searching inside array
+
+                    Arrays class contain binary search method for that
+
+        In essence, Arrays class defines several utility methods for arrays objects
+
+    -------
+
+    Collection class defines several utility methods for collection objects

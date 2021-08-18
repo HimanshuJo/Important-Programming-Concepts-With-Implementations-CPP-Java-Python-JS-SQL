@@ -1,0 +1,22 @@
+
+9. NavigableMap (I):
+
+    It is a child interface of SortedMap
+
+    NavigableMap defines several utility methods for SortedMap object
+
+    Implementation class of NavigableMap is:
+
+        TreeMap
+
+-------
+
+Versions:
+
+    Map (I)  --> 1.2 v
+
+        SortedMap (I)  --> 1.2 v
+
+            NavigableMap (I)  --> 1.6 v
+
+                TreeMap  --> 1.2 v

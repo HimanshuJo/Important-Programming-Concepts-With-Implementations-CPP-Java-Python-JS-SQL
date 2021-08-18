@@ -1,0 +1,172 @@
+
+The ArrayList class extends AbstractList and implements the List interface.
+
+    ArrayList is a generic class that has this declaration:
+
+        class ArrayList<E>
+
+            Here E specifies the type of objects that the list will hold
+
+    ArrayList supports dynamic arrays that can grow as needed.
+
+    In Java, standard arrays are of a fixed length.
+
+        After arrays are created, they cannot grow or shrink, which means that you must know in
+            advance how many elements an array will hold.
+
+        But, sometimes, you may not know until run time precisely how large an array you need.
+
+        To handle this situation, the Collections Framework defines ArrayList.
+
+    In essence, ArrayList is a variable-length array of object references
+
+        That is, ArraList can dynamically increase or decrease in size
+
+    Array lists are created with an initial size.
+
+        When this size is exceeded, the collection is automatically enlarged.
+
+        When objects are removed, the array can be shrunk.
+
+-------
+
+ArrayList constructors:
+
+    ArrayList()
+
+    ArrayList(Collection<? extends E>)
+
+    ArrayList(int capacity)
+
+    -------
+
+    The first constructor builds an empty array list.
+
+    The second constructor builds an array list that is initialized with the elements of the collection c.
+
+    The third constructor builds an array list that has the specified initial capacity.
+
+    The capacity is the size of the underlying array that is used to store the elements.
+
+        The capacity grows automatically as elements are added to an array list.
+
+-------
+
+import java.util.*;
+
+class ArrayListDemo {
+    public static void main(String[] args) {
+
+        ArrayList<String> al = new ArrayList<>();
+        System.out.println("Initial size: " + al.size());
+
+        al.add("C");
+        al.add("A");
+        al.add("B");
+        al.add(1, "A2");
+
+        // Remove the array list elements
+        al.remove("B");
+        al.remove(2);  // remove the elements at the second position
+    }
+}
+
+-------
+
+In the preceding example, the contents of a collection are displayed using the default conversion
+    provided by toString( ), which was inherited from AbstractCollection.
+
+Although the capacity of an ArrayList object increases automatically as objects are stored in it,
+    you can increase the capacity of an ArrayList object manually by calling ensureCapacity( ).
+
+You might want to do this if you know in advance that you will be storing many more items in the
+    collection than it can currently hold.
+
+    By increasing its capacity once, at the start, you can prevent several reallocations later.
+
+    Because reallocations are costly in terms of time, preventing unnecessary ones improves performance
+
+        void ensureCapacity(int cap)
+
+-------
+
+Conversely, if you want to reduce the size of the array that underlies an
+    ArrayList object so that it is precisely as large as the number of items that it is
+    currently holding, call trimToSize( ), shown here:
+
+        void trimToSize( )
+
+-------
+
+Obtaining an Array from an ArrayList
+
+    When working with ArrayList, you will sometimes want to obtain an actual
+        array that contains the contents of the list.
+
+    You can do this by calling toArray(), which is defined by Collection.
+
+    Several reasons exist why you might want to convert a collection into an array, such as:
+
+        a. To obtain faster processing times for certain operations
+
+        b. To pass an array to a method that is not overloaded to accept a collection
+
+        c. To integrate collection-based code with legacy code that does not understand collections
+
+    Whatever the reason, converting an ArrayList to an array is a trivial matter.
+
+    As explained earlier, there are three versions of toArray( ), which are shown
+        again here for your convenience:
+
+        object[] toArray( )
+
+            It returns an array of Objects
+
+        <T> T[] toArray(T array[])
+
+            It returns an array of elements that have the same type as T
+
+        default <T> T[] toArray(IntFunction<T[]> arrayGen)
+
+            It returns an array of elements that have the same type as T
+
+-------
+
+// Convert ArrayList into an Array
+import java.util.*;
+
+class ArrayListToArray {
+    public static void main(String[] args) {
+        ArrayList<Integer> al =  new ArrayList<>();
+
+        al.add(1);
+        al.add(2);
+        al.add(3);
+        al.add(4);
+
+        // Get the array corresponding to an ArrayList
+        Integer ia[] =  new Integer[al.size()];
+        ia = ia.toArray(ia);
+
+        int sum = 0;
+
+        // Sum the array
+        for(int i: ia) {
+            sum += i;
+        }
+    }
+}
+
+-------
+
+This is something interesting in the program
+
+    Collections can store only references, not values of the primitive types
+
+    However, autoboxing makes it possible to pass values of type int to add() method without having to
+        manually wrap them within an Integer
+
+        Autoboxing cause them to be automatically wrapped
+
+            In this way, autoboxing significantly improves the ease with which collections
+                can be used to store primitive values.

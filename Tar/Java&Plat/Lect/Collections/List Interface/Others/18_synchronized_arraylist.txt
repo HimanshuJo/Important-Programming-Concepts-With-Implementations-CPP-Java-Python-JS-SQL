@@ -1,0 +1,33 @@
+
+ArrayList is not thread safe, non-synchronized, then how to get synchronized version of ArrayList
+
+    ArrayList l1 = new ArrayList();
+
+    List l = Collections.synchronizedList(l1);  // Collection class contains synchroizedList method to get
+                                                // synchronized version of ArrayList object
+
+    // at this point l is the synchronized version
+
+-------
+
+* By default ArrayList Object is non-synchronized but we can get synchronized version of ArrayList by using
+    Collection class synchronizedList() method
+
+    public static List synchronizedList(List I)
+
+        // it is a public method
+        // it is a static method
+        // it's return type is List
+
+    -------
+
+    Similarly we can get synchronized version of Set and Map objects
+
+        e.g. HashSet, HashMap by default not synchronized
+
+            In this case, to get the synchronized version of both we've to use the corresponding
+                methods of collections class
+
+                public static Set synchronizedSet(Set s1);
+
+                public static Map synchronizedMap(Map m);

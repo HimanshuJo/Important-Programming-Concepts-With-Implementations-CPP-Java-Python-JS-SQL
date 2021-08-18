@@ -1,0 +1,52 @@
+
+Collection:
+
+    It is a group of individual objects
+
+    Suppose I want to represent a group of 5 individual objects as a single entity,
+        then we should use Collections
+
+-------
+
+Collection Framework:
+
+    Suppose I want to represent a group of individual objects as a single entity, then several classes
+        and interfaces are required
+
+        so Collection Framework defines several classes and interfaces
+
+            which can be used to represent a group of individual objects as a single entity
+
+-------
+
+In the total collection framework, there are in total 9 key interfaces
+
+    Let's suppose we have an 'Interface' and a 'Class'
+
+        to get more information, we've to contact the 'Interface'
+
+            A Class is just a dummy thing that implements an Interface
+
+    Out of 9 key interfaces:
+
+        Collection, List, Set, SortedSet, NavigableSet, Queue
+
+            meant for representing a group of individual objects
+
+        Rest 3 are meant to represent a group of objects as key value pairs
+
+-------
+
+Equivalent terminology in Java and C++:
+
+    Java:
+
+        Collection
+
+        Collection Framework
+
+    C++:
+
+        Container
+
+        STL (Standard Template Library)

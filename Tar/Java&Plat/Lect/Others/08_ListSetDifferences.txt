@@ -1,0 +1,14 @@
+
+Difference between list and set
+
+    List  (I):
+
+        Duplicates are allowed
+
+        Insertion order is preserved
+
+    Set (I):
+
+        Duplicates are not allowed
+
+        Insertion order is not preserved

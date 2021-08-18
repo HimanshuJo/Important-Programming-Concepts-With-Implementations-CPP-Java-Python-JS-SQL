@@ -1,0 +1,259 @@
+
+The 'Collection' interface is the foundation upon which the Collections
+    Framework is built because it must be implemented by any class that defines a collection.
+
+    Collection is a generic interface that has this declaration:
+
+        interface Collection<E>
+
+            Here, E specifies the type of objects that the collection will hold.
+
+            Collection extends the Iterable interface.
+
+                This means that all collections can be cycled through by use of the for-each
+                    style 'for' loop
+
+                    (Recall only classes that implement Iterable can be cycled through by the 'for')
+
+-------
+
+Collection declares the core methods that all collections will have.
+
+    Several of these methods can throw an 'UnsupportedOperationException'
+        this occurs if a collection cannot be modified.
+
+    A 'ClassCastException' is generated
+        when one object is incompatible with another, such as when an attempt is made to add an
+        incompatible object to a collection.
+
+    A 'NullPointerException' is thrown if an attempt is made to store a null object
+        and null elements are not allowed in the collection.
+
+    An 'IllegalArgumentException' is thrown if an invalid argument is used.
+
+    An 'IllegalStateException' is thrown if an attempt is made to add an
+        element to a fixed-length collection that is full.
+
+-------
+
+Methods:
+
+    * E specifies the type of objects that the collection will hold
+
+    1. boolean add(E obj):
+
+            Adds obj to the invoking collection
+
+            Returns false if obj is already a member of the collection and the collection does not
+                allow duplicates
+
+    2. boolean addAll(Collection<? extends E> c)
+
+            Adds all the elements of c to the invoking collection
+
+            Returns true if the collection changed (i.e, the elements were added)
+
+                Otherwise, it returns false
+
+    3. void clear()
+
+            Removes all elements from the invoking collection
+
+    4. boolean contains(Object obj)
+
+            Returns true if obj is an element of the invoking collection
+
+                Otherwise it returns false
+
+    5. boolean containsAll(Collection<?> c)
+
+            Returns true if obj is an element of the invoking collection
+
+                Otherwise it returns false
+
+    6. boolean equals(Object obj)
+
+            Returns true if the invoking collection and obj are equal
+
+                Otherwise it returns false
+
+    7. int hashCode()
+
+            Returns the hash code for the invoking collection
+
+    8. boolean isEmpty()
+
+            Returns true if the invoking collection is empty
+
+            Otherwise it returns false
+
+    9. Iterator<E> iterator()
+
+            Returns an iterator for the invoking collection
+
+    10. default Stream<E> parallelStream()
+
+            Returns a stream that uses the invoking collection as its source
+                for the elements
+
+            If possible, the stream supports parallel operation
+
+    11. boolean remove(Object obj)
+
+            Removes one instance of obj from the invoking collection
+
+            Returns true if the element was removed
+
+                Otherwise it returns false
+
+    12. boolean removeAll(Collection<?>c)
+
+            Removes all elements of c from the invoking collection except those in c
+
+            Returns true if the collection changed (i.e elements were removed)
+
+                Otherwise it returns false
+
+    13. int size()
+
+            Returns the number of elements held in the invoking collection
+
+    14. default Spliterator<E> spliterator()
+
+            Returns a spliterator to the invoking collections
+
+    15. default Stream<E> stream()
+
+            Returns a stream that uses the invoking collection as its source
+                for the elements
+
+                The stream is sequential
+
+    16. default <T> T[] toArray(IntFunction<T[]> arrayGen)
+
+            Returns an array of the elements from the invoking collection
+
+            The returned array is created by the function specified by 'arrayGen'
+
+            An 'ArrayStoreException' is thrown if any collection element has a type
+                that is not compatible with the array type
+
+    17. Object[] toArray()
+
+            Returns an array of elements from the invoking collection
+
+    18. <T> T[] toArrray(T array[])
+
+            e.g.
+
+               import java.util.ArrayList;
+
+                public class ArrayListDemo {
+                    public static void main(String[] args) {
+
+                        ArrayList<Integer> arrlist = new ArrayList<>();
+                        arrlist.add(10);
+                        arrlist.add(20);
+                        arrlist.add(31);
+                        arrlist.add(49);
+
+                        Integer list2[] = new Integer[arrlist.size()];
+
+                        // the runtime type of the returned array is that of the specified array
+                        // so in this case, the returned array will be of type Integer
+
+                        list2 = arrlist.toArray(list2);
+                    }
+                }
+
+            Returns an array of the elements from the invoking collection
+
+            If the size of array equals the number of elements, these are returned in array
+
+            If the size of array is less than the number of elements, a new array of the necessary
+                size is allocated and returned
+
+            If the size of the array is greater than the number of elements, the array element
+                following the last collection element is set to null
+
+            An 'ArrayStoreException' is thrown if any collection element has a type that is
+                not compatible with the array type
+
+-------
+
+Important points:
+
+    Objects are added to a collection by calling
+        'add( )'
+
+    -------
+
+    Notice that add( ) takes an argument of type E, which means that objects added to a
+        collection must be compatible with the type of data expected by the collection.
+
+        You can add the entire contents of one collection to another by calling
+            'addAll( )'
+
+    -------
+
+    You can remove an object by using
+        'remove( )'
+
+        To remove a group of objects, call
+            'removeAll( )'
+
+        You can remove all elements except those of a specified group by calling
+            'retainAll( )'
+
+        To remove an element only if it statisfies some condition, you can use
+            'removeIf( )'
+
+        To empty a collection, call
+            'clear( )'
+
+    -------
+
+    You can determine whether a collection contains a specific object by calling
+        'contains( )'
+
+    To determine whether one collection contains all the members of another call
+        'containsAll( )'
+
+    You can determine when a collection is empty by calling
+        'isEmpty( )'
+
+    The number of elements currently held in a collection can
+        be determined by calling
+            'size( )'
+
+    -------
+
+    The 'toArray( )' methods return an array that contains the elements stored in
+        the collection.
+
+    -------
+
+    Two collections can be compared for equality by calling
+        'equals( )'
+
+        The precise meaning of “equality” may differ from collection to collection.
+
+        For example, you can implement 'equals( )'
+
+            so that it compares the values of elements stored in the collection.
+
+            Alternatively, equals( ) can compare references to those elements.
+
+    -------
+
+    Another important method is
+        'iterator( )'
+
+        which returns an iterator to a collection.
+
+        The 'spliterator( )' method returns a spliterator to the collection.
+
+        Iterators are frequently used when working with collections.
+
+        Finally, the 'stream( )' and 'parallelStream( )' methods return a Stream that uses the
+            collection as a source of elements.

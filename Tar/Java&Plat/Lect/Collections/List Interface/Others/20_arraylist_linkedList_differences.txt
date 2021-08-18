@@ -1,0 +1,22 @@
+
+Difference between ArrayList and LinkedList:
+
+    ArrayList:
+
+        Best choice if our frequent operation is retrieval
+
+        Worst choice if our frequent operation is deletion and insertion in the middle
+
+        Underlying data structure is 'resizable' and 'growable' array
+
+        Implements RandomAccess Interface
+
+    LinkedList:
+
+        Best choice if our frequent operation is insertion and deletion in the middle
+
+        Worst choice if our frequent operation is retrieval
+
+        Underlying data structure is 'doubly linked list'
+
+        Doesn't implement RandomAccess Interface

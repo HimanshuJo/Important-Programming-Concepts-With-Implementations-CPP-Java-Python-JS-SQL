@@ -1,0 +1,83 @@
+
+Appending chars to a StringBuilder object
+
+    1. java.lang.StringBuilder.append(char a):
+
+        This is an inbuilt method in Java which is used to append the string
+            representation of the char argument to the given sequence.
+
+        The char argument is appended to the contents of this StringBuilder sequence.
+
+        Syntax:
+
+            public StringBuilder append(char a)
+
+    -------
+
+    2. StringBuilder append(char[] astr):
+
+        The java.lang.StringBuilder.append(char[] astr)
+
+            is the inbuilt method which appends the string representation of the char array
+                argument to this StringBuilder sequence.
+
+        Syntax:
+
+            public StringBuilder append(char[] astr)
+
+        Parameter:
+
+            The method accepts a single parameter astr which are the Char sequence whose
+                string representation is to be appended.
+
+        Return Value:
+
+            The method returns a string object after the append operation is performed.
+
+    -------
+
+    3. StringBuilder append(char[] cstr, int iset, int ilength):
+
+        This method appends the string representation of a subarray of the char array argument
+            to this sequence.
+
+        The Characters of the char array cstr, starting at index iset, are appended, in order,
+            to the contents of this sequence.
+
+        The length of this sequence increases by the value of ilength.
+
+        Syntax:
+
+            public StringBuilder append(char[] cstr, int iset, int ilenght)
+
+        Parameter : This method accepts three parameters:
+
+            cstr – This refers to the Char sequence.
+            iset – This refers to the index of the first char to append.
+            ilenght – This refers to the number of chars to append.
+
+
+-------
+
+public class Geeks {
+
+    public static void main(String[] args)
+    {
+
+        StringBuilder sbf = new StringBuilder("Welcome geeks!");
+        StringBuilder sbf2 = new StringBuilder("We are geeks  ");
+        StringBuilder sb3 = new StringBuilder("Geeks");
+
+        char[] astr = new char[] { 'G', 'E', 'E', 'k', 'S' };
+        char[] cstr = new char[] { 'f', 'o', 'r', 'G', 'e', 'e', 'k', 's','q','q' };
+
+        sbf.append('T');
+        System.out.println(sbf);  // Welcome geeks!T
+
+        sbf2.append(astr);
+        System.out.println(sbf2);  // We are geeks  GEEkS
+
+        sb3.append(cstr, 0, 8);
+        System.out.println(sb);  // GeeksforGeeks
+    }
+}

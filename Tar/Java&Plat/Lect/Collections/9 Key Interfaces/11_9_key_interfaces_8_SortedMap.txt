@@ -1,0 +1,15 @@
+
+8. SortedMap (I):
+
+    Sometimes my requirement is that I want to represent a group of objects as key, value pairs
+        according to some sorting order of keys, then we should go for SortedMap
+
+    It is a child interface of Map
+
+-------
+
+Versions:
+
+    Map (I)  --> 1.2 version
+
+        SortedMap (I)  --> 1.2 version

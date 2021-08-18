@@ -1,0 +1,79 @@
+
+In case of Spring:
+
+    Simple POJO (Plain Old Java Classes) are enough for Controller, Business and DAOs
+
+    All the required features, we can pass through our IoC container
+
+        If we have a simple POJO class, into that POJO class if we required any features
+
+            for example if we required features of A class
+
+                in Spring we no need to implement an interface
+
+                    Spring promotes 'association' instead of 'inheritance'
+
+                        e.g. class D {
+                            B b = new B();  // no need to implement B
+
+                            C c =  new C();  // no need to implement C
+                        }
+
+                    Then our class will become lightweight
+
+-------
+
+For Spring implementation:
+
+    They are mainly using two principles
+
+        1. Run-time polymorphism
+
+        2. Association (Has-A)
+
+-------
+
+To pass run-time arguments
+
+    in case of main(String[] args), we need to pass these arguments through command prompt
+
+    instead of passing run-time arguments through command prompt
+
+        we can use XML files
+
+        So through XML file, if we want to supply an input to a POJO class (for example in Controller)
+
+            we need to have container support
+
+                e.g. IoC must read XML documents and can pass this to the POJO classes
+
+                        either in Controller, or Business or DAOs
+
+                    If for example we have a Has-A relationship in our controller
+
+                        that Has-A relationship inputs, I can able to pass from my IoC container
+
+                            IoC is providing that support here
+
+                                IoC (Inversion of Controlling)
+
+                                    it is possible because of containers
+
+                                    here we have three containers
+
+                                        1. Core,
+
+                                        2. J2EE
+
+                                Throughout Spring we have 3 controller, the other one is in Spring MVC
+
+                                        1. Web Container (it is prepared on top of IoC)
+
+-------
+
+The main job of all the containers in Spring is to:
+
+    read data from XML documents, and pass the data to POJO classes into associated references
+
+        to make our layers loosely coupled
+

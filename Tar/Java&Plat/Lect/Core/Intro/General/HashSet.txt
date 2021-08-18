@@ -1,0 +1,100 @@
+
+A HashSet is a collection of items where every single item is unique, and is found in the
+    java.util package
+
+    Example:
+
+        Create a HashSet object called cars that will store strings:
+
+            import java.util.HashSet;  // Import the HashSet class
+
+            HashSet<String> cars =  new HashSet<>();
+
+-------
+
+Add an item:
+
+    import java.util.HashSet;
+
+    public class MyClass {
+        public static void main(String[] args) {
+            HashSet<String> cars =  new HashSet<>();
+            cars.add("Volvo");
+            cars.add("BMW");
+        }
+    }
+
+-------
+
+Check if an item exists:
+
+    cars.contains("Mazda");
+
+-------
+
+Remove an item:
+
+    cars.remove("Volvo");
+
+-------
+
+Remove all items:
+
+    cars.clear();
+
+-------
+
+To find out how many items there are, use the size method:
+
+    cars.size();
+
+-------
+
+Loop through a HashSet:
+
+    for(String cars: cars) {
+        System.out.println(cars);
+    }
+
+-------
+
+Other Types:
+
+    Items in an HashSet are actually objects.
+
+        Above example shows java objects with type String
+
+    To use other types, such as int, we must specify an equivalent wrapper class Integer
+
+        Integer for int
+
+        Boolean for boolean
+
+        Character for char
+
+        Double for double
+
+-------
+
+Example using a HashSet that stores Integer objects:
+
+    import java.util.HasSet;
+
+    public class MyClass {
+        public static void main(String[] args) {
+            HashSet<Integer> numbers = new HashSet<>();
+
+            numbers.add(4);
+            number.add(1);
+
+            // show which numbers between 1 and 10 are in the set
+
+            for(int i = 1; i <= 10; i++) {
+                if (numbers.contains(i)) {
+                    System.out.println(i + "was found in the set");
+                } else {
+                    System.out.println(i + "was not found in the set");
+                }
+            }
+        }
+    }

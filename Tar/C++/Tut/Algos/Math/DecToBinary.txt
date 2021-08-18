@@ -1,0 +1,127 @@
+Given a decimal number as input, we need to write a program to convert the given decimal number into equivalent binary number.
+Examples: 
+ 
+Input : 7
+Output : 111
+
+Input : 10
+Output : 1010
+
+Input: 33
+Output: 100001
+
+-------
+
+// CPP program to Decimal to binary conversion
+// using bitwise operator
+// Size of an integer is assumed to be 32 bits
+#include <iostream>
+using namespace std;
+
+// Function that convert Decimal to binary
+// 1st way
+int decToBinary(int n)
+{
+	// Size of an integer is assumed to be 32 bits
+	for (int i = 31; i >= 0; i--) {
+		int k = n >> i;
+		if (k & 1)
+			cout << "1";
+		else
+			cout << "0";
+	}
+}
+
+// 2nd way
+int decToBinary2(int n)
+{
+	// Size of an integer is assumed to be 32 bits
+	for (int i = 31; i >= 0; i--) {
+		int k = n / pow(2, i);
+		if (k % 2 != 0)
+			cout << "1";
+		else
+			cout << "0";
+	}
+}
+
+// 3rd way storing values in an array
+vector<int> decToBinary3(int n) {
+	vector<int> binArr(32);
+	int index = 0;
+	for (int i = 31; i >= 0; --i) {
+		int k = n >> i;
+		if (k & 1) {
+			binArr[index++] = 1;
+		} else {
+			binArr[index++] = 0;
+		}
+	}
+	return binArr;
+}
+
+// 3rd way
+long int decimal_to_binary(int n)
+{
+    long int binary = 0;
+    int remainder, i, flag = 1;
+    for (i = 1; n != 0; i = i * 10)
+    {
+        remainder = n % 2;
+        n /= 2;
+        binary += remainder * i;
+    }
+    return binary;
+}
+
+// driver code
+int main()
+{
+	int n = 32;
+	decToBinary(n);
+}
+
+Output : 
+
+00000000000000000000000000100000
+
+-------
+
+// C++ program to convert a decimal
+// number to binary number
+
+#include <iostream>
+using namespace std;
+
+// function to convert decimal to binary
+void decToBinary(int n)
+{
+	// array to store binary number
+	int binaryNum[32];
+
+	// counter for binary array
+	int i = 0;
+	while (n > 0) {
+
+		// storing remainder in binary array
+		binaryNum[i] = n % 2;
+		n = n / 2;
+		i++;
+	}
+
+	// printing binary array in reverse order
+	for (int j = i - 1; j >= 0; j--)
+		cout << binaryNum[j];
+}
+
+// Driver program to test above function
+int main()
+{
+	int n = 17;
+	decToBinary(n);
+	return 0;
+}
+
+Output : 
+ 
+10001

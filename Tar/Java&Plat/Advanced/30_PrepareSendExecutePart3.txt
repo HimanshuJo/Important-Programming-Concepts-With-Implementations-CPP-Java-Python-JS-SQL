@@ -1,0 +1,146 @@
+
+execute():
+
+    this is the most commonly used method in real time
+
+    we can use executeQuery() only for the select operations
+
+    we can use executeUpdate() for the non-select operations
+
+    However, we can use execute() method for both
+
+        select as well as non-select operations
+
+-------
+
+Sometimes, the requirement is I don't know the type of query that I've to use
+
+    at run-time the end user may provide select query or non-select query
+
+    or at run-time I want to communicate with the property file
+
+        in the properties file whatever the query is there I want to read or execute
+
+            it may be select query, or insert query, or update query etc.
+
+    -------
+
+    Therefore if we don't know the type of SQL query at the beginning
+        either select query or non-select query, then to handle such type of
+        scenarios we can go for execute() method.
+
+-------
+
+import java.util.*;
+import java.sql.*;
+
+public class SelectNonSelectDemo {
+    public static void main(String[] args) throws Exception
+    {
+        String driver = "oracle.jdbc.OracleDriver";
+        String jdbc_url = "jdbc.oracle: thin: @localhost:1521:XE";
+        String user = "hj";
+        String password = "tiger";
+        Class.forName(driver);  // optional step
+
+        Connection con = DriverManager.getConnection(jdbc_url, user);
+        Statement st = con.createStatement();
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the Query");
+        String sqlQuery = sc.nextLine();
+
+        boolean b = st.execute(sqlQuery);
+
+        if (b == true) {
+            ResultSet rs = st.getResultSet();
+            while (rs.next()) {
+                System.out.println(rs.getInt(1) + " " + rs.getString(2) + " " + rs.getDecimal(1));
+            }
+        } else {
+            int rowCount = st.getUpdateCount();
+            System.out.println(rowCount);
+        }
+
+        con.close;
+
+    }
+}
+
+-------
+
+The return type of executeQuery() method is the ResultSet
+
+The return type of executeUpdate() method is the int
+
+Therefore, the return type of execute() method is 'boolean'
+
+    if execute() at run-time returns true
+
+        it is a select query
+
+    if execute() at run-time returns false
+
+        it is a non-select query
+
+-------
+
+Complete signature of execute():
+
+    public boolean execute(String sqlQuery) throws SQlException
+
+        here sqlQuery is the dynamically typed query
+
+-------
+
+boolean b =  st.execute(dynamically provided sqlQuery)
+
+    if (b == true) {
+
+        // it is a select query
+        // that means we'll get a result set
+
+        ResultSet rs = st.getResultSet();
+    } else {
+
+        int rowCount = st.getUpdateCount();
+    }
+
+-------
+
+If we know the type of query at the beginning and the query is always the select query
+
+    then highly recommended to go for executeQuery()
+
+        e.g. ResultSet rs = st.executeQuery(select * from employees);
+
+If we know the type of query at the beginning and the query is always a
+    non-select query and returns an int value + some message
+
+        then it is recommended to go for executeUpdate()
+
+            e.g. int rowCount = st.executeUpdate("delete from employees where esal > 2000");
+
+If we don't know the type of query at the beginning and it is available dynamically at runtime
+    (maybe from properties file or from command prompt) then we should go for execute()
+
+        e.g.
+
+            boolean b = st.execute(dynamically provided query);
+            if (b == true) {  // internally it's a select query
+                ResultSet rs = st.getResultSet();
+            } else {
+                int updateCount = st.getUpdateCount();
+            }
+
+-------
+
+st.executeQuery()
+
+st.executeUpdate()
+
+st.execute()
+
+st.getResultSet()
+
+st.getUpdateCount()

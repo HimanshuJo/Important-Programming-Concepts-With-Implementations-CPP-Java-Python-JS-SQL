@@ -1,0 +1,40 @@
+
+According to Java vendors, Oracle or Sun Microsystems:
+
+    they made Java available in three editions
+
+        1. Java Standard  --> Base edition
+
+            J2SE or JSE
+
+            Here we have Core Java + JDBCs
+
+        2. Java Enterprise Edition
+
+            J2EE or JEE
+
+            Servlets and JSPs
+
+        3. Java Micro Edition
+
+            J2ME or JME
+
+            It can be used to develop mobile applications and embedded applications
+
+-------
+
+On 2017 the versions of these technologies are as follows:
+
+    JDBC: 4.2v
+
+    Servlets: 3.1v
+
+    JSPs: 2.3v
+
+As of 2020 the version of these technologies are as follows:
+
+    JDBC: 4.3v
+
+    Servlets: 4.0v
+
+    JSPs: 2.3v

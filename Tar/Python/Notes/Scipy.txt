@@ -1,0 +1,189 @@
+
+What is SciPy:
+
+    Open source python library which is used to solve scientific and mathematical
+        problems
+
+    It is built on the NumPy extension and allows the user to manipulate and visualize
+        data with a wide range of high-level commands.
+
+-------
+
+NumPy vs SciPy:
+
+    Both the python libraries are used for mathematical calculations
+
+    NumPy contains array data and basic operations such as sorting, indexing etc.
+
+    SciPy consists of all the numerical code.
+
+        Though NumPy provides a number of functions that can help resolve linear algebra, Fourier
+            transform etc. SciPy is the library that actually contains fully-featured versions
+            of these function along with many others.
+
+-------
+
+Basic Functions:
+
+    Interaction with NumPy:
+
+        SciPy builds on NumPy and therefore we can make use of NumPy functions itself to handle arrays
+
+        -------
+
+        help()
+
+            from scipy import cluster
+            help(cluster)
+            help()
+
+        -------
+
+        info()
+
+            This function returns information about the desired functions, modules, etc.
+
+                scipy.info(cluster)
+
+        -------
+
+        Exponential and Trigonometric Functions:
+
+            from scipy import special
+
+            a = special.exp10(3)
+            print(a)
+
+            b = special.exp2(3)
+            print(b)
+
+            c = special.sindg(90)
+            print(c)
+
+            d = special.cosdg(45)
+            print(d)
+
+        -------
+
+        Integration functions:
+
+            SciPy provides a number of functions to solve integrals
+
+                ranging from ordinary differential integrator to using trapezoidal rules to compute
+                    integrals
+
+            SciPy is a storehouse of functions to solve all types of integrals problems
+
+        -------
+
+        General Integration:
+
+            SciPy provides a function named 'quad' to calculate the integral of a function which has one
+                variable
+
+                The limits can be () to indicate infinite limits
+
+                Syntax:
+
+                    quad(func, a, b, args=(), full_output=0, epsabs=1.49e-08, epsrel=1.49e-08, limit=50,
+                        points=None, weight=None, wvar=None, wopts=None, maxp1=50, limlst=50)
+
+                Example:
+
+                    from scipy import special
+                    from scipy import integrate
+
+                    def a(x):
+                        return special.exp10(x)
+
+
+                    f = integrate.quad(a, 0, 1)
+                    print(f)
+
+        -------
+
+        Double Integral Function:
+
+            SciPy provides 'dblquad' that can be used to calculate double integrals
+
+                The dblquad() function will take the function to be integrated as its parameter
+                    along with 4 other variables which define the limits and the functions 'dy' and 'dx'
+
+                Example:
+
+                    from scipy import integrate
+
+
+                    def g(y, x):
+                        return x * y**2
+
+
+                    def h(x):
+                        return 1
+
+
+                    def i(x):
+                        return -1
+
+
+                    print(integrate.dblquad(g, 0, 2, h, i))
+
+        -------
+
+        Rosenbrook Function:
+
+            Rosenbrook function (rosen) is a test problem used for gradient-based optimization
+                algorithms
+
+                It is defined as follows in SciPy
+
+                    rosen(x)
+
+                        The Rosenbrook function
+
+                        The function computed is:
+
+                            sum(100.0*(x[1:] - x[:-1]**2.0)**2.0 + (1 - x[:-1])**2.0)
+
+                    -------
+
+                    import numpy as np
+                    from scipy.optimize import rosen
+
+                    a = 1.2 * np.arrange(5)
+                    rosen(a)
+
+        -------
+
+        Interpolation Functions:
+
+            In the field of numerical analysis, interpolation refers to constructing new data points
+                within a set of known data points
+
+            The SciPy library consists of a subpackage named
+
+                'scipy.interpolate' that consists of spline functions and classes, one-dimensional
+                    and multi-dimensional (univariate and multivariate) interpolation classes etc.
+
+            -------
+
+            Univariate Interpolation:
+
+                Univariate interpolation is basically an area of curve-fitting which finds the curve
+                    that provides an exact fit to a series of two-dimensional data points
+
+                SciPy provides 'interp1d' function that can be utilized to produce univariate
+                    interpolation
+
+                Example:
+
+                    import matplotlib.pyplot as plt
+                    from scipy import interpolate
+
+                    x = np.arrange(5, 20)
+                    y = np.exp(x/3.0)
+                    f = interpolate.interp1d(x, y)
+                    x1 = np.arange(6, 12)
+                    y1 = f(x1) # use interpolation function returned by interp1d
+                    plt.plot(x, y, 'o', x1, y1, '--')
+                    plt.show

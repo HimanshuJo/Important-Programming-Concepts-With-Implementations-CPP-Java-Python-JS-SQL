@@ -1,0 +1,32 @@
+
+While communicating with the database, we've to convert Java calls into
+    database specific calls, and database specific calls into Java calls
+
+    for that driver software is required
+
+-------
+
+In market, at present there are thousands of drivers available, but based on functionality and
+    architecture all drivers are divided into basically 4 types:
+
+        1. Type-1 Driver
+
+            JDBC-ODBC Bridge Driver or Bridge Driver
+
+        2. Type-2 Driver
+
+            Native API-partly Java Driver or Native Driver
+
+        3. Type-3 Driver
+
+            All Java Net protocol Driver or Network protocol driver or Middleware Driver
+
+        4. Type-4 Driver
+
+            All Java Native protocol driver or pure Java driver or thin driver
+
+-------
+
+Note: Progress Data Direct Software company introduced Type-5 driver
+
+    it is an industry standard driver

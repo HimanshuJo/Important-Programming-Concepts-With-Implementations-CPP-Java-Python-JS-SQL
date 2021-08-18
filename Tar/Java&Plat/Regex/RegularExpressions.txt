@@ -1,0 +1,158 @@
+
+A regular expression is a sequence of characters that constructs a search pattern
+
+    e.g. ^[a-z0-9_-]{3, 15}$
+
+            ^ --> start of the line
+
+            {3, 15}  --> 3 to 15 characters
+
+            $  --> end of the line
+
+-------
+
+Regex:
+
+    It is an API which is used to define a pattern for searching and manipulation of Strings
+
+    It is widely used to define the constraints on Strings such as passwords and email validation
+
+-------
+
+Different categories of regular expressions:
+
+    1. Matcher Class
+
+        This class is used to perform the match operation on a character sequence
+
+        It comprises of various methods
+
+            a. boolean matches()
+
+                    tests whether the given regular expression matches or not
+
+            b. boolean find()
+
+                    used to find the next expression that matches the pattern
+
+            c. boolean find(int start)
+
+                    searches the next expression from the given start number
+
+            d. String group()
+
+                    used to return the matched sequence
+
+            e. int start()
+
+                    returns the starting index
+
+            f. int end()
+
+                    returns the ending index
+
+            g. int groupCount()
+
+                    returns the total number of matched sequence
+
+    -------
+
+    2. Pattern Class
+
+        This class is a compiled version of the regular expression which is used to define the pattern
+            for a regex engine
+
+        It comprises of various methods
+
+            a. Static Pattern compile(String regex)
+
+                    it compiles the given regex and returns the instance of a pattern
+
+            b. Matcher matcher(charSequence input)
+
+                    used to create a matcher that matches the given input with the pattern
+
+                    the Matcher can be of one of type from the above Matcher class
+
+            c. Static boolean matches(String regex)
+
+                    it works as a combination of compile and matcher methods
+
+            d. String split[]
+
+                    used to split the given string around matches of a given pattern
+
+            e. Int end()
+
+                    returns the ending index
+
+    -------
+
+    import java.util.regex.*;
+
+    public class RegexExample {
+
+        public static void main(String [] args) {
+
+            // here the starting index and the ending index is '.'
+            // implies I can use anything at the starting and ending index
+            Pattern pattern = Pattern.compile(".xx.");
+
+            // to match this pattern we can use the matcher from the Matcher class
+            Matcher matcher = pattern.matcher("AxxB");
+
+            System.out.println("String matches the given Regex - " + matcher.matches());
+        }
+    }
+
+    -------
+
+    3. Regex Character Class
+
+        It comprises of various methods
+
+            a. [abc]
+
+                a, b or c
+
+            b. ^[abc]
+
+                any character except a, b or c
+
+            c. [a-zA-Z]
+
+                A through Z or
+                a through z inclusive (Range)
+
+            d. [a-d[m-p]]
+
+                a through d or
+                m through p (union)
+
+            e. [a-z&&[def]]
+
+                d, e or f (intersection)
+
+            f. [a-z&&[^bc]]
+
+                a through z except b or c (Subtraction)
+
+            g. [a-z&&[^m-p]]
+
+                a through z and not m through p (Subtraction)
+
+    -------
+
+    import java.util.*;
+
+    public class CharacterExample {
+
+        public static void main(String[] args) {
+
+            System.out.println(Pattern.matches("[xyz]", "wbcd"));  // false (not x or y or z)
+
+            System.out.println(Pattern.matches("[xyz]", "x"));  // true (among x or y or z)
+
+            System.out.println(Pattern.matches("[xyz]", "xxyyyyz"));  // false (x and y comes more than once)
+        }
+    }

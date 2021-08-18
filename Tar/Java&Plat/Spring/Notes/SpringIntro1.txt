@@ -1,0 +1,118 @@
+
+Spring
+
+-------
+
+    Spring framework developer:
+
+        Rod Johnson
+
+    Organization:
+
+        Spring organization / Pivotal
+
+    Initial Name:
+
+        Interface 21
+
+        Spring came as an alternative for EJBs (Enterprise Java Beans)
+
+            In case of EJB
+
+                Applications will become heavy weight and tightly coupled
+
+            In case of Spring
+
+                We can make application light weight and loosely coupled
+
+                We can also reduce investment cost
+
+                    We do not need to buy services from the server
+
+-------
+
+How Spring made our applications lightweight:
+
+    Spring are lightweight applications as compared to AWT applications
+
+        while running AWT applications, AWTs will use OS libraries (heavyweight)
+
+            however in case of Spring
+
+                they do not have any dependencies of OS
+
+                    general JDK libraries or SPring jars they will use
+
+    EJBs are having dependencies of application servers
+
+-------
+
+Loosely Coupled:
+
+    e.g. Indian GSM mobile numbers (not CDMAs) are compatible with any network
+
+            If we purchase an Airtel mobile number, and if in future we don't want Airtel service
+
+                we can use the Airtel portal, we can change that network to another network
+
+                    that compatibility we have
+
+                    here it is loosely coupled (we don't need to bind it with any network)
+
+                    no need to have tight relationship with any network
+
+    The same type of compatibility we need to have for our application
+
+        our application also should do not have any dependency with other layers
+
+    While building MVC based applications
+
+        presentation layer is different, as it is not a Java component
+
+            here we have to use HTML, CSS, JavaScript or JSPs we can use (for dynamic pages)
+
+        coming to Java layers
+
+            we have one 'controller' part
+
+            and another 'model' part
+
+                it will again divide into three layers
+
+                    1. Services
+
+                    2. Business
+
+                    3. DAOs
+
+                        here we can use many ORM tools JDBC or Hibernate or JPA (Java Persistent APIs) etc.
+
+            so for example if we want to make our business layer compatible for any DAOs, or any services
+
+-------
+
+How can we make two classes loosely coupled:
+
+    Suppose we have class A and class B
+
+        directly if I create an instance of class B in class A
+
+            then these two classes are already tightly coupled
+
+            as now compulsory using B class I can make database operations
+
+            here we have now no compatibility
+
+        to provide compatibility, all the ORM tools for example those we are using in DAOs
+
+            they need to follow some rules, then only compatibility is possible
+
+                so suppose we have an Interface in the form of Rules
+
+                    and all the ORMs implement the same rules
+
+                    then using the Rules interface reference here
+
+                        I can able to inject any object in class A
+
+    So in essence by using Java run-time polymorphism we can achieve compatibility

@@ -1,0 +1,228 @@
+
+LinkedHashMap:
+
+	The class is just like the HashMap class with an additional feature of maintaining an order of elements inserted into it.
+
+	HashMap provided the advantage of quick insertion, search and deletion
+		however, it never maintained the track and order of insertion which the LinkedHashMap provides
+
+	Here the elements can be accessed according to their insertion order
+
+-------
+
+Important features of LinkedHashMap:
+	
+	1. A LinkedHashMap contains values based on the key. It implements the Map interface and extends the HashMap class
+
+	2. It contains the unique elements
+
+	3. It may have one null key and multiple null values
+
+	4. It is non-synchronized
+
+	5. It is same as the HashMap with an additional feature that it maintains insertion order
+
+-------
+
+Constructors:
+
+	1. Construct a default LinkedHashMap constructor
+
+		LinkedHashMap<K, V> lhm = new LinkedHashmap<>();
+
+	2. Initialize a particular LinkedHashMap with a specified capacity
+
+		LinkedHashMap<K, V> lhm = new LinkedHashMap<>(int capacity);
+
+	3. Initialize a particular LinkedHashMap with the elements of the specified map
+
+		LinkedHashMap<K, V> lhm = new LinkedHashMap<>(Map<? extends k, ? extends V> map);
+
+	4. LinkedHashMap(int capacity, float fillRatio)
+
+		It is used to initialize both the capacity and fill ratio for a LinkedHashMap
+
+		A fillRatio also called as 'loadFactor' is a metric that determines when to increase the size of the LinkedHashMap
+			automatically.
+
+			By default, this value is 0.75 which means that the size of the map is increased when the map is 75% full
+
+		Syntax:
+
+			LinkedHashMap<K, V> lhm = new LinkedHashMap<K, V>(int capacity, float fillRatio)
+
+	5. LinkedHashMap(int capacity, float fillRatio, boolean Order)
+
+		This constructor is also used to initialize both the capacity and fill ratio for a LinkedHashMap along
+			with whether to follow the insertion order or not
+
+			LinkedHashMap<K, V> lhm = new LinkedHashMap<K, V>(int capacity, float fillRatio, boolean Order);
+
+-------
+
+Synchronized LinkedHashMap
+
+	The implementation of LinkedHashMap is not synchronized.
+
+	If multiple threads access a linked hash map concurrently, and at least one of the threads modifies the map structurally,
+		it must be synchronized externally.
+
+		This is typically accomplished by synchronizing on some object that naturally encapsulates the map
+
+		If no such objects exits, the map should be "wrapped" using the 'Collections.synchronizedMap' method
+
+			This is best done at the creation time, to prevent accidental unsynchronized access to the map:
+
+				Map m = Collections.synchronizedMap(new LinkedHashMap(...));
+
+-------
+
+METHOD
+	
+DESCRIPTION
+
+	containsValue​(Object value)	
+		Returns true if this map maps one or more keys to the specified value.
+
+	entrySet()
+		Returns a Set view of the mappings contained in this map.
+
+	get​(Object key)
+		Returns the value to which the specified key is mapped, or null if this map contains no mapping for the key.
+
+	keySet()
+		Returns a Set view of the keys contained in this map.
+
+	removeEldestEntry​(Map.Entry<K,​V> eldest)
+		Returns true if this map should remove its eldest entry.
+
+	values()
+		Returns a Collection view of the values contained in this map.
+
+	clear()
+		Removes all of the mappings from this map.
+
+	clone()	
+		Returns a shallow copy of this HashMap instance: the keys and values themselves are not cloned.
+
+	compute​(K key, BiFunction<? super K,​? super V,​? extends V> remappingFunction)
+		Attempts to compute a mapping for the specified key and its current mapped value 
+		(or null if there is no current mapping).
+
+	computeIfAbsent​(K key, Function<? super K,​? extends V> mappingFunction)	
+		If the specified key is not already associated with a value (or is mapped to null), 
+		attempts to compute its value using the given mapping function and enters it into this map unless null.
+
+	computeIfPresent​(K key, BiFunction<? super K,​? super V,​? extends V> remappingFunction)	
+		If the value for the specified key is present and non-null, attempts to compute a new mapping given the key and its current mapped value.
+
+	containsKey​(Object key)
+		Returns true if this map contains a mapping for the specified key.
+
+	containsValue​(Object value)	
+		Returns true if this map maps one or more keys to the specified value.
+
+	entrySet()
+		Returns a Set view of the mappings contained in this map.
+
+	get​(Object key)	
+		Returns the value to which the specified key is mapped, or null if this map contains no mapping for the key.
+
+	isEmpty()
+		Returns true if this map contains no key-value mappings.
+
+	keySet()
+		Returns a Set view of the keys contained in this map.
+
+	merge​(K key, V value, BiFunction<? super V,​? super V,​? extends V> remappingFunction)
+		If the specified key is not already associated with a value or is associated with null, 
+		associates it with the given non-null value.
+
+	put​(K key, V value)
+		Associates the specified value with the specified key in this map.
+
+	putAll​(Map<? extends K,​? extends V> m)
+		Copies all of the mappings from the specified map to this map.
+
+	remove​(Object key)
+		Removes the mapping for the specified key from this map if present.
+
+	size()
+		Returns the number of key-value mappings in this map.
+
+	values()
+		Returns a Collection view of the values contained in this map.
+
+-------
+
+Methods declared in interface java.util.Map:
+
+	METHODS
+
+		clear()
+			Removes all of the mappings from this map (optional operation).
+
+		compute​(K key, BiFunction<? super K,​? super V,​? extends V> remappingFunction)
+			Attempts to compute a mapping for the specified key and its current mapped value 
+			(or null if there is no current mapping).
+
+		computeIfAbsent​(K key, Function<? super K,​? extends V> mappingFunction)
+			If the specified key is not already associated with a value (or is mapped to null), 
+			attempts to compute its value using the given mapping function and enters it into this map unless null.
+
+		computeIfPresent​(K key, BiFunction<? super K,​? super V,​? extends V> remappingFunction)
+			If the value for the specified key is present and non-null, 
+			attempts to compute a new mapping given the key and its current mapped value.
+
+		containsKey​(Object key)
+			Returns true if this map contains a mapping for the specified key.
+
+		equals​(Object o)
+			Compares the specified object with this map for equality.
+
+		forEach​(BiConsumer<? super K,​? super V> action)
+			Performs the given action for each entry in this map until all entries have been 
+			processed or the action throws an exception.
+
+		getOrDefault​(Object key, V defaultValue)
+			Returns the value to which the specified key is mapped, or defaultValue if this map 
+			contains no mapping for the key.
+
+		hashCode()
+			Returns the hash code value for this map.
+
+		isEmpty()
+			Returns true if this map contains no key-value mappings.
+
+		merge​(K key, V value, BiFunction<? super V,​? super V,​? extends V> remappingFunction)
+			If the specified key is not already associated with a value or is associated with null, 
+			associates it with the given non-null value.
+
+		put​(K key, V value)	
+			Associates the specified value with the specified key in this map (optional operation).
+
+		putAll​(Map<? extends K,​? extends V> m)
+			Copies all of the mappings from the specified map to this map (optional operation).
+
+		putIfAbsent​(K key, V value)
+			If the specified key is not already associated with a value (or is mapped to null) 
+			associates it with the given value and returns null, else returns the current value.
+
+		remove​(Object key)
+			Removes the mapping for a key from this map if it is present (optional operation).
+
+		remove​(Object key, Object value)
+			Removes the entry for the specified key only if it is currently mapped 
+				to the specified value.
+
+		replace​(K key, V value)
+			Replaces the entry for the specified key only if it is currently mapped to some value.
+
+		replace​(K key, V oldValue, V newValue)
+			Replaces the entry for the specified key only if currently mapped to the specified value.
+
+		replaceAll​(BiFunction<? super K,​? super V,​? extends V> function)
+			Replaces each entry’s value with the result of invoking the given function on that 
+			entry until all entries have been processed or the function throws an exception.
+			
+		size()	Returns the number of key-value mappings in this map.

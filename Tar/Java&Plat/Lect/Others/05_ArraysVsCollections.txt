@@ -1,0 +1,70 @@
+
+When to go for arrays:
+
+    If we know the size of arrays in advance, highly recommended to go for arrays
+
+        as in collections we are getting growable data structure, but these data structures we aren't
+            getting free of cost.
+
+        we are lagging behind in performance
+
+        -------
+
+        Example:
+
+            suppose we want to insert an extra element in an ArrayList
+
+                it's not simple as there will be an another cell created and there the new element will be stored
+
+                once ArrayList reaches it's max capacity, a bigger length ArrayList is created internally
+
+                    all the elements from the actual ArrayList will be copied to this new bigger ArrayList
+
+                        then finally the 11th element will be inserted
+
+                        reassign the reference variable to this new object and old object is automatically
+                            applicable for garbage collection
+
+-------
+
+Major differences between Arrays and Collection classes:
+
+    Arrays:
+
+        1. Arrays are fixed in size
+
+        2. With respect to memory arrays are not recommended to use
+
+            sometimes memory locations go waste, and sometimes more memory locations are required then defined
+
+        3. Performance wise arrays are too good
+
+        4. Arrays can hold only homogeneous data
+
+        5. Underlying data structure not available
+
+            ready-made method support is not available
+
+        6. By using arrays we can hold primitive and object data types
+
+            e.g.
+                int []
+                Integer []
+
+    -------
+
+    Collections:
+
+        1. These are growable in nature
+
+        2. With respect to memory collections are recommended
+
+        3. Performance wise collections are not recommended
+
+        4. Collections can hold both homogeneous and heterogeneous data
+
+        5. Every collection class is based on some standard data structure
+
+            therefore for every collection, ready-made method support is available.
+
+        6. Collections can hold only objects but not primitives

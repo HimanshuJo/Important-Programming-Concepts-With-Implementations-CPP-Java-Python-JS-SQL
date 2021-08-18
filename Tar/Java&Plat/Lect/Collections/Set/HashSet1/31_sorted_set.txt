@@ -1,0 +1,69 @@
+
+SortedSet (I)  --> child interface of Set
+
+    Sometimes I want to represent a group of individual objects without:
+
+        duplicates, but
+
+        some sorting order is required
+
+            e.g. sorting all students objects according to their roll. number
+
+-------
+
+When should we go for SortedSet:
+
+    If we want to represent a group of individual objects according to
+        some sorting order
+        and without duplicate
+
+-------
+
+Suppose we've three sets:
+
+    {1, 2, 3}
+    {3, 2, 1}
+    {3, 1, 2}
+
+    All three sets are equal as order is not important in a set
+
+    But generally in a normal set we can't guess the first element, last element and so on
+        as there is no sorting in set.
+
+    However, if it is a SortedSet
+
+        then we can tell the first element, last element etc.
+
+-------
+
+6 Methods in the Sorted Set:
+
+    1. first()  --> returns the first element in the sorted set
+
+    2. last()  --> returns the last element in the sorted set
+
+    3. headSet(Object o) --> returns the elements which are less than a particular element
+
+        e.g. headSet(104);
+
+    4. tailSet(Object o)  --> returns the elements which are greater than or equal to a particular element
+
+        e.g. tailSet(104);
+
+    5. SubSet(Object o1, Object o2 )  --> returns the elements which are >= e.g. 103 but <  e.g. 110
+
+    6. comparator()  --> returns the comparator object which describe underlying sorting technique
+
+        if we are using default naturally sorting order it will return 'null'
+
+        Default naturally sorting order:
+
+            If it is a number, ascending order is the default naturally sorting order
+
+            If it is a String object, alphabetically oder
+
+-------
+
+Above methods can only be implemented on SortedClass implemented classes:
+
+    So only TreeSet objects

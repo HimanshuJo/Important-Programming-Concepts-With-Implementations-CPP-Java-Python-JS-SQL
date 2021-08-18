@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+    <title>User Details Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</h:head>
+<h:body>
+    <h:form>
+        <h3>Please enter your name here!</h3>
+        <h:inputText id="name" value="#{testUser.name}"></h:inputText>
+        <br />
+        <hr />
+        <h3>Please enter your profession here!</h3>
+        <h:inputText id="profession" value="#{testUser.profession}"></h:inputText>
+        <br />
+        <hr />
+        <h3>Please enter your salary here!</h3>
+        <h:inputText id="salary" value="#{testUser.amount}"></h:inputText>
+        <br />
+        <hr />
+        <h3>Please submit your details!</h3>
+        <h:commandButton value="submit" action="userDetails"></h:commandButton>
+    </h:form>
+</h:body>
+
+</html>

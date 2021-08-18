@@ -1,0 +1,33 @@
+
+1. Collection (I)
+
+    When should we go for Collection:
+
+        If we want to represent, a group of individual objects as a single entity -> then Collection
+
+        The Collection Interface defines the most common methods which are applicable for any collection object
+
+            e.g.
+
+                Suppose I've a group of student objects in my Collection
+
+                For any collection object, some of the most common methods that we can apply are:
+
+                    adding an object (add method is required)
+
+                    removing an object (remove method is required)
+
+                    to check whether an object is available or not (contains method is required)
+
+                    if the collection is empty or not (isEmpty method is required)
+
+                    ...
+
+                All these methods are available inside the Collection Interface
+
+                    Collection Interface defines the most common methods which are applicable for any
+                        collection object (ArrayList, LinkedList etc.)
+
+    In general Collection is the root interface of the collection framework
+
+    There is no concrete class which implements collection interface directly.

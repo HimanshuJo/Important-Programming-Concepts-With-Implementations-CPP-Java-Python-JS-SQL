@@ -1,0 +1,91 @@
+
+Print elements of a HashMap:
+
+    import java.util.*;
+
+    public class HelloWorld{
+
+         public static void main(String []args) {
+
+           int [] [] arr = {{1,2}, {2,3}, {4,5}, {8, 9}};
+
+           Map<Integer, int []> map = new LinkedHashMap<>();
+
+           int i = 0;
+
+           for (int [] value: arr) {
+               map.put(i, value);
+               i++;
+           }
+
+           if (!map.isEmpty()) {
+               map.entrySet().forEach((
+                   Map.Entry<Integer, int []> entry) -> {
+                       System.out.println(entry.getKey() + " => " + Arrays.toString(entry.getValue()));});}
+         }
+    }
+
+        /*
+
+        map.entrySet().forEach((Entry<Integer, int[]> entry) -> {
+            System.out.println(entry.getKey() + " => " + Arrays.toString(entry.getValue()));
+        });
+
+        for (Map.Entry<Integer, String> entry : map.entrySet()) {
+            System.out.println(entry.getKey() + " => " + Arrays.toString(entry.getValue()));
+            }
+        */
+
+        }
+    }
+
+-------
+
+Map:
+
+    Put characters of string as a 'key' and their frequency as 'values' in a map:
+
+        String s = "I AM THE STRING";
+
+        Map<Character, Integer> map = new HashMap<>();
+
+        for (int i = 0; i < s.length(); i++) {
+            map.put(s.charAt(i), map.getOrDefault(s.charAt(i), 0) + 1);
+        }
+
+        String s2 = "I am the second string";
+
+        map<Character, Integer> map2 =  new HashMap<>();
+
+        for (int j = 0; j < s2.length(); j++) {
+            map2.put(s2.charAt(i), map.getOrDefault(s2.charAt(i), 0) + 1);
+        }
+
+    -------
+
+    Get values corresponding to particular keys in a map:
+
+        map.get(1);  // key is 1 here; it can also be 'a' or any other character etc.
+
+    -------
+
+    Check in a map if a particular value is there:
+
+        map.containsKey(12);  // key can be anything here
+
+    -------
+
+    Printing keys and values in a map:
+
+        HashMap<Character, Integer> map =  new HashMap<>();
+
+        for (Map.Entry entry: map.entrySet()) {
+            System.out.println(entry.getKey() + " " + entry.getValue());
+        }
+
+-------
+
+Create a boolean array and initialize it with default values:
+
+    Boolean[] boolArray = new Boolean[12];
+    Arrays.fill(boolArray, Boolean.FALSE);

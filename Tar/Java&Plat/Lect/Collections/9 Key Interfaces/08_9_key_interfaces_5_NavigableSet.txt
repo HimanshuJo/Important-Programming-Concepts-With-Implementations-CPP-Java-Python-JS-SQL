@@ -1,0 +1,26 @@
+
+5. NavigableSet (I):
+
+    It is a child interface of SortedSet
+
+    It defines several methods for navigation purposes
+
+        e.g. what is the previous element, next element etc.
+
+    Implementation Class:
+
+        TreeSet
+
+-------
+
+Versions:
+
+    Collection (I)  --> 1.2 v
+
+        Set (I)  --> 1.2 v
+
+            SortedSet (I)  --> 1.2 v
+
+                NavigableSet (I)  --> 1.6 v
+
+                    TreeSet  --> 1.2 v

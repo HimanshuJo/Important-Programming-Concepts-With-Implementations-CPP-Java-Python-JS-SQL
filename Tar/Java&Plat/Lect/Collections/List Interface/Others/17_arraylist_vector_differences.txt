@@ -1,0 +1,39 @@
+
+Difference between ArrayList and Vector:
+
+    ArrayList:
+
+        Every method present inside ArrayList is non-synchronized
+
+        Not thread safe
+
+            As ArrayList objects are non-synchronized therefore on ArrayList objects
+                at a time multiple threads are allowed to operate
+
+                Hence here we are missing thread safety
+
+        Performance of the system is relatively fast
+
+            As no thread is required to wait
+
+        Non-Legacy class
+
+            ArrayList is introduced in version 1.2
+
+    -------
+
+    Vector:
+
+        Most of the methods present inside Vector are synchronized
+
+        Thread Safe
+
+            In a Vector object at a time only one thread is allowed to operate
+
+        Performance of the system is not very fast
+
+            As only one thread is allowed to act at a time and rest of the threads needed to wait
+
+        Legacy class
+
+            Vector is introduced in version 1.0

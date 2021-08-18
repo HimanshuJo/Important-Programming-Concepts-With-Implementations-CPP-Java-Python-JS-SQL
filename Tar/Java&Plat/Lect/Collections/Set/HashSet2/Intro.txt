@@ -1,0 +1,97 @@
+
+HashSet extends AbstractSet and implements the Set interface.
+
+    It creates a collection that uses a hash table for storage.
+
+    HashSet is a generic class that has the following declaration:
+
+        class HashSet<E>
+
+            Here, E specifies the type of objects that the set will hold
+
+-------
+
+A hash table stores information by using a mechanism called hashing.
+
+    In hashing, the informational content of a key is used to determine a unique value,
+        called its hash code.
+
+        The hash code is then used as the index at which the data associated with the key is stored.
+
+        The transformation of the key into its hash code is performed automatically—you
+            never see the hash code itself.
+
+        Also, your code can’t directly index the hash table.
+
+        The advantage of hashing is that it allows the execution time of
+
+                add( ),
+                contains( ),
+                remove( ), and
+                size( )
+
+            to remain constant even for large sets.
+
+-------
+
+The following constructors are defined:
+
+    HashSet( )
+
+        constructs a default hash set
+
+    HashSet(Collection<? extends E> c)
+
+        initializes the hash set by using the elements of c
+
+    HashSet(int capacity)
+
+        initializes the capacity of the hash set to capacity
+
+            The default capacity is 16
+
+    HashSet(int capacity, float fillRatio)
+
+        initializes both the capacity and the fill ratio (also called load factor) of the
+            hash set from its arguments
+
+        The fill ratio must be between 0.0 and 1.0, and it
+            determines how full the hash set can be before it is resized upward
+
+        Specifically, when the number of elements is greater than the capacity of the
+            hash set multiplied by its fill ratio, the hash set is expanded.
+
+            For constructors that do not take a fill ratio, 0.75 is used.
+
+-------
+
+HashSet does not define any additional methods beyond those provided by
+    its superclasses and interfaces.
+
+-------
+
+It is important to note that HashSet does not guarantee the order of its
+    elements, because the process of hashing doesn’t usually lend itself to the
+    creation of sorted sets.
+
+    If you need sorted storage, then another collection, such
+        as TreeSet, is a better choice.
+
+-------
+
+import java.util.*;
+
+class HashSetDemo {
+
+    public static void main(String[] args) {
+    
+        HashSet<String> hs = new HashSet<>();
+
+        hs.add("Beta");
+        hs.add("Alpha");
+        hs.add("Eta");
+        hs.add("Gamma");
+        hs.add("Epsilon");
+        hs.add("Omega");
+    }
+}

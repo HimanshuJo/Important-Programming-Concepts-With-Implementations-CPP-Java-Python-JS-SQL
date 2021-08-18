@@ -1,0 +1,49 @@
+
+The getOrDefault(Object key, V defaultValue) method of Map interface,
+    implemented by HashMap class is used to get the value mapped with specified key.
+
+    If no value is mapped with the provided key then the default value is returned.
+
+-------
+
+Syntax:
+
+    default V getorDefault(Object key, V defaultValue)
+
+-------
+
+Parameters:
+
+    key
+
+        which is the key of the element whose value has to be obtained
+
+    defaultValue
+
+        which is the default value that has to be returned,
+            if no value is mapped with the specified key
+
+    Return Value
+
+        this method returns value mapped with the specified key, otherwise default value is
+            returned
+
+-------
+
+import java.util.*;
+
+public class CFG {
+
+    public static void main(String[] args) {
+        HashMap<String, Integer> map = new HashMap<>();
+
+        map.put("a", 100);
+        map.put("b", 200);
+        map.put("c", 300);
+        map.put("d", 400);
+
+        int k = map.getOrDefault("b", 500);
+
+        System.out.println("Returned value: " + k);
+    }
+}

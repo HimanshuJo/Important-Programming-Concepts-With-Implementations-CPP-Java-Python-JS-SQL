@@ -1,0 +1,313 @@
+
+NavigableSet represents a navigable set in Java Collection Framework
+
+    The NavigableSet interface inherits from the SortedSet interface
+
+    It behaves like a SortedSet with the exception that we have navigation methods
+        available in addition to the sorting mechanisms of the SortedSet
+
+        For example, the NavigableSet interface can navigate the set in reverse order
+            compared to the order defined in SortedSet
+
+        A NavigableSet may be accessed and traversed in either ascending or descending order
+
+            The classes that implement this interface are
+
+                TreeSet and
+
+                ConcurrentSkipListSet
+
+-------
+
+Creating NavigableSet Objects
+
+    Since NavigableSet is an interface, objects cannot be created of the type NavigableSet
+
+        We always need a class that extends this list in order to create an object
+
+        And also, after the introduction of Generics in Java 1.5, it is possible to restrict the type
+            of object that can be stored in the NavigableSet
+
+            This type-safe set can be defined as:
+
+                // Obj is the type of the object to be stored in NavigableSet
+
+                NavigableSet<Obj> set = new TreeSet<Obj> ();
+
+-------
+
+// Working of NavigableSet
+
+import java.util.NavigableSet;
+import java.util.TreeSet;
+
+public class NavigableSetDemo {
+
+    public static void main(String[] arg) {
+    
+            NavigableSet<Integer> ns = new TreeSet<>();
+            ns.add(0);
+            ns.add(1);
+            ns.add(2);
+            ns.add(3);
+            ns.add(4);
+            ns.add(5);
+            ns.add(6);
+
+            // Get reverse view of the NavigableSet
+
+            NavigableSet<Integer> reverseNs = ns.descendingSet();
+
+            NavigableSet<Integer> threeOrMore = ns.tailSet(3, true);
+
+            System.out.println("3 or more: " + threeOrMore);  // 3 or  more:  [3, 4, 5, 6]
+
+            System.out.println("lower(3): " + ns.lower(3));  // 2
+            System.out.println("floor(3): " + ns.floor(3));  // 3
+            System.out.println("higher(3): " + ns.higher(3));  // 4
+            System.out.println("ceiling(3): " + ns.ceiling(3));  // 3
+
+            System.out.println("pollFirst(): " + ns.pollFirst());  // 0
+            System.out.println("Navigable Set:  " + ns);  // [1, 2, 3, 4, 5, 6]
+
+            System.out.println("pollLast(): " + ns.pollLast());  // 6
+            System.out.println("Navigable Set:  " + ns);  // [1, 2, 3, 4, 5]
+
+            System.out.println("pollFirst(): " + ns.pollFirst());  // 1
+            System.out.println("Navigable Set:  " + ns);  // [2, 3, 4, 5]
+
+            System.out.println("pollFirst(): " + ns.pollFirst());  // 2
+            System.out.println("Navigable Set:  " + ns);  // [3, 4, 5]
+
+            System.out.println("pollFirst(): " + ns.pollFirst());  // 3
+            System.out.println("Navigable Set:  " + ns);  // [4, 5]
+
+            System.out.println("pollFirst(): " + ns.pollFirst()); // 4
+            System.out.println("pollLast(): " + ns.pollLast());  // 5
+
+            System.out.println("Navigable Set:  " + ns);  // []
+
+        }
+    }
+
+-------
+
+Accessing elements in a Navigable Set:
+
+    if we wish to access the elements, we can use inbuilt methods like
+
+        contains(),
+
+        first(),
+
+        last(), etc.
+
+-------
+
+Removing values from Navigable Set:
+
+    The values can be removed from the NavigableSet using the following methods:
+
+        remove()
+
+        pollFirst()
+
+        pollLast()
+
+-------
+
+Methods of Navigable Set
+
+The following are the methods present in the NavigableSet interface.
+
+    ceiling​(E e)
+
+        Returns the least element in this set greater than or equal to the given element,
+            or null if there is no such element
+
+    descendingIterator()
+
+        Returns an iterator over the elements in this set, in descending order
+
+    descendingSet()
+
+        Returns a reverse order view of the elements contained in this set
+
+    floor​(E e)
+
+        Returns the greatest element in this set less than or equal to the given element,
+            or null if there is no such element
+
+    headSet​(E toElement)
+
+        Returns a view of the portion of this set whose elements are strictly less than toElement
+
+    headSet​(E toElement, boolean inclusive)
+
+        Returns a view of the portion of this set whose elements are less than
+            (or equal to, if inclusive is true) toElement
+
+    higher​(E e)
+
+        Returns the least element in this set strictly greater than the given element, or
+            null if there is no such element
+
+    iterator()
+
+        Returns an iterator over the elements in this set, in ascending order
+
+    lower​(E e)
+
+        Returns the greatest element in this set strictly less than the given element,
+            or null if there is no such element
+
+    pollFirst()
+
+        Retrieves and removes the first (lowest) element, or returns null if this set is empty
+
+    pollLast()
+
+        Retrieves and removes the last (highest) element, or returns null if this set is empty
+
+    subSet​(E fromElement, boolean fromInclusive, E toElement, boolean toInclusive)
+
+        Returns a view of the portion of this set whose elements range from fromElement to toElement
+
+    subSet​(E fromElement, E toElement)
+
+        Returns a view of the portion of this set whose elements range from fromElement,
+            inclusive, to toElement, exclusive
+
+    tailSet​(E fromElement)
+
+        Returns a view of the portion of this set whose elements are greater than or equal to fromElement
+
+    tailSet​(E fromElement, boolean inclusive)
+
+        Returns a view of the portion of this set whose elements are greater than
+            (or equal to, if inclusive is true) fromElement
+
+-------
+
+Methods inherited from interface java.util.SortedSet
+
+    comparator()
+
+        This method returns the comparator used to order the elements in this set,
+            or null if this set uses the natural ordering of its elements
+
+    first()
+
+        This method returns the first(lowest) element present in this set
+
+    last()
+
+        This method returns the last(highest) element present in the set
+
+    spliterator()
+
+        Creates a Spliterator over the elements in this sorted set
+
+-------
+
+Methods inherited from interface java.util.Set
+
+    add(element)
+
+        This method is used to add a specific element to the set
+
+        The function adds the element only if the specified element is not already present in
+            the set else the function returns False if the element is already present in the Set
+
+    addAll(collection)
+
+        This method is used to append all of the elements from the mentioned collection to the existing set
+
+        The elements are added randomly without following any specific order
+
+    clear()
+
+        This method is used to remove all the elements from the set but not delete the set
+
+        The reference for the set still exists
+
+    contains(element)
+
+        This method is used to check whether a specific element is present in the Set or not
+
+    containsAll(collection)
+
+        This method is used to check whether the set contains all the elements present
+            in the given collection or not
+
+        This method returns true if the set contains all the elements and returns false
+            if any of the elements are missing
+
+    equals()
+
+        Compares the specified object with this set for equality
+
+    hashCode()
+
+        This method is used to get the hashCode value for this instance of the Set
+
+        It returns an integer value which is the hashCode value for this instance of the Set
+
+    isEmpty()
+
+        This method is used to check if a NavigableSet is empty or not
+
+    remove(element)
+
+        This method is used to remove the given element from the set
+
+        This method returns True if the specified element is present in the Set otherwise it returns False
+
+    removeAll(collection)
+
+        This method is used to remove all the elements from the collection which are present in the set
+
+        This method returns true if this set changed as a result of the call
+
+    retainAll(collection)
+
+        This method is used to retain all the elements from the set which are
+            mentioned in the given collection
+
+        This method returns true if this set changed as a result of the call
+
+    size()
+
+        This method is used to get the size of the set
+
+        This returns an integer value which signifies the number of elements
+
+    toArray()
+
+        This method is used to form an array of the same elements as that of the Set
+
+    toArray​(T[] a)
+
+        Returns an array containing all of the elements in this set; the runtime type
+            of the returned array is that of the specified array
+
+-------
+
+Methods declared in interface java.util.Collection
+
+    parallelStream()
+
+        Returns a possibly parallel Stream with this collection as its source
+
+    removeIf​(Predicate<? super E> filter)
+
+        Removes all of the elements of this collection that satisfy the given predicate
+
+    stream()
+
+        Returns a sequential Stream with this collection as its source
+
+    toArray​(IntFunction<T[]> generator)
+
+        Returns an array containing all of the elements in this collection,
+            using the provided generator function to allocate the returned array

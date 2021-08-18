@@ -1,0 +1,254 @@
+
+Static is a non-access modifier in Java which is applicable for the following:
+
+    blocks
+    variables
+    methods
+    nested classes
+
+-------
+
+static blocks:
+
+    If you need to do computation in order to initialize your static variables, you can declare a
+        static block that gets executed exactly once, when the class is first loaded.
+
+        Consider the following java program demonstrating use of static blocks.
+
+-------
+
+Static variables
+
+    When a variable is declared as static, then a single copy of variable is created and shared
+        among all objects at class level.
+
+        Static variables are, essentially, global variables.
+
+        All instances of the class share the same static variable.
+
+    Important points for static variables :-
+
+        We can create static variables at class-level only.
+
+        static block and static variables are executed in order they are present in a program.
+
+    -------
+
+    Below is the java program to demonstrate that static block and static variables are executed
+        in order they are present in a program.
+
+        // java program to demonstrate execution
+        // of static blocks and variables
+
+        class Test
+        {
+            // static variable
+            static int a = m1();
+
+            // static block
+            static {
+                System.out.println("Inside static block");
+            }
+
+            // static method
+            static int m1() {
+                System.out.println("from m1");
+                return 20;
+            }
+
+            // static method(main !!)
+            public static void main(String[] args)
+            {
+               System.out.println("Value of a : "+a);
+               System.out.println("from main");
+            }
+        }
+
+-------
+
+Static methods:
+
+    When a method is declared with static keyword, it is known as static method.
+
+        The most common example of a static method is main() method.
+
+        As discussed above, Any static member can be accessed before any objects of its class are created,
+            and without reference to any object.
+
+        Methods declared as static have several restrictions:
+
+            They can only directly call other static methods.
+
+            They can only directly access static data.
+
+            They cannot refer to this or super in any way.
+
+    -------
+
+    Example:
+
+        class Test
+        {
+            static int a = 10;
+
+            int b = 20;
+
+            static void m1()
+            {
+                a = 20;
+                System.out.println("from m1");
+
+                // cannot make static reference to the non-static field b
+                b = 10;  // here compilation error
+
+                // cannot make static reference to the non-static method m2()
+                m2();  // here compilation error
+
+                // cannot use super in a static context
+                System.out.println(super.a)  // here compilation error
+            }
+        }
+
+------
+
+When to use static variables and methods?
+
+    Use the static variable for the property that is common to all objects.
+
+        For example, in class Student, all students shares the same college name.
+
+        Use static methods for changing static variables.
+
+    Consider the following java program, that illustrate the use of static keyword with variables and methods.
+
+    -------
+
+    Example:
+
+        // Student class
+
+        class Student
+        {
+            String name;
+            int rollNo;
+
+            // static variable
+            static String cllgName;
+
+            // static counter to set unique roll no
+            static int counter = 0;
+
+            public Student(String name)
+            {
+                this.name = name;
+
+                this.rollNo = setRollNo();
+            }
+
+            // getting unique rollNo
+            // through static variable(counter)
+            static int setRollNo()
+            {
+                counter++;
+                return counter;
+            }
+
+            // static method
+            static void setCllg(String name){
+                cllgName = name ;
+            }
+
+            // instance method
+            void getStudentInfo(){
+                System.out.println("name : " + this.name);
+                System.out.println("rollNo : " + this.rollNo);
+
+                // accessing static variable
+                System.out.println("cllgName : " + cllgName);
+            }
+        }
+
+        //Driver class
+        public class StaticDemo
+        {
+            public static void main(String[] args)
+            {
+                // calling static method
+                // without instantiating Student class
+                Student.setCllg("XYZ");
+
+                Student s1 = new Student("Alice");
+                Student s2 = new Student("Bob");
+
+                s1.getStudentInfo();
+                s2.getStudentInfo();
+
+            }
+        }
+
+-------
+
+Static blocks in Java:
+
+    Unlike C++, Java supports a special block, called static block (also called static clause)
+        which can be used for static initializations of a class.
+
+        The code inside static block is executed only once:
+
+            the first time the class is loaded into memory.
+
+    -------
+
+    Example:
+
+    class Test {
+        static int i;
+        int j;
+
+        // start of static block
+        static {
+            i = 10;
+            System.out.println("static block called ");
+        }
+        // end of static block
+    }
+
+    class Main {
+        public static void main(String args[]) {
+
+            // Although we don't have an object of Test, static block is
+            // called because i is being accessed in following statement.
+            System.out.println(Test.i);
+        }
+    }
+
+    -------
+
+    Also, static blocks are executed before constructors:
+
+        Example:
+
+            class Test {
+                static int i;
+                int j;
+                static {
+                    i = 10;
+                    System.out.println("static block called ");
+                }
+                Test(){
+                    System.out.println("Constructor called");
+                }
+            }
+
+            class Main {
+                public static void main(String args[]) {
+
+                   // Although we have two objects, static block is executed only once.
+                   Test t1 = new Test();
+                   Test t2 = new Test();
+                }
+            }
+            Output:
+            static block called
+            Constructor called
+            Constructor called

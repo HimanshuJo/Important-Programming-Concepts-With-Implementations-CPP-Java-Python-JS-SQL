@@ -1,0 +1,51 @@
+
+7. Map:
+
+    It is not a child interface of Collection
+
+    If we want to represent a group of objects as key value pairs, then we should consider Map
+
+        where 'key' is an object and 'value' is also an object
+
+    Duplicate keys are not allowed, but values can be duplicate
+
+    What are various implementation classes of Map:
+
+        HashMap
+
+            LinkedHashMap
+
+        WeakHashMap
+
+        IdentityHashMap
+
+        Hashtable  --> Child of 'Dictionary'
+
+            Properties
+
+-------
+
+Versions:
+
+    Map (I)  --> 1.2 v
+
+        HashMap  --> 1.2 v
+
+            LinkedHashMap  --> 1.4 v
+
+        WeakHashMap  --> 1.2 v
+
+        IdentityHashMap  --> 1.4 v
+
+        Dictionary  --> 1.0 v
+
+            Hashtable  --> 1.0 v
+
+                Properties  --> 1.0 v
+
+        -------
+
+        Therefore, these things (Dictionary, Hashtable, Properties) by default consider as legacy classes
+
+
+

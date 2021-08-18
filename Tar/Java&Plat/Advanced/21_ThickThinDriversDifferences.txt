@@ -1,0 +1,72 @@
+
+Thin Driver:
+
+    Type-4 driver is called think driver
+
+------
+
+Thick Driver:
+
+    Type-1, Type-2, Types-3 drivers are called thick drivers
+
+-------
+
+To communicate with the database, if a driver requires some extra component
+
+    such type of drivers are called thick-drivers
+
+    -------
+
+    In case of type-1 driver:
+
+        it internally depends on ODBC driver
+
+            with the help of ODBC driver it can communicate with the database
+
+            suppose ODBC driver is not there, then type-1 driver can't work
+    -------
+
+    In case of type-2 driver:
+
+        to communicate with the database, type-2 driver requires compulsory
+            database vendor provided native libraries should be present in the
+            client machine
+
+    -------
+
+    In case of type-3 driver:
+
+        to communicate with the database, compulsory middle-ware server must be there
+
+    -------
+
+    Therefore, if a driver software require some extra component to communicate with the database
+        such type of database are called thick drivers
+
+-------
+
+In case of type-4 driver, it won't require any extra components
+
+    directly it can communicate with the database
+
+    -------
+
+    so if a driver doesn't require any extra component to communicate with the database, such type
+        of databases are called thin drivers
+
+-------
+
+Java Application        --> Type-1 driver       --> ODBC driver         --> Database
+internally uses         <--                     <--                     <--
+JDBC
+
+                        --> Type-2 driver       --> Database specific   -->
+                        <--                     <-- native libraries    <--
+
+
+                        --> Type-3 driver       --> Middleware server   -->
+                        <--                     <--                     <--
+
+
+                        --> Type-4 driver                               -->
+                        <--                                             <--

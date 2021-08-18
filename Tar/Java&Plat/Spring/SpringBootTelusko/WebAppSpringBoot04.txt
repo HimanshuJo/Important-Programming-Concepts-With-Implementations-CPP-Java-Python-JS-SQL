@@ -1,0 +1,44 @@
+
+To start a Web App first we need a 'Controller'
+
+    For that we need to annotate the controller class as
+
+        @Controller
+
+    Now whenever I get a request, our Spring Boot application will make sure that this controller will
+        handle all the request
+
+        Who is doing that?
+
+            Thanks to auto-configuration in Spring boot using
+
+                import org.springframework.web.bind.annotation.RequestMapping;
+                @RequestMapping("home")
+
+                we can mention for which request I want to handle this function
+
+    -------
+
+    How do we call a template or a page while handling a request?
+
+        we can just simply do
+
+            return "name.extension" at the end of the function
+
+    -------
+
+    @ResponseBody
+
+        This annotation says that, whatever are returning inside a function is actually the data
+
+        so in this case if we say
+
+            return "home.jsp"  // home.jsp will be treated as a string data and it won't look for the .jsp page
+
+    -------
+
+    Spring Boot doesn't support jsp, for that we have to add a support in pom.xml file
+
+        adding the code for the dependency in pom.xml
+
+        now Spring Boot knows how to convert a JSP into servlet

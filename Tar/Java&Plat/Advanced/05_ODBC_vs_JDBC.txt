@@ -1,0 +1,30 @@
+
+Difference between ODBC and JDBC:
+
+    ODBC:
+
+        Stands for Open Database Connectivity
+
+        Introduced by Microsoft in 1992
+
+        It can be used for any language like Python, C++, Java etc.
+
+        We can use ODBC only for windows platform
+
+        Mostly ODBC drivers are developed in native language like C/C++
+
+        For Java application, it is not recommended to use ODBC because performance will be
+            down due to internal conversions and application will become platform dependent
+
+    JDBC:
+
+        Stands for Java Database Connectivity
+
+        Introduced by Sun Microsystems in 1997
+
+        We can use JDBC only for Java language
+
+        Mostly JDBC drivers are developed in Java
+
+        For Java application, it is highly recommended to use JDBC because
+            no performance and platform dependent problems

@@ -1,0 +1,53 @@
+
+Often, we will want to cycle through the elements in a collection
+
+    For example, we might want to display each element
+
+    One way to do this is to employ an iterator, which is an object that implements either the Iterator
+        or ListIterator
+
+    Iterator enable us to cycle through a collection, obtaining or removing elements
+
+    ListIterator extends Iterator to allow bidirectional traversal of a list, and the
+        modification of elements
+
+    Iterator and ListIterator are generic interfaces which are declared as shown here:
+
+        interface Iterator<E>
+        interface ListIterator<E>
+
+        Here E specifies the type of objects being iterated
+
+-------
+
+Methods declared by Iterator:
+
+    default void forEachRemaining(Consumer<? super E> action)
+
+        The action specified by action is executed on each unprocessed element in the collection
+
+    boolean hasNext()
+
+        Returns true if there are more elements
+
+            otherwise it returns false
+
+    E next()
+
+        Returns the next element
+
+            Throws 'NoSuchElementException' if there is not a next element
+
+    default void remove()
+
+        Removes the current element
+
+        It throws 'IllegalStateException' if an attempt is made to call remove() that is
+            not preceded by a call to next()
+
+        The default version throws an 'UnsupportedOperationException'
+
+    void add(E obj)
+
+        Inserts obj into the list in front of the element that will be returned by the next
+            call to next()

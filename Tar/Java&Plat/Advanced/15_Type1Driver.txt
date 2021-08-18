@@ -1,0 +1,50 @@
+
+Workflow:
+
+    Java Application  --> Type-1 Driver  --> ODBC Driver  --> Database
+    (JDBC)            <--                <--              <--
+
+-------
+
+Also known as JDBC-ODBC Bridge driver or Bridge Driver
+
+This driver is provided by Sun Micro-systems as the part of JDK
+
+Internally that driver will take support of ODBC driver to communicate with the database
+
+Type-1 driver connects JDBC calls into the ODBC calls and 
+    ODBC drivers connects ODBC calls to the database specific calls
+
+Hence, type-1 Driver acts as a bridge between JDBC and ODBC
+
+-------
+
+Advantages:
+
+    It is very easy to use and maintain
+
+    We are not required to install it as it's available as a part of JDK
+
+    Type-1 driver won't communicate with the database directly, hence it is
+        database independence driver.
+
+        Because of this migrating from one database to another database will become easy
+
+-------
+
+Limitations:
+
+    It's a slowest driver among all the drivers (semi-driver), because first it'll convert
+        JDBC calls into the ODBC calls and ODBC driver connects ODBC into the database specific
+        calls
+
+    This driver internally depends on ODBC drivers, which internally works on the Windows machine,
+        hence type-1 driver is platform dependent driver
+
+    No support from JDK 1.8 version onwards
+
+-------
+
+** Because of above limitations it is not recommended to use Type-1 driver
+
+    It's a history

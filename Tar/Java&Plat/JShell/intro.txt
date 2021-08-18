@@ -1,0 +1,18 @@
+
+JShell implements:
+
+    read-evaluate-print loop (REPL)
+
+    using this mechanism,
+
+        we are initially prompted to enter a fragment of code
+
+        the fragment is then read and evaluated
+
+        next JShell displays output related to the code
+
+            such as the output produced by a 'println()' statement
+
+            the result of the expression, or the current value of a variable
+
+        finally JShell then prompts for the next piece of code

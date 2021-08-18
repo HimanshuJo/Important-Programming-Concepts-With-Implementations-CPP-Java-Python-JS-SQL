@@ -1,0 +1,26 @@
+
+In servlets to accept client data
+
+    we used to create object of HttpServletRequest
+
+        and using that request object we used to fetch data
+
+-------
+
+In a RequestDispatcher two servlets or 1 servlet or 1 jsp share the same request object
+
+-------
+
+HttpSession session = req.getSession();
+String name = req.getParameter("name");
+session.setAttribute("name", name);
+
+    here "name" is the key and whatever value we have inside name, that will become our value
+
+-------
+
+How to accept client data via url
+
+    e.g. http://localhost:8080/home?name=himanshh
+
+         http://localhost:8080/home?aname=himanshh&aid=1&lang=Java

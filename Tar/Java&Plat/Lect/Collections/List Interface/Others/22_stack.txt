@@ -1,0 +1,62 @@
+
+Stack  --> 4th implementation class of List Interface
+
+    It is the child class of Vector
+
+    It is a specially designed class for LIFO order
+
+-------
+
+Constructors:
+
+    Stack s = new Stack();
+
+-------
+
+Methods:
+
+    push(Object o)  // add an object into the stack
+
+    pop()  // to remove and return top of the stack
+
+    peek()  // to return top of the stack, without removal
+
+    empty()  // to check if the stack is empty or not
+
+    search("element")  // whether a particular element present in the set or not
+
+        this method returns 'offset'
+
+        suppose we have a stack 's' and elements in the stack are:
+
+            C, B, A
+
+            if I do here:
+
+                s.search("A")
+
+                    // 3 will be the answer
+
+                s.search("Z")
+
+                    // -1 will be the answer
+
+            it will return 'Offset' of A (from top at what position is A)
+
+-------
+
+import java.util.*;
+
+class StackDemo
+{
+    public static void main(String[] args)
+    {
+        Stack s = new Stack();
+        s.push("A");
+        s.push("B");
+        s.push("C");
+        System.out.println(s);  // output will be [A, B, C] --> insertion order must be preserved
+        System.out.println(s.search("A"));  // 3
+        System.out.println(s.search("Z"));  // -1
+    }
+}

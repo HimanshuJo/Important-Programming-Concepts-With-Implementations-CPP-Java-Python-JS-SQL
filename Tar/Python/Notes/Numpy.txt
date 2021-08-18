@@ -1,0 +1,711 @@
+
+numpy:
+
+    it is the core library for scientific computing in python
+
+    it provides a high-performance multi-dimensional array object, and tools for working these arrays
+
+    -------
+
+    How to create two dimensional array:
+
+        a = np.array([(1, 2, 3), (4, 5, 6)])  # 2 rows and 3 columns
+
+    -------
+
+    Numpy vs List:
+
+        Numpy occupies less memory when compared to list
+
+        Numpy is fast as compared to list
+
+        Numpy is more convenient as compared to list
+
+-------
+
+NumPy arange()
+
+    The np.arange() function returns an evenly spaced values within a given interval.
+
+    It creates the instance of ndarray with evenly spaced values and returns the reference to it.
+
+        numpy.arange(start, stop, step, dtype)
+
+            start: number, optional.
+
+                Start of an interval.
+
+                The interval includes this value.
+
+                The default start value is 0.
+
+            stop: number.
+
+                End of the interval.
+
+                The interval does not contain stop value, except in some cases where a step is not an integer
+                    and floating-point round-off affects the length of out.
+
+            step: number, optional.
+
+                step can’t be zero.
+
+                Otherwise, you’ll get a ZeroDivisionError.
+
+                You can’t move away anywhere from the start if the increment or decrement is 0.
+
+            dtype: The type of an output array.
+
+                If the dtype is not given, infer the data type from the other input arguments.
+
+                If dtype is omitted, arange() will try to deduce the type of the array elements from the
+                    types of start, stop, and step.
+
+    -------
+
+    npdata = np.arange(40)
+    npdata.shape = (5, 8)  # numpy array’s shape attribute to shape that array into 5 rows and 8 columns
+    npdata
+
+    -------
+
+    Providing float arguments:
+
+        If we provide the float arguments, then the output array values will be floats.
+
+        If we pass steps in float, then it will calculate as it but returns the array float values.
+
+    -------
+
+    Providing Two Range Arguments:
+
+        You can omit the step parameter.
+
+        In the following case, arange() uses its default value of 1.
+
+        The following two statements are equivalent.
+
+            import numpy as np
+            data = np.arange(2, 5)
+            print(data)
+
+    -------
+
+    Providing One Range Argument:
+
+        import numpy as np
+
+        data = np.arange(5)
+        print(data)
+
+        -------
+
+        In this case, an array starts at 0 and ends before the value of the start is reached!
+
+        Again, the default value of the step is 1.
+
+        In other words, arange() assumes that you have provided stop (instead of start), and that start is 0,
+            and step is 1.
+
+    -------
+
+    Counting Backwards:
+
+        Sometimes you will want an array with the values decrementing from left to right.
+
+        In such cases, you can use arange() with a negative value for step, and with a start greater than stop.
+
+            import numpy as np
+
+            data = np.arange(4, 1, -2)
+            print(data)
+
+    -------
+
+    Working with empty arrays:
+
+        If you provide equal values for a start and stop, then you’ll get an empty array.
+
+            import numpy as np
+
+            print(np.arange(11, 11))
+
+-------
+
+Numpy arange reshape() function:
+
+    import numpy as np
+
+    arr = np.arange(8)
+    print("Original Array : \n", arr)
+
+    # shape arr with 2 rows and 4 columns
+    arr = np.arange(8).reshape(2, 4)
+    print("\nArray reshaped with 2 rows and 4 columns : \n", arr)
+
+    # shape arr with 4 rows and 2 columns
+    arr = np.arange(8).reshape(4 ,2)
+    print("\nArray reshaped with 4 rows and 2 columns : \n", arr)
+
+    # Constructs 3D arr
+    arr = np.arange(8).reshape(2, 2, 2)
+    print("\nOriginal Array reshaped to 3D : \n", arr)
+
+-------
+
+Numpy arange vs. Python range:
+
+    For large arrays, np.arange() should be the faster solution.
+
+-------
+
+Numpy Operations:
+
+    Find the dimension of the array
+
+        a = np.array([(1, 2, 3), (2, 3, 4)])
+        print(a.ndim)
+
+    Find the byte size of each element
+
+        a = np.array([(1, 2, 3), (2, 3, 4)])
+        print(a.itemsize)
+
+    Find the data type of the elements
+
+        a = np.array([(1, 2, 3), (2, 3, 4)])
+        print(a.dtype)
+
+    Find the size of the array
+
+        a = np.array([(1, 2, 3), (2, 3, 4)])
+        print(a.size)
+
+    Find the shape of the array
+
+        a = np.array([(1, 2, 3), (2, 3, 4)])
+        print(a.shape)
+
+    -------
+
+    How to reshape an array in numpy:
+
+        a = np.array([(1, 2, 3, 4), (3, 4, 5, 6)])
+        a = a.reshape(4, 2)
+
+    -------
+
+    Slicing:
+
+        Extracting particular set of elements from your array
+
+            a = np.array([(1, 2, 3, 4), (3, 4, 5, 6)])
+            print(a[0, 2])  # from 0th element get the 2nd index element (that is 3)
+            print(a[0:, 2])  # from all rows get me the 2nd index
+
+            a = np.array([(1, 2, 3, 4), (3, 4, 5, 6), (7, 8, 9, 10)])
+            print(a[0:2, 3])  # from all rows excluding 2nd get me the 3rd index
+
+    -------
+
+    Linespacing:
+
+        import numpy as np
+
+        a = np.linespace(1, 3, 5)  # 5 values that are equally spaced between 1 to 3
+
+    -------
+
+    Max:
+
+        import numpy as np
+
+        a = np.array([(1, 2, 3, 4), (3, 4, 5, 6)])
+        print(a.max())
+
+    -------
+
+    Min:
+
+        import numpy as np
+
+        a = np.array([(1, 2, 3, 4), (3, 4, 5, 6)])
+        print(a.min())
+
+    -------
+
+    Sum:
+
+        import numpy as np
+
+        a = np.array([(1, 2, 3, 4), (3, 4, 5, 6)])
+        print(a.sum())
+
+    -------
+
+    Sum of axis:
+
+
+        import numpy as np
+
+        a = np.array([(1, 2, 3, 4), (3, 4, 5, 6)])
+        print(a.sum(axis=0))  # display an array of the sum of individual columns of 'a'
+
+        print(a.sum(axis=1))  # display an array of the sum of individual rows of 'a'
+
+    -------
+
+    Standard Deviation and square root:
+
+        import numpy as np
+
+        a = np.array([(1, 2, 3, 4), (3, 4, 5, 6)])
+        print(np.std(a))  # print standard deviation of a
+
+        print(np.sqrt(a))  # print square root of a
+
+    -------
+
+    Element wise addition:
+
+        import numpy as np
+
+        a = np.array([(1, 2, 3, 4), (3, 4, 5, 6)])
+        b = np.array([(1, 2, 3, 4), (3, 4, 5, 6)])
+
+        print(a+b)  # in list we have to use for loop
+
+    -------
+
+    Vertical stacking and Horizontal stacking:
+
+        import numpy as np
+
+        a = np.array([(1, 2, 3, 4), (3, 4, 5, 6)])
+        b = np.array([(1, 2, 3, 4), (3, 4, 5, 6)])
+
+        print(np.vstack((a,b)))
+        print(np.hstack((a,b)))
+
+    -------
+
+    Convert a 2d numpy array into a contiguous flattened array.
+
+        import numpy as np
+
+        a = np.array([(1, 2, 3, 4), (3, 4, 5, 6)])
+        print(a.ravel())
+
+-------
+
+Numpy special functions:
+
+    import numpy as np
+    import matplotlib.pyplot as plt
+
+    x = np.arange(0, 3*np.pi, 0.1)
+    y = np.sin(x)
+
+    plt.plot(x,y)
+    plt.show()
+
+-------
+
+Exponential function and logarithm functions:
+
+    import numpy as np
+    import matplotlib.pyplot as plt
+
+    ar = np.array([1, 2, 3])
+    print(np.exp(ar))
+    print(np.log(ar))  # natural log
+
+    print(np.log10(ar))  # log base 10
+
+-------
+
+How to use the NumPy linspace function:
+
+    The NumPy linspace function (sometimes called np.linspace) is a tool in Python for creating numeric sequences.
+
+    It’s somewhat similar to the NumPy arange function, in that it creates sequences of evenly spaced
+        numbers structured as a NumPy array.
+
+    -------
+
+    The NumPy linspace function creates sequences of evenly spaced values within a defined interval.
+
+    Essentally, you specify a starting point and an ending point of an interval, and then specify the total
+        number of breakpoints you want within that interval (including the start and end points).
+
+        The np.linspace function will return a sequence of evenly spaced values on that interval.
+
+            np.linspace(start = 0, stop = 100, num = 5)
+
+-------
+
+numpy.square() in Python
+
+    numpy.square(arr, out = None, ufunc ‘square’) :
+
+        This mathematical function helps user to calculate square value of each element in the array.
+
+-------
+
+numpy.logspace
+
+numpy.logspace(start, stop, num=50, endpoint=True, base=10.0, dtype=None, axis=0)
+
+    Return numbers spaced evenly on a log scale.
+
+    In linear space, the sequence starts at base ** start (base to the power of start) and
+        ends with base ** stop (see endpoint below).
+
+    Parameters
+
+        start: array_like
+
+            base ** start is the starting value of the sequence.
+
+        stop: array_like
+
+            base ** stop is the final value of the sequence, unless endpoint is False.
+
+                In that case, num + 1 values are spaced over the interval in log-space, of which all
+                    but the last (a sequence of length num) are returned.
+
+        num: integer, optional
+
+            Number of samples to generate. Default is 50.
+
+        endpoint: boolean, optional
+
+            If true, stop is the last sample. Otherwise, it is not included. Default is True.
+
+        base: float, optional
+
+            The base of the log space.
+
+            The step size between the elements in ln(samples) / ln(base) (or log_base(samples)) is uniform.
+
+            Default is 10.0.
+
+        dtype: dtype
+
+            The type of the output array.
+
+            If dtype is not given, infer the data type from the other input arguments.
+
+        axis: int, optional
+
+            The axis in the result to store the samples.
+
+            Relevant only if start or stop are array-like.
+
+            By default (0), the samples will be along a new axis inserted at the beginning.
+
+            Use -1 to get an axis at the end.
+
+    Returns
+
+        samples: ndarray
+
+            num samples, equally spaced on a log scale.
+
+-------
+
+numpy.random.randint
+
+numpy.random.randint(low, high=None, size=None, dtype=int)
+
+    Return random integers from low (inclusive) to high (exclusive).
+
+    Return random integers from the “discrete uniform” distribution of the specified dtype in the
+        “half-open” interval [low, high).
+
+        If high is None (the default), then results are from [0, low).
+
+    Note
+
+    New code should use the integers method of a default_rng() instance instead; see random-quick-start.
+
+    Parameters
+
+        low: int or array-like of ints
+
+            Lowest (signed) integers to be drawn from the distribution
+                (unless high=None, in which case this parameter is one above the highest such integer).
+
+        high: int or array-like of ints, optional
+
+            If provided, one above the largest (signed) integer to be drawn from the distribution
+                (see above for behavior if high=None).
+
+            If array-like, must contain integer values
+
+        size: int or tuple of ints, optional
+
+            Output shape.
+
+            If the given shape is, e.g., (m, n, k), then m * n * k samples are drawn.
+
+            Default is None, in which case a single value is returned.
+
+        dtype: dtype, optional
+
+            Desired dtype of the result. Byteorder must be native. The default value is int.
+
+            New in version 1.11.0.
+
+    Returns
+
+        out: int or ndarray of ints
+
+            size-shaped array of random integers from the appropriate distribution, or a single such random
+                int if size not provided.
+
+-------
+
+numpy.concatenate
+
+numpy.concatenate((a1, a2, ...), axis=0, out=None)
+
+    Join a sequence of arrays along an existing axis.
+
+    Parameters
+
+        a1, a2, …sequence of array_like
+
+            The arrays must have the same shape, except in the dimension corresponding to
+                axis (the first, by default).
+
+        axis: int, optional
+
+            The axis along which the arrays will be joined.
+
+            If axis is None, arrays are flattened before use. Default is 0.
+
+        out: ndarray, optional
+
+            If provided, the destination to place the result.
+
+            The shape must be correct, matching that of what concatenate would have returned if
+                no out argument were specified.
+
+    Returns
+
+        res: ndarray
+
+            The concatenated array.
+
+-------
+
+numpy.sum
+
+numpy.sum(a, axis=None, dtype=None, out=None, keepdims=<no value>, initial=<no value>, where=<no value>)
+
+    Sum of array elements over a given axis.
+
+    Parameters
+
+        aarray_like
+
+            Elements to sum.
+
+        axis: None or int or tuple of ints, optional
+
+            Axis or axes along which a sum is performed.
+
+            The default, axis=None, will sum all of the elements of the input array.
+
+            If axis is negative it counts from the last to the first axis.
+
+            If axis is a tuple of ints, a sum is performed on all of the axes specified in the tuple
+                instead of a single axis or all the axes as before.
+
+        dtype: dtype, optional
+
+            The type of the returned array and of the accumulator in which the elements are summed.
+
+            The dtype of a is used by default unless a has an integer dtype of less precision than the
+                default platform integer.
+
+            In that case, if a is signed then the platform integer is used while if a is unsigned then an
+                unsigned integer of the same precision as the platform integer is used.
+
+        out: ndarray, optional
+
+            Alternative output array in which to place the result.
+
+            It must have the same shape as the expected output, but the type of the output values will be cast
+                if necessary.
+
+        keepdims: bool, optional
+
+            If this is set to True, the axes which are reduced are left in the result as dimensions with size one.
+
+            With this option, the result will broadcast correctly against the input array.
+
+            If the default value is passed, then keepdims will not be passed through to the sum method
+                of sub-classes of ndarray, however any non-default value will be.
+
+            If the sub-class’ method does not implement keepdims any exceptions will be raised.
+
+        initial: scalar, optional
+
+            Starting value for the sum.
+
+        where: array_like of bool, optional
+
+            Elements to include in the sum.
+
+    Returns
+
+        sum_along_axis: ndarray
+
+            An array with the same shape as a, with the specified axis removed.
+
+            If a is a 0-d array, or if axis is None, a scalar is returned.
+
+            If an output array is specified, a reference to out is returned.
+
+-------
+
+numpy.random.normal
+
+numpy.random.normal(loc=0.0, scale=1.0, size=None)
+
+    Draw random samples from a normal (Gaussian) distribution.
+
+    The probability density function of the normal distribution, first derived by De Moivre and 200 years
+        later by both Gauss and Laplace independently, is often called the bell curve because of its
+        characteristic shape (see the example below).
+
+    The normal distributions occurs often in nature.
+
+        For example, it describes the commonly occurring distribution of samples influenced by a
+            large number of tiny, random disturbances, each with its own unique distribution.
+
+    Note
+
+        New code should use the normal method of a default_rng() instance instead; see random-quick-start.
+
+    Parameters
+
+        loc: float or array_like of floats
+
+            Mean (“centre”) of the distribution.
+
+        scale: float or array_like of floats
+
+            Standard deviation (spread or “width”) of the distribution. Must be non-negative.
+
+        size: int or tuple of ints, optional
+
+            Output shape. If the given shape is, e.g., (m, n, k), then m * n * k samples are drawn.
+
+            If size is None (default), a single value is returned if loc and scale are both scalars.
+
+            Otherwise, np.broadcast(loc, scale).size samples are drawn.
+
+    Returns
+
+        out: ndarray or scalar
+
+            Drawn samples from the parameterized normal distribution.
+
+-------
+
+numpy.roll
+
+numpy.roll(a, shift, axis=None)
+
+    Roll array elements along a given axis.
+
+    Elements that roll beyond the last position are re-introduced at the first.
+
+    Parameters
+
+        aarray_like
+
+            Input array.
+
+        shift: int or tuple of ints
+
+            The number of places by which elements are shifted.
+
+            If a tuple, then axis must be a tuple of the same size, and each of the given axes is
+                shifted by the corresponding number.
+
+            If an int while axis is a tuple of ints, then the same value is used for all given axes.
+
+        axis: int or tuple of ints, optional
+
+            Axis or axes along which elements are shifted.
+
+            By default, the array is flattened before shifting, after which the original shape is restored.
+
+    Returns
+
+        res: ndarray
+
+            Output array, with the same shape as a.
+
+-------
+
+numpy.dot
+
+numpy.dot(a, b, out=None)
+
+    Dot product of two arrays. Specifically,
+
+        If both a and b are 1-D arrays, it is inner product of vectors (without complex conjugation).
+
+        If both a and b are 2-D arrays, it is matrix multiplication, but using matmul or a @ b is preferred.
+
+        If either a or b is 0-D (scalar), it is equivalent to multiply and using numpy.multiply(a, b)
+            or a * b is preferred.
+
+        If a is an N-D array and b is a 1-D array, it is a sum product over the last axis of a and b.
+
+        If a is an N-D array and b is an M-D array (where M>=2), it is a sum product over the last axis of a
+            and the second-to-last axis of b:
+
+        dot(a, b)[i,j,k,m] = sum(a[i,j,:] * b[k,:,m])
+
+    Parameters
+
+        a: array_like
+
+            First argument.
+        b: array_like
+
+            Second argument.
+        out: ndarray, optional
+
+            Output argument.
+
+            This must have the exact kind that would be returned if it was not used.
+
+            In particular, it must have the right type, must be C-contiguous, and its dtype must be the dtype
+                that would be returned for dot(a,b).
+
+            This is a performance feature.
+
+            Therefore, if these conditions are not met, an exception is raised, instead of attempting
+                to be flexible.
+
+    Returns
+
+        output: ndarray
+
+            Returns the dot product of a and b. If a and b are both scalars or both 1-D arrays then a
+                scalar is returned; otherwise an array is returned.
+
+            If out is given, then it is returned.
+
+    Raises
+
+        ValueError
+
+            If the last dimension of a is not the same size as the second-to-last dimension of b.

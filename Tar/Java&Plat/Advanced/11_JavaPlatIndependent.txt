@@ -1,0 +1,50 @@
+
+Suppose we have a Java application that is communicating with a database with JDBC API
+
+    Let firstly this application wants to communicate with an 'Oracle Database'
+
+        here we required to use drivers for oracle
+
+            here Oracle Drivers are responsible to convert Java terminology (calls) into
+                database specific calls and vice versa
+
+    Then, it wants to communicate with 'MySQL Database'
+
+        here we required to use drivers for mysql
+
+    Then, it wants to communicate with 'DB2 Database'
+
+        here we required to use drivers for DB2
+
+    -------
+
+    Here in this case, it is not required to write a separate java application for each database
+
+        a single java application is enough to communicate with each of these database
+
+    -------
+
+    Therefore Java is Database Independent, but a driver is database dependent
+
+-------
+
+How Java is platform independent:
+
+    Suppose we have a Java application it wants to run in Windows, Linux and MAC platform
+
+        Then first we have to compile the Java program with the help of a compiler
+
+            we will get byte code (.class files)
+
+                it is a platform independent code
+
+                As for each platform (Windows, Linux, MAC) we will have JVM (Java Virtual Machine)
+
+                    e.g. for windows  --> Windows JVM will take this byte code and convert it
+                            into windows specific machine code; then execute
+
+                In essence JVM convert platform independent code to platform dependent code
+
+-------
+
+* We are required to download separate JVM's for each machine

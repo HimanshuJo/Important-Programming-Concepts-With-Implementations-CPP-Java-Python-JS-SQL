@@ -1,0 +1,113 @@
+
+// A functional interface
+
+interface MyNumber {
+    double getValue();
+}
+
+class LambdaDemo {
+    public static void main(String[] args) {
+        MyNumber myNum;  // declaring an interface reference
+
+
+        // here the lambda expression is simply a constant expression
+        // when it is assigned to myNum, a class instance is constructed in which the
+        // lambda expression implements the getValue() method in MyNumber
+        myNum = () -> 123.45;
+
+        // a little complex expression
+        myNum = () -> Math.random() * 100;
+
+        // a lambda expression must be compatible with the method defined
+        // by the functional interface
+        myNum = () -> "123.45";  // ERROR
+    }
+}
+
+-------
+
+The lambda expression must be compatible with the abstract
+    method that it is intended to implement.
+
+-------
+
+// Example of a lambda expression that takes a parameter
+
+interface NumericTest {
+    boolean test(int n);
+}
+
+class LambdaDemo2 {
+    public static void main(String[] args) {
+
+        NumericTest isEven = (n) -> (n % 2) == 0;
+
+        if(isEven.test(10)) System.out.println("10 is even");
+        if(isEven.test(9)) System.out.println("9 is not even");
+
+        NumericTest isNonNeg = (n) -> n >= 0;
+
+        if(isNonNeg.test(1)) System.out.println("1 is non-negative");
+    }
+}
+
+In the above example, the type of 'n' is not specified
+
+    rather it's type is inferred from the context
+
+    in this case, its type is inferred from the parameter type of test() as defined by the
+        NumericTest interface, which is int
+
+    it is also possible to explicitly specify the type of a parameter in a lambda expression
+
+        e.g. (int n) -> (n % 2) == 0
+
+-------
+
+A functional interface reference can be used to execute any
+    lambda expression that is compatible with it.
+
+    Notice that the program defines two different lambda expressions that are compatible
+        with the test( ) method of the functional interface NumericTest.
+
+        The first, called isEven, determines if a value is even.
+
+        The second, called isNonNeg, checks if a value is non-negative.
+
+        In each case, the value of the parameter n is tested.
+
+        Because each lambda expression is compatible with test( ), each can be executed through a
+            NumericTest reference.
+
+    One other point before moving on.
+
+        When a lambda expression has only one parameter, it is not necessary to surround
+            the parameter name with parentheses when it is specified on the left side of
+            the lambda operator.
+
+            For example, this is also a valid way to write the lambda expression used in the program:
+
+                n -> (n % 2) == 0
+
+-------
+
+interface NumericTest2 {
+    boolean test(int n, int d);
+}
+
+class LambdaDemo3 {
+    public static void main(String[] args) {
+
+        NumericTest isFactor = (n, d) -> (n % d) == 0;
+
+        if(isFactor.test(10, 2))
+            System.out.println("2 is a factor of 10");
+    }
+}
+
+In this version, test( ) specifies two parameters.
+
+    Thus, for a lambda expression to be compatible with test( ), the lambda expression
+        must also specify two parameters.
+
+            (n, d) -> (n % d) == 0

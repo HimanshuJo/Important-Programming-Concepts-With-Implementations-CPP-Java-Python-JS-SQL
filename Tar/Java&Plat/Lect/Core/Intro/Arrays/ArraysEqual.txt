@@ -1,0 +1,129 @@
+Arrays Equal:
+
+	Syntax :
+		
+		public static boolean equals(int[] a, int[] a2)
+		
+		Parameters :
+			
+			a - one array to be tested for equality
+			
+			a2 - the other array to be tested for equality
+		
+		Returns : 
+			
+			true if the two arrays are equal
+
+-------
+
+Other Variants:
+
+    public static boolean equals(byte[] a, byte[] a2)
+
+    public static boolean equals(short[] a, short[] a2)
+
+    public static boolean equals(long[] a, long[] a2)
+
+    public static boolean equals(float[] a, float[] a2)
+
+    public static boolean equals(double[] a, double[] a2)
+
+    public static boolean equals(char[] a, char[] a2)
+
+    public static boolean equals(boolean[] a, boolean[] a2)
+
+    public static boolean equals(Object[] a, Object[] a2)
+
+-------
+
+import java.util.Arrays;
+
+public class ArrayEqualDemo
+{
+	public static void main(String[] args)
+	{
+		// Let us create different integers arrays
+		int[] arr1 = new int [] {1, 2, 3, 4};
+		int[] arr2 = new int [] {1, 2, 3, 4};
+		int[] arr3 = new int [] {1, 2, 4, 3};
+		
+		System.out.println("is arr1 equals to arr2 : " +
+								Arrays.equals(arr1, arr2));
+		System.out.println("is arr1 equals to arr3 : " +
+								Arrays.equals(arr1, arr3));
+	}
+}
+
+Output:
+
+is arr1 equals to arr2 : true
+is arr1 equals to arr3 : false
+
+-------
+
+We can also use Arrays.equals() for checking equality of array of objects of user defined class.
+
+	Have a look at last variant of the Arrays.equals() method:
+
+	Note :- In case of arrays of Objects, you must override equals method to provide your own definition of 
+			equality, otherwise you will get output depends on what equals() method of Object class returns. 
+
+			In the program below, we are checking equality of rollno, name, and address for a student.
+
+			-------
+
+			// Java program to demonstrate working of Arrays.equals()
+			// for user defined objects.
+
+			import java.util.Arrays;
+
+
+			public class ArrayEqualDemo
+			{
+				public static void main (String[] args)
+				{
+					Student [] arr1 = {new Student(111, "bbbb", "london"),
+									new Student(131, "aaaa", "nyc"),
+									new Student(121, "cccc", "jaipur")};
+					
+					Student [] arr2 = {new Student(111, "bbbb", "london"),
+									new Student(131, "aaaa", "nyc"),
+									new Student(121, "cccc", "jaipur")};
+					
+					Student [] arr3 = {new Student(111, "bbbb", "london"),
+									new Student(121, "dddd", "jaipur"),
+									new Student(131, "aaaa", "nyc"),
+									};
+					
+					System.out.println("is arr1 equals to arr2 : " +
+												Arrays.equals(arr1, arr2));
+					System.out.println("is arr1 equals to arr3 : " +
+												Arrays.equals(arr1, arr3));	
+				}	
+			}
+
+			// A class to represent a student.
+			class Student
+			{
+				int rollno;
+				String name, address;
+
+				// Constructor
+				public Student(int rollno, String name,
+										String address)
+				{
+					this.rollno = rollno;
+					this.name = name;
+					this.address = address;
+				}
+				
+				@Override
+				public boolean equals(Object obj) {
+					
+					// typecast obj to Student so that we can compare students
+					Student s = (Student) obj;
+					
+					return this.rollno == s.rollno && this.name.equals(s.name)
+											&& this.address.equals(s.address);
+				}
+			}

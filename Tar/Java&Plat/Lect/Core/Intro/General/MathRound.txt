@@ -1,0 +1,36 @@
+
+It's a built-in math function which returns the closest long to the argument.
+	
+	The result is rounded to an integer by adding 1/2, 
+		taking the floor of the result after adding 1/2, and casting the result to type long
+
+	If the argument is NaN, the result is 0
+
+	If the argument is negative infinity or any value less than or equal to the value of Integer.MIN_VALUE,
+		the result is equal to the value of Integer.MIN_VALUE
+
+	If the argument is positive infinity or any value greater than or equal to the value of Integer.MAX_VALUE,
+		the result is equal to the value of Integer.MAX_VALUE
+
+	-------
+
+	Syntax:
+		public static int round(float val)
+
+		parameter: val -> floating point value to be rounded to an integer
+
+	Returns:
+		This method returns the value to be rounded to an integer
+
+-------
+
+import java.lang.Math;
+
+class CFG {
+	public static void main(String[] args) {
+		float x = 4567.9874f;
+		System.out.println(Math.round(x));  // 4568
+		float y = -3421.134f;
+		System.out.println(Math.round(y));  // -3421
+	}
+}
