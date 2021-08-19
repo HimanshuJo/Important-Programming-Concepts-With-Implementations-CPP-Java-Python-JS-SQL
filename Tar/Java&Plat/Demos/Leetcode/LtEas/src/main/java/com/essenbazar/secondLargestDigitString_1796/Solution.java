@@ -1,6 +1,3 @@
-/*
-Project for solving some common algorithm problems
- */
 package com.essenbazar.secondLargestDigitString_1796;
 
 import java.util.ArrayList;
@@ -8,11 +5,6 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
-/**
- *
- * @author himanshu
- */
 
 /*
 
@@ -27,19 +19,17 @@ Input: s = "dfa12321afd"
 Output: 2
 Explanation: The digits that appear in s are [1, 2, 3]. The second largest digit is 2.
 
-
  */
+
 class Solution {
 
     private String extractInt(String str) {
         str = str.replaceAll("[^\\d]", " ");
         str = str.trim();
         str = str.replaceAll(" +", " ");
-
         if (str.equals("")) {
             return "-1";
         }
-
         return str;
     }
 
@@ -52,7 +42,6 @@ class Solution {
                 break;
             }
         }
-
         if (containsDig) {
             String sbf = extractInt(s);
             Set<Integer> set = new HashSet<>();

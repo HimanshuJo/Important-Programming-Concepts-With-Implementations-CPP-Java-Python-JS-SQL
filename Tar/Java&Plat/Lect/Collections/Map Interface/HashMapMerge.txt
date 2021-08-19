@@ -14,7 +14,7 @@ HashMap merge(key, value, BiFunction):
    If the key is not present or is associated with null, it simply outputs the key along with the
    corresponding value in the HashMap as a new entry
 
-   However, if the key already holds some value that Remapping function merges both the old and new
+   However, if the key already holds some value that remapping function merges both the old and new
    	values with the given key
 
    	In case the key is null, it is always mapped to bucket 0, as hash is not calculated for null keys

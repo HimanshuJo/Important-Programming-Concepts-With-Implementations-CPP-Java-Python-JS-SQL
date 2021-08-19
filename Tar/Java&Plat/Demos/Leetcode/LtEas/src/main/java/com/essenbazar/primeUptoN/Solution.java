@@ -39,7 +39,7 @@ int main(){
 }
 */
 
-package com.essenbazar.Test;
+package com.essenbazar.primeUptoN;
 
 public class Solution {
 

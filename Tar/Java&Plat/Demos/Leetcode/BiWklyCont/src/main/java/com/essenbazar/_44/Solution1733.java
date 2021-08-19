@@ -92,6 +92,7 @@ public class Solution1733 {
 			}
 			minTeach = Math.min(teachSet.size(), minTeach);
 		}
+		System.out.println(minTeach);
 		return minTeach;
 	}
 

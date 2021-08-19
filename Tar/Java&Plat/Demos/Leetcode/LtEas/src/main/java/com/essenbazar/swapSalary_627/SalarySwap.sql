@@ -1,12 +1,4 @@
 /*
-Project for solving some common algorithm problems
-*/
-/**
- * Author:  himan
- * Created: 27-Feb-2021
- */
-
-/*
 
 Table: Salary
 
@@ -53,7 +45,6 @@ Result table:
 (1, A) and (2, C) were changed from 'm' to 'f'.
 (2, B) and (4, D) were changed from 'f' to 'm'.
 
-
 */
 
 # Write your MySQL query statement below
@@ -62,4 +53,3 @@ update salary set sex = Case
 when sex = 'f' then 'm'
 when sex = 'm' then 'f' 
 end
-

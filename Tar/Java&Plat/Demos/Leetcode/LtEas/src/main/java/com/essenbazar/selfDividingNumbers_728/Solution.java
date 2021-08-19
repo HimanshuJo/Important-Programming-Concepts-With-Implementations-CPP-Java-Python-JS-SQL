@@ -1,16 +1,8 @@
-/*
-Project for solving some common algorithm problems
- */
 package com.essenbazar.selfDividingNumbers_728;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
-/**
- *
- * @author himan
- */
 
 /*
 
@@ -29,6 +21,7 @@ left = 1, right = 22
 Output: [1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 15, 22]
 
  */
+
 class Solution {
 
     private boolean isGood(int temp_right, int right) {
@@ -41,7 +34,6 @@ class Solution {
             }
             temp_right = temp_right / 10;
         }
-
         return true;
     }
 
@@ -71,10 +63,81 @@ class Solution {
                 left++;
             }
         }
-
         Collections.sort(list);
+        System.out.println(list.toString());
         return list;
+    }
+    
+    public static void main(String[] args) {
+    	Solution obj = new Solution();
+    	obj.selfDividingNumbers(15, 22);
+    }
+}
 
+/*
+#include<bits/stdc++.h>
+using namespace std;
+
+class Solution {
+    public:
+
+    bool isGoodNum(int num, int pr){
+        string numStr=to_string(num);
+        for (int i=0; i<numStr.length(); ++i){
+            int currNum=numStr[i]-'0';
+            if (currNum==0 || pr%currNum!=0){
+                return false;
+            }
+        }
+        return true;
     }
 
+    vector<int> selfDividingNumbers(int left, int right){
+        vector<int> curr;
+        if (left<10 && right<10){
+            for (int i=left; i<10; ++i){
+                curr.push_back(i);
+            }
+            sort(curr.begin(), curr.end());
+            for (auto &num: curr){
+                cout<<num<<" ";
+            }
+            return curr;
+        } else if (left<10 && right>=10){
+            for (int i=left; i<10; ++i){
+                curr.push_back(i);
+            }
+            while (right>=10){
+                int rgCp=right;
+                if (isGoodNum(right, rgCp)){
+                    curr.push_back(right);
+                }
+                right--;
+            }
+            sort(curr.begin(), curr.end());
+            for (auto &num: curr){
+                cout<<num<<" ";
+            }
+            return curr;
+        } else {
+            while (left<=right){
+                int ltCp=left;
+                if (isGoodNum(left, ltCp) == 1){
+                    curr.push_back(left);
+                }
+                left++;
+            }
+            sort(curr.begin(), curr.end());
+            for (auto &num: curr){
+                cout<<num<<" ";
+            }
+            return curr;
+        }
+    }
+};
+
+int main(){
+    Solution obj;
+    obj.selfDividingNumbers(1,22);
 }
+*/

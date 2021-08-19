@@ -1,6 +1,3 @@
-/*
-Project for solving some common algorithm problems
- */
 package com.essenbazar.UniqueMorseCodeWords_804;
 
 import java.util.ArrayList;
@@ -9,11 +6,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-
-/**
- *
- * @author himan
- */
 
 /*
 
@@ -46,10 +38,10 @@ The transformation of each word is:
 There are 2 different transformations, "--...-." and "--...--.".
 
  */
+
 class Solution {
 
     public int uniqueMorseRepresentations(String[] words) {
-
         Map<Character, String> map = new HashMap<>();
         map.put('a', ".-");
         map.put('b', "-...");
@@ -77,10 +69,8 @@ class Solution {
         map.put('x', "-..-");
         map.put('y', "-.--");
         map.put('z', "--..");
-
         List<List<String>> ss_list = new ArrayList<>();
         Set<List<String>> str_set = new HashSet<>();
-
         for (int i = 0; i < words.length; i++) {
             String str = words[i];
             String temp = "";
@@ -93,11 +83,9 @@ class Solution {
             list.add(temp);
             ss_list.add(list);
         }
-
         for (int i = 0; i < ss_list.size(); i++) {
             str_set.add(ss_list.get(i));
         }
-
         return str_set.size();
     }
 }

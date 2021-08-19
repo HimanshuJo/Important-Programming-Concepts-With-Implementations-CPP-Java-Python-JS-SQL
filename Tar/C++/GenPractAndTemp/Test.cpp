@@ -1,24 +1,41 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-class Solution {
-    public:
-    vector<int> runningSum(vector<int> nums){
-        vector<int> res(nums.size());
-        int n=nums.size();
-        res[0]=nums[0];
-        for (int i=1; i<n; ++i){
-            res[i]=res[i-1]+nums[i];
-        }
-        for (auto &nums: res){
-            cout<<nums<<" ";
-        }
-        return res;
-    }
-};
+// C++ program to demonstrate working of accumulate()
+#include <iostream>
+#include <numeric>	
+using namespace std;
 
-int main(){
-    Solution obj;
-    vector<int> nums={1,2,3,4};
-    obj.runningSum(nums);
+// User defined function
+int myfun(int x, int y)
+{
+	// for this example we have taken product
+	// of adjacent numbers
+	return x * y ;
+}
+
+int main()
+{
+	// Initialize sum = 1
+	int sum = 1;
+	int a[] = {5 , 10 , 15} ;
+    vector<int>arr={5 , 10 , 15};
+	
+	// Simple default accumulate function
+	cout << "\nResult using accumulate: ";
+	cout << accumulate(arr.begin() , arr.begin()+2 , sum);
+	
+	// Using accumulate function with
+	// defined function
+	cout << "\nResult using accumulate with"
+			"user-defined function: ";
+	cout << accumulate(a, a+3, sum, myfun);
+	
+	// Using accumulate function with
+	// pre-defined function
+	cout << "\nResult using accumulate with "
+			"pre-defined function: ";
+	cout << accumulate(a, a+3, sum, std::minus<int>());
+	
+	return 0;
 }
