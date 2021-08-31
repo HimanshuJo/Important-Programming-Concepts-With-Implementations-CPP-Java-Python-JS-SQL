@@ -67,7 +67,7 @@ void leftrotate(string &s, int d)
 // In-place rotates s towards right by d
 void rightrotate(string &s, int d)
 {
-leftrotate(s, s.length()-d);
+	leftrotate(s, s.length()-d);
 }
 
 // Driver code

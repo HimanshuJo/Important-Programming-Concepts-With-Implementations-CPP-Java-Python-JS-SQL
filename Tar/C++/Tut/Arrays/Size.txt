@@ -3,7 +3,6 @@ Find the length of an array:
 
 	1. Using sizeof()
 
-
 		One way to find the length of an array is to divide the size of the array by the size of each element (in bytes).
 
 		The built-in sizeof() operator is used for this purpose:

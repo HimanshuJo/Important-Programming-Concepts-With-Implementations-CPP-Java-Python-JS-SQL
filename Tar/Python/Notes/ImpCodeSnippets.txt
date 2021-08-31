@@ -1,4 +1,3 @@
-
 Python ord()
 
   The ord function returns an integer representing the Unicode character

@@ -24,7 +24,7 @@ int main()
 	// ms.insert('b', 25);	
 	
 	// using insert() to insert pair in-place
-	ms.insert(make_pair('b', 25));	
+	ms.insert(make_pair('b', 25)); // ms.insert(pair<char, int>('b', 25))
 	
 	// printing the multiset
 	for (auto it = ms.begin(); it != ms.end(); ++it)

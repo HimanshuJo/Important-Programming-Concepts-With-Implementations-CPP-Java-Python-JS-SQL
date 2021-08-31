@@ -1,4 +1,3 @@
-
 What is SciPy:
 
     Open source python library which is used to solve scientific and mathematical

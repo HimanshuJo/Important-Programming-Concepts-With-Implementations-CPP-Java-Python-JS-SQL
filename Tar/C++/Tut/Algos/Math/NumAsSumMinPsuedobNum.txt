@@ -14,9 +14,11 @@ Input : 31
 Output : 11 10 10
 
 Explanation : 31 can be represented as sum of
-minimum 3 psuedobinary numbers as 11+10+10 
+minimum 3 psuedobinary numbers as 11+10+10
 
-The idea to do this is to first observe carefully that we need to calculate minimum number of possible psuedobinary numbers. To do this we find a new number m such that if for a place in given number n, the digit is non-zero then the digit in that place in m is 1 otherwise zero. For example, if n = 5102, then m will be 1101. Then we will print this number m and subtract m from n. We will keep repeating these steps until n is greater than zero.
+-------
+
+The idea to do this is to first observe carefully that we need to calculate minimum number of possible psuedobinary numbers. To do this we find a new number 'm' such that if for a place in given number 'n', the digit is non-zero then the digit in that place in m is 1 otherwise zero. For example, if n = 5102, then m will be 1101. Then we will print this number 'm' and subtract 'm' from 'n'. We will keep repeating these steps until 'n' is greater than zero.
 
 // C++ program to represent a given
 // number as sum of minimum possible

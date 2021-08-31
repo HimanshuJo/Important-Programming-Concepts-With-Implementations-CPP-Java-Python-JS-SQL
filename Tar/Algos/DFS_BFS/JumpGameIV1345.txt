@@ -1,4 +1,3 @@
-	
 Given an array of integers arr, you are initially positioned at the first index of the array.
 
 In one step you can jump from index i to index:
@@ -76,6 +75,75 @@ How to build the graph
 				so that next time when we see a 7 at let's say index 3, then
 				even though we have a visited array to control our traverse so that we shouldn't be re-visiting a node again,
 				we don't have to process anything at this index
+
+-------
+
+#include <bits/stdc++.h>
+using namespace std;
+class Solution
+{
+public:
+    int minJumps(vector<int> &arr)
+    {
+        int n = arr.size();
+        unordered_map<int, vector<int>> indicesOfValue;
+        for (int i = 0; i < n; i++)
+            indicesOfValue[arr[i]].push_back(i);
+        vector<bool> visited(n);
+        visited[0] = true;
+        queue<int> q;
+        q.push(0);
+        int step = 0;
+        while (!q.empty())
+        {
+            for (int size = q.size(); size > 0; --size)
+            {
+                int i = q.front();
+                q.pop();
+                if (i == n - 1){
+                    cout<<step;
+                    return step; // Reached to last index
+                }
+                vector<int> &next = indicesOfValue[arr[i]];
+                next.push_back(i - 1);
+                next.push_back(i + 1);
+                for (int j : next)
+                {
+                    if (j >= 0 && j < n && !visited[j])
+                    {
+                        visited[j] = true;
+                        q.push(j);
+                    }
+                }
+                next.clear(); // avoid later lookup indicesOfValue arr[i]
+            }
+            step++;
+        }
+        return 0;
+    }
+};
+
+int main()
+{
+    Solution obj;
+    vector<int> arr = {100, -23, -23, 404, 100, 23, 23, 23, 3, 404};
+    obj.minJumps(arr);
+}
+
+Complexity
+
+    Time & Space: O(N)
+
+Explain Time O(N): 
+
+	In the case where each index has the same value, the algorithm goes to the neighbor (the same value) 
+		once then breaks all the edge by using: 
+
+			next.clear()
+
+So the algorithm will traverse up to N edges for j and 2N edges for (i+1, i-1).
+
+That's why time complexity is O(3N) ~ O(N)
 
 -------
 
@@ -168,55 +236,3 @@ class Solution {
 		return ans;
 	}
 }
-
--------
-
-class Solution {
-public:
-    int minJumps(vector<int>& arr) {
-        int n = arr.size();
-        unordered_map<int, vector<int>> indicesOfValue;
-        for (int i = 0; i < n; i++)
-            indicesOfValue[arr[i]].push_back(i);
-        vector<bool> visited(n);
-        visited[0] = true;
-        queue<int> q;
-        q.push(0);
-        int step = 0;
-        while (!q.empty()) {
-            for (int size = q.size(); size > 0; --size) {
-                int i = q.front(); 
-                q.pop();
-                if (i == n - 1)
-                	return step; // Reached to last index
-                vector<int>& next = indicesOfValue[arr[i]];
-                next.push_back(i - 1); 
-                next.push_back(i + 1);
-                for (int j : next) {
-                    if (j >= 0 && j < n && !visited[j]) {
-                        visited[j] = true;
-                        q.push(j);
-                    }
-                }
-                next.clear(); // avoid later lookup indicesOfValue arr[i]
-            }
-            step++;
-        }
-        return 0;
-    }
-};
-
-Complexity
-
-    Time & Space: O(N)
-
-Explain Time O(N): 
-
-	In the case where each index has the same value, the algorithm goes to the neighbor (the same value) 
-		once then breaks all the edge by using: 
-
-			next.clear()
-
-So the algorithm will traverse up to N edges for j and 2N edges for (i+1, i-1).
-
-That's why time complexity is O(3N) ~ O(N)

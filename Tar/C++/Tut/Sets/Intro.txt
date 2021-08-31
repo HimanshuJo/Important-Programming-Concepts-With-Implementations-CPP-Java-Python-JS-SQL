@@ -1,4 +1,3 @@
-
 Sets are a type of associative containers in which each element has to be unique, 
 	because the value of the element identifies it. 
 
@@ -21,7 +20,7 @@ set::begin():
 			
 			No parameters are passed.
 		
-		Returns:
+		Returns :
 
 			This function returns a bidirectional
 				iterator pointing to the first element.
@@ -134,6 +133,7 @@ set::end()
 		setname.end()
 
 	Parameters:
+
 		No parameters are passed.
 		
 	Returns:
@@ -226,6 +226,46 @@ To access a particular index, you can use this :
 
 	int first = *next(myset.begin(),0);
 	int third = *next(myset.begin(),2);
+
+	-------
+
+	#include<bits/stdc++.h>
+	using namespace std;
+
+	int main(){
+		set<int>s={1,2,3,4,5};
+		int eleAtZerothInd=*next(s.begin(),0);
+		int eleAtSecondInd=*next(s.begin(),2);
+		int eleAtFourthInd=*next(s.begin(),4);
+		cout<<eleAtZerothInd<<endl;
+		cout<<eleAtSecondInd<<endl;
+		cout<<eleAtFourthInd<<endl;
+		return 0;
+	}
+
+	Output:
+
+	eleAtZerothInd 1
+	eleAtSecondInd 3
+	eleAtFourthInd 5
+
+	-------
+
+	If the index provided is out of range of the set, set will ouput the last element
+
+	#include<bits/stdc++.h>
+	using namespace std;
+
+	int main(){
+		set<int>s={1,2,3,4,5};
+		int eleAtFifthInd=*next(s.begin(),5);
+		cout<<eleAtFifthInd<<endl;
+		return 0;
+	}
+
+	Output:
+
+	5
 
 -------
 

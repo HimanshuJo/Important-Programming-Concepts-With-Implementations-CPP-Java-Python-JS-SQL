@@ -31,7 +31,9 @@ Output :
 
 Naive Approach: 
 
-	We can loop through the vertices and from each vertex run a BFS to find the closest town with police station from that vertex. 
+	We can loop through the vertices and from each vertex run a BFS to find the closest town with 
+		police station from that vertex. 
+	
 	This will take O(V.E).
 
 	-------
@@ -283,11 +285,14 @@ Efficient Way:
 
 	A better way is to use Djikstra's algorithm in a modified way.
 
-	Let's consider one of the sources as the original source and the other sources to be vertices with 0 cost paths from the original source
+	Let's consider one of the sources as the original source and the other sources to be vertices with 0 cost paths 
+		from the original source
 
-	Thus we can push all the sources into the Djikstra Queue with distance = 0, and the rest of the vertices with distance = infinity.
+	Thus we can push all the sources into the Djikstra Queue with distance = 0, and the rest of the vertices with 
+		distance = infinity.
 
-	The minimum distance of each vertex from the original source now calculated using the Dijkstra's Algorithm are now essentially the distances from the nearest source
+	The minimum distance of each vertex from the original source now calculated using the Dijkstra's Algorithm 
+		are now essentially the distances from the nearest source
 
 Explanation:
 
@@ -295,15 +300,23 @@ Explanation:
 
 	Initially the set contains the sources with distance = 0 and all the other vertices with distance = infinity
 
-	On each step, we will go to the vertex with the minimum distance(d) from the source, i.e the first element of the set (the source itself in the first step with distance = 0)
+	On each step, we will go to the vertex with the minimum distance(d) from the source, 
+		i.e the first element of the set (the source itself in the first step with distance = 0)
 
-		We will go through all it's adjacent vertices and if the distance of any vertex is > d + 1 we replace its entry in the set with the new distance
+		We will go through all its adjacent vertices and if the distance of any vertex is > d + 1 
+			we replace its entry in the set with the new distance
 
 		Then we will remove the current vertex from the set. We will continue this until the set is empty.
 
-		The idea is there cannot be a shorter path to the vertex at the front of the set than the current one since any other path will be a sum of a longer path (>= it's length) and a non-negative path length (unless we're considering negative edges)
+		The idea is there cannot be a shorter path to the vertex at the front of the set than the current one since
+			any other path will be a sum of a longer path (>= its length) and a non-negative path length 
+			(unless we're considering negative edges)
 
-		Since all the sources have a distance = 0, in the beginning, the adjacent non-source vertices will get a distance = 1. All the vertices will get distance = distance from their nearest source
+		Since all the sources have a distance = 0, in the beginning, 
+		the adjacent non-source vertices will get a distance = 1. 
+		All the vertices will get distance = distance from their nearest source
+
+-------
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -333,7 +346,8 @@ void multiSourceBFSUtil(vector<int> graph[], int s)
             Q.insert({dist[v], v});
         }
     }
-    // we will stop when the Q is empty -> All vertices have been visited. And only visit a vertex when we are sure that a shorter path to that vertex is not possible
+    // we will stop when the Q is empty -> All vertices have been visited. 
+	// And only visit a vertex when we are sure that a shorter path to that vertex is not possible
     if (Q.size() == 0)
     {
         return;

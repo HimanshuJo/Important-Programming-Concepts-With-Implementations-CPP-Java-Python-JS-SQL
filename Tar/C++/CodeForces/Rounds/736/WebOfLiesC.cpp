@@ -126,10 +126,12 @@ int main()
         cin >> u >> v;
         if (u < v)
         {
+            // num of stronger friends of u
             mp1[u]++;
         }
         else
         {
+            // num of stronger friends of v
             mp1[v]++;
         }
     }

@@ -1,0 +1,21 @@
+{
+    "files.associations": {
+        "*.tcc": "cpp",
+        "string": "cpp",
+        "unordered_map": "cpp",
+        "unordered_set": "cpp",
+        "string_view": "cpp",
+        "iostream": "cpp",
+        "regex": "cpp",
+        "ostream": "cpp",
+        "queue": "cpp",
+        "set": "cpp",
+        "xutility": "cpp",
+        "algorithm": "cpp",
+        "xtree": "cpp",
+        "utility": "cpp",
+        "xstring": "cpp",
+        "vector": "cpp",
+        "numeric": "cpp"
+    }
+}

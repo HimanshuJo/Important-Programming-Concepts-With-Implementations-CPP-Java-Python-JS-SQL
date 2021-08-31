@@ -1,4 +1,3 @@
-
 Given an integer array instructions, you are asked to create a sorted array from the elements in instructions. 
 
 You start with an empty container nums. For each element from left to right in instructions, insert it into nums. 
@@ -70,15 +69,18 @@ Performing standard Binary Search:
 -------
 
 Note: Whenever we have the questions like, what is going to be the total numbers on the left and 
-	what is going to be total numbers on the right, while maintaining  a sorted list --> similar questions like that
+	what is going to be total numbers on the right, while maintaining  a sorted list --> 
+	similar questions like that
 
-	  we should always go for a faster and efficient approach 'Segment Trees' or in some cases like here 'Binary Indexed Tree'
+	  we should always go for a faster and efficient approach 'Segment Trees' or in some cases 
+	  like here 'Binary Indexed Tree'
 
 -------
 
 Binary Indexed Trees:
 
-	Motivation: is to efficiently maintain an array while at the same time efficiently get the preSum of that particular array
+	Motivation: is to efficiently maintain an array while at the same time efficiently get the 
+	preSum of that particular array
 
 	-------
 

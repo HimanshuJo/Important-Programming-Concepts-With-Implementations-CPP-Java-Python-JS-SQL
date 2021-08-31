@@ -38,7 +38,8 @@ int main()
 	return 0;
 }
 
-Output: 
+Output:
+
 The elements in set are: 1 2 3 4 5
 
 -------
@@ -102,6 +103,7 @@ int main()
 	return 0;
 }
 
-Output: 
+Output:
+
 The elements in set1 are: 1 2 3 4 5 
 The elements in set2 are: 3 4 5

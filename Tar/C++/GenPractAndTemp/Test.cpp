@@ -1,41 +1,25 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
-
-// C++ program to demonstrate working of accumulate()
-#include <iostream>
-#include <numeric>	
-using namespace std;
-
-// User defined function
-int myfun(int x, int y)
-{
-	// for this example we have taken product
-	// of adjacent numbers
-	return x * y ;
-}
 
 int main()
 {
-	// Initialize sum = 1
-	int sum = 1;
-	int a[] = {5 , 10 , 15} ;
-    vector<int>arr={5 , 10 , 15};
-	
-	// Simple default accumulate function
-	cout << "\nResult using accumulate: ";
-	cout << accumulate(arr.begin() , arr.begin()+2 , sum);
-	
-	// Using accumulate function with
-	// defined function
-	cout << "\nResult using accumulate with"
-			"user-defined function: ";
-	cout << accumulate(a, a+3, sum, myfun);
-	
-	// Using accumulate function with
-	// pre-defined function
-	cout << "\nResult using accumulate with "
-			"pre-defined function: ";
-	cout << accumulate(a, a+3, sum, std::minus<int>());
-	
-	return 0;
+	vector<vector<int>> num{{1, 2},
+							{3, 4},
+							{5, 6}};
+	unordered_map<int, vector<int>> gr;
+	int sz = num.size();
+	for (int i = 0; i < sz; ++i)
+	{
+		gr[num[i][0]].push_back(num[i][1]);
+		gr[num[i][1]].push_back(num[i][0]);
+	}
+	for (const auto &pair : gr)
+	{
+		std::cout << "key: " << pair.first << "  value: [  ";
+
+		for (int d : pair.second)
+			std::cout << d << "  ";
+
+		std::cout << "]\n";
+	}
 }

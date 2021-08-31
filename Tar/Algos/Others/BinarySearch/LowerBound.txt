@@ -12,7 +12,7 @@ Function template:
 		template <class ForwardIterator, class T, class Compare>
 		  ForwardIterator lower_bound (ForwardIterator first, ForwardIterator last, const T& val, Compare comp);
 
- -------
+-------
 
 Return iterator to lower bound
 
@@ -115,7 +115,8 @@ int main () {
 Output:
 
 lower_bound at position 3 (in-essence low directly tells how many numbers are strictly less than the val)
-upper_bound at position 6 (to check, how many numbers strictly greater than val; v.size() - up)
+upper_bound at position 6 (to check, how many numbers strictly greater than val
+	v.size() - (up - v.begin())
 
 -------
 

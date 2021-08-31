@@ -1,4 +1,3 @@
-
 You have a lock in front of you with 4 circular wheels. 
 
 Each wheel has 10 slots: '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'. 
@@ -56,6 +55,53 @@ Intuition:
 
 -------
 
+class Solution
+{
+public:
+    int openLock(vector<string> &deadends, string target)
+    {
+        unordered_set<string> deadSet(deadends.begin(), deadends.end());
+        if (deadSet.count("0000"))
+            return -1;
+        queue<string> q({"0000"});
+        for (int steps = 0; !q.empty(); ++steps)
+        {
+            for (int i = q.size(); i > 0; --i)
+            {
+                auto curr = q.front();
+                q.pop();
+                if (curr == target)
+                    return steps;
+                for (auto nei : neighbors(curr))
+                {
+                    if (deadSet.count(nei))
+                        continue;
+                    deadSet.insert(nei); // Marked as visited
+                    q.push(nei);
+                }
+            }
+        }
+        return -1;
+    }
+    
+    vector<string> neighbors(const string &code)
+    {
+        vector<string> result;
+        for (int i = 0; i < 4; i++)
+        {
+            for (int diff = -1; diff <= 1; diff += 2)
+            {
+                string nei = code;
+                nei[i] = (nei[i] - '0' + diff + 10) % 10 + '0';
+                result.push_back(nei);
+            }
+        }
+        return result;
+    }
+};
+
+-------
+
 class Solution:
 	def openLock(self, deadends: List[str], target: str) -> int:
 		deadSet = set(deadends)
@@ -73,7 +119,6 @@ class Solution:
 				if cur == target:
 					return ans
 				for i in range(4):  # since we have 4 digits in total
-					
 					# for each digit either we can move forward or backward
 					# for moving forward
 					newDigit1 = (int(cur[i]) + 1) % 10  # why % 10 because for 9 we will be needing 0
@@ -132,49 +177,3 @@ Complexity
         Total O(D) to create the hashset
 
     Space: O(A^N), in worst case equal to number of combinations.
-
--------
-
-class Solution
-{
-public:
-    int openLock(vector<string> &deadends, string target)
-    {
-        unordered_set<string> deadSet(deadends.begin(), deadends.end());
-        if (deadSet.count("0000"))
-            return -1;
-        queue<string> q({"0000"});
-        for (int steps = 0; !q.empty(); ++steps)
-        {
-            for (int i = q.size(); i > 0; --i)
-            {
-                auto curr = q.front();
-                q.pop();
-                if (curr == target)
-                    return steps;
-                for (auto nei : neighbors(curr))
-                {
-                    if (deadSet.count(nei))
-                        continue;
-                    deadSet.insert(nei); // Marked as visited
-                    q.push(nei);
-                }
-            }
-        }
-        return -1;
-    }
-    vector<string> neighbors(const string &code)
-    {
-        vector<string> result;
-        for (int i = 0; i < 4; i++)
-        {
-            for (int diff = -1; diff <= 1; diff += 2)
-            {
-                string nei = code;
-                nei[i] = (nei[i] - '0' + diff + 10) % 10 + '0';
-                result.push_back(nei);
-            }
-        }
-        return result;
-    }
-};

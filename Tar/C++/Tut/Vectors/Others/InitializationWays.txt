@@ -143,3 +143,15 @@
 	std::vector<SomeStruct> someStructVect(length);
 
 	memset(someStructVect.data(), 0, sizeof(SomeStruct)*length);
+
+-------
+
+Initialization 2d vectors:
+
+	std::vector<std::vector<int>> twoDimVector(3, std::vector<int>(2, 0));
+
+-------
+
+Initialization 3d Vectors:
+
+	vector<vector<vector<double>>> f(3, vector<vector<double>>(4, vector<double>(5)));

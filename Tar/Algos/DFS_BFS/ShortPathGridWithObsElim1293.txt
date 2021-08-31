@@ -1,4 +1,3 @@
-
 Given a m * n grid, where each cell is either 0 (empty) or 1 (obstacle). In one step, you can move 
 	up, down, left or right from and to an empty cell.
 
@@ -79,6 +78,64 @@ Intuition:
 
 -------
 
+#include<bits/stdc++.h>
+using namespace std;
+
+class Solution{
+    public:
+    int shortestPath(vector<vector<int>>&grid, int k){
+        int m=grid.size();
+        int n=grid[0].size();
+        vector<vector<int>>dir={{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
+        int vis[m+1][n+1];
+        for (int i=0; i<=m; ++i){
+            for (int j=0; j<=n; ++j){
+                vis[i][j]=INT_MAX;
+            }
+        }
+        queue<vector<int>>q;
+        q.push({0, 0, 0});
+        vis[0][0]=true;
+        int dist=0;
+        while (!q.empty()){
+            int qSz=q.size();
+            while (qSz--){
+                vector<int>curr=q.front();
+                if (curr[0]==m-1&&curr[1]==n-1){
+                    cout<<dist;
+                    return dist;
+                }
+                q.pop();
+                for (auto d: dir){
+                    int newX=curr[0]+d[0];
+                    int newY=curr[1]+d[1];
+                    if (newX>=0&&newX<m&&newY>=0&&newY<n){
+                        int newK=curr[2]+grid[newX][newY];
+                        if (newK>k){
+                            continue;
+                        }
+                        if (vis[newX][newY]<=newK){
+                            continue;
+                        }
+                        vis[newX][newY]=newK;
+                        q.push({newX, newY, newK});
+                    }
+                }
+            }
+            dist++;
+        }
+        return 1;
+    }
+};
+
+int main(){
+    Solution obj;
+    vector<vector<int>>grid={{0,0,0}, {1,1,0}, {0,0,0}, {0,1,1}, {0,0,0}};
+    obj.shortestPath(grid, 1);
+}
+
+-------
+
 class Solution:
     def shortestPath(self, grid: List[List[int]], k: int) -> int:
         m = len(grid)
@@ -113,7 +170,6 @@ class Solution:
 
 class Solution {
 	private static final int[][] DIRECTIONS = { { 1, 0 }, { -1, 0 }, { 0, -1 }, { 0, 1 } };
-
 	public int shortestPath(int[][] grid, int k) {
 		int m = grid.length, n = grid[0].length;
 		Deque<int[]> queue = new LinkedList<>();
@@ -216,6 +272,8 @@ On the other hand, there is no point in checking the same cell with less (and wo
 	Optimization: track k for each cell and never reduce it. Start with negative:
 
 		vector<int> visited(rows*cols, -1); // position -> k remaining
+
+-------
 
 class Solution
 {

@@ -3,9 +3,9 @@
 import math
 print(math.log(num, 2))
 
-# ceil of a number
-
 -------
+
+# ceil of a number
 
 import math
 print(math.ceil(x))

@@ -22,7 +22,7 @@ A simple solution is to repeatedly compute powers of x.
 -------
 
 // C++ program to check if a number is power of
-// another number
+// another number (in this case 'y' is a power of 'x')
 #include <bits/stdc++.h>
 using namespace std;
 

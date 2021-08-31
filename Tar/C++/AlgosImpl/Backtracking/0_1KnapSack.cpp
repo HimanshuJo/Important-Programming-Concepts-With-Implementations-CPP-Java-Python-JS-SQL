@@ -9,6 +9,24 @@ ll max(ll a, ll b) {
 	return (a > b) ? a : b;
 }
 
+// void printKnapSackCust(ll W, ll wt[], ll val[], ll n){
+// 	int index;
+// 	ll weight;
+// 	ll dp[(int)(n+1)][(int)(W+1)];
+// 	for (int i=0; i<=n; ++i){
+// 		for (int weight=0; weight<=W; ++weight){
+// 			if (i==0||weight==0){
+// 				dp[i][(int)weight]=0;
+// 			} else if (wt[i-1]<=weight){
+// 				dp[i][(int)weight]=max(val[i-1]+dp[i-1][(int)(weight-wt[i-1])], dp[i-1][(int)weight]);
+// 			} else {
+// 				dp[i][(int)weight]=dp[i-1][(int)weight];
+// 			}
+// 		}
+// 	}
+// }
+
+
 // Function that prints items which are put in a knapsack of capacity W
 void printKnapSack(ll W, ll wt[], ll val[], ll n) {
 	int i;
@@ -20,7 +38,9 @@ void printKnapSack(ll W, ll wt[], ll val[], ll n) {
 			if (i == 0 || w == 0) {
 				dp[i][(int)w] = 0;
 			} else if (wt[i - 1] <= w) {
-				dp[i][(int)w] = max(val[i - 1] + dp[i - 1][(int) (w - wt[i - 1])], dp[i - 1][(int)w]);
+				dp[i][(int)w] = max(val[i - 1] + 
+									dp[i - 1][(int) (w - wt[i - 1])], 
+									dp[i - 1][(int)w]);
 			} else {
 				dp[i][(int)w] = dp[i - 1][(int)w];
 			}
