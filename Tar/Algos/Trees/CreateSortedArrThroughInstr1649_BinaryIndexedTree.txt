@@ -1,6 +1,8 @@
-Given an integer array instructions, you are asked to create a sorted array from the elements in instructions. 
+Given an integer array instructions, you are asked to create a sorted array from the elements 
+in instructions. 
 
-You start with an empty container nums. For each element from left to right in instructions, insert it into nums. 
+You start with an empty container nums. For each element from left to right in instructions, 
+insert it into nums. 
 
 The cost of each insertion is the minimum of the following:
 
@@ -10,8 +12,8 @@ The cost of each insertion is the minimum of the following:
 For example, if inserting element 3 into nums = [1,2,3,5], the cost of insertion is min(2, 1) 
 (elements 1 and 2 are less than 3, element 5 is greater than 3) and nums will become [1,2,3,3,5].
 
-Return the total cost to insert all elements from instructions into nums. Since the answer may be large, 
-return it modulo 10^9 + 7
+Return the total cost to insert all elements from instructions into nums. Since the answer may 
+be large, return it modulo 10^9 + 7
 
 Example 1:
 
@@ -45,8 +47,8 @@ Performing standard Binary Search:
 
 		Create an empty array to store the numbers from instruction into it in a sorted manner,
 
-		while adding a number from instructions to this array, we have to search for its appropriate position
-			and then calculate the cost according to the process described above
+		while adding a number from instructions to this array, we have to search for its appropriate 
+		position and then calculate the cost according to the process described above
 
 	-------
 
@@ -72,8 +74,8 @@ Note: Whenever we have the questions like, what is going to be the total numbers
 	what is going to be total numbers on the right, while maintaining  a sorted list --> 
 	similar questions like that
 
-	  we should always go for a faster and efficient approach 'Segment Trees' or in some cases 
-	  like here 'Binary Indexed Tree'
+	we should always go for a faster and efficient approach 'Segment Trees' or in some cases 
+	like here 'Binary Indexed Tree'
 
 -------
 
@@ -84,7 +86,8 @@ Binary Indexed Trees:
 
 	-------
 
-	Suppose we are storing some sorted numbers in an array, and the time to update an element we take O(1) time
+	Suppose we are storing some sorted numbers in an array, and the time to update an element 
+	we take O(1) time
 
 		but to update the preSum we have to perform a linear scan
 
@@ -181,7 +184,8 @@ Binary Indexed Trees:
 
 		How to perform the update:
 
-			Suppose we want to add some value to the index 2, so in essence firstly we'll be updating that particular value
+			Suppose we want to add some value to the index 2, so in essence firstly we'll be 
+			updating that particular value
 
 				so we perform:
 

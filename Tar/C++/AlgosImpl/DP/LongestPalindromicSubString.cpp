@@ -12,6 +12,8 @@ Output: "ee"
 #include<bits/stdc++.h>
 using namespace std;
 
+const int maxx=1000;
+
 void printSubStr(string str, int low, int high){
     for (int i=low; i<=high; ++i){
         cout<<str[i];
@@ -20,7 +22,7 @@ void printSubStr(string str, int low, int high){
 
 int longestPalSubstr(string str){
     int n=str.size();
-    bool dp[n][n];
+    bool dp[maxx][maxx];
     memset(dp, 0, sizeof(dp));
     int maxLength=1;
     for (int i=0; i<n; ++i){

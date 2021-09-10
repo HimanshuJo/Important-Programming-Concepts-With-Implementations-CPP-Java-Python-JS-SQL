@@ -1,29 +1,90 @@
+//  Minimum Difference Between Highest and Lowest of K Scores
+/*
+You are given a 0-indexed integer array nums, where nums[i] represents the 
+score of the ith student. You are also given an integer k.
+
+Pick the scores of any k students from the array so that the difference 
+between the highest and the lowest of the k scores is minimized.
+
+Return the minimum possible difference.
+
+Example 2:
+
+Input: nums = [9,4,1,7], k = 2
+Output: 2
+Explanation: There are six ways to pick score(s) of two students:
+- [9,4,1,7]. The difference between the highest and lowest score is 9 - 4 = 5.
+- [9,4,1,7]. The difference between the highest and lowest score is 9 - 1 = 8.
+- [9,4,1,7]. The difference between the highest and lowest score is 9 - 7 = 2.
+- [9,4,1,7]. The difference between the highest and lowest score is 4 - 1 = 3.
+- [9,4,1,7]. The difference between the highest and lowest score is 7 - 4 = 3.
+- [9,4,1,7]. The difference between the highest and lowest score is 7 - 1 = 6.
+The minimum possible difference is 2.
+*/
+/*
+// 19ms
+class Solution {
+public:
+    int minimumDifference(vector<int> &nums, int k)
+    {
+        sort(nums.begin(), nums.end());
+        int minDiff=nums[k-1]-nums[0];
+        for (int i=k; i<nums.size(); ++i){
+            int currMin=nums[i]-nums[i-k+1];
+            minDiff=min(currMin, minDiff);
+        }
+        return minDiff;
+    }
+};
+*/
+
+
 #include <bits/stdc++.h>
 using namespace std;
 
+// 1462 ms
 class Solution
 {
 public:
     int minimumDifference(vector<int> &nums, int k)
     {
+        int sz = k;
+        int minDiff = INT_MAX;
         sort(nums.begin(), nums.end());
-        int strt=nums[0];
-        int end=nums[k-1];
-        int diff1=end-strt;
-        int strt2=nums.size()-k;
-        int end2=nums[nums.size()-1];
-        int diff2=end2-strt2;
-        cout<<diff1<<endl;
-        cout<<diff2<<endl;
-        return 1;
+        int index = 0;
+        for (int i = 0; i < nums.size(); ++i)
+        {
+            vector<int> tmp;
+            for (int j = i; j < i + sz; ++j)
+            {
+                if (j > nums.size() - 1)
+                {
+                    while (tmp.size() != sz)
+                    {
+                        tmp.push_back(nums[index]);
+                        index++;
+                    }
+                    index = 0;
+                    break;
+                }
+                tmp.push_back(nums[j]);
+            }
+            sort(tmp.begin(), tmp.end());
+            int valEnd = tmp[tmp.size() - 1];
+            int strt = tmp[0];
+            if (valEnd - strt < minDiff)
+            {
+                minDiff = valEnd - strt;
+            }
+        }
+        return minDiff;
     }
 };
 
 int main()
 {
     Solution obj;
-    vector<int> nums = 
-    {93614,91956,83384,14321,29824,89095,96047,25770,39895};
-    int k = 3;
+    vector<int> nums = {1, 2, 3, 4, 5, 6, 7, 8};
+    int k = 4;
     obj.minimumDifference(nums, k);
 }

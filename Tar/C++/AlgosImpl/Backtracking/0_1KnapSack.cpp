@@ -2,6 +2,8 @@
 using ll = long long;
 #define rep1(i, n) for (int i = 0; i <= n; ++i)
 #define rep2(w, W) for (ll w = 0; w <= W; ++w)
+const int rw=1000;
+const int cl=1000;
 using namespace std;
 
 // Utility function that returns maximum of two integers
@@ -12,7 +14,7 @@ ll max(ll a, ll b) {
 // void printKnapSackCust(ll W, ll wt[], ll val[], ll n){
 // 	int index;
 // 	ll weight;
-// 	ll dp[(int)(n+1)][(int)(W+1)];
+// 	ll dp[rw][cl];
 // 	for (int i=0; i<=n; ++i){
 // 		for (int weight=0; weight<=W; ++weight){
 // 			if (i==0||weight==0){
@@ -31,7 +33,7 @@ ll max(ll a, ll b) {
 void printKnapSack(ll W, ll wt[], ll val[], ll n) {
 	int i;
 	ll w;
-	ll dp[(int)(n + 1)][(int) (W + 1)];
+	ll dp[rw][cl];
 	// Bottom up DP
 	rep1(i, n) {
 		rep2(w, W) {

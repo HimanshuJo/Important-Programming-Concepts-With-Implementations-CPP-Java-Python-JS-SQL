@@ -1,5 +1,5 @@
-/* Given a dictionary of words, determine if a given string can be segmented into a space-separated sequence of
-    one or more dictionary words
+/* Given a dictionary of words, determine if a given string can be segmented into 
+    a space-separated sequence of one or more dictionary words
 
     Example:
         Input
