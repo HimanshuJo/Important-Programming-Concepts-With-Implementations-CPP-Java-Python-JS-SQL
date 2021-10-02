@@ -107,7 +107,8 @@ Construction:
 
 		And on the basis of those, we can compute the values of the previous, and repeat the procedure until we reach the root vertex.
 
-		It is convenient to describe this operation recursively in the other direction, i.e., from the root vertex to the leaf vertices. The construction procedure, if called on a non-leaf vertex, does the following:
+		It is convenient to describe this operation recursively in the other direction, i.e., from the root vertex to the leaf vertices.
+		The construction procedure, if called on a non-leaf vertex, does the following:
 
 			1. Recursively construct the values of the two child vertices
 
@@ -115,7 +116,8 @@ Construction:
 
 		We start the construction at the root vertex, and hence, we are able to compute the entire segment tree.
 
-		The time complexity of this construction is O(n), assuming that the merge operation is constant time (the merge operation gets called n times, which is equal to the number of internal nodes in the segment tree).
+		The time complexity of this construction is O(n), assuming that the merge operation is constant time 
+		(the merge operation gets called n times, which is equal to the number of internal nodes in the segment tree).
 
 -------
 
@@ -142,20 +144,22 @@ Sum queries:
 			3.	And then there is the last case, the query segment intersects with both children. 
 					In this case we have no other option as to make two recursive calls, one for each child. 
 
-					First we go to the left child, compute a partial answer for this vertex (i.e. the sum of values of the intersection between the segment of the query and the segment of the left child), 
+					First we go to the left child, compute a partial answer for this vertex 
+					(i.e. the sum of values of the intersection between the segment of the query and the segment of the left child), 
 
-					then go to the right child, compute the partial answer using that vertex, and then combine the answers by adding them. 
+					then go to the right child, compute the partial answer that vertex, and then combine the answers by adding them. 
 
 					In other words, since the left child represents the segment a[tl…tm] and the right child the segment a[tm+1…tr], 
 						we compute the sum query a[l…tm] using the left child, and the sum query a[tm+1…r] using the right child.
 
 	So processing a sum query is a function that recursively calls itself once with either the left or the right child 
 		(without changing the query boundaries), or twice, once for the left and once for the right child 
-		(by splitting the query into two subqueries). And the recursion ends, whenever the boundaries of the current query segment coincides
-		with the boundaries of the segment of the current vertex. 
+		(by splitting the query into two subqueries). And the recursion ends, whenever the boundaries of 
+		the current query segment coincides with the boundaries of the segment of the current vertex. 
 		In that case the answer will be the precomputed value of the sum of this segment, which is stored in the tree.
 
-	In other words, the calculation of the query is a traversal of the tree, which spreads through all necessary branches of the tree, and uses the precomputed sum values of the segments in the tree.
+	In other words, the calculation of the query is a traversal of the tree, which spreads through all necessary branches of the tree, 
+	and uses the precomputed sum values of the segments in the tree.
 
 	Obviously we will start the traversal from the root vertex of the Segment Tree.
 
@@ -163,7 +167,8 @@ Sum queries:
 
 		Again the array a=[1,3,−2,8,−7] is used, and here we want to compute the sum ∑4i=2a[i]. 
 
-		The colored vertices will be visited, and we will use the precomputed values of the green vertices. This gives us the result −2+1=−1.
+		The colored vertices will be visited, and we will use the precomputed values of the green vertices. 
+		This gives us the result −2+1=−1.
 
 
 
@@ -200,13 +205,17 @@ Why is the complexity of this algorithm O(logn)?
 		So let's assume that we visit three or four vertices in the current level.
 			From those vertices, we will analyze the vertices in the middle more carefully. 
 
-			Since the sum query asks for the sum of a continuous subarray, we know that segments corresponding to the visited vertices in the middle will be completely covered by the segment of the sum query.
+			Since the sum query asks for the sum of a continuous subarray, we know that segments corresponding 
+			to the visited vertices in the middle will be completely covered by the segment of the sum query.
 
 			Therefore these vertices will not make any recursive calls. So only the most left, and the most right vertex will
 		 	have the potential to make recursive calls. 
 
-		 	And those will only create at most four recursive calls, so also the next level will satisfy the assertion. We can say that one branch approaches the left boundary of the query, and the second branch approaches the right one.
+		 	And those will only create at most four recursive calls, so also the next level will satisfy the assertion. 
+			 We can say that one branch approaches the left boundary of the query, and the second branch approaches the right one.
 
 		Therefore we visit at most 4logn vertices in total, and that is equal to a running time of O(logn).
 
-	In conclusion the query works by dividing the input segment into several sub-segments for which all the sums are already precomputed and stored in the tree. And if we stop partitioning whenever the query segment coincides with the vertex segment, then we only need O(logn) such segments, which gives the effectiveness of the Segment Tree.
+	In conclusion the query works by dividing the input segment into several sub-segments for which all the sums are already 
+	precomputed and stored in the tree. And if we stop partitioning whenever the query segment coincides with the vertex segment, 
+	then we only need O(logn) such segments, which gives the effectiveness of the Segment Tree.

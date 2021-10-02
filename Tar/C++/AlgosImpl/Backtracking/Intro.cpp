@@ -29,7 +29,7 @@ vector<vector<int>> subsets(vector<int>& A) {
 
 int main() {
 	// find the subsets of the below vector
-	vector<int> array = {1, 2, 3, 4, 5};
+	vector<int> array = {3,1,5,8};
 	// res will store all the subsets
 	// O(2^(number of elements inside the array))
 	// because at every step we have two choices

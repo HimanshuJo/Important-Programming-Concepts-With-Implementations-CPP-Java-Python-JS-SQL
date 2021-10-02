@@ -101,7 +101,6 @@ int main()
 
 Output: 
 
-
 The priority queue gquiz is: 1 5 10 20 30
 
 gquiz.size(): 5

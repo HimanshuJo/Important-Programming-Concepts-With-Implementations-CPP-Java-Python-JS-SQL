@@ -15,23 +15,96 @@ Sorting a vector in descending order can be done by using std::greater <>()
 
 -------
 
-#include <iostream>
-#include <vector>
-#include <algorithm>
-
+// C++ program to sort a vector in non-decreasing
+// order.
+#include <bits/stdc++.h>
 using namespace std;
-
+  
 int main()
 {
-    vector<int> v = {10, 9, 8, 6, 7, 2, 5, 1};
-    cout << "Elements before sorting" << endl;
-    for (const auto &i : v)
-    {
-        cout << i << ' ' << endl;
-    }
-    cout << "Elements after sorting" << endl;
-    sort(v.begin(), v.end(), greater<>());
-    for (const auto &i : v)
-        cout << i << ' ' << endl;
+    vector<int> v{ 1, 5, 8, 9, 6, 7, 3, 4, 2, 0 };
+  
+    sort(v.begin(), v.end());
+  
+    cout << "Sorted \n";
+    for (auto x : v)
+        cout << x << " ";
+  
     return 0;
 }
+
+Output :
+
+Sorted 
+0 1 2 3 4 5 6 7 8 9
+
+-------
+
+How to sort in descending order?
+sort() takes a third parameter that is used to specify the order in which elements are to be sorted. We can pass “greater()” function to sort in descending order. This function does comparison in a way that puts greater element before.
+
+
+// C++ program to sort a vector in non-increasing
+// order.
+#include <bits/stdc++.h>
+using namespace std;
+  
+int main()
+{
+    vector<int> v{ 1, 5, 8, 9, 6, 7, 3, 4, 2, 0 };
+  
+    sort(v.begin(), v.end(), greater<int>());
+  
+    cout << "Sorted \n";
+    for (auto x : v)
+        cout << x << " ";
+  
+    return 0;
+}
+
+Output :
+
+Sorted 
+9 8 7 6 5 4 3 2 1 0
+
+-------
+
+How to sort in particular order?
+We can also write our own comparator function and pass it as a third parameter.
+
+
+// A C++ program to sort vector using
+// our own comparator
+#include <bits/stdc++.h>
+using namespace std;
+  
+// An interval has start time and end time
+struct Interval {
+    int start, end;
+};
+  
+// Compares two intervals according to staring times.
+bool compareInterval(Interval i1, Interval i2)
+{
+    return (i1.start < i2.start);
+}
+  
+int main()
+{
+    vector<Interval> v { { 6, 8 }, { 1, 9 }, { 2, 4 }, { 4, 7 } };
+  
+    // sort the intervals in increasing order of
+    // start time
+    sort(v.begin(), v.end(), compareInterval);
+  
+    cout << "Intervals sorted by start time : \n";
+    for (auto x : v)
+        cout << "[" << x.start << ", " << x.end << "] ";
+  
+    return 0;
+}
+
+Output :
+
+Intervals sorted by start time : 
+[1, 9] [2, 4] [4, 7] [6, 8] 

@@ -22,7 +22,7 @@ Example :
 
 Efficient Approach : 
 
-	Here, we need to perform operations in O(Logn) time so we can use Segment Treeto do both operations in O(Logn) time.
+	Here, we need to perform operations in O(Logn) time so we can use Segment Tree to do both operations in O(Logn) time.
 
 Representation of Segment trees 
 	
@@ -36,7 +36,8 @@ Representation of Segment trees
 
 Construction of Segment Tree from given array :
 
-	We start with a segment arr[0 . . . n-1], and every time we divide the current segment into two halves (if it has not yet become a segment of length 1), 
+	We start with a segment arr[0 . . . n-1], and every time we divide the current segment into two halves 
+		(if it has not yet become a segment of length 1), 
 		and then call the same procedure on both halves, and for each such segment, we store the maximum value in a segment tree node. 
 
 	All levels of the constructed segment tree will be completely filled except the last level. 
@@ -47,15 +48,16 @@ Construction of Segment Tree from given array :
 
 	So total nodes will be 2*n – 1. 
 
-	Height of the segment tree will be log2n. Since the tree is represented using array and relation between parent and child indexes must be maintained, size of memory allocated for segment tree will be 2*(2^ceil(log2n)) – 1.
+	Height of the segment tree will be log2n. Since the tree is represented using array and relation between parent 
+	and child indexes must be maintained, size of memory allocated for segment tree will be 2*(2^ceil(log2n)) – 1.
 
 Query for maximum value of given range :
 
 	Once the tree is constructed, below is the algorithm to find maximum of given range. 
 
-	node--> node number, l -->
-
-	query start index, r --> query end index;
+	node--> node number, 
+	l --> query start index, 
+	r --> query end index;
 
 	int getMax(node, l, r) 
 	{
@@ -182,7 +184,8 @@ int constructSTUtil(int arr[], int ss, int se, int* st, int si)
 	// store the max of values in this node
 	int mid = getMid(ss, se);
 	
-	st[si] = max(constructSTUtil(arr, ss, mid, st, si * 2 + 1), constructSTUtil(arr, mid + 1, se, st, si * 2 + 2));
+	st[si] = max(constructSTUtil(arr, ss, mid, st, si * 2 + 1), 
+				constructSTUtil(arr, mid + 1, se, st, si * 2 + 2));
 	
 	return st[si];
 }
