@@ -1,21 +1,24 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
 
-int modFact(int n, int p)
+template <typename V>
+void pop_front(V & v, int i)
 {
-    if (n >= p)
-        return 0;
- 
-    int result = 1;
-    for (int i = 1; i <= n; i++)
-        result = (result * i) % p;
- 
-    return result;
+    assert(!v.empty());
+    v.erase(v.begin()+i);
 }
 
-int main()
+template <typename V>
+void popBack(V & v, int i)
 {
-	cout<<(modFact(91234*2, 1000000007));
-	return 0;
+    assert(!v.empty());
+    v.erase(v.end()-i);
 }
 
+int main(){
+    vector<int>tmp{1,2,3,4,5};
+    popBack(tmp, 1);
+    for(auto &nums: tmp){
+        cout<<nums<<" ";
+    }
+}

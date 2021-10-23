@@ -102,5 +102,7 @@
         "xmemory": "cpp",
         "xstddef": "cpp",
         "xtr1common": "cpp"
-    }
+    },
+    "terminal.explorerKind": "external",
+    "terminal.integrated.defaultProfile.windows": "Command Prompt"
 }

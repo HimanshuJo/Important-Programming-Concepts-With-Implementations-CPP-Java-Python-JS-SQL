@@ -65,8 +65,13 @@ int main(){
         }
         bool flag_=false;
         for(auto &vals: sm){
+            // for(auto &val: vals){
+            //     cout<<val<<endl;
+            // }
             vector<string>curr_=vals;
+            //cout<<curr_[0][2]<<endl;
             int toChk=curr_[0][2]-'0';
+            //cout<<toChk<<endl;
             if(!flag_){
                 if(toChk>=1){
                     flag_=true;
@@ -76,8 +81,10 @@ int main(){
         }
         if(!flag_) res.push_back(1);
         sm.clear();
+        //cout<<"\n-------"<<endl;
     }
     for(auto&vals: res){
+        //cout<<vals<<" ";
         if(vals==0){
             cout<<"No\n";
         } else{
