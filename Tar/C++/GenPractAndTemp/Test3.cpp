@@ -1,87 +1,46 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+vector<string> split(const string &s, char delim){
+	vector<string>elems;
+	stringstream ss(s);
+	string item;
+	while(getline(ss, item, delim))
+		elems.push_back(item);
+	return elems;
+}
+
+void printPowerSet(vector<int>&arr, int n){
+	vector<string>list;
+	for(int i=0; i<(1<<n); ++i){
+		string subset="";
+		for(int j=0; j<n; ++j){
+			if((i&(1<<j))!=0)
+				subset+=to_string(arr[j])+"|";
+		}
+		if(find(list.begin(), list.end(), subset)==list.end()){
+			list.push_back(subset);
+		}
+	}
+	for(string subset: list){
+		vector<string>arr=split(subset, '|');
+		for(string str: arr)
+			cout<<str<<" ";
+		cout<<endl;
+	}
+	cout<<list.size();
+}
+
 int main(){
-    ios_base::sync_with_stdio(false);
-    cin.tie(0);
-    int n, m;
-    cin>>n>>m;  
-    vector<vector<string>>grd;
-    for(int i=0; i<n; ++i){
-        vector<string>tmp;
-        string in;
-        cin>>in;
-        tmp.push_back(in);
-        grd.push_back(tmp);
-    }
-    vector<vector<string>>sm;
-    vector<int>res;
-    int q;
-    cin>>q;
-    for(int i=0; i<q; ++i){
-        int x1, x2;
-        cin>>x1>>x2;
-        int l1=x1;
-        int len=x2;
-        l1--;
-        len--;
-        for(int i=0; i<grd.size(); ++i){
-            string curr=grd[i][0];
-            int idx=0;
-            bool flag=false;
-            int dotPre=0;
-            int dotPost=0;
-            int dotAl=0;
-            for(int i=l1; i<=len; ++i){
-                if(curr[i]=='X'){
-                    idx=i;
-                    flag=true;
-                    break;
-                }
-            }
-            if(flag){
-                for(int i=l1; i<idx; ++i){
-                    if(curr[i]=='.'){
-                        dotPre++;
-                    }
-                }
-                if(idx<=len-1){
-                    for(int i=idx+1; i<=len; ++i){
-                        if(curr[i]=='.'){
-                            dotPost++;
-                        }
-                    }
-                }
-            } else{
-                for(int i=l1; i<=len; ++i){
-                    if(curr[i]=='.'){
-                        dotAl++;
-                    }
-                }
-            }
-            vector<string>tmp;
-            tmp.push_back(to_string(dotPre)+" "+to_string(dotPost)+" "+to_string(dotAl));
-            sm.push_back(tmp);
-        }
-        bool flag_=false;
-        for(auto &vals: sm){
-            vector<string>curr_=vals;
-            int toChk=curr_[0][2]-'0';
-            if(!flag_){
-                if(toChk>=1){
-                    flag_=true;
-                    res.push_back(0);
-                }
-            }
-        }
-        if(!flag_) res.push_back(1);
-        sm.clear();
-    }
-    for(auto&vals: res){
-        if(vals==0){
-            cout<<"No\n";
-        } else{
-            cout<<"Yes\n";
-        }
-    }
+	auto start=chrono::high_resolution_clock::now();
+	vector<int>arr{10, 12, 13, 14, 15, 16, 17, 18, 19, 20, 1, 2};
+	int n=arr.size();
+	printPowerSet(arr, n);
+	auto end=chrono::high_resolution_clock::now();
+	double time_taken =
+	chrono::duration_cast<chrono::nanoseconds>(end - start).count();
+	time_taken *= 1e-9;
+	cout << "Time taken by program is : " << fixed
+		<< time_taken << setprecision(9);
+	cout << " sec" << endl;
 }
