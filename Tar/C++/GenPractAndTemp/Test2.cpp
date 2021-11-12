@@ -1,38 +1,31 @@
-#include<bits/stdc++.h>
+// C++ implementation of the approach
+#include <bits/stdc++.h>
 using namespace std;
 
-void genAllSubsutil(vector<int>&arr, set<vector<int>>&res, vector<int>&subset, int index){
-	res.insert(subset);
-	for(int i=index; i<arr.size(); ++i){
-		subset.push_back(arr[i]);
-		genAllSubsutil(arr, res, subset, i+1);
-		subset.pop_back();
-	}
-	return;
+
+int num_swaps(vector<int>&x, int n) {
+  if (n == 0) {
+    return 0;
+  } else if (x[n - 1] == n  - 1) {
+    return num_swaps(x, n - 1);
+  } else {
+    auto i = std::find(x.begin(), x.end(), n - 1);
+    std::swap(*i, x[n - 1]);
+    return num_swaps(x, n - 1) + 1;
+  }
 }
 
-set<vector<int>> genAllSubs(vector<int>&arr){
-	set<vector<int>>res;
-	vector<int>subset;
-	genAllSubsutil(arr, res, subset, 0);
-	return res;
-}
 
-int main(){
-	auto start=chrono::high_resolution_clock::now();
-	vector<int>arr{10, 12, 13, 14, 15, 16, 17, 18, 19, 20, 1, 2};
-	set<vector<int>>allSubs=genAllSubs(arr);
-	for(auto &vals: allSubs){
-		for(auto &val: vals){
-			cout<<val<<" ";
-		}
-		cout<<endl;
-	}
-	auto end=chrono::high_resolution_clock::now();
-	double time_taken=chrono::duration_cast<chrono::nanoseconds>(end-start).count();
-	time_taken*=1e-9;
-	cout<<"Time: "<<fixed<<time_taken<<setprecision(9);
-	cout<<" sec "<<endl;
-	cout<<allSubs.size();
+// Driver code
+int main()
+{
+	// 1-based indexing
+	vector<int>x = {1,2,3 };
+	int n = 3;
+
+	// Calling function
+	cout << (num_swaps(x, n));
+
+	return 0;
 }
 

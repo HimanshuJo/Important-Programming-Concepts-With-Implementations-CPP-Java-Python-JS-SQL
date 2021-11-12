@@ -33,7 +33,7 @@ vector<vector<int>> subsets(vector<int> &A)
 int main()
 {
 	// find the subsets of the below vector
-	vector<int> array = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15};
+	vector<int> array = {1,2,3,4,5,6,7,8};
 	// res will store all the subsets
 	// O(2^(number of elements inside the array))
 	// because at every step we have two choices

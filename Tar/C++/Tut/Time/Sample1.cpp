@@ -9,8 +9,8 @@ long long getBuffer()
     struct tm *tm_info;
     timer = time(NULL);
     tm_info = localtime(&timer);
-    //strftime(buffer, 26, "%H:%M:%S", tm_info);
-    //strftime(buffer, 26, "%M:%S", tm_info);
+    // strftime(buffer, 26, "%H:%M:%S", tm_info);
+    // strftime(buffer, 26, "%M:%S", tm_info);
     strftime(buffer, 26, "%S", tm_info);
     string s;
     int tt = 1;
@@ -36,6 +36,23 @@ long long getBuffer()
     s.erase(std::remove(s.begin(), s.end(), ':'), s.end());
     long long time = stol(s, nullptr, 10);
     return time;
+}
+
+void fun()
+{
+    long long res = 1;
+    for (int x = 0; x < 1e9 + 7; ++x)
+    {
+        res += x;
+    }
+    for (int x = 0; x < 1e9 + 7; ++x)
+    {
+        res += x;
+    }
+    for (int x = 0; x < 1e9 + 7; ++x)
+    {
+        res += x;
+    }
 }
 
 int main()
