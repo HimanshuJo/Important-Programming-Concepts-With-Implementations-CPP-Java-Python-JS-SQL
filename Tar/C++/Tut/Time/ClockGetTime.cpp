@@ -29,8 +29,8 @@ int main()
     parameter points to a structure containing
     atleast the following members:
     struct timespec {
-            time_t tv_sec;	 // seconds
-            long	 tv_nsec;	 // nanoseconds
+            time_t tv_sec;   // seconds
+            long     tv_nsec;    // nanoseconds
         };
     clock id = CLOCK_REALTIME, CLOCK_PROCESS_CPUTIME_ID,
             CLOCK_MONOTONIC ...etc

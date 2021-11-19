@@ -13,15 +13,15 @@ struct Node
 int getMid(int s, int e) { return s + (e - s) / 2; }
 
 /* A recursive function to get the minimum and maximum value in
-	a given range of array indexes. The following are parameters
-	for this function.
+    a given range of array indexes. The following are parameters
+    for this function.
 
-	st    --> Pointer to segment tree
-	index --> Index of current Node in the segment tree. 
-	          Initially 0 is passed as root is always at index 0
-	ss & se --> Starting and ending indexes of the segment
-				represented by current Node, i.e., st[index]
-	qs & qe --> Starting and ending indexes of query range */
+    st    --> Pointer to segment tree
+    index --> Index of current Node in the segment tree.
+              Initially 0 is passed as root is always at index 0
+    ss & se --> Starting and ending indexes of the segment
+                represented by current Node, i.e., st[index]
+    qs & qe --> Starting and ending indexes of query range */
 
 struct Node MaxMinUntill(struct Node *st, int ss, int se, int qs, int qe, int index)
 {
@@ -104,7 +104,7 @@ struct Node *constructST(int arr[], int n)
     // Maximum size of segment tree
     int max_size = 2 * (int)pow(2, x) - 1;
 
-    struct Node *st=(struct Node*)malloc(max_size * sizeof(struct Node));
+    struct Node *st = (struct Node*)malloc(max_size * sizeof(struct Node));
     //struct Node *st = new struct Node[max_size];
 
     // Fill the allocated memory st
@@ -117,7 +117,7 @@ struct Node *constructST(int arr[], int n)
 // Driver program to test above functions
 int main()
 {
-    int arr[] = {87,68,91,86,58,63,43,98,6,40};
+    int arr[] = {87, 68, 91, 86, 58, 63, 43, 98, 6, 40};
     int n = sizeof(arr) / sizeof(arr[0]);
 
     // Build segment tree from given array

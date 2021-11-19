@@ -1,35 +1,17 @@
 #include <bits/stdc++.h>
 #include <string>
+#include<time.h>
+#define _POSIX_C_SOURCE 199309L
 using namespace std;
-
-void permute(string s , string answer)
-{
-	if(s.length() == 0)
-	{
-		cout<<answer<<"\n";
-		return;
-	}
-	for(int i=0 ; i<s.length() ; i++)
-	{
-		char ch = s[i];
-		string left_substr = s.substr(0,i);
-		string right_substr = s.substr(i+1);
-		string rest = left_substr + right_substr;
-		permute(rest , answer+ch);
-	}
-
-}
 
 int main()
 {
-	string s;
-	string answer="";
 
-	cout<<"Enter the string : ";
-	cin>>s;
+	string s1="78451289562323232323232378451282313216546545645645642313216548943213268556045704877362798803241775377658617729077585778794718";
+	string s2="78451289562323232323232378451282313216546545645645642313216548943213268556045704877362798803241775377658617729077585778794718";
 
-	cout<<"\nAll possible strings are : ";
-	permute(s , answer);
-	return 0;
+
+	string s3="78451289562323232323232378451282313216546545645645642313216548943213212316489465321123456459999432123113163195623232323232422"
+	string s4="78451289562323232323232378451282313216546545645645642313216548943213212316489465321123456459999432123113163195623232323232422";
+	if(s1.compare(s2)==0) cout<<"equal\n";
 }
-
