@@ -21,27 +21,17 @@ void funcRotate(vector<vector<int>>&vec){
 		}
 		strt++;
 		n--;
-	}
-	int N_=N-1;
-	for(int i=0; i<N; ++i){
-		for(int j=0; j<N; ++j){
-			swap(vec[j][i], vec[N_-j][i]);
-			if(j==(N/2)-1) break;
-		}
-	}
-	for(int i=0; i<N; ++i){
-		for(int j=0; j<N; ++j){
-			swap(vec[i][j], vec[i][N_-j]);
-			if(j==(N/2)-1) break;
-		}
-	}
+	} 
 }
 
 int main(){
-	vector<vector<int>>vec={ { 134, 42, 333, 414 },
-		{ 54, 66, 237, 458 },
-		{ 69, 10, 131, 312 },
-		{ 13, 14, 125, 416 } };
+	vector<vector<int>>vec(4, vector<int>(4));
+	int cnt=1;
+	for(int i=0; i<4; ++i){
+		for(int j=0; j<4; ++j){
+			vec[i][j]=cnt++;
+		}
+	}
 	for(int i=0; i<4; ++i){
 		for(int j=0; j<4; ++j){
 			cout<<vec[i][j]<<" ";

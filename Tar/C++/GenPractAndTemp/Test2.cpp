@@ -2,30 +2,42 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-
-int num_swaps(vector<int>&x, int n) {
-  if (n == 0) {
-    return 0;
-  } else if (x[n - 1] == n  - 1) {
-    return num_swaps(x, n - 1);
-  } else {
-    auto i = std::find(x.begin(), x.end(), n - 1);
-    std::swap(*i, x[n - 1]);
-    return num_swaps(x, n - 1) + 1;
-  }
-}
-
-
-// Driver code
 int main()
 {
-	// 1-based indexing
-	vector<int>x = {1,2,3 };
-	int n = 3;
-
-	// Calling function
-	cout << (num_swaps(x, n));
-
+	vector<vector<int>>vec(4, vector<int>(4));
+	int cnt=1;
+	for(int i=0; i<4; ++i){
+		for(int j=0; j<4; ++j){
+			vec[i][j]=cnt++;
+		}
+	}
+	for(int i=0; i<4; ++i){
+		for(int j=0; j<4; ++j){
+			cout<<vec[i][j]<<" ";
+		}
+		cout<<endl;
+	}
+	int n=vec.size();
+	for(int i=0; i<n/2; ++i){
+		int frst=i;
+		int last=n-1-i;
+		for(int ii=frst; ii<last; ++ii){
+			int offset=ii-frst;
+			int top=vec[frst][ii];
+			vec[frst][ii]=vec[last-offset][frst];
+			vec[last-offset][frst]=vec[last][last-offset];
+			vec[last][last-offset]=vec[ii][last];
+			vec[ii][last]=top;
+		}
+	}
+	cout<<"-------\n";
+	for(int i=0; i<4; ++i){
+		for(int j=0; j<4; ++j){
+			cout<<vec[i][j]<<" ";
+		}
+		cout<<endl;
+	}
+    
 	return 0;
 }
 
