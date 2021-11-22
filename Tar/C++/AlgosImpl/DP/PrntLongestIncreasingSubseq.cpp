@@ -1,14 +1,5 @@
 // Construction of Longest Increasing Subsequence(LIS) and printing LIS sequence
 /*
-The Longest Increasing Subsequence (LIS) problem is to find 
-the length of the longest subsequence
-of a given sequence such that all elements of the subsequence 
-are sorted in increasing order.
-For example, the length of LIS for 
-{10, 22, 9, 33, 21, 50, 41, 60, 80} is 6 and LIS is 
-{10, 22, 33, 50, 60, 80}.
-*/
-/*
 The longest Increasing Subsequence (LIS) problem is to find the length of 
 the longest subsequence of a given sequence such that all elements of the 
 subsequence are sorted in increasing order.
@@ -53,6 +44,8 @@ void constructPrntLIS(int arr[], int n){
     L[0].push_back(arr[0]);
     for (int i=1; i<n; ++i){
         for (int j=0; j<i; ++j){
+            // if comparing with only (L[j].size()) e.g. for i=4, j=0 arr[i]>arr[j] copy L[0] to L[4]
+            // next iteration i=4, j=1 arr[i]>arr[j] can't copy current L size is same, but current L[1] is optimal
             if ((arr[j]<arr[i])&&(L[j].size()+1)>L[i].size()){
                 L[i]=L[j];
             }
