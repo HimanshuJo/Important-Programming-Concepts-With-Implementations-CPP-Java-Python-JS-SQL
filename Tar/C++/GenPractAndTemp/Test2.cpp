@@ -1,43 +1,58 @@
-// C++ implementation of the approach
+// C++ code to print all possible
+// subsequences for given array using
+// recursion
 #include <bits/stdc++.h>
 using namespace std;
 
+void printArray(vector<int> arr, int n)
+{
+	for (int i = 0; i < n; i++)
+		cout << arr[i] << " ";
+	cout << endl;
+}
+
+// Recursive function to print all
+// possible subsequences for given array
+void printSubsequences(vector<int> arr, int index,
+					vector<int> subarr)
+{
+	// Print the subsequence when reach
+	// the leaf of recursion tree
+	if (index == arr.size())
+	{
+		int l = subarr.size();
+
+		// Condition to avoid printing
+		// empty subsequence
+		if (l != 0)
+			printArray(subarr, l);
+	}
+	else
+	{
+		// Subsequence without including
+		// the element at current index
+		printSubsequences(arr, index + 1, subarr);
+
+		subarr.push_back(arr[index]);
+
+		// Subsequence including the element
+		// at current index
+		printSubsequences(arr, index + 1, subarr);
+	}
+	return;
+}
+
+// Driver Code
 int main()
 {
-	vector<vector<int>>vec(4, vector<int>(4));
-	int cnt=1;
-	for(int i=0; i<4; ++i){
-		for(int j=0; j<4; ++j){
-			vec[i][j]=cnt++;
-		}
-	}
-	for(int i=0; i<4; ++i){
-		for(int j=0; j<4; ++j){
-			cout<<vec[i][j]<<" ";
-		}
-		cout<<endl;
-	}
-	int n=vec.size();
-	for(int i=0; i<n/2; ++i){
-		int frst=i;
-		int last=n-1-i;
-		for(int ii=frst; ii<last; ++ii){
-			int offset=ii-frst;
-			int top=vec[frst][ii];
-			vec[frst][ii]=vec[last-offset][frst];
-			vec[last-offset][frst]=vec[last][last-offset];
-			vec[last][last-offset]=vec[ii][last];
-			vec[ii][last]=top;
-		}
-	}
-	cout<<"-------\n";
-	for(int i=0; i<4; ++i){
-		for(int j=0; j<4; ++j){
-			cout<<vec[i][j]<<" ";
-		}
-		cout<<endl;
-	}
-    
+	vector<int> arr{2, 2, 4, 7};
+	vector<int> b;
+
+	printSubsequences(arr, 0, b);
+
 	return 0;
 }
+
+// This code is contributed by
+// sanjeev2552
 

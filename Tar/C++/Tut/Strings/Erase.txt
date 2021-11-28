@@ -71,7 +71,7 @@ std::string::erase
 		// Function to demo erase
 		void eraseDemo(string str)
 		{
-		    // Deletes all characters except first one
+		    // Deletes all characters after the specified position (1 based indexing)
 		    str.erase(1);
 		 
 		    cout << "After erase(idx) : ";
