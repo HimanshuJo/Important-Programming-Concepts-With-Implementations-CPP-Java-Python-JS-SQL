@@ -38,7 +38,7 @@ int main(){
 	int arr[]{1, 2, 3, 4, 5, 6, 7};
 	n = sizeof(arr)/sizeof(arr[0]);
 	build(arr);
-	int qs=2;
-	int qe=5;
+	int qs=0;
+	int qe=2;
 	cout<<query(qs, qe)<<endl;
 }

@@ -34,7 +34,6 @@ sums.length == 2n
 */
 
 /*
-See my latest update in repo LeetCode
 
 Solution 1.
 Intuition: If all the numbers in the unknown array are non-negative, it's easy to solve because A[0] must be 0 (empty set) and A[1] must be a number in the unknown array.

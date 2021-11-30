@@ -1,0 +1,86 @@
+:yy copy
+
+:dd cut
+
+:p paste
+
+:u undo
+
+<num> shift+g move to the line
+
+-------
+
+Select All:
+
+	Delete:
+
+		:%d Select and Delete All Lines
+
+	Copy:
+
+		:%y
+
+
+-------
+
+Delete:
+
+	Opt 1
+
+		:startingline, last line d
+
+		:7,20 d
+
+	Opt 2
+
+		Type Shift-v to enter linewise selection mode, 
+		     then move the cursor down using j (yes, use h, j, k and l to move left, down, up, right respectively, that's much more efficient than using the arrows) and 
+		     type d to delete the selection.
+
+    -------
+
+    Delete a word:
+
+    	daw
+
+-------
+
+Comments:
+
+	1. visually select the text rows (using V as usual)
+	2. :norm i#
+
+Uncommenting #:
+
+	1. visually select the text as before (or type gv to re-select the previous selection)
+	2. :norm x
+
+-------
+
+Format:
+
+	gg=G
+
+-------
+
+Search and replace:
+
+	:%s/old/new/
+
+-------
+
+torte -> dark blue v2
+pablo -> dark blue v3
+murphy -> dark blue v4
+industry -> dark blue v5
+evening -> grey green
+blue
+darkblue
+delek -> slate white
+zellner -> slate white v2
+desert
+elflord -> dark blue
+shine -> fade white
+ron -> neon black
+koehler -> red neon black
+peachpuff
