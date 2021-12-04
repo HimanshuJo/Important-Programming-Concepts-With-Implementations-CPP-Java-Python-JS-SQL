@@ -1,6 +1,7 @@
 /*
 The number of placeholders determine the number of arguments required to pass in function
-We can use any no. of placeholders in function call statement (obviously less than the maximum number of arguments). The rest values are replaced by the user defined default values.
+We can use any no. of placeholders in function call statement (obviously less than the maximum number of arguments). 
+The rest values are replaced by the user defined default values.
 */
 
 // C++ code to demonstrate placeholder
@@ -15,7 +16,11 @@ using namespace std::placeholders;
 // Driver function to demonstrate bind()
 void func(int a, int b, int c)
 {
-    cout << (a - b - c) << endl;
+    cout<<"a "<<a<<endl;
+    cout<<"b "<<b<<endl;
+    cout<<"c "<<c<<endl;
+    cout <<"val "<<(a - b - c) << endl;
+    cout<<"-------\n";
 }
 
 int main()
@@ -28,7 +33,7 @@ int main()
 
     // calling of function with 1 argument
     cout << "The value of function with 1 "
-            "placeholder is : ";
+            "placeholder is : \n";
     fn1(10);
 
     // 2 placeholders
@@ -36,7 +41,7 @@ int main()
 
     // calling of function with 2 arguments
     cout << "The value of function with 2"
-            " placeholders is : ";
+            " placeholders is : \n";
     fn2(13, 1);
 
     // 3 placeholders
@@ -44,8 +49,30 @@ int main()
 
     // calling of function with 3 arguments
     cout << "The value of function with 3 "
-            "placeholders is : ";
+            "placeholders is : \n";
     fn3(13, 1, 4);
 
     return 0;
 }
+
+/*
+Output:
+The value of function with 1 placeholder is :
+a 10
+b 2
+c 4
+val 4
+-------
+The value of function with 2 placeholders is :
+a 13
+b 2
+c 1
+val 10
+-------
+The value of function with 3 placeholders is :
+a 13
+b 4
+c 1
+val 8
+-------
+*/

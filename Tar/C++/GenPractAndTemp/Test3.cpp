@@ -1,58 +1,55 @@
-// C++ program for left
-// rotation of matrix by 90 degree
-// without using extra space
-#include <bits/stdc++.h>
+#include<vector>
+#include<iostream>
 using namespace std;
-#define R 4
-#define C 4
 
-// After transpose we swap
-// elements of column
-// one by one for finding left
-// rotation of matrix
-// by 90 degree
-void reverseColumns(int arr[R][C])
-{
-	for (int i = 0; i < C; i++)
-		for (int j = 0, k = C - 1; j < k; j++, k--)
-			swap(arr[j][i], arr[k][i]);
+class Solution {
+public:
+    
+	string toBase(int num, int base){
+		string res="";
+		while(num>=1){
+			int quo=num%base;
+			res+=to_string(quo);
+			num/=base;
+			if(num<1) break;
+		}
+		return res;
+	}
+	
+	long long kMirror(int k, int n) {
+    	long long sm=0;
+		int count=0;
+		for(int i=8388608; i>=0; --i){
+			if(isPalindrome(to_string(i))){
+				string toChk=toBase(i, k);
+				if(isPalindrome(toChk)){
+					count++;
+					if(count>n) break;
+					sm+=i;
+				}
+			}
+		}
+		return sm;
+	}
+};
+
+bool isPalindrome(string str){
+		for(int i=0; i<str.length()/2; ++i){
+			if(str[i]!=str[str.length()-i-1]){
+				return false;
+			}
+		}
+		return true;
 }
 
-// Function for do transpose of matrix
-void transpose(int arr[R][C])
-{
-	for (int i = 0; i < R; i++)
-		for (int j = i; j < C; j++)
-			swap(arr[i][j], arr[j][i]);
-}
 
-// Function for print matrix
-void printMatrix(int arr[R][C])
-{
-	for (int i = 0; i < R; i++) {
-		for (int j = 0; j < C; j++)
-			cout << arr[i][j] << " ";
-		cout << '\n';
+int main(){
+	//Solution obj;
+	//obj.kMirror(3, 121);
+	vector<int>vec;
+	for(int i=1; i<=88888888; ++i){
+		if(isPalindrome(i)){
+			vec.push_back(to_string(i));
+		}
 	}
 }
-
-// Function to anticlockwise
-// rotate matrix by 90 degree
-void rotate90(int arr[R][C])
-{
-	transpose(arr);
-	reverseColumns(arr);
-}
-
-// Driven code
-int main()
-{
-	int arr[R][C] = { { 134, 42, 333, 414 },
-					{ 54, 66, 237, 458 },
-					{ 69, 10, 131, 312 },
-					{ 13, 14, 125, 416 } };
-	rotate90(arr);
-	printMatrix(arr);
-	return 0;
-}
-

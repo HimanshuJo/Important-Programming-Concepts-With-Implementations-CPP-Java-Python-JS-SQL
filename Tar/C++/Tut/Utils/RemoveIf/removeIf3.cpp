@@ -38,12 +38,16 @@ int main()
     v.push_back("America");
     v.push_back("Australia");
     v.push_back("Pakistan");
-
     std::cout << "Vector : ";
     print(v.begin(), v.end());
     iterator i = remove_if(v.begin(), v.end(), s);
     std::cout << "Vector : ";
     print(v.begin(), i);
-
     return 0;
 }
+
+/*
+Output:
+Vector : China    India    Korea    America    Australia    Pakistan
+Vector : China    India    Korea    Pakistan
+*/

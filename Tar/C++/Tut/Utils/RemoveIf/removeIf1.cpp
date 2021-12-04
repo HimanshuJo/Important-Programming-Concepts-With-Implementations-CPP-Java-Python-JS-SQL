@@ -1,6 +1,7 @@
 /*
 C++ Algorithm remove_if()
-C++ Algorithm remove_if() function is used to eliminate all the elements that satisfy a predicate from a given range [first, last) without disturbing the order of the remaining elements.
+C++ Algorithm remove_if() function is used to eliminate all the elements that satisfy a predicate from a 
+given range [first, last) without disturbing the order of the remaining elements.
 
 This function cannot alter the size of the container.
 It returns an iterator to the new end of the range.
@@ -10,8 +11,7 @@ Remove is stable, means that the relative order of the elements that are not rem
 
 Syntax
 template <class ForwardIterator, class UnaryPredicate>  
-  ForwardIterator remove_if (ForwardIterator first, ForwardIterator last,  
-                             UnaryPredicate pred);  
+ForwardIterator remove_if (ForwardIterator first, ForwardIterator last, UnaryPredicate pred);  
 
 -------
 
@@ -70,3 +70,9 @@ int main()
 
     return 0;
 }
+
+/*
+Output:
+Original vector :  1 2 3 4 5 6 7 8 9 10
+After remove_if :  2 4 6 8 10
+*/

@@ -39,6 +39,6 @@ int main(){
 	n = sizeof(arr)/sizeof(arr[0]);
 	build(arr);
 	int qs=0;
-	int qe=2;
+	int qe=2; // exclusive
 	cout<<query(qs, qe)<<endl;
 }

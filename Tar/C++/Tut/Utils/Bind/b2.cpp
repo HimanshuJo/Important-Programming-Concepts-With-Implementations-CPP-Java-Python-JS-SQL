@@ -13,7 +13,11 @@ using namespace std::placeholders;
 // Driver function to demonstrate bind()
 void func(int a, int b, int c)
 {
-    cout << (a - b - c) << endl;
+    cout<<"a "<<a<<endl;
+    cout<<"b "<<b<<endl;
+    cout<<"c "<<c<<endl;
+    cout <<"val "<<(a - b - c) << endl;
+    cout<<"-------\n";
 }
 
 int main()
@@ -29,7 +33,7 @@ int main()
     auto fn1 = bind(func, _2, 2, _1);
 
     // calling of function
-    cout << "The value of function is : ";
+    cout << "The value of function is : \n";
     fn1(1, 13);
 
     // First parameter to fn2() is assigned
@@ -41,8 +45,23 @@ int main()
 
     // calling of same function
     cout << "The value of function after changing"
-            " placeholder position is : ";
+            " placeholder position is : \n";
     fn2(1, 13);
 
     return 0;
 }
+
+/*Output
+The value of function is :
+a 13
+b 2
+c 1
+val 10
+-------
+The value of function after changing placeholder position is :
+a 1
+b 2
+c 13
+val -14
+-------
+*/

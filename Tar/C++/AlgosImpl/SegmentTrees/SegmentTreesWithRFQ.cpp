@@ -44,4 +44,3 @@ int main(){
 	cout<<(query(3, 9, 5));
 }
 
-
