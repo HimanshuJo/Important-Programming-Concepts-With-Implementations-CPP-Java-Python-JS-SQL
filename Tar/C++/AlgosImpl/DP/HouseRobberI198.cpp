@@ -25,6 +25,29 @@ Constraints:
 0 <= nums[i] <= 400
 */
 
+/*
+
+Rec with memo
+
+class Solution {
+public:
+    
+    int dfs(vector<int>&nums, int idx, map<int, int>&memo){
+        if(idx>=nums.size()) return 0;
+        if(memo.find(idx)!=memo.end()) return memo[idx];
+        int res=0;
+        res=max(dfs(nums, idx+2, memo)+nums[idx], dfs(nums, idx+1, memo));
+        return memo[idx]=res;
+    }
+    
+    int rob(vector<int>& nums) {
+        map<int, int>memo;
+        int ans=dfs(nums, 0, memo);
+        return ans;
+    }
+};
+*/
+
 #include<bits/stdc++.h>
 using namespace std;
 

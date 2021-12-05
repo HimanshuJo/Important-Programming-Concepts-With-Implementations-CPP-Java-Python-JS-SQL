@@ -1,66 +1,109 @@
-#include<vector>
-#include<iostream>
-#include<set>
+#include <iostream>
+#include <vector>
+#include <queue>
 using namespace std;
+#define mp make_pair
+#define F first
+#define S second
 
-int N, M;
+int x[] = {1, 0, -1, 0};
+int y[] = {0, 1, -0, -1};
 
-bool dfs(vector<string>&grd, int i, int j, set<pair<int, int>>&seen){
-	if(i<0||i>=grd.size()||j<0||j>=M||seen.find({i, j})!=seen.end()) return false;
-	if(grd[i][j]=='#'){
-		seen.insert({i, j});
-		return true;
-	}
-	if(dfs(grd, i-1, j, seen)){
-		grd[i][j]='+';
-		seen.insert({i, j});
-	}
-	if(dfs(grd, i, j-1, seen)){
-		grd[i][j]='+';
-		seen.insert({i, j});
-	}
-	/*if(dfs(grd, i+1, j, seen)){
-		grd[i][j]='+';
-		seen.insert({i, j});
-	}*/
-	/*if(dfs(grd, i, j+1, seen)){
-		grd[i][j]='+';
-		seen.insert({i, j});
-	}*/
-	return false;
-}
+int main()
+{
+	//     std::ios_base::sync_with_stdio(false);
 
-int main(){
-	ios_base::sync_with_stdio(false);
-	cin.tie(nullptr);
-	int t;
-	cin>>t;
-	while(t--){
-		int n, m;
-		cin>>n>>m;
-		N=n;
-		M=m;
-		vector<string>grd(n);
-		for(int i=0; i<n; ++i){
-			string in;
-			cin>>in;
-			grd[i]=in;
-		}
-		set<pair<int, int>>seen;
-		bool flag=false;
-		for(int i=0; i<n; ++i){
-			for(int j=0; j<m; ++j){
-				if(grd[i][j]=='L'){
-					//cout<<grd[i][j]<<endl;
-					dfs(grd, i, j, seen);
-					flag=true;
+#ifdef kimbbakar
+	freopen("in.txt", "r", stdin);
+	//        freopen ( "out.txt", "w", stdout );
+#endif
+
+	int r;
+	int cl;
+	cin >> r >> cl;
+
+	char g[505][505];
+	int mark[505][505] = {0};
+
+	for (int i = 1; i <= r; i++)
+	{
+		for (int j = 1; j <= cl; j++)
+			scanf(" %c", &g[i][j]);
+	}
+
+	int a, b, c, d;
+	cin >> a >> b >> c >> d;
+
+	queue<pair<int, int>> q;
+
+	q.push(mp(a, b));
+
+	mark[a][b] = 1;
+
+	bool ok = false;
+
+	if (g[c][d] == 'X')
+	{
+		cout<<"here1"<<endl;
+		while (!q.empty() && !ok)
+		{
+			pair<int, int> nw = q.front();
+			q.pop();
+
+			//            printf("nw %d %d\n",nw.F,nw.S);
+
+			for (int i = 0; i < 4; i++)
+			{
+				pair<int, int> k = mp(nw.F + x[i], nw.S + y[i]);
+				//          printf("k %d %d\n",k.F,k.S);
+				if (!mark[k.F][k.S] && g[k.F][k.S] != 'X' && k.F >= 1 && k.S >= 1 && k.F <= r && k.S <= cl)
+				{
+					mark[k.F][k.S] = 1 + mark[nw.F][nw.S];
+					q.push(k);
+				}
+				else if (k.F == c && k.S == d)
+				{
+					cout<<"here2"<<endl;
+					mark[k.F][k.S] = 1 + mark[nw.F][nw.S];
+
+					ok = true;
 					break;
 				}
 			}
-			if(flag) break;
 		}
-		for(int i=0; i<n; ++i)
-			cout<<grd[i]<<endl;
 	}
-}
+	else
+	{
+		while (!q.empty() && !ok)
+		{
+			pair<int, int> nw = q.front();
+			q.pop();
 
+			for (int i = 0; i < 4; i++)
+			{
+				pair<int, int> k = mp(nw.F + x[i], nw.S + y[i]);
+
+				if (!mark[k.F][k.S] && g[k.F][k.S] != 'X' && k.F >= 1 && k.S >= 1 && k.F <= r && k.S <= cl)
+				{
+					mark[k.F][k.S] = 1 + mark[nw.F][nw.S];
+					q.push(k);
+					g[k.F][k.S] = 'X';
+				}
+				else if (k.F == c && k.S == d && g[k.F][k.S] == 'X')
+				{
+					mark[k.F][k.S] = 1 + mark[nw.F][nw.S];
+
+					ok = true;
+					break;
+				}
+			}
+		}
+	}
+
+	if (ok)
+		printf("YES\n");
+	else
+		printf("NO\n");
+
+	return 0;
+}

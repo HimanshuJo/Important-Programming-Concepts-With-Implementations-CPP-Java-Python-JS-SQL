@@ -1,3 +1,7 @@
+/*
+Best way to generate a target sum from an array of numbers. Numbers of an array can be used any number of times
+*/
+
 #include<vector>
 #include<map>
 #include<iostream>
@@ -53,8 +57,8 @@ vector<int> bestSumTab(vector<int>&numbers, int targetSum){
 	dp[0]={};
 	for(int i=0; i<=targetSum; ++i){
 		if(dp[i].size()>0&&dp[i][0]==INT_MAX) continue;
+		vector<int>currComb=dp[i];
 		for(auto &num: numbers){
-			vector<int>currComb=dp[i];
 			currComb.push_back(num);
 			if(dp[i+num].size()>currComb.size()||dp[i+num]==toChk){
 				dp[i+num]=currComb;
@@ -85,3 +89,13 @@ int main(){
 		cout<<vals<<" ";
 	}
 }
+
+/*
+Output:
+
+4 4 2
+-------
+25 25 25 25
+-------
+25 25 25 25
+*/

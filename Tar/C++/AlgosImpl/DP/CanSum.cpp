@@ -1,3 +1,7 @@
+/*
+Is it possible to generate a target sum, given an array of number
+*/
+
 #include<iostream>
 #include<vector>
 #include<cstring>

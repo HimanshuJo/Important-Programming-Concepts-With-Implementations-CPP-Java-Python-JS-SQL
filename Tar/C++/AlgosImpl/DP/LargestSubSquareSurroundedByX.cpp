@@ -26,7 +26,7 @@ submatrix surrounded by 'X'
 A Simple Solution is to consider every square submatrix and check whether is has all corner edges filled with ‘X’.
 The time complexity of this solution is O(N^4).
 
-We can solve this problem in O(N3) time using extra space.
+We can solve this problem in O(N^3) time using extra space.
 The idea is to create two auxiliary arrays hor[N][N] and ver[N][N].
 The value stored in hor[i][j] is the number of horizontal continuous ‘X’ characters till mat[i][j] in mat[][].
 Similarly, the value stored in ver[i][j] is the number of vertical continuous ‘X’ characters till mat[i][j] in mat[][].
@@ -64,23 +64,26 @@ If they have entries for the same, then we found a subsquare. Otherwise we try f
 /*
 Optimized approach:
 
-A more optimized solution would be to pre-compute the number of contiguous ‘X’ horizontally and vertically, 
-in a matrix of pairs named dp. Now  for every entry of dp we have a pair (int, int) which denotes the 
+A more optimized solution would be to pre-compute the number of contiguous ‘X’ horizontally and vertically,
+in a matrix of pairs named dp. Now  for every entry of dp we have a pair (int, int) which denotes the
 maximum contiguous ‘X’ till that point, i.e.
 
 dp[i][j].first denotes contiguous ‘X’ taken horizontally till that point.
 dp[i][j].second denotes contiguous ‘X’ taken vertically till that point.
 Now, a square can be formed with dp[i][j] as the bottom right corner, having sides atmost of length, min(dp[i][j].first, dp[i][j].second)
 
-So, we make another matrix maxside, which will denote the maximum square side formed having the bottom 
+So, we make another matrix maxside, which will denote the maximum square side formed having the bottom
 right corner as arr[i][j]. We’ll try to get some intuition from the properties of a square, i.e. all the sides of the square are equal.
 
-Let’s store maximum value that can be obtained, as val = min(dp[i][j].first, dp[i][j].second). 
-From point (i, j), we traverse back horizontally by distance Val, and check if the minimum vertical contiguous ‘X’ 
-till that point is equal to Val.
+Let’s store maximum value that can be obtained, as val = min(dp[i][j].first, dp[i][j].second).
 
-Similarly, we traverse back vertically by distance Val and check if the minimum horizontal contiguous ‘X’ 
-till that point is equal to Val? Here we are making use of the fact that all sides of square are equal.
+From point (i, j), we traverse back horizontally by distance Val,
+and check if the minimum vertical contiguous ‘X’ till that point is equal to Val.
+
+Similarly, we traverse back vertically by distance Val,
+and check if the minimum horizontal contiguous ‘X’ till that point is equal to Val?
+
+Here we are making use of the fact that all sides of square are equal.
 
 Input Matrix:
 
@@ -98,17 +101,17 @@ O  O  X  O  O  O
 
 Value of matrix dp:
 
-(1,1) (0,0) (1,1) (2,7) (3,1) (4,1)  
+(1,1) (0,0) (1,1) (2,7) (3,1) (4,1)
 
-(1,2) (0,0) (1,2) (2,8) (0,0) (1,2)  
+(1,2) (0,0) (1,2) (2,8) (0,0) (1,2)
 
-(1,3) (2,1) (3,3) (0,0) (0,0) (1,3)  
+(1,3) (2,1) (3,3) (0,0) (0,0) (1,3)
 
-(0,0) (1,2) (2,4) (3,1) (4,1) (5,4)  
+(0,0) (1,2) (2,4) (3,1) (4,1) (5,4)
 
-(1,1) (2,3) (3,5) (0,0) (1,2) (0,0)  
+(1,1) (2,3) (3,5) (0,0) (1,2) (0,0)
 
-(0,0) (0,0) (1,6) (0,0) (0,0) (0,0) 
+(0,0) (0,0) (1,6) (0,0) (0,0) (0,0)
 */
 
 // A C++ program to find the largest subsquare
@@ -117,7 +120,7 @@ Value of matrix dp:
 using namespace std;
 
 // Size of given matrix is N X N
-#define N 6
+#define N 7
 
 int maximumSubSquare(int arr[][N])
 {
@@ -145,11 +148,24 @@ int maximumSubSquare(int arr[][N])
         }
     }
 
+    cout << "After Horizontal: " << endl;
+
+    for (int i = 0; i < N; ++i) {
+        for (int j = 0; j < N; ++j) {
+            cout << (dp[i][j].first) << "," << (dp[i][j].second) << " ";
+        }
+        cout << endl;
+    }
+
+    cout << "-------\n";
+
+
     // Fill the dp matrix vertically.
     // For contiguous 'X' increment the value of y,
     // otherwise make it 0
     for (int i = 0; i < N; i++)
     {
+        y = 0;
         for (int j = 0; j < N; j++)
         {
             if (arr[j][i] == 'X')
@@ -159,6 +175,18 @@ int maximumSubSquare(int arr[][N])
             dp[j][i].second = y;
         }
     }
+
+    cout << "After Vertical: " << endl;
+
+    for (int i = 0; i < N; ++i) {
+        for (int j = 0; j < N; ++j) {
+            cout << (dp[i][j].first) << "," << (dp[i][j].second) << " ";
+        }
+        cout << endl;
+    }
+
+
+    cout << "-------\n";
 
     // Now check , for every value of (i, j) if sub-square
     // is possible,
@@ -176,8 +204,7 @@ int maximumSubSquare(int arr[][N])
         for (int j = 0; j < N; j++)
         {
             val = min(dp[i][j].first, dp[i][j].second);
-            if (dp[i][j - val + 1].second >= val
-                && dp[i - val + 1][j].first >= val)
+            if (dp[i][j - val + 1].second >= val && dp[i - val + 1][j].first >= val)
                 maxside[i][j] = val;
             else
                 maxside[i][j] = 0;
@@ -187,11 +214,11 @@ int maximumSubSquare(int arr[][N])
         }
     }
 
-    for(int i=0; i<N; ++i){
-        for(int j=0; j<N; ++j){
-            cout<<(dp[i][j].first)<<","<<(dp[i][j].second)<<" ";
+    for (int i = 0; i < N; ++i) {
+        for (int j = 0; j < N; ++j) {
+            cout << (dp[i][j].first) << "," << (dp[i][j].second) << " ";
         }
-        cout<<endl;
+        cout << endl;
     }
 
     // return the final answe.
@@ -210,7 +237,17 @@ int main()
         { 'O', 'O', 'X', 'O', 'O', 'O' },
     };
 
+    int mat2[][N] = {
+        { 'O', 'O', 'O', 'O', 'O', 'O', 'X' },
+        { 'O', 'O', 'O', 'X', 'X', 'X', 'X' },
+        { 'O', 'O', 'O', 'X', 'X', 'X', 'X' },
+        { 'O', 'O', 'O', 'X', 'X', 'X', 'X' },
+        { 'X', 'X', 'X', 'X', 'X', 'X', 'X' },
+        { 'O', 'O', 'O', 'O', 'O', 'O', 'O'},
+        { 'O', 'O', 'O', 'O', 'O', 'O', 'O'}
+    };
+
     // Function call
-    cout << maximumSubSquare(mat);
+    cout << maximumSubSquare(mat2);
     return 0;
 }

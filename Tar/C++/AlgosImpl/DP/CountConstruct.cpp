@@ -1,3 +1,7 @@
+/*
+Number of ways to construct a target string given an array of strings
+*/
+
 #include<vector>
 #include<string>
 #include<iostream>
@@ -29,8 +33,9 @@ int countConstructDp(string target, vector<string>&wordBank, map<string, int>&me
 		size_t strIt=target.find(word);
 		if(strIt!=string::npos&&strIt==0){
 			string suffix=target.substr(word.length(), target.length()-word.length());
-			int numWaysForRest=countConstructDp(suffix, wordBank, memo);
-			totalCnt+=numWaysForRest;
+			totalCnt+=countConstructDp(suffix, wordBank, memo);
+			//int numWaysForRest=countConstructDp(suffix, wordBank, memo);
+			//totalCnt+=numWaysForRest;
 		}
 	}
 	return memo[target]=totalCnt;
@@ -60,7 +65,7 @@ int main(){
 	cout<<"-------\n";
 	map<string, int>memo;
 	vector<string>wordBank2{"ee", "eee", "eeee", "eeeee", "eeeeeee", "eeeeeeee"};
-	string target2="eeeeeeeeeeeeeeeee";
+	string target2="eeeeeeeeeeeeeeeeeeeeee";
 	int ans2=(countConstructDp(target2, wordBank2, memo));
 	cout<<ans2<<"\n";
 	int ans3=(countConstructTab(target2, wordBank2));

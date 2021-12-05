@@ -1,3 +1,7 @@
+/*
+Is it possible to construct the target string given an array of strings
+*/
+
 #include<vector>
 #include<string>
 #include<iostream>

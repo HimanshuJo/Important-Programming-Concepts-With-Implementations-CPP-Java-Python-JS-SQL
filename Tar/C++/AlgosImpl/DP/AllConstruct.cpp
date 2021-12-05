@@ -74,3 +74,16 @@ int main(){
 		cout<<endl;
 	}
 }
+
+/*
+Output:
+
+homan tak
+ho man tak
+homantak
+-------
+homantak
+homan tak
+ho man tak
+
+*/

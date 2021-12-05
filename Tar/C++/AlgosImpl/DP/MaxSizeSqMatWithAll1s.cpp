@@ -16,8 +16,8 @@ size of the square sub-matrix with all 1s including M[i][j] where M[i][j] is the
    sub-matrix of M[][]
 */
 
-// Time Complexity: O(m*n) where m is number of rows and n is number of columns in the given matrix. 
-// Auxiliary Space: O(m*n) where m is number of rows and n is number of columns in the given matrix. 
+// Time Complexity: O(m*n) where m is number of rows and n is number of columns in the given matrix.
+// Auxiliary Space: O(m*n) where m is number of rows and n is number of columns in the given matrix.
 
 // C++ code for Maximum size square
 // sub-matrix with all 1s
