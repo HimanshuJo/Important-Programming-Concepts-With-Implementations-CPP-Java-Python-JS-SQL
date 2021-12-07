@@ -1,4 +1,3 @@
-
 Question:
 
 	we are given an n x n grid representing a field of cherries, each cell is one of three possible
@@ -41,7 +40,7 @@ We can think the solution as follows:
 			then we can't tell if this place is actually 0 or -1
 
 			if we just return 0, then it could also mean that we can still continue down this path
-				that mean we could end up getting unnecessary ones following this path
+				that means we could end up getting unnecessary ones following this path
 
 		In that case, every-time we see a -1 in any of the cell, we simply return the biggest negative number
 			so that later we can simply ignore the huge negative numbers

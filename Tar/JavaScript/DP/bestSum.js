@@ -43,6 +43,7 @@ const bestSumTab=(targetSum, numbers)=>{
 		if(dp[i]!=null){
 			for(let num of numbers){
 				const combo=[...dp[i], num];
+				console.log(combo);
 				if(!dp[i+num]||dp[i+num].length>combo.length){
 					dp[i+num]=combo;
 				}
@@ -52,8 +53,8 @@ const bestSumTab=(targetSum, numbers)=>{
 	return dp[targetSum];
 };
 
-const numbers=[1, 2, 5, 25];
-let targetSum=100;
+const numbers=[1, 3, 4, 5];
+let targetSum=7;
 //console.log(bestSum(targetSum, numbers));
 console.log('-------')
 console.log(bestSumDp(targetSum, numbers));

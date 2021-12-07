@@ -52,16 +52,22 @@ vector<int> bestSumDp(vector<int>&numbers, int targetSum, map<int, vector<int>>&
 
 // T: O((m*n)*m), S: O(m*m)
 vector<int> bestSumTab(vector<int>&numbers, int targetSum){
-	vector<vector<int>>dp(targetSum+targetSum, {INT_MAX});
+	vector<vector<int>>dp(targetSum+targetSum);
+	for(int i=0; i<dp.size(); ++i)
+		dp[i].push_back({INT_MAX});
 	vector<int>toChk={INT_MAX};
 	dp[0]={};
 	for(int i=0; i<=targetSum; ++i){
-		if(dp[i].size()>0&&dp[i][0]==INT_MAX) continue;
-		vector<int>currComb=dp[i];
-		for(auto &num: numbers){
-			currComb.push_back(num);
-			if(dp[i+num].size()>currComb.size()||dp[i+num]==toChk){
-				dp[i+num]=currComb;
+		if(dp[i]!=toChk){
+			vector<int>currComb=dp[i];
+			for(auto &num: numbers){
+				vector<int>newCombo;
+				newCombo.push_back(num);
+				for(auto &num: currComb)
+					newCombo.push_back(num);
+				if(dp[i+num].size()>newCombo.size()||dp[i+num]==toChk){
+					dp[i+num]=newCombo;
+				}
 			}
 		}
 	}
@@ -69,11 +75,11 @@ vector<int> bestSumTab(vector<int>&numbers, int targetSum){
 }
 
 int main(){
-	vector<int>numbers{1, 2, 4, 25};
-	vector<int>numbers2{1, 2, 4, 25};
+	vector<int>numbers{1, 3, 4, 5};
+	vector<int>numbers2{1, 3, 4, 5};
 	map<int, vector<int>>memo;
 	int targetSum=10;
-	int targetSum2=100;
+	int targetSum2=7;
 	vector<int>ans1=bestSum(numbers, targetSum);
 	vector<int>ans2=bestSumDp(numbers2, targetSum2, memo);
 	vector<int>ans3=bestSumTab(numbers2, targetSum2);

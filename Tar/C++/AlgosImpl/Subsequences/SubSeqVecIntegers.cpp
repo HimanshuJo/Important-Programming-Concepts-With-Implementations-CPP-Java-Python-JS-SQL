@@ -28,4 +28,6 @@ vector<vector<ll>> genAllSubSeq(vector<ll>&in){
 	return res;
 }
 
-int main(){}
+int main(){
+	
+}

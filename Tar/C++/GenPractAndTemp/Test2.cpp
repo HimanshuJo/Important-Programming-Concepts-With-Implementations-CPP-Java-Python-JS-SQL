@@ -1,47 +1,58 @@
 #include<vector>
 #include<iostream>
-#include<algorithm>
 using namespace std;
 
-int N;
-vector<int>in;
-vector<vector<int>>segTree;
+int parent[100000];
+int uRank[100000];
 
-void build(int ss, int se, int idx){
-	if(ss==se) segTree[idx]={in[ss]};
+void makeSet(int n){
+	for(int i=1; i<=n; ++i){
+		parent[i]=i;
+		uRank[i]=0;
+	}
+}
+
+int findParent(int node){
+	if(node==parent[node]) return node;
+	return parent[node]=findParent(parent[node]);
+}
+
+void doUnion(int u, int v){
+	u=findParent(u);
+	v=findParent(v);
+	if(uRank[u]<uRank[v]) parent[u]=v;
+	else if(uRank[v]<uRank[u]) parent[v]=u;
 	else{
-		int mid=(ss+se)/2;
-		build(ss, mid, idx*2);
-		build(mid+1, se, idx*2+1);
-		segTree[idx].resize(se-ss+1);
-		auto &L=segTree[idx*2], &R=segTree[idx*2+1];
-		merge(begin(L), end(L), begin(R), end(R), begin(segTree[idx]));
+		parent[v]=u;
+		uRank[u]++;
 	}
-}
-
-int query(int qs, int qe, int val, int idx, int ss, int se){
-	if(ss>qe||se<qs) return 0;
-	if(qs<=ss&&se<=qe){
-		auto right=upper_bound(begin(segTree[idx]), end(segTree[idx]), val);
-		auto left=lower_bound(begin(segTree[idx]), end(segTree[idx]), val);
-		return right-left;
-	}
-	int mid=(ss+se)/2;
-	int ql=query(qs, qe, val, idx*2, ss, mid);
-	int qr=query(qs, qe, val, idx*2+1, mid+1, se);
-	return ql+qr;
-}
-
-int query(int L, int R, int val){
-	return query(L, R, val, 1, 0, N-1);
+	cout << "urank " << u << " " << uRank[u] << endl;
+	cout << "urank " << v << " " << uRank[v] << endl;
+	cout << "parent " << u << " " << parent[u] << endl;
+	cout << "parent " << v << " " << parent[v] << endl;
+	cout << "-------\n";
 }
 
 int main(){
-	in={1, 2, 3, 4, 5, 6, 5, 4, 5, 6, 5};
-	N=in.size();
-	segTree.resize(4*N-1);
-	build(0, N-1, 1);
-	cout<<(query(3, 9, 5));
+	int N;
+	//cin>>N;
+	N=7;
+	makeSet(N);
+	int M;
+	//cin>>M;
+	M=6;
+	int u1, v1, u2, v2, u3, v3, u4, v4, u5, v5, u6, v6;
+	//cin>>u>>v;
+	u1=1, v1=2;
+	u2=3, v2=4;
+	u3=2, v3=4;
+	u4=7, v4=6;
+	u5=6, v5=5;
+	u6=1, v6=7;
+	doUnion(u1, v1);
+	doUnion(u2, v2);
+	doUnion(u3, v3);
+	doUnion(u4, v4);
+	doUnion(u5, v5);
+	doUnion(u6, v6);
 }
-
-

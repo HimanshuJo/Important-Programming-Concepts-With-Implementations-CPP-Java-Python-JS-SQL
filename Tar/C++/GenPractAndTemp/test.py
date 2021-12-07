@@ -1,26 +1,26 @@
-N,M = map(int,input().split())
-S = [input() for i in range(2*N)]
-rank = [[0,i] for i in range(2*N)]
-# rank[i] = [x,y]  -> the person who ranks $i$-th has won -x times and has ID y
+def solve():
+	n, m = map(int, input().split(' '))
+	a = list(input())
 
-def judge(a,b):
-  # -1 if draw, 0 if the former wins, or 1 if the latter wins
-  if a==b: return -1
-  if a=='G' and b=='P': return 1
-  if a=='C' and b=='G': return 1
-  if a=='P' and b=='C': return 1
-  return 0
+	num = 0
+	for i in range(n - 2):
+		if (''.join(a[i:i + 3]) == 'abc'):
+			num += 1
 
-for j in range(M):
-  for i in range(N):
-    player1 = rank[2*i][1]
-    player2 = rank[2*i+1][1]
-    result = judge(S[player1][j], S[player2][j])
-    if result !=-1: rank[2*i+result][0] -= 1
-  print(rank)
-  print()
-  rank.sort()
+	for i in range(m):
+		index, ch = input().split(' ')
+		index = int(index) - 1
 
-print(rank)
+		for j in range(max(0, index - 2), index + 1):
+			if (''.join(a[j:j + 3]) == 'abc'):
+				num -= 1
 
-'''for _,i in rank: print(i+1)'''
+		a[index] = ch
+
+		for j in range(max(0, index - 2), index + 1):
+			if (''.join(a[j:j + 3]) == 'abc'):
+				num += 1
+
+		print(num)
+
+solve()

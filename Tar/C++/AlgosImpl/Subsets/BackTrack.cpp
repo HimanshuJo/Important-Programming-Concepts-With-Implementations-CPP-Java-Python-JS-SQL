@@ -24,7 +24,7 @@ vector<vector<int>> subsets(vector<int> &A)
 }
 
 int main(){
-    vector<int>tmp{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15};
+    vector<int>tmp{8,8,8,8,8,8,8,8,8,8,8,8,8,8,8};
     unsigned __int64 now = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
     vector<vector<int>>res=subsets(tmp);
     unsigned __int64 then = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();

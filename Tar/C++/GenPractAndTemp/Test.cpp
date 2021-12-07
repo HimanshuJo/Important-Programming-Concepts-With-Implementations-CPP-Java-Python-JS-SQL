@@ -1,109 +1,71 @@
-#include <iostream>
-#include <vector>
-#include <queue>
+#include <bits/stdc++.h>
 using namespace std;
-#define mp make_pair
-#define F first
-#define S second
 
-int x[] = {1, 0, -1, 0};
-int y[] = {0, 1, -0, -1};
-
-int main()
-{
-	//     std::ios_base::sync_with_stdio(false);
-
-#ifdef kimbbakar
-	freopen("in.txt", "r", stdin);
-	//        freopen ( "out.txt", "w", stdout );
-#endif
-
-	int r;
-	int cl;
-	cin >> r >> cl;
-
-	char g[505][505];
-	int mark[505][505] = {0};
-
-	for (int i = 1; i <= r; i++)
-	{
-		for (int j = 1; j <= cl; j++)
-			scanf(" %c", &g[i][j]);
-	}
-
-	int a, b, c, d;
-	cin >> a >> b >> c >> d;
-
-	queue<pair<int, int>> q;
-
-	q.push(mp(a, b));
-
-	mark[a][b] = 1;
-
-	bool ok = false;
-
-	if (g[c][d] == 'X')
-	{
-		cout<<"here1"<<endl;
-		while (!q.empty() && !ok)
-		{
-			pair<int, int> nw = q.front();
-			q.pop();
-
-			//            printf("nw %d %d\n",nw.F,nw.S);
-
-			for (int i = 0; i < 4; i++)
-			{
-				pair<int, int> k = mp(nw.F + x[i], nw.S + y[i]);
-				//          printf("k %d %d\n",k.F,k.S);
-				if (!mark[k.F][k.S] && g[k.F][k.S] != 'X' && k.F >= 1 && k.S >= 1 && k.F <= r && k.S <= cl)
-				{
-					mark[k.F][k.S] = 1 + mark[nw.F][nw.S];
-					q.push(k);
-				}
-				else if (k.F == c && k.S == d)
-				{
-					cout<<"here2"<<endl;
-					mark[k.F][k.S] = 1 + mark[nw.F][nw.S];
-
-					ok = true;
-					break;
-				}
-			}
-		}
-	}
-	else
-	{
-		while (!q.empty() && !ok)
-		{
-			pair<int, int> nw = q.front();
-			q.pop();
-
-			for (int i = 0; i < 4; i++)
-			{
-				pair<int, int> k = mp(nw.F + x[i], nw.S + y[i]);
-
-				if (!mark[k.F][k.S] && g[k.F][k.S] != 'X' && k.F >= 1 && k.S >= 1 && k.F <= r && k.S <= cl)
-				{
-					mark[k.F][k.S] = 1 + mark[nw.F][nw.S];
-					q.push(k);
-					g[k.F][k.S] = 'X';
-				}
-				else if (k.F == c && k.S == d && g[k.F][k.S] == 'X')
-				{
-					mark[k.F][k.S] = 1 + mark[nw.F][nw.S];
-
-					ok = true;
-					break;
-				}
-			}
+struct DSU{
+	vector<int>parent, rank, size;
+	int cntCmp;
+	DSU(int n): parent(n+1), rank(n+1, 0), size(n+1, 1), cntCmp(n){
+		for(int i=1; i<=n; ++i){
+			parent[i]=i;
 		}
 	}
 
-	if (ok)
-		printf("YES\n");
-	else
-		printf("NO\n");
+	int find(int i){
+		return (parent[i]==i?i:(parent[i]=find(parent[i])));
+	}
 
-	return 0;
+	bool same(int i, int j){
+		return find(i)==find(j);
+	}
+
+	int getSize(int i){
+		return size[find(i)];
+	}
+
+	int count(){
+		return cntCmp;
+	}
+
+	void merge(int i, int j){
+		if((i=find(i))==(j=find(j))) return;
+		else cntCmp--;
+		if(rank[i]>rank[j])
+			swap(i, j);
+		parent[i]=j;
+		size[j]+=size[i];
+		if(rank[i]==rank[j]) rank[j]++;
+	}
+};
+
+int main(){
+	ios_base::sync_with_stdio(false);
+	cin.tie(nullptr);
+	int n, d;
+	cin>>n>>d;
+	DSU dsu(n);
+	int x=0;
+	for(int i=0; i<d; ++i){
+		int u, v;
+		cin>>u>>v;
+		if(dsu.same(u, v)) x++;
+		else dsu.merge(u, v);
+		vector<bool>vis(n+1, false);
+		vector<int>vec;
+		for(int i=1; i<n+1; ++i){
+			if(!vis[dsu.find(i)]){
+				vec.push_back(dsu.getSize(i));
+				vis[dsu.find(i)]=true;
+			}
+		}
+		sort(vec.begin(), vec.end());
+		int m=vec.size();
+		vector<bool>vis2(m, false);
+		int ans=0;
+		int cnt=1+x;
+		for(int i_=m-1; i_>=0&&cnt>0; --i_){
+			cnt--;
+			ans+=vec[i_];
+		}
+		cout<<ans-1<<"\n";
+	}
 }
