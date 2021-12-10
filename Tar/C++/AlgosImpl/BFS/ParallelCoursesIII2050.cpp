@@ -11,7 +11,8 @@ You may start taking a course at any time if the prerequisites are met.
 Any number of courses can be taken at the same time.
 Return the minimum number of months needed to complete all the courses.
 
-Note: The test cases are generated such that it is possible to complete every course (i.e., the graph is a directed acyclic graph).
+Note: The test cases are generated such that it is possible to complete every course 
+(i.e., the graph is a directed acyclic graph).
 
 Input: n = 5, relations = [[1,5],[2,5],[3,5],[3,4],[4,5]], time = [1,2,3,4,5]
 Output: 12
@@ -45,7 +46,8 @@ public:
 		while (!q.empty()) {
 			int u = q.front(); q.pop();
 			for (int v : graph[u]) {
-				dist[v] = max(dist[v], dist[u] + time[v]); // Update `dist[v]` using the maximum dist of the predecessor nodes
+				// Update `dist[v]` using the maximum dist of the predecessor nodes
+				dist[v] = max(dist[v], dist[u] + time[v]);
 				if (--inDegree[v] == 0)
 					q.push(v);
 			}

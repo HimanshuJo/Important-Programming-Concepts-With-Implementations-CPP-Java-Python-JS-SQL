@@ -15,8 +15,8 @@ the wheels of the lock will stop turning and you will be unable to open it.
 
 Given a target representing the value of the wheels that will unlock the lock,
 
- return the minimum total number of turns required to open the lock, or -1 if 
- it is impossible.
+return the minimum total number of turns required to open the lock, or -1 if 
+it is impossible.
 
 Example 1:
 
