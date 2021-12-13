@@ -2,8 +2,10 @@
 A Tree is a generalization of connected graph where it has N nodes that will have exactly N-1 edges,
 i.e one edge between every pair of vertices. Find the Euler tour of tree represented by adjacency list.
 
-Euler tour is defined as a way of traversing tree such that each vertex is added to the tour when we visit it
-(either moving down from parent vertex or returning from child vertex). We start from root and reach back to root after visiting all vertices.
+Euler tour is defined as a way of traversing tree such that each vertex is added to the 
+tour when we visit it
+(either moving down from parent vertex or returning from child vertex). 
+We start from root and reach back to root after visiting all vertices.
 It requires exactly 2*N-1 vertices to store Euler tour.
 
 Approach: We will run DFS(Depth first search) algorithm on Tree as:

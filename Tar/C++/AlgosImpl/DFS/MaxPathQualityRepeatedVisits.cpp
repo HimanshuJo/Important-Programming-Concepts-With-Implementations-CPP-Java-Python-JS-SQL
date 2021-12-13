@@ -6,8 +6,10 @@ You are also given a 0-indexed 2D integer array edges, where each edges[j] = [uj
 indicates that there is an undirected edge between the nodes uj and vj, and it takes timej seconds to 
 travel between the two nodes. Finally, you are given an integer maxTime.
 
-A valid path in the graph is any path that starts at node 0, ends at node 0, and takes at most maxTime seconds to complete. 
-You may visit the same node multiple times. The quality of a valid path is the sum of the values of the unique 
+A valid path in the graph is any path that starts at node 0, ends at node 0, 
+and takes at most maxTime seconds to complete. 
+You may visit the same node multiple times. The quality of a valid path is the sum of 
+the values of the unique 
 nodes visited in the path (each node's value is added at most once to the sum).
 
 Return the maximum quality of a valid path.
@@ -40,7 +42,8 @@ public:
 		return res;
 	}
 
-	void dfs(vector<vector<pair<int, int>>>&gr, vector<int>&values, vector<int>&visited, int &res, int node, int score, int time, int maxTime){
+	void dfs(vector<vector<pair<int, int>>>&gr, vector<int>&values, vector<int>&visited, 
+		int &res, int node, int score, int time, int maxTime){
 		if(time>maxTime) return;
 		if(visited[node]==0) score+=values[node];
 		visited[node]++;

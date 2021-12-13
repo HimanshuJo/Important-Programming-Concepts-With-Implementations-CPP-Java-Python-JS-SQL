@@ -122,8 +122,7 @@ int findSubSquare(int mat[][N])
 			// horizontal line of length >= 'small'
 			while (small > max)
 			{
-				if (ver[i][j - small + 1] >= small
-				        && hor[i - small + 1][j] >= small)
+				if (ver[i][j - small + 1] >= small && hor[i - small + 1][j] >= small)
 				{
 					max = small;
 				}

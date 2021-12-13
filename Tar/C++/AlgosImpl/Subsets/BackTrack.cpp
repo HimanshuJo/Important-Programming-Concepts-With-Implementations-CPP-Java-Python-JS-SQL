@@ -24,10 +24,11 @@ vector<vector<int>> subsets(vector<int> &A)
 }
 
 int main(){
-    vector<int>tmp{8,8,8,8,8,8,8,8,8,8,8,8,8,8,8};
-    unsigned __int64 now = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
+    vector<int>tmp{2,1,3,0};
     vector<vector<int>>res=subsets(tmp);
-    unsigned __int64 then = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
-    cout<<res.size()<<endl;
-    cout<<then-now<<endl;
+    for(auto &vals: res){
+    	for(auto &nums: vals)
+    		cout<<nums<<" ";
+    	cout<<endl;
+    }
 }

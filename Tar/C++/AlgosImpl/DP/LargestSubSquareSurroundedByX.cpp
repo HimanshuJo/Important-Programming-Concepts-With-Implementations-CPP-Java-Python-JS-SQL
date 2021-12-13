@@ -1,5 +1,6 @@
 /*
-Given a matrix where every element is either ‘O’ or ‘X’, find the largest subsquare surrounded by ‘X’.
+Given a matrix where every element is either ‘O’ or ‘X’, find the largest subsquare 
+surrounded by ‘X’.
 In the below article, it is assumed that the given matrix is also a square matrix.
 The code given below can be easily extended for rectangular matrices.
 
@@ -23,13 +24,16 @@ Output: 4
 The square submatrix starting at (0, 2) is the largest
 submatrix surrounded by 'X'
 
-A Simple Solution is to consider every square submatrix and check whether is has all corner edges filled with ‘X’.
+A Simple Solution is to consider every square submatrix and check whether is has all corner 
+edges filled with ‘X’.
 The time complexity of this solution is O(N^4).
 
 We can solve this problem in O(N^3) time using extra space.
 The idea is to create two auxiliary arrays hor[N][N] and ver[N][N].
-The value stored in hor[i][j] is the number of horizontal continuous ‘X’ characters till mat[i][j] in mat[][].
-Similarly, the value stored in ver[i][j] is the number of vertical continuous ‘X’ characters till mat[i][j] in mat[][].
+The value stored in hor[i][j] is the number of horizontal continuous ‘X’ characters till 
+mat[i][j] in mat[][].
+Similarly, the value stored in ver[i][j] is the number of vertical continuous ‘X’ 
+characters till mat[i][j] in mat[][].
 
 Example:
 
@@ -54,26 +58,34 @@ ver[6][6] = 1  0  1  1  1  1
             1  3  5  0  2  0
             0  0  6  0  0  0
 
-Once we have filled values in hor[][] and ver[][], we start from the bottommost-rightmost corner of matrix and move toward the
-leftmost-topmost in row by row manner. For every visited entry mat[i][j], we compare the values of hor[i][j] and ver[i][j],
+Once we have filled values in hor[][] and ver[][], we start from the bottommost-rightmost 
+corner of matrix and move toward the
+leftmost-topmost in row by row manner. For every visited entry mat[i][j], we compare 
+the values of hor[i][j] and ver[i][j],
 and pick the smaller of two as we need a square. Let the smaller of two be ‘small’.
-After picking smaller of two, we check if both ver[][] and hor[][] for left and up edges respectively.
+After picking smaller of two, we check if both ver[][] and hor[][] for left and up 
+edges respectively.
 If they have entries for the same, then we found a subsquare. Otherwise we try for small-1.
 */
 
 /*
 Optimized approach:
 
-A more optimized solution would be to pre-compute the number of contiguous ‘X’ horizontally and vertically,
-in a matrix of pairs named dp. Now  for every entry of dp we have a pair (int, int) which denotes the
+A more optimized solution would be to pre-compute the number of contiguous 
+‘X’ horizontally and vertically,
+in a matrix of pairs named dp. Now  for every entry of dp we have a pair (int, int) 
+which denotes the
 maximum contiguous ‘X’ till that point, i.e.
 
 dp[i][j].first denotes contiguous ‘X’ taken horizontally till that point.
 dp[i][j].second denotes contiguous ‘X’ taken vertically till that point.
-Now, a square can be formed with dp[i][j] as the bottom right corner, having sides atmost of length, min(dp[i][j].first, dp[i][j].second)
+Now, a square can be formed with dp[i][j] as the bottom right corner, having sides 
+atmost of length, min(dp[i][j].first, dp[i][j].second)
 
-So, we make another matrix maxside, which will denote the maximum square side formed having the bottom
-right corner as arr[i][j]. We’ll try to get some intuition from the properties of a square, i.e. all the sides of the square are equal.
+So, we make another matrix maxside, which will denote the maximum square side formed 
+having the bottom
+right corner as arr[i][j]. We’ll try to get some intuition from the properties of a 
+square, i.e. all the sides of the square are equal.
 
 Let’s store maximum value that can be obtained, as val = min(dp[i][j].first, dp[i][j].second).
 

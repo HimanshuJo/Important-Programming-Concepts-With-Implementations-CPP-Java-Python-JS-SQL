@@ -45,7 +45,8 @@ void constructPrntLIS(int arr[], int n){
     for (int i=1; i<n; ++i){
         for (int j=0; j<i; ++j){
             // if comparing with only (L[j].size()) e.g. for i=4, j=0 arr[i]>arr[j] copy L[0] to L[4]
-            // next iteration i=4, j=1 arr[i]>arr[j] can't copy current L size is same, but current L[1] is optimal
+            // next iteration i=4, j=1 arr[i]>arr[j] can't copy current L size is same, 
+            // but current L[1] is optimal
             if ((arr[j]<arr[i])&&(L[j].size()+1)>L[i].size()){
                 L[i]=L[j];
             }

@@ -1,71 +1,60 @@
-#include <bits/stdc++.h>
+#include<iostream>
+#include<vector>
 using namespace std;
-
-struct DSU{
-	vector<int>parent, rank, size;
-	int cntCmp;
-	DSU(int n): parent(n+1), rank(n+1, 0), size(n+1, 1), cntCmp(n){
-		for(int i=1; i<=n; ++i){
-			parent[i]=i;
-		}
-	}
-
-	int find(int i){
-		return (parent[i]==i?i:(parent[i]=find(parent[i])));
-	}
-
-	bool same(int i, int j){
-		return find(i)==find(j);
-	}
-
-	int getSize(int i){
-		return size[find(i)];
-	}
-
-	int count(){
-		return cntCmp;
-	}
-
-	void merge(int i, int j){
-		if((i=find(i))==(j=find(j))) return;
-		else cntCmp--;
-		if(rank[i]>rank[j])
-			swap(i, j);
-		parent[i]=j;
-		size[j]+=size[i];
-		if(rank[i]==rank[j]) rank[j]++;
-	}
-};
 
 int main(){
 	ios_base::sync_with_stdio(false);
 	cin.tie(nullptr);
-	int n, d;
-	cin>>n>>d;
-	DSU dsu(n);
-	int x=0;
-	for(int i=0; i<d; ++i){
-		int u, v;
-		cin>>u>>v;
-		if(dsu.same(u, v)) x++;
-		else dsu.merge(u, v);
-		vector<bool>vis(n+1, false);
-		vector<int>vec;
-		for(int i=1; i<n+1; ++i){
-			if(!vis[dsu.find(i)]){
-				vec.push_back(dsu.getSize(i));
-				vis[dsu.find(i)]=true;
+	int t;
+	cin>>t;
+	while(t--){
+		int n;
+		cin>>n;
+		vector<int>in(n);
+		for(int i=0; i<n; ++i){
+			cin>>in[i];
+		}
+		int ans=0;
+		vector<int>toChk=in;
+		while(true){
+			int curr=toChk[n-1];
+			vector<int>left;
+			vector<int>right;
+			vector<int>equal;
+			vector<int>currComb;
+			for(int i=0; i<n; ++i){
+				if(toChk[i]<curr){
+					left.push_back(toChk[i]);
+				} else if(toChk[i]>curr){
+					right.push_back(toChk[i]);
+				} else if(toChk[i]==curr&&i!=n-1){
+					equal.push_back(toChk[i]);
+				}
+			}
+			for(auto &vals: left){
+				currComb.push_back(vals);
+			}
+			currComb.push_back(curr);
+			for(auto &vals: equal){
+				currComb.push_back(vals);
+			}
+			for(auto &vals: right){
+				currComb.push_back(vals);
+			}
+			for(auto &vals: toChk)
+				cout<<vals<<" ";
+			cout<<endl;
+			for(auto &vals: currComb)
+				cout<<vals<<" ";
+			cout<<endl;
+			cout<<"-------\n";
+			if(currComb==toChk){
+				break;
+			} else{
+				toChk=currComb;
+				ans++;
 			}
 		}
-		sort(vec.begin(), vec.end());
-		int m=vec.size();
-		vector<bool>vis2(m, false);
-		int ans=0;
-		int cnt=1+x;
-		for(int i_=m-1; i_>=0&&cnt>0; --i_){
-			cnt--;
-			ans+=vec[i_];
-		}
-		cout<<ans-1<<"\n";
+		cout<<ans<<"\n";
 	}
 }

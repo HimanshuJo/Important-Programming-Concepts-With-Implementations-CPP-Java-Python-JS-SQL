@@ -41,7 +41,7 @@ void printKnapSack(ll W, ll wt[], ll val[], ll n) {
 				dp[i][(int)w] = 0;
 			} else if (wt[i - 1] <= w) {
 				dp[i][(int)w] = max(val[i - 1] + 
-									dp[i - 1][(int) (w - wt[i - 1])], 
+									dp[i - 1][(int)(w - wt[i - 1])], 
 									dp[i - 1][(int)w]);
 			} else {
 				dp[i][(int)w] = dp[i - 1][(int)w];

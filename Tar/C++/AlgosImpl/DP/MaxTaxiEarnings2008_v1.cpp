@@ -35,7 +35,7 @@ using namespace std;
 class Solution
 {
     long long dp[100005];
-    // Searching for next passenger who can sit  in the car
+
     int binarySearch(vector<vector<int>> &rides, int val)
     {
         int s = 0, e = rides.size() - 1;
@@ -64,9 +64,9 @@ class Solution
         }
         if (dp[i] != -1)
             return dp[i];
-        long long op1 = helper(i + 1, rides); // We didn't pick this ith passenger
+        long long op1 = helper(i + 1, rides);
         int idx = binarySearch(rides, rides[i][1]);
-        long long op2 = rides[i][1] - rides[i][0] + rides[i][2] + helper(idx, rides); // We pick this ith passenger
+        long long op2 = rides[i][1] - rides[i][0] + rides[i][2] + helper(idx, rides);
         return dp[i] = max(op1, op2);
     }
 

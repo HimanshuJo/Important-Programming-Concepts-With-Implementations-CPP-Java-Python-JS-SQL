@@ -2,8 +2,10 @@
 /*
 Algorithm:
 Let the given binary matrix be M[R][C].
-The idea of the algorithm is to construct an auxiliary size matrix S[][] in which each entry S[i][j] represents
-size of the square sub-matrix with all 1s including M[i][j] where M[i][j] is the rightmost and bottom-most entry in sub-matrix.
+The idea of the algorithm is to construct an auxiliary size matrix S[][] in which 
+each entry S[i][j] represents
+size of the square sub-matrix with all 1s including M[i][j] where M[i][j] is the rightmost 
+and bottom-most entry in sub-matrix.
 
 1) Construct a sum matrix S[R][C] for the given M[R][C].
      a)    Copy first row and first columns as it is from M[][] to S[][]
