@@ -6,6 +6,9 @@
         "xutility": "cpp",
         "chrono": "cpp",
         "span": "cpp",
-        "utility": "cpp"
+        "utility": "cpp",
+        "algorithm": "cpp",
+        "xiosbase": "cpp",
+        "xlocale": "cpp"
     }
 }

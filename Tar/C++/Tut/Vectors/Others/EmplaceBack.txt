@@ -200,3 +200,21 @@ Output:
 
 	a 24
 	b 25
+
+-------
+
+Other Differences:
+
+emplace_back will call any type of constructor out there, whereas 
+
+the more cautious push_back will call only constructors that are implicit. 
+
+Implicit constructors are supposed to be safe. 
+
+	If you can implicitly construct a U from a T, you are saying that U can hold all of the information in T with no loss. 
+
+	It is safe in pretty much any situation to pass a T and no one will mind if you make it a U instead. 
+
+	A good example of an implicit constructor is the conversion from std::uint32_t to std::uint64_t. 
+
+	A bad example of an implicit conversion is double to std::uint8_t.

@@ -174,3 +174,38 @@ How to set up lambda function to use it again:
 	
 	// Will remove index 2: 99
 	removeByIndex(intvec, 2);
+
+-------
+
+Erase while iterating:
+
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+int main()
+{
+	std::vector<int> v = {1, 2, 3, 4, 5, 6};
+
+	auto it = v.begin();
+	while (it != v.end())
+	{
+		// specify condition for removing element; in this case remove odd numbers
+		if (*it & 1)
+		{
+			// erase() invalidates the iterator, use returned iterator
+			it = v.erase(it);
+		}
+		// Notice that iterator is incremented only on the else part (why?)
+		else
+		{
+			++it;
+		}
+	}
+
+	for (int const &i : v)
+	{
+		std::cout << i << ' ';
+	}
+	return 0;
+}

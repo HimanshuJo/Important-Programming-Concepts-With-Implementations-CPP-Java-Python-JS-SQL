@@ -5,6 +5,18 @@ You are given a positive integer n. Find k positive integers a1,a2,…,ak, such 
 a1+a2+…+ak=n
 LCM(a1,a2,…,ak)≤ n/2
 
+Example
+input
+3
+3 3
+8 3
+14 3
+
+output
+1 1 1
+4 2 2
+2 6 6
+
 Algo:
 
     Most important to notice in the problem is

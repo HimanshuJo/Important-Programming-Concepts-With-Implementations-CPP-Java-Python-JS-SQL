@@ -1,3 +1,45 @@
+// A. Forbidden Subsequence
+/*
+You are given strings S and T, consisting of lowercase English letters. It is guaranteed that T is a permutation of the string abc.
+
+Find string S', the lexicographically smallest permutation of S such that T is not a subsequence of S'.
+
+String a is a permutation of string b if the number of occurrences of each distinct character is the same in both strings.
+
+A string a is a subsequence of a string b if a can be obtained from b by deletion of several (possibly, zero or all) elements.
+
+A string a is lexicographically smaller than a string b if and only if one of the following holds:
+
+a is a prefix of b, but a!=b;
+in the first position where a and b differ, the string a has a letter that appears earlier in the alphabet than the corresponding letter in b.
+
+Example
+inputCopy
+7
+abacaba
+abc
+cccba
+acb
+dbsic
+bac
+abracadabra
+abc
+dddddddddddd
+cba
+bbc
+abc
+ac
+abc
+outputCopy
+aaaacbb
+abccc
+bcdis
+aaaaacbbdrr
+dddddddddddd
+bbc
+ac
+*/
+
 #include<iostream>
 #include<vector>
 #include<string>
@@ -115,4 +157,5 @@ int main(){
 		}
 	}
 }
+
 
