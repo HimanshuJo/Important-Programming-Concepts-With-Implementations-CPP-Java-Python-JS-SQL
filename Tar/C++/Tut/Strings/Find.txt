@@ -150,3 +150,12 @@ vector<int> allOccurrences(string str){
   	}
 	return res;
 }
+
+int main(){
+    string str="geeksforgeeks a computer science geeks for geeks";
+    vector<int>res=allOccurrences(str);
+    for(auto &vals: res)
+        cout<<vals<<" ";
+}
+
+Output: 0 8 33 43 

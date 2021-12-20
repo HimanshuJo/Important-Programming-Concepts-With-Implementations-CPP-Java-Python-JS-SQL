@@ -1,4 +1,3 @@
-
 Assigning a character to an std::string at an index will produce the correct result, 
 
 for example:

@@ -1,4 +1,3 @@
-
 function
 <string>
 std::to_string

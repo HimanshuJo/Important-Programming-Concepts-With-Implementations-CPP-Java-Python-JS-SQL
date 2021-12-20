@@ -1,74 +1,11 @@
-Using find_first_not_of() with find_last_not_of() function
+Remove all white spaces:
 
-#include <iostream>
-#include <string>
-#include <algorithm>
- 
-const std::string WHITESPACE = " \n\r\t\f\v";
- 
-std::string ltrim(const std::string &s)
-{
-    size_t start = s.find_first_not_of(WHITESPACE);
-    return (start == std::string::npos) ? "" : s.substr(start);
-}
- 
-std::string rtrim(const std::string &s)
-{
-    size_t end = s.find_last_not_of(WHITESPACE);
-    return (end == std::string::npos) ? "" : s.substr(0, end + 1);
-}
- 
-std::string trim(const std::string &s) {
-    return rtrim(ltrim(s));
-}
- 
-int main()
-{
-    std::string s = "\n\tHello World  \r\n";
-    std::cout << "START::" << trim(s) << "::END";
- 
-    return 0;
-}
+string s1 = "hem n shh";
+s1.erase(std::remove(s1.begin(), s1.end(), ' '), s1.end());
 
--------
+Output:
 
-Using std::find_if function
-
-#include <iostream>
-#include <string>
-#include <algorithm>
- 
-std::string& ltrim(std::string &s)
-{
-    auto it = std::find_if(s.begin(), s.end(),
-                    [](char c) {
-                        return !std::isspace<char>(c, std::locale::classic());
-                    });
-    s.erase(s.begin(), it);
-    return s;
-}
- 
-std::string& rtrim(std::string &s)
-{
-    auto it = std::find_if(s.rbegin(), s.rend(),
-                    [](char c) {
-                        return !std::isspace<char>(c, std::locale::classic());
-                    });
-    s.erase(it.base(), s.end());
-    return s;
-}
- 
-std::string& trim(std::string &s) {
-    return ltrim(rtrim(s));
-}
- 
-int main()
-{
-    std::string s = "\n\t Hello World  ";
-    std::cout << "START::" << trim(s) << "::END";
- 
-    return 0;
-}
+    hemnshh
 
 -------
 
@@ -77,23 +14,82 @@ Using regex
 #include <iostream>
 #include <string>
 #include <regex>
- 
-std::string ltrim(const std::string &s) {
-    return std::regex_replace(s, std::regex("^\\s+"), std::string(""));
+using namespace std;
+
+string ltrim(const string &s) {
+    return regex_replace(s, regex("^\\s+"), string(""));
 }
  
-std::string rtrim(const std::string &s) {
-    return std::regex_replace(s, std::regex("\\s+$"), std::string(""));
+string rtrim(const string &s) {
+    return regex_replace(s, regex("\\s+$"), string(""));
+}
+
+string mtrim(const string &s) {
+    return regex_replace(s, regex("\\s+"), string(" "));
 }
  
-std::string trim(const std::string &s) {
+string trim(const string &s) {
+    return mtrim(ltrim(rtrim(s)));
+}
+ 
+int main()
+{
+    string s = " \t\n  Hello             World  ";
+    cout<<"prev: "<<s<<endl;
+    string nwStr=trim(s);
+    cout<<"next: "<<nwStr<<endl;
+    return 0;
+}
+
+Output:
+
+prev:    Hello             World
+next: Hello World
+
+-------
+
+Using find_if
+
+#include <iostream>
+#include <string>
+#include <algorithm>
+using namespace std;
+
+string& ltrim(string &s)
+{
+    auto it = find_if(s.begin(), s.end(),
+                    [](char c) {
+                        return !isspace<char>(c, locale::classic());
+                    });
+    s.erase(s.begin(), it);
+    return s;
+}
+ 
+string& rtrim(string &s)
+{
+    auto it = find_if(s.rbegin(), s.rend(),
+                    [](char c) {
+                        return !isspace<char>(c, locale::classic());
+                    });
+    s.erase(it.base(), s.end());
+    return s;
+}
+ 
+string& trim(string &s) {
     return ltrim(rtrim(s));
 }
  
 int main()
 {
-    std::string s = " \t\n  Hello World  ";
-    std::cout << "START::" << trim(s) << "::END";
- 
+    string s = "\n\t\t\t\tHello World  ";
+    cout<<"prev: "<<s<<endl;
+    trim(s);
+    cout<<"next: "<<s<<endl;
     return 0;
 }
+
+Output:
+
+prev:
+                                Hello World
+next: Hello World

@@ -64,6 +64,8 @@ Syntax 2: Inserts at most, str_num characters of str, starting with index str_id
 			Throws out_of_range if str_idx > str.size().
 			Throws length_error if the resulting size exceeds the maximum number of characters.
 
+-------
+
 // CPP code for insert (size_type idx, const string& str,
 // size_type str_idx, size_type str_num)
 
@@ -114,6 +116,8 @@ Syntax 3: Inserts the characters of the C-string cstr so that the new characters
 
 		Note: cstr may not be a null pointer (NULL).
 
+-------
+
 // CPP code for insert(size_ type idx, const char* cstr)
 
 #include <iostream>
@@ -162,6 +166,8 @@ Syntax 4: Inserts chars_len characters of the character array chars so that the 
 			Throws length_error if the resulting size exceeds the maximum number of characters.
 
 	Note : chars must have at least chars_len characters.
+
+-------
 
 // CPP code for insert (size_type idx, const char* chars,
 // size_type chars_len)
@@ -212,6 +218,8 @@ Syntax 5: Inserts num occurrences of character c at the position specified by id
 			Throw out_of_range if idx > size().
 			Throw length_error if the resulting size exceeds the maximum number of characters.
 
+-------
+
 // CPP code for :insert (size_type idx, size_type num, char c)
 
 #include <iostream>
@@ -259,6 +267,8 @@ Syntax 6: Inserts num occurrences of character c at the position specified by it
 			Throws out_of_range if pos > size().
 			Throws length_error if the resulting size exceeds the maximum number of characters.
 
+-------
+
 // CPP code for :insert (iterator pos, size_type num, char c)
 #include <iostream>
 #include <string>
@@ -303,6 +313,8 @@ Syntax 7: Inserts a copy of character c before the character to which iterator p
 		Returns :  iterator pointing to the first character inserted.
 		Error: 
 			Throws length_error if the resulting size exceeds the maximum number of characters.
+
+-------
 
 // CPP code for :insert (iterator pos, char c )
 #include <iostream>
@@ -352,7 +364,9 @@ Syntax 8: Inserts all characters of the range [ beg,end ) before the character t
 		Error: 
 			Throws length_error if the resulting size exceeds the maximum number of characters.
 
-// CPP code for insertinsert (iterator pos, InputIterator beg,
+-------
+
+// CPP code for insert (iterator pos, InputIterator beg,
 // InputIterator end )
 
 #include <iostream>
