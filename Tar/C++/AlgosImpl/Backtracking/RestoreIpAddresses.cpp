@@ -22,22 +22,16 @@ Output: ["1.0.10.23","1.0.102.3","10.1.0.23","10.10.2.3","101.0.2.3"]
 
 class Solution {
 public:
-	void decomposeIpAddresses(string s, vector<string>&snippets, vector<string>&ipAddresses, 
-		int idx) {
-
-		// goal or base case
+	void decomposeIpAddresses(string s, vector<string>&snippets, vector<string>&ipAddresses, int idx) {
 		if (idx == s.size() && snippets.size() == 4) {
 			ipAddresses.push_back(snippets[0] + '.' + snippets[1] + '.' + snippets[2] + '.' + snippets[3]);
-			return ;
+			return;
 		}
 		else if (idx == s.size() || snippets.size() == 4) {
-			return ;
+			return;
 		}
 		for (int len = 1; len <= 3 && idx + len <= s.size(); len++) {
-			// choice
 			string snippet = s.substr(idx, len);
-
-			// constraint
 			if ((stoi(snippet) > 255) || (snippet.size() > 1 && snippet[0] == '0')) break;
 
 			// Choose , explore , Unchoose
@@ -46,7 +40,7 @@ public:
 			snippets.pop_back();
 		}
 	}
-	
+
 	vector<string> restoreIpAddresses(string s) {
 		vector<string>ipAddresses;
 		vector<string>snippets;

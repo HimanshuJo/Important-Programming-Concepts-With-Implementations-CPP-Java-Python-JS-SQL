@@ -1,6 +1,7 @@
 // Maximum Sum Subsequence of length k
 /*
-Given an array sequence [A1, A2 …An], the task is to find the maximum possible sum of increasing subsequence S of length k such that S1<=S2<=S3………<=Sk.
+Given an array sequence [A1, A2 …An], the task is to find the maximum possible sum of 
+increasing subsequence S of length k such that S1<=S2<=S3………<=Sk.
 
 Input : 
 n = 9 k = 4 

@@ -1,27 +1,73 @@
-#include <iostream>
-#include <string>
-#include <algorithm>
+#include<iostream>
 #include<vector>
-#include<cstring>
-#include<sstream>
+#include<stack>
+#include<string>
+#include<algorithm>
+#include<fstream>
+#include <sstream>
 using namespace std;
+using ll=long long;
 
-vector<string> splitString(string str, char delimiter) { 
-	vector<string> internal; 
-	stringstream ss(str); 
-	string tok; 
-	while(getline(ss, tok, delimiter)) { 
-		internal.push_back(tok); 
-	} 
-	return internal;  
-}
-
- 
-int main()
-{
-    string str="hemnshh joshi";
-    vector<string>splittedStr=splitString(str, ' ');
-    for(auto &vals: splittedStr)
-        cout<<vals<<endl;
-    return 0;
+int main(){
+	ios_base::sync_with_stdio(false);
+	cin.tie(nullptr);
+	vector<ll>res;
+	ll ans=0;
+	std::ifstream infile("input.txt");
+	std::string line;
+	while (getline(infile, line))
+	{
+		std::istringstream iss(line);
+		string s;
+		if (!(iss>>s)) { break; }
+		cout<<s<<endl;
+		stack<char>stk;
+		bool flag=false;
+		for(int i=0; i<s.length(); ++i){
+			if(s[i]=='{'||s[i]=='('||s[i]=='['||s[i]=='<'){
+				stk.push(s[i]);
+			}
+			else if((s[i]==')'&&stk.top()=='{')||(s[i]==')'&&stk.top()=='[')||(s[i]==')'&&stk.top()=='<')){
+				flag=true;
+				break;
+			} else if((s[i]=='}'&&stk.top()=='(')||(s[i]=='}'&&stk.top()=='[')||(s[i]=='}'&&stk.top()=='<')){
+				flag=true;
+				break;
+			} else if((s[i]==']'&&stk.top()=='(')||(s[i]==']'&&stk.top()=='{')||(s[i]==']'&&stk.top()=='<')){
+				flag=true;
+				break;
+			} else if((s[i]=='>'&&stk.top()=='(')||(s[i]=='>'&&stk.top()=='{')||(s[i]=='>'&&stk.top()=='[')){
+				flag=true;
+				break;
+			}
+			else{
+				if(!stk.empty()){
+					stk.pop();
+				}
+			}
+		}
+		if(!flag){
+			vector<char>temp_;
+			while(!stk.empty()){
+				temp_.push_back(stk.top());
+				stk.pop();
+			}
+			ll currScore=0;
+			for(auto &vals: temp_){
+				currScore*=5;
+				currScore+=(vals=='['?2:vals=='('?1:vals=='{'?3:vals=='<'?4:0);
+				//cout<<vals<<" ";
+			}
+			res.push_back(currScore);
+		}
+		//cout<<endl;
+	}
+	sort(res.begin(), res.end());
+	int n_=res.size();
+	ans=res[n_/2];
+	for(auto &vals: res)
+		cout<<vals<<" ";
+	cout<<endl;
+	cout<<"-------\n";
+	cout<<ans;
 }

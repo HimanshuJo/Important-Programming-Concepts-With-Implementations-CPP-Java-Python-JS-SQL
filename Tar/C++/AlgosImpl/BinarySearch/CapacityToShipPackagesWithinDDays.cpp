@@ -101,17 +101,19 @@ public:
         int maxWeight=*max_element(weights.begin(), weights.end());
         int smWeights=0;
         for(auto &vals: weights){
-        	smWeights+=vals;
+            smWeights+=vals;
         }
         int left=maxWeight, right=smWeights;
-        while(left<right){
-        	int mid=left+(right-left)/2;
-        	if(isValid(mid, weights, days)){
-        		right=mid;
-        	} else{
-        		left=mid+1;
-        	}
+        int ans=0;
+        while(left<=right){
+            int mid=left+(right-left)/2;
+            if(isValid(mid, weights, days)){
+                ans=mid;
+                right=mid-1;
+            } else{
+                left=mid+1;
+            }
         }
-        return left;
+        return ans;
     }
 };

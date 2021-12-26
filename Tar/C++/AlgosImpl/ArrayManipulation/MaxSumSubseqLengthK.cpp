@@ -6,7 +6,9 @@ Output: 3 4 5
 Explanation: Subsequece 3 4 5 with sum 12 is the subsequence with maximum possible sum.
 
 Approach: The task can be solved using Greedy Approach.
-The idea is to take the maximum possible elements from arr[] in the subsequence. Follow the steps below to solve the problem.
+The idea is to take the maximum possible elements from arr[] in the subsequence. 
+
+Follow the steps below to solve the problem.
 
 Declare a vector of pairs container say, use[] to store elements with their indices.
 Traverse arr[] and push all the elements in use[] with their indices.
@@ -24,13 +26,12 @@ using namespace std;
 
 // Function to find the subsequence
 // with maximum sum of length K
-vector<int> maxSumSubsequence(vector<int>& arr, int N,
-                              int K)
+vector<int> maxSumSubsequence(vector<int>& arr, int N, int K)
 {
 
 	// Use an extra array to keep
 	// track of indices while sorting
-	vector<pair<int, int> > use;
+	vector<pair<int, int>> use;
 
 	for (int i = 0; i < N; i++) {
 		use.push_back({ arr[i], i });

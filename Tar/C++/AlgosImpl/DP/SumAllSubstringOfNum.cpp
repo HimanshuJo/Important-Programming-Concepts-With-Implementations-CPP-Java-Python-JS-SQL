@@ -38,7 +38,7 @@
 			           = 4*4 + 10*(sumofdigit[2])
 			In general, 
 				
-				sumofdigit[i]  =  (i+1)* num[i] + 10 * sumofdigit[i-1]
+				sumofdigit[i]  =  (i+1) * num[i] + 10 * sumofdigit[i-1]
 
 	-------
 */
@@ -48,8 +48,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// Utility method to convert character digit to
-// integer digit
 int toDigit(char ch)
 {
 	return (ch - '0');
@@ -59,12 +57,8 @@ int toDigit(char ch)
 int sumOfSubstrings(string num)
 {
 	int n = num.length();
-
-	// storing prev value
 	int prev = toDigit(num[0]);
-
-	int res = prev; // ans
-
+	int res = prev;
 	int current = 0;
 
 	// substrings sum upto current index
@@ -83,7 +77,6 @@ int sumOfSubstrings(string num)
 	return res;
 }
 
-// Driver code to test above methods
 int main()
 {
 	string num = "1234";

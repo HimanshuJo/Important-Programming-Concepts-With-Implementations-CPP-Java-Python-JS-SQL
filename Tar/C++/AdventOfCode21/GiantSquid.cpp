@@ -2,6 +2,7 @@
 #include<vector>
 #include<string>
 #include<sstream>
+#include<set>
 using namespace std;
 using ll=long long;
 
@@ -46,47 +47,53 @@ int main(){
 	cin.tie(nullptr);
 	string order;
 	cin>>order;
-	vector<vector<vector<int>>>bingos(599, vector<vector<int>>(5, vector<int>(5)));
-	vector<vector<vector<bool>>>binB(599, vector<vector<bool>>(5, vector<bool>(5, false)));
+	int sz=599;
+	vector<vector<vector<int>>>bingos(sz, vector<vector<int>>(5, vector<int>(5)));
+	vector<vector<vector<bool>>>binB(sz, vector<vector<bool>>(5, vector<bool>(5, false)));
 	vector<string>nwOrders=splitString(order, ',');
-	for(int i=0; i<599; ++i){
+	for(int i=0; i<sz; ++i){
 		for(int x=0; x<5; ++x){
 			for(int y=0; y<5; ++y){
 				cin>>bingos[i][x][y];
 			}
 		}
 	}
+	set<int>st;
 	int fnIdx=0;
-	int fnNum=0;
+	int fnNum=1;
+	int n=bingos.size();
 	for(string str: nwOrders){
 		int vals=stoi(str);
-		//bool flag=false;
-		for(int i=0; i<bingos.size(); ++i){
+		bool flag=false;
+		for(int i=0; i<n; ++i){
 			vector<vector<int>>curr=bingos[i];
 			for(int x=0; x<5; ++x){
 				for(int y=0; y<5; ++y){
 					if(curr[x][y]==vals){
 						binB[i][x][y]=true;
 						if(isValid(binB[i])){
-							//flag=true;
+							st.insert(i);
+						}
+						if(st.size()==n){
 							fnIdx=i;
 							fnNum=vals;
-							//break;
+							flag=true;
+							break;
 						}
 					}
 				}
-				//if(flag) break;
+				if(flag) break;
 			}
-			//if(flag) break;
+			if(flag) break;
 		}
-		//if(flag) break;
+		if(flag) break;
 	}
 	vector<vector<int>>fn=bingos[fnIdx];
 	vector<vector<bool>>fnB=binB[fnIdx];
 	ll sum=0;
 	for(int i=0; i<5; ++i){
 		for(int j=0; j<5; ++j){
-			if(fnB[i][j]==false){
+			if(!fnB[i][j]){
 				sum+=fn[i][j];
 			}
 		}

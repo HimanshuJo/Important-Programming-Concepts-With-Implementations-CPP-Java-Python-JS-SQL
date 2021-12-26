@@ -3,7 +3,8 @@
 You are given an integer n, which indicates that there are n courses labeled from 1 to n.
 You are also given a 2D integer array relations where relations[j] = [prevCoursej, nextCoursej] denotes that
 course prevCoursej has to be completed before course nextCoursej (prerequisite relationship).
-Furthermore, you are given a 0-indexed integer array time where time[i] denotes how many months it takes to complete the (i+1)th course.
+Furthermore, you are given a 0-indexed integer array time where time[i] denotes how many months 
+it takes to complete the (i+1)th course.
 
 You must find the minimum number of months needed to complete all the courses following these rules:
 
@@ -11,7 +12,8 @@ You may start taking a course at any time if the prerequisites are met.
 Any number of courses can be taken at the same time.
 Return the minimum number of months needed to complete all the courses.
 
-Note: The test cases are generated such that it is possible to complete every course (i.e., the graph is a directed acyclic graph).
+Note: The test cases are generated such that it is possible to complete every course 
+(i.e., the graph is a directed acyclic graph).
 
 Input: n = 5, relations = [[1,5],[2,5],[3,5],[3,4],[4,5]], time = [1,2,3,4,5]
 Output: 12
@@ -41,30 +43,30 @@ public:
 
 		// Here, dp[i] is the lowest time take to complete ith course
 
-		vector<int> dp(n + 1, -1);
+		vector<int> memo(n + 1, -1);
 		for (int i = 1; i <= n; i++)
 		{
-			if (dp[i] == -1)
-				dp[i] = dfs(i, adj, time, dp);
+			if (memo[i] == -1)
+				memo[i] = dfs(i, adj, time, dp);
 		}
 
 		// among the least times taken to complete each course... take max
-		return *max_element(dp.begin(), dp.end());
+		return *max_element(memo.begin(), memo.end());
 	}
 
-	int dfs(int node, const vector<int> adj[], const vector<int>& time, vector<int>& dp)
+	int dfs(int node, const vector<int> adj[], const vector<int>& time, vector<int>& memo)
 	{
-		if (dp[node] != -1) return dp[node];
+		if (memo[node] != -1) return memo[node];
 
 		// we can only start a perticular course when all the children (prerequisites)
 		// are finish
 		int timeToStart = 0;
 		for (int child : adj[node])
 		{
-			timeToStart = max(timeToStart, dfs(child, adj, time, dp));
+			timeToStart = max(timeToStart, dfs(child, adj, time, memo));
 		}
 
 		// time to complete the course = timeToStart + timeToComplete
-		return dp[node] = (timeToStart + time[node - 1]);
+		return memo[node] = (timeToStart + time[node - 1]);
 	}
 };

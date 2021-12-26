@@ -13,7 +13,8 @@ Example 1:
 
 Input: bloomDay = [1,10,3,10,2], m = 3, k = 1
 Output: 3
-Explanation: Let's see what happened in the first three days. x means flower bloomed and _ means flower didn't bloom in the garden.
+Explanation: Let's see what happened in the first three days. x means flower bloomed and _ means 
+flower didn't bloom in the garden.
 We need 3 bouquets each should contain 1 flower.
 After day 1: [x, _, _, _, _]   // we can only make one bouquet.
 After day 2: [x, _, _, _, x]   // we can only make two bouquets.
@@ -88,14 +89,16 @@ public:
         int sz=bloomDay.size();
         if(m*k>sz) return -1;
         int left=1, right=*max_element(bloomDay.begin(), bloomDay.end());
-        while(left<right){
-        	int mid=left+(right-left)/2;
-        	if(isValid(bloomDay, mid, k, m)){
-        		right=mid;
-        	} else{
-        		left=mid+1;
-        	}
+        int ans=0;
+        while(left<=right){
+            int mid=left+(right-left)/2;
+            if(isValid(bloomDay, mid, k, m)){
+                ans=mid;
+                right=mid-1;
+            } else{
+                left=mid+1;
+            }
         }
-        return left;
+        return ans;
     }
 };

@@ -52,7 +52,7 @@ For example when calculating dp[0,3] and picking index 2 as the last balloon to 
 max = maximum value of bursting all the balloon on the left side of 5 + maximum value of bursting all the balloon 
 on the right side of 5 + bursting balloon 5 when left side and right side are gone.
 
-That is dp[0, 1] + nums[0 - 1] * nums[2] * nums[3 + 1] + + dp[3,3];
+That is dp[0, 1] + nums[0 - 1] * nums[2] * nums[3 + 1] + dp[3,3];
 
 That is dp[left, k - 1] + nums[left - 1] * nums[k] * nums[right + 1] + dp[k+1, right] ;
 */

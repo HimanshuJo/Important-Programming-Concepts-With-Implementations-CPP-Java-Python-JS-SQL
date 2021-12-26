@@ -1,26 +1,65 @@
-def solve():
-	n, m = map(int, input().split(' '))
-	a = list(input())
+with open('input.txt') as f:
+    lines = f.readlines()
 
-	num = 0
-	for i in range(n - 2):
-		if (''.join(a[i:i + 3]) == 'abc'):
-			num += 1
+# representing the graph as a map
+graph = {}
 
-	for i in range(m):
-		index, ch = input().split(' ')
-		index = int(index) - 1
+for line in [ i.rstrip() for i in lines]:
+    pointA , pointB = line.split("-")
+    for a,b in [(pointA,pointB),(pointB,pointA)]:
+        # these should only appear on one side of the map
+        if a != "end" and b != "start": 
+            if a not in graph:
+                graph[a] = []
+            graph[a].append(b)
 
-		for j in range(max(0, index - 2), index + 1):
-			if (''.join(a[j:j + 3]) == 'abc'):
-				num -= 1
+print(graph)
 
-		a[index] = ch
+def travel(presentCave,smallCavesTravelled):
 
-		for j in range(max(0, index - 2), index + 1):
-			if (''.join(a[j:j + 3]) == 'abc'):
-				num += 1
+    count = 0
 
-		print(num)
+    if presentCave == "end":
+        return 1
 
-solve()
+    if presentCave.islower():
+        smallCavesTravelled.append(presentCave)
+
+    for caveChoice in graph[presentCave]:
+        if caveChoice not in smallCavesTravelled:
+            count += travel(caveChoice,smallCavesTravelled.copy())
+
+    return count
+
+def travelOneSmallCaveTwice(presentCave,smallCavesTravelled,smallCaveTravelledTwice):
+
+    c = 0
+
+    if presentCave == "end":
+        return 1
+
+    if presentCave.islower():
+        if presentCave in smallCavesTravelled:
+            smallCaveTravelledTwice.append(presentCave)
+        else:
+            smallCavesTravelled.append(presentCave)
+
+    for caveChoice in graph[presentCave]:
+       
+        if caveChoice not in smallCavesTravelled or\
+            (caveChoice in smallCavesTravelled and len(smallCaveTravelledTwice) == 0):
+            c += travelOneSmallCaveTwice(caveChoice,smallCavesTravelled.copy(),
+                    smallCaveTravelledTwice.copy())
+
+    return c
+
+countSolution1 = 0
+countSolution2 = 0
+
+for a in graph['start']:
+    # print("Start")
+    countSolution1 += travel(a,[])
+    countSolution2 += travelOneSmallCaveTwice(a,[],[])
+
+print("solution 1",countSolution1)
+print("solution 2",countSolution2)

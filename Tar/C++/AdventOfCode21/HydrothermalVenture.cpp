@@ -6,62 +6,75 @@
 using namespace std;
 using ll=long long;
 
-vector<string> splitString(string str, char delimiter) { 
-	vector<string> internal; 
-	stringstream ss(str); 
-	string tok; 
-	while(getline(ss, tok, delimiter)) { 
-		internal.push_back(tok); 
-	} 
-	return internal;
-}
-
-void eraseAllSubStr(std::string & mainStr, const std::string & toErase)
-{
-	size_t pos = std::string::npos;
-	while ((pos  = mainStr.find(toErase) )!= std::string::npos)
-	{
-		mainStr.erase(pos, toErase.length());
+int drwHorizontalLine(vector<vector<int>>&grd, int y1, int x1, int x2){
+	int intersections=0;
+	int bgn=min(x1, x2);
+	int end=max(x1, x2);
+	for(int i=bgn; i<=end; ++i){
+		grd[i][y1]+=1;
+		if(grd[i][y1]==2){
+			intersections+=1;
+		}
 	}
+	return intersections;
 }
 
-void remove_extra_whitespaces(const string &input, string &output)
-{
-	output.clear();
-	unique_copy (input.begin(), input.end(), back_insert_iterator<string>(output),
-			[](char a,char b){ return isspace(a) && isspace(b);});  
+int drwVerticalLine(vector<vector<int>>&grd, int x1, int y1, int y2){
+	int intersections=0;
+	int bgn=min(y1, y2);
+	int end=max(y1, y2);
+	for(int i=bgn; i<=end; ++i){
+		grd[x1][i]+=1;
+		if(grd[x1][i]==2){
+			intersections+=1;
+		}
+	}
+	return intersections;
+}
+
+int drwDiagonalLine(vector<vector<int>>&grd, int x1, int y1, int x2, int y2){
+	int intersections=0;
+	int end=abs(x2-x1);
+	for(int i=0; i<=end; ++i){
+		grd[x1][y1]+=1;
+		if(grd[x1][y1]==2){
+			intersections+=1;
+		}
+		x1=x2>x1?x1+1:x1-1;
+		y1=y2>y1?y1+1:y1-1;
+	}
+	return intersections;
 }
 
 int main(){
 	ios_base::sync_with_stdio(false);
 	cin.tie(nullptr);
-	int n=10;
-	vector<vector<pair<int, int>>>segs(n);
+	int n=500;
+	vector<vector<int>>segs(n);
+	int maxx=INT_MIN;
 	for(int i=0; i<n; ++i){
-		string in;
-		cin>>in;
-		eraseAllSubStr(in, "->");
-		string output="";
-		remove_extra_whitespaces(in, output);
-		int n=output.length();
-		for(int i=0; i<n; ++i){
-			if(output[i]==' '){
-				output[i]=',';
-			}
-		}
-		vector<string>fn=splitString(output, ',');
-		for(auto &vals: fn)
-			cout<<vals<<endl;
-		cout<<"-------\n";
-		/*int x1=stoi(fn[0]), y1=stoi(fn[1]), x2=stoi(fn[2]), y2=stoi(fn[3]);
-		vector<pair<int, int>>curr={{x1, y1}, {x2, y2}};
-		sort(curr.begin(), curr.end());
-		segs.push_back(curr);*/
+		int x1, y1, x2, y2;
+		cin>>x1>>y1>>x2>>y2;
+		segs[i]={x1, y1, x2, y2};
+		if(x1>maxx) maxx=x1;
+		if(y1>maxx) maxx=y1;
+		if(x2>maxx) maxx=x2;
+		if(y2>maxx) maxx=y2;
 	}
+	cout<<"maxx "<<maxx<<endl;
+	int ans=0;
+	vector<vector<int>>grd(maxx+1, vector<int>(maxx+1, 0));
 	for(auto &vals: segs){
-		for(auto &pairs: vals){
-			cout<<pairs.first<<" "<<pairs.second<<endl;
+		vector<int>curr=vals;
+		if(curr[0]==curr[2]){
+			ans+=drwVerticalLine(grd, curr[0], curr[1], curr[3]);
+		} else if(curr[1]==curr[3]){
+			ans+=drwHorizontalLine(grd, curr[1], curr[0], curr[2]);
+		} else{
+			ans+=drwDiagonalLine(grd, curr[0], curr[1], curr[2], curr[3]);
 		}
-		cout<<endl;
 	}
+	cout<<"-------\n";
+	cout<<ans<<endl;
 }
+

@@ -237,7 +237,7 @@ void dispTreeDFS(struct Node* head){
 
 void dispTreeDFS2(struct Node* head){
 	if(head==NULL) cout<<"NULL\n";
-	stack<struct Node*>stk;
+	st1ack<struct Node*>stk;
 	stk.push(head);
 	while(!stk.empty()){
 		struct Node* currHead=stk.top();

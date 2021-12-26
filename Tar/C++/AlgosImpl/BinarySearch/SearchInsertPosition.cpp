@@ -34,16 +34,20 @@ class Solution:
 class Solution {
 public:
 	int searchInsert(vector<int>& nums, int target) {
+		int N = nums.size();
 		int left = 0, right = nums.size();
-		while (left < right) {
+		if (target > nums[N - 1]) return N;
+		int ans = 0;
+		while (left <= right) {
 			int mid = left + (right - left) / 2;
 			if (nums[mid] >= target) {
-				right = mid;
+				ans = mid;
+				right = mid - 1;
 			}
 			else {
 				left = mid + 1;
 			}
 		}
-		return left;
+		return ans;
 	}
 };

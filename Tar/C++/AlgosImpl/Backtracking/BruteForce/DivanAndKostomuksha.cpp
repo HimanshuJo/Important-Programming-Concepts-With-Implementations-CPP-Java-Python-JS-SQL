@@ -35,8 +35,7 @@ int gcd(int A, int B){
 }
 
 void dfs(vector<int>&tmp, vector<int>&currsub, vector<bool>&visited){
-    if(currsub.size()>tmp.size()) return;
-    if(currsub.size()==tmp.size()) return;
+    if(currsub.size()>=tmp.size()) return;
     for(int i=0; i<tmp.size(); ++i){
         if(!visited[i]){
             if(currsub.size()==0){

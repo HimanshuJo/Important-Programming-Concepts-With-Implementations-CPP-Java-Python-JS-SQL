@@ -31,9 +31,8 @@ public:
 	unordered_set<string>memo;
 
 	void dfs(vector<int>&digits, string num, vector<bool>visited){
-		if(num.size()>3) return;
+		if(num.size()>=3) return;
 		if(num.size()==2&&memo.count(num)>0) return;
-		if(num.size()==3) return;
 		for(int i=0; i<digits.size(); ++i){
 			if(!visited[i]){
 				if(num.size()==0){

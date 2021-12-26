@@ -34,11 +34,13 @@ In order to find the length of the longest common sequence, we make use of a rec
 which returns the length of the longest common sequence among the strings s1 and s2 considering their 
 lengths upto i and j respectively. For evaluating the function, we check if the characters s1[m-1] and s2[n-1] for equality.
 If they match, we can consider the corresponding strings upto 1 lesser lengths since the last characters have already been 
-considered and add 1 to the result to be returned for strings of 1 lesser lengths. Thus, we make the function call lcs(s1, s2, i-1, j-1).
+considered and add 1 to the result to be returned for strings of 1 lesser lengths. 
+Thus, we make the function call lcs(s1, s2, i-1, j-1).
 
 If the last characters don't match, we have two options, either we can consider the second last 
 character of s1 and the last character of s2, or we can consider the second last character of s2 
-and the last character of s1. We need to consider the larger result obtained out of the two considerations for getting the required length.
+and the last character of s1. We need to consider the larger result obtained out of the two considerations 
+for getting the required length.
 
 Thus, the function call lcs(s1,s2,m,n) returns the required lcs value.
 
@@ -132,7 +134,7 @@ where mm and nn refer to the lengths of s1 and s2. dp[m][n] now refers to the le
 class Solution {
   public:
     int minDistance(string s1, string s2) {
-      vector < vector < int >> dp(s1.length() + 1, vector < int > (s2.length() + 1, 0));
+      vector<vector<int>> dp(s1.length() + 1, vector<int>(s2.length() + 1, 0));
       for (int i = 0; i <= s1.length(); ++i) {
         for (int j = 0; j <= s2.length(); ++j) {
           if (i == 0 || j == 0) continue;
