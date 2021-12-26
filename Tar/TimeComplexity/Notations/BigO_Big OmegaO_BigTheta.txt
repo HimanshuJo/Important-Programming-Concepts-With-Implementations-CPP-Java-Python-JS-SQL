@@ -48,9 +48,9 @@ The equation simply means there exist positive constants C1 and C2 such that
 
 -------
 
-Difference Between Big oh, Big Omega and Big Theta:
+Difference Between Big O, Big Omega and Big Theta:
  
-	Big Oh 
+	Big O
 
 		It is like <=
 			
@@ -62,11 +62,11 @@ Difference Between Big oh, Big Omega and Big Theta:
 			
 			Asymptotic upper bond is given by Big O notation.
 
-		Big oh (O) – Worst case	Big Omega
+		Big O (O) – Worst case
 
 		Big-O is a measure of the longest amount of time it could possibly take for the algorithm to complete.
 
-		Mathematically – Big Oh is:
+		Mathematically – Big O is:
 			0 <= f(n) <= c g(n) for all n >= n0
 
 	-------
@@ -87,7 +87,7 @@ Difference Between Big oh, Big Omega and Big Theta:
 
 		Mathematically – Big Omega is:
 
-			O<= C g(n) <= f(n) for all n >= n0
+			O <= C g(n) <= f(n) for all n >= n0
 
 	-------
 
@@ -107,4 +107,4 @@ Difference Between Big oh, Big Omega and Big Theta:
 
 		Mathematically – Big Theta is:
 
-			O<= C2 g(n) <= f(n) <= C1 g(n) for n >= n0
+			O <= C2 g(n) <= f(n) <= C1 g(n) for n >= n0
