@@ -22,10 +22,10 @@ Step 3: init dp, init all dp[i][1] to prefix sum, since it does not split (only 
 
 Step 4: iterating all the dp[i][j]
 for i in [0, n - 1]:
-for j in [2, m]:
-for k in all possible splitting point in (this time we split only once, since the subproblem has been solved)
-[ 0 <- k -> (splitted with j - 1times)| (altogether, so not split) ]
-max(dp[k][j - 1], |prefix_sum[i] - prefix_sum[k]))
+	for j in [2, m]:
+		for k in all possible splitting point in (this time we split only once, since the subproblem has been solved)
+		[ 0 <- k -> (splitted with j - 1 times)| (altogether, so not split) ]
+			max(dp[k][j - 1], |prefix_sum[i] - prefix_sum[k]))
 
 Analysis:
 
@@ -69,5 +69,6 @@ int main(){
 	vector<int>nums{7,2,5,10,8};
 	int m=2;
 	Solution obj;
-	obj.splitArray(nums, m);
+	int ans=obj.splitArray(nums, m);
+	cout<<ans<<endl;
 }

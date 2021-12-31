@@ -53,7 +53,6 @@ Note:  Max heap is implemented with the help of min-heap, by negating the signs 
 #include<iostream>
 #include<vector>
 #include<algorithm>
-#include<queue>
 using namespace std;
 
 int KthLargestPairwiseProduct_solNaive(vector<int>&vec1, vector<int>&vec2, int k){
@@ -66,61 +65,12 @@ int KthLargestPairwiseProduct_solNaive(vector<int>&vec1, vector<int>&vec2, int k
 			ans.push_back(prod);
 		}
 	}
+	for(auto &vals: ans)
+		cout<<vals<<" ";
+	cout<<"\n-------\n";
 	sort(ans.begin(), ans.end());
 	reverse(ans.begin(), ans.end());
 	return ans[k-1];
-}
-
-int KthLargestPairwiseProduct_Effi(vector<int>&vec1, vector<int>&vec2, int k){
-	priority_queue<vector<int>, vector<vector<int>>>pq;
-	int n=vec1.size();
-	int m=vec2.size();
-	int smSz, bgSz;
-	vector<int>temp1;
-	vector<int>temp2;
-	if(n<m){
-		temp1=vec1;
-		temp2=vec2;
-		smSz=temp1.size();
-		bgSz=temp2.size();
-		sort(temp1.begin(), temp1.end());
-	} else if(m<n){
-		temp1=vec2;
-		temp2=vec1;
-		smSz=temp1.size();
-		bgSz=temp2.size();
-		sort(temp1.begin(), temp1.end());
-	}
-	int x=1;
-	int y=0;
-	for(int i=0; i<bgSz; ++i){
-		int currval=temp2[i];
-		if(currval>=0){
-			int prod=currval*temp1[smSz-x];
-			pq.push({prod, i, smSz-x});
-		} else{
-			int prod=currval*temp1[y];
-			pq.push({prod, i, y});
-		}
-	}
-	k--;
-	for(int i=0; i<k; ++i){
-		vector<int>curr=pq.top();
-		pq.pop();
-		int val=curr[0], i_=curr[1], j_=curr[2];
-		int next_j;
-		if(temp2[i_]<0){
-			next_j=j_+1;
-		} else{
-			next_j=j_-1;
-		}	
-		if(0<=next_j<smSz){
-			int newVal=temp2[i_]*temp1[next_j];
-			pq.push({newVal, i_, next_j});
-		}
-	}
-	int ans=pq.top()[0];
-	return ans;
 }
 
 int main(){
@@ -129,7 +79,4 @@ int main(){
 	int k=3;
 	int ans=KthLargestPairwiseProduct_solNaive(vec1, vec2, k);
 	cout<<ans;
-	cout<<"\n-------\n";
-	int ans_=KthLargestPairwiseProduct_Effi(vec1, vec2, k);
-	cout<<ans_;
 }

@@ -23,9 +23,11 @@ Then we compare each element belong nums and sortedArr, check if we can swap num
 If we can't swap nums[i] to become sortedArr[i] then return False
 Otherwise, if we can swap all pairs nums[i], sortedArr[i] then return True.
 To check if we can swap(nums[i], sortedArr[i]), we need Union-Find to group numbers the same factors together.
-Use sieve with time complexity O(N) to calculate spf[x] array, where spf[x] is the smallest prime factor of number x, where x >= 2.
+Use sieve with time complexity O(N) to calculate spf[x] array, 
+where spf[x] is the smallest prime factor of number x, where x >= 2.
 Then iterate each element num in nums:
-Get factors of num in O(logNum) since we use spf[x]. Otherwise if we brute force to get factors, time complexity will be O(sqrt(Num)).
+Get factors of num in O(logNum) since we use spf[x]. Otherwise if we brute force to get factors, 
+time complexity will be O(sqrt(Num)).
 Union num and their factors together.
 */
 class UnionFind {
@@ -63,6 +65,7 @@ public:
                 return false; // can't swap nums[i] with sortedArr[i]
         return true;
     }
+
     void sieve(int n) { // O(Nlog(logN)) ~ O(N)
         spf.resize(n);
         for (int i = 2; i < n; ++i) spf[i] = i;
@@ -72,6 +75,7 @@ public:
                 if (spf[j] > i) spf[j] = i; // update to the smallest prime factor of j
         }
     }
+
     vector<int> getPrimeFactors(int n) { // O(logN)
         vector<int> factors;
         while (n > 1) {

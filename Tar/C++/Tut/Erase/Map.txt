@@ -41,3 +41,20 @@ int main()
 	}
 	return 0;
 }
+
+Output:
+
+The first element is: {1, 40}
+The map is : KEY     ELEMENT
+1       40
+2       30
+3       60
+4       20
+5       50
+
+-------
+
+The new map is : 
+KEY     ELEMENT
+2       30
+4       20

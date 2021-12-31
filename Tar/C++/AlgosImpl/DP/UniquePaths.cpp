@@ -33,8 +33,7 @@ public:
         if (memo[rw][col] > 0) {
             return memo[rw][col];
         }
-        memo[rw][col] = getPath(rw, col - 1, memo, ans) + getPath(rw - 1, col, memo, ans);
-        return memo[rw][col];
+        return memo[rw][col] = getPath(rw, col - 1, memo, ans) + getPath(rw - 1, col, memo, ans);
     }
 
     int uniquePaths(int m, int n) {

@@ -137,7 +137,7 @@ int *constructST(int arr[], int n)
 // Driver program to test above functions
 int main()
 {
-	int arr[] = {1, 3, 5, 7, 9, 11};
+	int arr[] = {1, 2, 3, 4, 5, 6, 7};
 	int n = sizeof(arr) / sizeof(arr[0]);
 
 	// Build segment tree from given array
@@ -148,11 +148,10 @@ int main()
 
 	// Update: set arr[1] = 10 and update corresponding
 	// segment tree nodes
-	updateValue(arr, st, n, 1, 10);
+	//updateValue(arr, st, n, 1, 10);
 
 	// Find sum after the value is updated
 	cout << "Updated sum of values in given range = "
-	     << getSum(st, n, 1, 3) << endl;
+	     << getSum(st, n, 0, 2) << endl;
 	return 0;
 }
-//This code is contributed by rathbhupendra

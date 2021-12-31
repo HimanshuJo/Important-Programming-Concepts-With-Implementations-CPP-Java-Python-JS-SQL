@@ -8,14 +8,11 @@ class Solution
     int mod=1e9+7;
     void allSubSeqRec(string str, int n, int index, string curr)
     {
-        // base case
-        if (index == n || (curr.length()>1&&curr[0]=='0'))
-            return;
+        if (index == n || (curr.length()>1&&curr[0]=='0')) return;
 
         if (!curr.empty())
         {
             res.insert(curr);
-            //cout << curr << "\n";
         }
 
         for (int i = index + 1; i < n; i++)

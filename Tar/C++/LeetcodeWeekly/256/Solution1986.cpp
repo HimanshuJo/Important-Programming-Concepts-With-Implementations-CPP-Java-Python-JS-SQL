@@ -1,22 +1,22 @@
 // Minimum Number of Work Sessions to Finish the Tasks
 /*
-There are n tasks assigned to you. 
-The task times are represented as an integer array tasks of length n, 
-where the ith task takes tasks[i] hours to finish. 
-A work session is when you work for at most sessionTime consecutive 
+There are n tasks assigned to you.
+The task times are represented as an integer array tasks of length n,
+where the ith task takes tasks[i] hours to finish.
+A work session is when you work for at most sessionTime consecutive
 hours and then take a break.
 
-You should finish the given tasks in a way that satisfies the 
+You should finish the given tasks in a way that satisfies the
 following conditions:
 
-If you start a task in a work session, you must complete it 
+If you start a task in a work session, you must complete it
 in the same work session.
 You can start a new task immediately after finishing the previous one.
 You may complete the tasks in any order.
-Given tasks and sessionTime, return the minimum number of work 
+Given tasks and sessionTime, return the minimum number of work
 sessions needed to finish all the tasks following the conditions above.
 
-The tests are generated such that sessionTime is greater than 
+The tests are generated such that sessionTime is greater than
 or equal to the maximum element in tasks[i].
 
 Example 2:
@@ -43,32 +43,42 @@ When we do mask & (1<<i) we are checking if ith bit in mask is set or not.
 */
 #include<bits/stdc++.h>
 using namespace std;
+
 class Solution {
 public:
     int n, time, allOnes;
     int ans;
-    int dp[1<<15][16];
+
     int minSessions(vector<int>& a, int t) {
+        vector<vector<int>>memo(100000, vector<int>(16, -1));
         time = t;
         n = a.size();
-        allOnes = (1<<n)-1;
-        memset(dp, -1, sizeof dp);
-        ans = help(a, 0, 0);
+        allOnes = (1 << n) - 1;
+        ans=1;
+        ans = dfs(a, 0, 0, memo);
         return ans;
     }
-    
-    int help(vector<int> &a, int mask, int currTime){
-        if(currTime > time) return INT_MAX;
-        if(mask == allOnes) return 1;
-        if(dp[mask][currTime] != -1) return dp[mask][currTime];
+
+    int dfs(vector<int> &a, int mask, int currTime, vector<vector<int>>&memo) {
+        if (currTime > time) return INT_MAX;
+        if (mask == allOnes) return 1;
+        if (memo[mask][currTime] != -1) return memo[mask][currTime];
         int ans = INT_MAX;
-        for(int i = 0 ; i < n ; i++){
-            if( (mask & (1<<i)) == 0){
-                int includeInCurrentSession = help(a, mask | (1<<i), currTime + a[i]);
-                int includeInNextSession = 1 + help(a, mask | (1<<i), a[i]);
+        for (int i = 0 ; i < n ; i++) {
+            if ((mask & (1 << i)) == 0) {
+                int includeInCurrentSession = dfs(a, mask | (1 << i), currTime + a[i], memo);
+                int includeInNextSession = 1 + dfs(a, mask | (1 << i), a[i], memo);
                 ans = min({ans, includeInCurrentSession, includeInNextSession});
             }
         }
-        return dp[mask][currTime] = ans;
+        return memo[mask][currTime] = ans;
     }
 };
+
+int main() {
+    vector<int>tasks{3, 1, 3, 1, 1};
+    int sessionTime = 8;
+    Solution obj;
+    int ans = obj.minSessions(tasks, sessionTime);
+    cout << ans;
+}

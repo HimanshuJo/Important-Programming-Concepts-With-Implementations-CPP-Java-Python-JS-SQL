@@ -22,6 +22,9 @@ Then, the player went left, up, up, left to return home, picking up one more che
 The total number of cherries picked up is 5, and this is the maximum possible.
  */
 
+#include<bits/stdc++.h>
+using namespace std;
+
 class Solution {
 	public:
 		

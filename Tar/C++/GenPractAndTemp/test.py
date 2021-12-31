@@ -1,65 +1,84 @@
-with open('input.txt') as f:
-    lines = f.readlines()
+# Python program for above approach
+from heapq import heappush as push, heappop as pop
 
-# representing the graph as a map
-graph = {}
 
-for line in [ i.rstrip() for i in lines]:
-    pointA , pointB = line.split("-")
-    for a,b in [(pointA,pointB),(pointB,pointA)]:
-        # these should only appear on one side of the map
-        if a != "end" and b != "start": 
-            if a not in graph:
-                graph[a] = []
-            graph[a].append(b)
+def solve(a, b, k):
 
-print(graph)
+	# Sorting array b in ascending order
+	b.sort()
+	n, m = len(a), len(b)
 
-def travel(presentCave,smallCavesTravelled):
+	# Checking if size(a) > size(b)
 
-    count = 0
+	if (n < m):
 
-    if presentCave == "end":
-        return 1
+		# Otherwise swap the arrays
 
-    if presentCave.islower():
-        smallCavesTravelled.append(presentCave)
+		return solve(b, a, k)
 
-    for caveChoice in graph[presentCave]:
-        if caveChoice not in smallCavesTravelled:
-            count += travel(caveChoice,smallCavesTravelled.copy())
+	heap = []
 
-    return count
+	# Tarverse all elements in array a
+	for i in range(n):
 
-def travelOneSmallCaveTwice(presentCave,smallCavesTravelled,smallCaveTravelledTwice):
+		curr = a[i]
 
-    c = 0
+		# curr element is negative
+		if (curr < 0):
 
-    if presentCave == "end":
-        return 1
+			# Product with smallest value
+			val = curr * b[0]
 
-    if presentCave.islower():
-        if presentCave in smallCavesTravelled:
-            smallCaveTravelledTwice.append(presentCave)
-        else:
-            smallCavesTravelled.append(presentCave)
+			# Pushing negative val due to max heap
+			# and i as well jth index
+			push(heap, (-val, i, 0))
 
-    for caveChoice in graph[presentCave]:
-       
-        if caveChoice not in smallCavesTravelled or\
-            (caveChoice in smallCavesTravelled and len(smallCaveTravelledTwice) == 0):
-            c += travelOneSmallCaveTwice(caveChoice,smallCavesTravelled.copy(),
-                    smallCaveTravelledTwice.copy())
+		else:
 
-    return c
+			# Product with largest value
+			val = curr * b[-1]
 
-countSolution1 = 0
-countSolution2 = 0
+			# Pushing negative val due to max heap
+			# and i as well jth index
+			push(heap, (-val, i, m-1))
 
-for a in graph['start']:
-    # print("Start")
-    countSolution1 += travel(a,[])
-    countSolution2 += travelOneSmallCaveTwice(a,[],[])
+	# Subtract 1 due to zero indexing
+	k = k-1
 
-print("solution 1",countSolution1)
-print("solution 2",countSolution2)
+	# Remove k-1 largest items from heap
+	for _ in range(k):
+
+		val, i, j = pop(heap)
+		val = -val
+
+		# if a[i] is negative, increment ith index
+
+		if (a[i] < 0):
+			next_j = j + 1
+
+		# if a[i] is positive, decrement jth index
+		else:
+			next_j = j-1
+
+		# if index is valid
+		if (0 <= next_j < m):
+
+			new_val = a[i] * b[next_j]
+
+			# Pushing new_val in the heap
+			push(heap, (-new_val, i, next_j))
+
+	# Finally return first val in the heap
+	return -(heap[0][0])
+
+
+# Driver Code
+arr = [1, -2, 3]
+brr = [3, -4, 0]
+K = 3
+
+# Function Call
+val = solve(arr, brr, K)
+
+# Print the result
+print(val)
