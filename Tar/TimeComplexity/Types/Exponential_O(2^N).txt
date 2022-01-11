@@ -1,4 +1,3 @@
-
 Exponential Time — O(2^n)
 
     An algorithm is said to have an exponential time complexity when the growth

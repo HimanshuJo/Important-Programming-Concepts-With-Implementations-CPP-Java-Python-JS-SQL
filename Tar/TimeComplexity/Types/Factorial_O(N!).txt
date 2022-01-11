@@ -1,4 +1,3 @@
-
 Factorial — O(n!)
 
     An algorithm is said to have a factorial time complexity when it grows in a

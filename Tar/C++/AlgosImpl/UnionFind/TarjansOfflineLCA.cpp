@@ -65,7 +65,7 @@ int findSet(struct subset subsets[], int i)
 {
 	// find root and make root as parent of i (path compression)
 	if (subsets[i].parent != i)
-		subsets[i].parent = findSet (subsets, subsets[i].parent);
+		subsets[i].parent = findSet(subsets, subsets[i].parent);
 
 	return subsets[i].parent;
 }

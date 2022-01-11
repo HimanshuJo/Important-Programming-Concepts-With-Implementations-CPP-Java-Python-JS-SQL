@@ -1,16 +1,23 @@
 // D. Social Network
 /*
 William arrived at a conference dedicated to cryptocurrencies. 
-Networking, meeting new people, and using friends' connections are essential to stay up to date with the latest news from the world of cryptocurrencies.
+Networking, meeting new people, and using friends' connections are essential to stay up to date with the latest news from 
+the world of cryptocurrencies.
 
-The conference has n participants, who are initially unfamiliar with each other. William can introduce any two people, a and b, who were not familiar before, to each other.
+The conference has n participants, who are initially unfamiliar with each other. 
+William can introduce any two people, a and b, who were not familiar before, to each other.
 
-William has d conditions, i'th of which requires person xi to have a connection to person yi. Formally, two people x and y have a connection if there is such a 
+William has d conditions, i'th of which requires person xi to have a connection to person yi. 
+Formally, two people x and y have a connection if there is such a 
 chain p1=x,p2,p3,…,pk=y for which for all i from 1 to k−1 it's true that two people with numbers pi and pi+1 know each other.
 
-For every i (1<=i<=d) William wants you to calculate the maximal number of acquaintances one person can have, assuming that William satisfied all conditions 
-from 1 and up to and including i and performed exactly i introductions. The conditions are being checked after William performed i introductions. 
-The answer for each i must be calculated independently. It means that when you compute an answer for i, you should assume that no two people have been introduced to each other yet.
+For every i (1<=i<=d) William wants you to calculate the maximal number of acquaintances one person can have, 
+assuming that William satisfied all conditions 
+from 1 and up to and including i and performed exactly i introductions. 
+The conditions are being checked after William performed i introductions. 
+The answer for each i must be calculated independently. 
+
+It means that when you compute an answer for i, you should assume that no two people have been introduced to each other yet.
 
 input
 10 8
@@ -32,6 +39,7 @@ output
 6
 8
 */
+
 #include <bits/stdc++.h>
 using namespace std;
 

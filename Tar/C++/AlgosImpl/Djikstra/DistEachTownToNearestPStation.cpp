@@ -1,7 +1,8 @@
 /*
 Suppose there are n towns connected by m bidirectional roads. 
 There are s towns among them with a police station. 
-We want to find out the distance of each town from the nearest police station. If the town itself has one the distance is 0.
+We want to find out the distance of each town from the nearest police station. 
+If the town itself has one the distance is 0.
 
 Example:  
 
@@ -37,7 +38,8 @@ using namespace std;
 // we need an array that can store the distances of the vertices from the nearest source
 int dist[N];
 
-// we need an ordered set that contains the vertices not yet visited in increasing order of the distances from
+// we need an ordered set that contains the vertices not yet visited in increasing order 
+// of the distances from
 // the nearest source calculated till now
 set<pair<int, int>>Q;
 

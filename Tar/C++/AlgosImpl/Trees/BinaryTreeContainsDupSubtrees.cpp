@@ -36,7 +36,7 @@ const char MK='$';
 
 struct Node{
     char key;
-    struct Node* left, *right;
+    struct Node *left, *right;
     //Node* left, *right;
 };
 
@@ -49,6 +49,7 @@ struct Node* newNode(char key){
 }
 
 unordered_set<string>subtrees;
+
 string dupSubTreesUtil(Node* root){
     string s="";
     if (root==NULL){

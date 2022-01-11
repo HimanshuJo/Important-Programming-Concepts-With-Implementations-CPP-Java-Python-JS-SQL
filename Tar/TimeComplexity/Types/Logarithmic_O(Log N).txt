@@ -1,4 +1,3 @@
-
 Logarithmic Time — O(log n)
 
     An algorithm is said to have a logarithmic time complexity when it reduces the size of

@@ -34,7 +34,7 @@ public:
 			string snippet = s.substr(idx, len);
 			if ((stoi(snippet) > 255) || (snippet.size() > 1 && snippet[0] == '0')) break;
 
-			// Choose , explore , Unchoose
+			// Choose, explore, Unchoose
 			snippets.push_back(snippet);
 			decomposeIpAddresses(s, snippets, ipAddresses, idx + len);
 			snippets.pop_back();

@@ -1,43 +1,26 @@
-#include <bits/stdc++.h>
+#include<vector>
+#include<iostream>
+#include<algorithm>
 using namespace std;
 
-int main()
-{
-
-	// initialize container
-	map<int, int> mp;
-
-	// insert elements in random order
-	mp.insert({ 2, 30 });
-	mp.insert({ 1, 40 });
-	mp.insert({ 3, 60 });
-	mp.insert({ 4, 20 });
-	mp.insert({ 5, 50 });
-
-	auto ite = mp.cbegin();
-
-	cout << "The first element is: ";
-	cout << "{" << ite->first << ", "
-		 << ite->second << "}\n";
-
-	// prints the elements
-	cout << "\nThe map is : \n";
-	cout << "KEY\tELEMENT\n";
-	for (auto itr = mp.cbegin(); itr != mp.cend(); ++itr) {
-		cout << itr->first
-			 << '\t' << itr->second << '\n';
-	}
-	cout<<"\n-------\n";
-	for(auto itr=mp.cbegin(); itr!=mp.cend(); ++itr){
-		if(itr->first&1){
-			mp.erase(itr++);
-		} else itr++;
-	}
-	cout << "\nThe new map is : \n";
-	cout << "KEY\tELEMENT\n";
-	for (auto itr = mp.cbegin(); itr != mp.cend(); ++itr) {
-		cout << itr->first
-			 << '\t' << itr->second << '\n';
-	}
-	return 0;
+struct custComp{
+    const bool operator()(const pair<int, int>A, const pair<int, int>B) {
+        return A.second==B.second?A.first>B.first:A.second>B.second;
+    }
+};
+int main(){
+    vector<pair<int, int>>vec{{1, 1}, {2, 4},  {5, 2}, {8, 3}, {7, 1}};
+    sort(vec.begin(), vec.end(), custComp());
+    for(auto &vals: vec){
+        cout<<vals.first<<" "<<vals.second;
+        cout<<endl;
+    }
 }
+
+/*
+2 4
+8 3
+5 2
+7 1
+1 1
+*/

@@ -2,9 +2,11 @@
 #include<iostream>
 using namespace std;
 
+/*
 class UnionFind {
 public:
 	vector<int>parent;
+
 	UnionFind(int n) {
 		parent.resize(n + 1, -1);
 	}
@@ -35,6 +37,43 @@ public:
 		}
 	}
 };
+*/
+
+struct UnionFind{
+	vector<int>parent, rank, size;
+	int cntCmp;
+	UnionFind(int n): parent(n+1), rank(n+1, 0), size(n+1, 1), cntCmp(n){
+		for(int i=1; i<=n; ++i){
+			parent[i]=i;
+		}
+	}
+
+	int find(int i){
+		return (parent[i]==i?i:(parent[i]=find(parent[i])));
+	}
+
+	bool same(int i, int j){
+		return find(i)==find(j);
+	}
+
+	int getSize(int i){
+		return size[find(i)];
+	}
+
+	int count(){
+		return cntCmp;
+	}
+
+	void merge(int i, int j){
+		if((i=find(i))==(j=find(j))) return;
+		else cntCmp--;
+		if(rank[i]>rank[j])
+			swap(i, j);
+		parent[i]=j;
+		size[j]+=size[i];
+		if(rank[i]==rank[j]) rank[j]++;
+	}
+};
 
 class Solution {
 public:
@@ -44,7 +83,7 @@ public:
 		UnionFind unionFind(n);
 		for (int i = 0; i < m; ++i) {
 			UnionFind temp = unionFind;
-			temp.doUnion(requests[i][0], requests[i][1]);
+			temp.merge(requests[i][0], requests[i][1]);
 			bool flag = true;
 			for (vector<int>&vec : restrictions) {
 				if (temp.find(vec[0]) == temp.find(vec[1])) {
@@ -54,7 +93,7 @@ public:
 			}
 			if (flag) {
 				ans[i] = true;
-				unionFind.doUnion(requests[i][0], requests[i][1]);
+				unionFind.merge(requests[i][0], requests[i][1]);
 			}
 		}
 		return ans;
@@ -70,3 +109,5 @@ int main(){
 		cout<<(b==1?"true ":"false ");
 	}
 }
+
+// true false true false 

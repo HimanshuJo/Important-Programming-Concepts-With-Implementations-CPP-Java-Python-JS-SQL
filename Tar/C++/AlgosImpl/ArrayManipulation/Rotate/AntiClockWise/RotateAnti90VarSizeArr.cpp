@@ -23,12 +23,14 @@ void funcRotate(vector<vector<int>>&vec){
 		n--;
 	}
 	int N_=N-1;
+	// swap entries in columns
 	for(int i=0; i<N; ++i){
 		for(int j=0; j<N; ++j){
 			swap(vec[j][i], vec[N_-j][i]);
 			if(j==(N/2)-1) break;
 		}
 	}
+	// swap entries in a particular rows
 	for(int i=0; i<N; ++i){
 		for(int j=0; j<N; ++j){
 			swap(vec[i][j], vec[i][N_-j]);

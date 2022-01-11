@@ -32,6 +32,7 @@ i-left palindrome is NOT completely contained in center palindrome
 Above condition is satisfied when
 L[currentLeftPosition] > centerRightPosition – currentRightPosition
 */
+
 #include <bits/stdc++.h>
 using namespace std;
 char text[100];

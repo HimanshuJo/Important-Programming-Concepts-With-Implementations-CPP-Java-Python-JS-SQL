@@ -6,16 +6,16 @@ public:
 	int src, dest, weight;
 };
 
+struct Graph{
+public:
+	int V, E;
+	struct Edge* edge;
+};
+
 struct Subset{
 public:
 	int parent;
 	int rank;
-};
-
-struct Graph{
-public:
-	int V, E;
-	Edge* edge;
 };
 
 Graph* createGraph(int V, int E){
@@ -80,7 +80,7 @@ void KruskalMST(Graph* graph){
 }
 
 int main(){
-	int V=4;
+	int V=1000;
 	int E=5;
 	struct Graph* graph=createGraph(V, E);
 	graph->edge[0].src=0;

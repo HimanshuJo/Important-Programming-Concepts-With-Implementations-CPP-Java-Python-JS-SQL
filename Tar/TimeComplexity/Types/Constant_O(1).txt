@@ -1,4 +1,3 @@
-
 Constant Time — O(1):
 
     An algorithm is said to have a constant time when it is not dependent on the input data (n).

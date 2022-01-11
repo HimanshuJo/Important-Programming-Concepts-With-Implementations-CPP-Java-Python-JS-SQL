@@ -1,7 +1,6 @@
-
 Sorting a vector in C++ can be done by using std::sort(). 
 
-	It is defined in<algorithm> header. 
+	It is defined in <algorithm> header. 
 
 	To get a stable sort std::stable_sort is used. 
 
@@ -15,8 +14,7 @@ Sorting a vector in descending order can be done by using std::greater <>()
 
 -------
 
-// C++ program to sort a vector in non-decreasing
-// order.
+// C++ program to sort a vector in non-decreasing order.
 #include <bits/stdc++.h>
 using namespace std;
   
@@ -41,7 +39,11 @@ Sorted
 -------
 
 How to sort in descending order?
-sort() takes a third parameter that is used to specify the order in which elements are to be sorted. We can pass “greater()” function to sort in descending order. This function does comparison in a way that puts greater element before.
+
+sort() takes a third parameter that is used to specify the order in which elements 
+are to be sorted. We can pass “greater()” function to sort in descending order. 
+
+This function does comparison in a way that puts greater element before.
 
 
 // C++ program to sort a vector in non-increasing
@@ -107,4 +109,68 @@ int main()
 Output :
 
 Intervals sorted by start time : 
-[1, 9] [2, 4] [4, 7] [6, 8] 
+[1, 9] [2, 4] [4, 7] [6, 8]
+
+-------
+
+// version 1:
+
+#include<vector>
+#include<iostream>
+#include<algorithm>
+using namespace std;
+
+const bool custComp(const vector<int>A, const vector<int>B) {
+    return A[1]==B[1]?A[0]<B[0]:A[1]<B[1];
+}
+
+int main(){
+    vector<vector<int>>vec{{1, 1}, {2, 4},  {5, 2}, {8, 3}, {7, 1}};
+    sort(vec.begin(), vec.end(), custComp);
+    for(auto &vals: vec){
+        for(auto &nums: vals){
+            cout<<nums<<" ";
+        }
+        cout<<endl;
+    }
+}
+
+/*
+1 1
+7 1
+5 2
+8 3
+2 4
+*/
+
+-------
+
+// version 2
+
+#include<vector>
+#include<iostream>
+#include<algorithm>
+using namespace std;
+
+struct custComp{
+    const bool operator()(const pair<int, int>A, const pair<int, int>B) {
+        return A.second==B.second?A.first>B.first:A.second>B.second;
+    }
+};
+
+int main(){
+    vector<pair<int, int>>vec{{1, 1}, {2, 4},  {5, 2}, {8, 3}, {7, 1}};
+    sort(vec.begin(), vec.end(), custComp());
+    for(auto &vals: vec){
+        cout<<vals.first<<" "<<vals.second;
+        cout<<endl;
+    }
+}
+
+/*
+2 4
+8 3
+5 2
+7 1
+1 1
+*/

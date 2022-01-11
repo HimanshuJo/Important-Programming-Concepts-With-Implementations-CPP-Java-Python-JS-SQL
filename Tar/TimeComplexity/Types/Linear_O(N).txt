@@ -1,4 +1,3 @@
-
 Linear Time — O(n)
 
     An algorithm is said to have a linear time complexity when the running time

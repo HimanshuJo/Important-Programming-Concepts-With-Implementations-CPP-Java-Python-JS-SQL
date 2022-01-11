@@ -1,4 +1,3 @@
-
 Quadratic Time — O(n²)
 
     An algorithm is said to have a quadratic time complexity when it needs to

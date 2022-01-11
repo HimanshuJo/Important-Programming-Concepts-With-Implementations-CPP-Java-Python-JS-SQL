@@ -1,10 +1,9 @@
-
 Big Oh notation (O):
 
 	Big oh notation is used to describe asymptotic upper bound. 
 
 	Mathematically, if f(n) describe running time of an algorithm; 
-		f(n) is O(g(n)) if there exist positive constant C and no such that 
+		f(n) is O(g(n)) if there exist positive constant C and (n0) such that 
 
 			0 <= f(n) <= c g(n) for all n >= n0
 
@@ -21,7 +20,7 @@ Big Omega notation (Ω):
 
 	Let f(n) define running time of an algorithm; 
 
-		f(n) is said to be Ω(g(n)) if there exists positive constant C and (n 0) such that:
+		f(n) is said to be Ω(g(n)) if there exists positive constant C and (n0) such that:
 
 			O <= C g(n) <= f(n) for all n >= n0
 
@@ -39,9 +38,9 @@ Big Omega notation (Ω):
 
 	Mathematically:
 
-		O <= f(n) <= C 1 g(n) for n >= n0
+		O <= f(n) <= C1 g(n) for n >= n0
 
-		O <= C 2 g(n) <= f(n) for n >= n0
+		O <= C2 g(n) <= f(n) for n >= n0
 
 The equation simply means there exist positive constants C1 and C2 such that
 	f(n) is sandwich between C2 g(n) and C1 g(n).

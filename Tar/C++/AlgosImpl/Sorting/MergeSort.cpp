@@ -47,7 +47,7 @@ void mergeSort(vector<int> &arr) {
 
 
 int main() {
-    vector<int> arr = {-22, 1, 0, 3, 4, 8, 5};
+    vector<int> arr = { -22, 1, 0, 3, 4, 8, 5};
     mergeSort(arr);
     for (int num : arr) {
         cout << num << " ";

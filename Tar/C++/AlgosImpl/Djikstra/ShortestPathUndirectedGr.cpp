@@ -25,9 +25,9 @@ int minDistance(int dist[], bool sptSet[])
 // A utility function to print the constructed distance array
 void printSolution(int dist[])
 {
-	cout <<"Vertex \t Distance from Source" << endl;
+	cout << "Vertex \t Distance from Source" << endl;
 	for (int i = 0; i < V; i++)
-		cout << i+1 << " \t\t"<<dist[i]<< endl;
+		cout << i + 1 << " \t\t" << dist[i] << endl;
 }
 
 // Function that implements Dijkstra's single source shortest path algorithm
@@ -40,7 +40,7 @@ void dijkstra(int graph[V][V], int src)
 	bool sptSet[V]; // sptSet[i] will be true if vertex i is included in shortest
 	// path tree or shortest distance from src to i is finalized
 
-	// Initialize all distances as INFINITE and stpSet[] as false
+	// Initialize all distances as INFINITE and sptSet[] as false
 	for (int i = 0; i < V; i++)
 		dist[i] = INT_MAX, sptSet[i] = false;
 
@@ -48,7 +48,8 @@ void dijkstra(int graph[V][V], int src)
 	dist[src] = 0;
 
 	// Find shortest path for all vertices
-	for (int count = 0; count < V - 1; count++) {
+	for (int count = 0; count < V - 1; count++)
+	{
 		// Pick the minimum distance vertex from the set of vertices not
 		// yet processed. u is always equal to src in the first iteration.
 		int u = minDistance(dist, sptSet);
@@ -62,8 +63,7 @@ void dijkstra(int graph[V][V], int src)
 			// Update dist[v] only if is not in sptSet, there is an edge from
 			// u to v, and total weight of path from src to v through u is
 			// smaller than current value of dist[v]
-			if (!sptSet[v] && graph[u][v] && dist[u] != INT_MAX
-				&& dist[u] + graph[u][v] < dist[v])
+			if (!sptSet[v] && graph[u][v] && dist[u] != INT_MAX && dist[u] + graph[u][v] < dist[v])
 				dist[v] = dist[u] + graph[u][v];
 	}
 
@@ -85,7 +85,7 @@ int main()
 	// 					{ 0, 0, 0, 0, 0, 2, 0, 1, 6 },
 	// 					{ 8, 11, 0, 0, 0, 0, 1, 0, 7 },
 	// 					{ 0, 0, 2, 0, 0, 0, 6, 7, 0 } };
-    int v2[3][3]={{0,0,1}, {0,0,1}, {0,0,0}};
+	int v2[3][3] = {{0, 0, 1}, {0, 0, 1}, {0, 0, 0}};
 	dijkstra(v2, 0);
 
 	return 0;

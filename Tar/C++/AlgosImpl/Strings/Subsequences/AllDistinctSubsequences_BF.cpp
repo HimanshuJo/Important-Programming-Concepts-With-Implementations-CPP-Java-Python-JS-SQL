@@ -59,6 +59,4 @@ int main()
     }
 	sn.clear();
 	return 0;
-
-	// This code is contributed by Kishan Mishra
 }

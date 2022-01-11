@@ -1,49 +1,46 @@
-// CPP program to generate power set in
-// lexicographic order.
-#include <bits/stdc++.h>
+/*
+	Generate all possible subsequences of an array
+	e.g. int arr[1, 2, 1]
+	Output:
+		1 2 1
+		1 2
+		1 1
+		1
+		2 1
+		2
+		1
+		{}
+*/
+
+#include<iostream>
+#include<vector>
 using namespace std;
 
-// str : Stores input string
-// n : Length of str.
-// curr : Stores current permutation
-// index : Index in current permutation, curr
-vector<string>res;
-void allSubSeqRec(string str, int n, int index, string curr)
-{
-	// base case
-	if (index == n)
+void genAllSubSeq(vector<int>&arr, int n, int idx, vector<vector<int>>&allSubseq, vector<int>&subseq){
+	if(idx==n){
+		allSubseq.push_back(subseq);
+		if(subseq.size()==0){
+			allSubseq.push_back({});
+		}
 		return;
-
-	if (!curr.empty()) {
-		res.push_back(curr);
-        //cout << curr << "\n";
 	}
-
-	for (int i = index + 1; i < n; i++) {
-
-		curr += str[i];
-		allSubSeqRec(str, n, i, curr);
-
-		// backtracking
-		curr = curr.erase(curr.size() - 1);
-	}
-	return;
+	subseq.push_back(arr[idx]);
+	genAllSubSeq(arr, n, idx+1, allSubseq, subseq);
+	subseq.pop_back();
+	genAllSubSeq(arr, n, idx+1, allSubseq, subseq);
 }
 
-// Generates power set in lexicographic
-// order.
-void allSubSeq(string str)
-{
-	allSubSeqRec(str, str.size(), -1, "");
-}
-
-// Driver code
-int main()
-{
-	string str = "cab";
-	allSubSeq(str);
-    for (auto &entry: res){
-        cout<<entry<<" ";
-    }
-	return 0;
+int main(){
+	vector<int>arr{1, 2, 1};
+	int n=arr.size();
+	int idx=0;
+	vector<vector<int>>allSubseq;
+	vector<int>subseq;
+	genAllSubSeq(arr, n, idx, allSubseq, subseq);
+	for(auto &vals: allSubseq){
+		for(auto &nums: vals){
+			cout<<nums<<" ";
+		}
+		cout<<endl;
+	}
 }
