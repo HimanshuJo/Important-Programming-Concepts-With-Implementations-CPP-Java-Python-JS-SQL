@@ -1,0 +1,10 @@
+{% if lat_ques_list %}
+<ul>
+    {% for ques in lat_ques_list %}
+    <!--<li><a href="/polls/{{ques.id}}/">{{ques.ques_text}}</a></li> -->
+    <li><a href="{% url 'polls:detail' ques.id %}">{{ques.ques_text}}</a></li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No polls</p>
+{% endif %}

@@ -23,7 +23,9 @@ int knapSackRec(int W, int wt[], int val[], int i, int** dp)
 		return dp[i][W];
 	}
 	else {
-		dp[i][W] = max(val[i] + knapSackRec(W - wt[i], wt, val, i - 1, dp), knapSackRec(W, wt, val, i - 1, dp));
+		dp[i][W] = max(val[i] + 
+			       knapSackRec(W - wt[i], wt, val, i - 1, dp), 
+			       knapSackRec(W, wt, val, i - 1, dp));
 		return dp[i][W];
 	}
 }

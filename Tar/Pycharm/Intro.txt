@@ -1,0 +1,3 @@
+Go to line: ctrl+G
+
+reformat document: ctrl+atl+l

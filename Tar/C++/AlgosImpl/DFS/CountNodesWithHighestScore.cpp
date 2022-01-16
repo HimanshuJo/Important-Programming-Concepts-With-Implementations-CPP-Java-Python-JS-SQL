@@ -12,7 +12,7 @@ The score of the node is the product of the sizes of all those subtrees.
 Return the number of nodes that have the highest score.
 
 Input: parents = [-1,2,0,2,0]
-Output: 3
+Output: 3 
 Explanation:
 - The score of node 0 is: 3 * 1 = 3
 - The score of node 1 is: 4 = 4

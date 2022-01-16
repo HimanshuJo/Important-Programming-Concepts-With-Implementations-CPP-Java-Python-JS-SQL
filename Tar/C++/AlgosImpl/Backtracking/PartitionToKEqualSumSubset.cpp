@@ -11,7 +11,7 @@ Explanation: It's possible to divide it into 4 subsets (5), (1, 4), (2,3), (2,3)
 */
 
 /*
- public boolean canPartitionKSubsets(int[] a, int k) {
+    public boolean canPartitionKSubsets(int[] a, int k) {
         int sum = IntStream.of(a).sum();
         return k != 0 && sum % k == 0 && canPartition(0, a, new boolean[a.length], k, 0, sum / k);
     }
@@ -35,12 +35,12 @@ class Solution {
 public:
 
 	bool canPartition(int idx, vector<int>&nums, vector<bool>&seen, int k, int currSm, int target){
-		if(k==1) return true;
+		if(k==0) return true;
 		if(currSm==target){
 			return canPartition(0, nums, seen, k-1, 0, target);
 		}
 		for(int i=idx; i<nums.size(); ++i){
-			if(!seen[i]){
+			if(!seen[i]&&currSm+nums[i]<=target){
 				seen[i]=true;
 				if(canPartition(i+1, nums, seen, k , currSm+nums[i], target))
 					return true;

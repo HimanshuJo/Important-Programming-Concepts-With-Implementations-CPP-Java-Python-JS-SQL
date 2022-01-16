@@ -1,3 +1,34 @@
+// time complexity is O(E log V)
+/*
+Prim's:
+	It starts to build the Minimum Spanning Tree from any vertex in the graph.
+
+	It traverses one node more than one time to get the minimum distance.
+
+	Prim’s algorithm has a time complexity of O(V2), V being the number of vertices and 
+	can be improved up to O(E log V) using Fibonacci heaps.
+
+	Prim’s algorithm gives connected component as well as it works only on connected graph.
+
+	Prim’s algorithm runs faster in dense graphs.
+
+	Prim’s algorithm uses List Data Structure.
+
+Kruksal's:
+
+	It starts to build the Minimum Spanning Tree from the vertex carrying minimum weight in the graph.
+
+	It traverses one node only once.
+
+	Kruskal’s algorithm’s time complexity is O(E log V), V being the number of vertices.
+
+	Kruskal’s algorithm can generate forest(disconnected components) at any instant as well as it can work on disconnected components
+
+	Kruskal’s algorithm runs faster in sparse graphs.
+
+	Kruskal’s algorithm uses Heap Data Structure.
+*/
+
 #include<bits/stdc++.h>
 using namespace std;
 

@@ -16,8 +16,8 @@ void subsetsUtil(vector<int> &A, vector<vector<int>> &res, vector<int> &subset, 
 
 vector<vector<int>> subsets(vector<int> &A)
 {
-	vector<int> subset;
-	vector<vector<int>> res;
+	vector<int>subset;
+	vector<vector<int>>res;
 	int index = 0;
 	subsetsUtil(A, res, subset, index);
 	return res;
@@ -25,7 +25,7 @@ vector<vector<int>> subsets(vector<int> &A)
 
 int main()
 {
-	vector<int> array = {1,2,3,4,5,6,7,8};
+	vector<int> array = {1, 2, 3, 4, 5, 6, 7, 8};
 	vector<vector<int>> res = subsets(array);
 	for (int i = 0; i < res.size(); ++i)
 	{
