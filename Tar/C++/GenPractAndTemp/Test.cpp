@@ -1,35 +1,64 @@
-#include<iostream>
 #include<vector>
+#include<iostream>
 using namespace std;
+using ll=long long;
 
-int dfs(vector<int>&coordsSgn, vector<int>&spdLim, int n, vector<vector<int>>&memo, int idx, int currT, int k){
-	if(idx==n) return 0;
-	if(memo[idx][k]!=-1) return memo[idx][k];
-	int minT=INT_MAX;
-	for(int rem=0; rem<=k; ++rem){
-		if(idx+rem>=n) break;
-		int currDist=abs(coordsSgn[idx]-coordsSgn[idx+rem+1]);
-		int fct=spdLim[idx];
-		currT=(currDist*fct);
-		minT=min(minT, currT+dfs(coordsSgn, spdLim, n, memo, idx+rem+1, currT, k-rem));
-	}
-	return memo[idx][k]=minT;
-}
+const int mod=998244353;
+ll dp[1005][1005][2];
+
 
 int main(){
 	ios_base::sync_with_stdio(false);
 	cin.tie(nullptr);
-	int n, l, k;
-	cin>>n>>l>>k;
-	vector<int>coordsSgn(n+1);
-	for(int i=0; i<n; ++i)
-		cin>>coordsSgn[i];
-	coordsSgn[n]=l;
-	vector<int>spdLim(n);
-	vector<vector<int>>memo(n+1, vector<int>(n+1, -1));
-	for(int i=0; i<n; ++i)
-		cin>>spdLim[i];
-	int currT=0;
-	int ans=dfs(coordsSgn, spdLim, n, memo, 0, currT, k);
-	cout<<ans<<"\n";
+	string x, y;
+	cin>>x>>y;
+	int n=x.length(), m=y.length();
+	x.push_back('#'), y.push_back('#');
+	vector<ll>suff1(n+1);
+	suff1[n-1]=1;
+	for(int i=n-2; i>=0; --i){
+		int j;
+		for(j=i; j<n-1; ++j){
+			if(x[j]==x[j+1]) break;
+		}
+		suff1[i]=j-i+1;
+	}
+	cout<<"-------\n";
+	for(auto &vals: suff1){
+		cout<<vals<<" ";
+	}
+	cout<<"\n-------\n";
+	vector<ll>suff2(m+1);
+	suff2[m-1]=1;
+	for(int i=m-2; i>=0; --i){
+		int j;
+		for(j=i; j<m-1; ++j){
+			if(y[j]==y[j+1]) break;
+		}
+		suff2[i]=j-i+1;
+	}
+	for(auto &vals: suff2){
+		cout<<vals<<" ";
+	}
+	for(int i=0; i<1005; ++i){
+		for(int j=0; j<1005; ++j){
+			dp[i][j][0]=dp[i][j][1]=0;
+		}
+	}
+	for(int i=n-1; i>=0; --i){
+		for(int j=m-1; j>=0; --j){
+			dp[i][j][0]=(x[i]==x[i+1]?0:dp[i+1][j][0])+(x[i]==y[j]?0:dp[i+1][j][1])+(x[i]==y[j]?0:suff2[j]);
+			dp[i][j][0]%=mod;
+			dp[i][j][1]=(y[j]==y[j+1]?0:dp[i][j+1][1])+(x[i]==y[j]?0:dp[i][j+1][0])+(x[i]==y[j]?0:suff1[i]);
+			dp[i][j][1]%=mod;
+		}
+	}
+	ll ans=0;
+	for(int i=0; i<n; ++i){
+		for(int j=0; j<m; ++j){
+			ans=(ans+dp[i][j][0]+dp[i][j][1])%mod;
+		}
+	}
+	cout<<endl;
+	cout<<ans;
 }

@@ -19,17 +19,11 @@ int main(){
 		l--, r--;
 		string curr=s.substr(l, (r-l)+1);
 		int len=curr.length();
-        //cout<<curr<<endl;
-        //cout<<"-------\n";
 		stack<char>stk;
 		int count=0;
 		int left=0, right=len-1;
 		bool flag=false;
 		while(left<right){
-            /*cout<<"s left "<<curr[left]<<endl;
-            cout<<"s right "<<curr[right]<<endl;
-            cout<<"left "<<left<<endl;
-            cout<<"right "<<right<<endl;*/
 			if(curr[left]=='('){
 				stk.push(curr[left]);
 			}
@@ -41,8 +35,6 @@ int main(){
 			}
 			left++, right--;
             int tmpl=l+left, tmpr=r-left;
-            //cout<<"tmpl "<<tmpl<<endl;
-            //cout<<"tmpr "<<tmpr<<endl;
 			if(memo.find({tmpl, tmpr})!=memo.end()){
 				count+=memo[{tmpl, tmpr}];
 				ans[i]=count;
@@ -52,7 +44,6 @@ int main(){
 			}
 			if(flag) break;
 		}
-        //cout<<"count here "<<count<<endl;
 		if(!flag){
 			while(!stk.empty()) stk.pop();
 			for(int i_=l; i_<=r; ++i_){
@@ -72,3 +63,4 @@ int main(){
     for(auto &vals: ans)
         cout<<vals<<endl;
 }
+

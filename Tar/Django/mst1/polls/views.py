@@ -1,9 +1,30 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
+from django.urls import reverse
 from django.http import Http404
 from django.template import loader
 from django.shortcuts import get_object_or_404
-from .models import Ques
+from .models import Ques, Choice
+from django.views import generic
+from django.utils import timezone
+
+
+class IndexView(generic.ListView):
+    template_name = 'polls/index.html'
+    context_object_name = 'lat_ques_list'
+
+    def get_queryset(self):
+        return Ques.objects.filter(pub_date__lte=timezone.now()).order_by('-pub_date')[:5]
+
+
+class DetailView(generic.DetailView):
+    model = Ques
+    template_name = 'polls/detail.html'
+
+
+class ResultsView(generic.DetailView):
+    model = Ques
+    template_name = 'polls/results.html'
 
 
 def index(request):
@@ -42,9 +63,20 @@ def detail3(request, ques_id):
 
 
 def results(request, ques_id):
-    response = "Currently at ques %s"
-    return HttpResponse(response % ques_id)
+    ques = get_object_or_404(Ques, pk=ques_id)
+    return render(request, 'polls/results.html', {'ques': ques})
+    # response = "Currently at ques %s"
+    # return HttpResponse(response % ques_id)
 
 
 def vote(request, ques_id):
-    return HttpResponse("Current voting at ques %s." % ques_id)
+    ques = get_object_or_404(Ques, pk=ques_id)
+    try:
+        selected_choice = ques.choice_set.get(pk=request.POST['choice'])
+    except (KeyError, Choice.DoesNotExist):
+        return render(request, 'polls/detail.html', {'ques': ques, 'error_message': "No choice selected"})
+    else:
+        selected_choice.votes += 1
+        selected_choice.save()
+        return HttpResponseRedirect(reverse('polls:results', args=(ques.id,)))
+    # return HttpResponse("Current voting at ques %s." % ques_id)

@@ -45,7 +45,7 @@ string findLCP(string dict[], int n){
 }
 
 int main(){
-    string dict[]={"code","coder","coding","codable","codecs","codeless","cdependence"};
+    string dict[]={"coder","coder","codering","coderble","codercs","coderless","coderpendence"};
     int n=sizeof(dict)/sizeof(dict[0]);
     cout<<findLCP(dict, n);
     return 0;

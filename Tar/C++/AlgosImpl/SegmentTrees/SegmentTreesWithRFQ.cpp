@@ -1,3 +1,5 @@
+// Find frequency of a number in a given range
+// seg tree with 0 based indexing
 #include<vector>
 #include<iostream>
 #include<algorithm>
@@ -37,10 +39,9 @@ int query(int L, int R, int val){
 }
 
 int main(){
-	in={1, 2, 3, 4, 5, 6, 5, 4, 5, 6, 5};
+	in={1, 2, 2, 4, 5, 6, 5, 4, 5, 6, 5};
 	N=in.size();
 	segTree.resize(4*N-1);
 	build(0, N-1, 1);
-	cout<<(query(3, 9, 5));
+	cout<<(query(0, 2, 2));
 }
-
