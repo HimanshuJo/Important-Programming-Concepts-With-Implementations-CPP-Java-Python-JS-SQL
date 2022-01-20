@@ -1,5 +1,6 @@
 /*
-Best way to generate a target sum from an array of numbers. Numbers of an array can be used any number of times
+Best way to generate a target sum from an array of numbers. 
+Numbers of an array can be used any number of times
 */
 
 #include<vector>

@@ -34,11 +34,11 @@ class QuesIndexViewTests(TestCase):
         response = self.client.get(reverse('polls:index'))
         self.assertQuerysetEqual(response.context['lat_ques_list'], ['<Ques: Past ques.>'])
 
-    ''' def test_two_past_ques(self):
-        create_ques(ques_text="Past ques 1.", days=-30)
-        create_ques(ques_text="Past ques 2.", days=-5)
+    def test_two_past_ques(self):
+        create_ques(ques_text="Past ques1", days=-30)
+        create_ques(ques_text="Past ques2", days=-5)
         response = self.client.get(reverse('polls:index'))
-        self.assertQuerysetEqual(response.context['lat_ques_list'], ['<Ques:Past ques 2.>'], ['<Ques:Past ques 1.>'])'''
+        self.assertQuerysetEqual(response.context['lat_ques_list'], ['<Ques: Past ques2>', '<Ques: Past ques1>'])
 
 
 class QuesModelTest(TestCase):
@@ -56,3 +56,17 @@ class QuesModelTest(TestCase):
         time = timezone.now() - datetime.timedelta(hours=23, minutes=59, seconds=59)
         recent_ques = Ques(pub_date=time)
         self.assertIs(recent_ques.was_pub_recently(), True)
+
+
+class QuesDetailViewTests(TestCase):
+    def test_future_ques(self):
+        future_ques = create_ques(ques_text='Future ques', days=5)
+        url = reverse('polls:detail', args=(future_ques.id,))
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 404)
+
+    def test_past_ques(self):
+        past_ques = create_ques(ques_text='Past ques', days=-5)
+        url = reverse('polls:detail', args=(past_ques.id,))
+        response = self.client.get(url)
+        self.assertContains(response, past_ques.ques_text)
