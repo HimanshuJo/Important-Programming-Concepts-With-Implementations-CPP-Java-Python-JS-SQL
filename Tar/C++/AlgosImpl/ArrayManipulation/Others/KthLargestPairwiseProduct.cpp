@@ -16,7 +16,8 @@ Explaination: All product combinations in descending order are : [20, 15, 12, 9,
 
 /*
 Naive Approach: Generate all the possible products combination for each element in array arr[] with 
-each element in array brr[]. Then sort the array of results and return the Kth element of the results array.
+each element in array brr[]. Then sort the array of results and return 
+the Kth element of the results array.
 
 Time Complexity: O(N*M + (N+M) * Log(N+M))
 Auxiliary Space: O(N+M)
@@ -36,7 +37,9 @@ Negative:
 	In this case multiply with the smallest value, i.e. with the first element from array brr[]. 
 	This is due to the property of negation, as a larger value can be obtained by multiplying with the 
 	smallest one.
-Insert three values into heap such that : (product, i, j) where i & j are the indices of arrays arr[] and brr[]. 
+
+Insert three values into heap such that : (product, i, j) where i & j are the indices of arrays 
+arr[] and brr[]. 
 Now run a for loop K times and pop elements from the heap.
 Now check if the value present at arr[i] is positive or negative
 Positive:

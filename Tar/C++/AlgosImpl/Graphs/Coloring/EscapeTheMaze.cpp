@@ -1,16 +1,19 @@
 // E1. Escape The Maze (easy version)
 /*
-Vlad built a maze out of n rooms and n−1 bidirectional corridors. From any room u any other room v can be reached through a sequence of corridors. 
+Vlad built a maze out of n rooms and n−1 bidirectional corridors. 
+From any room u any other room v can be reached through a sequence of corridors. 
 Thus, the room system forms an undirected tree.
 
 Vlad invited k friends to play a game with them.
 
 Vlad starts the game in the room 1 and wins if he reaches a room other than 1, into which exactly one corridor leads.
 
-Friends are placed in the maze: the friend with number i is in the room xi, and no two friends are in the same room (that is, xi!=xj for all i!=j). 
+Friends are placed in the maze: the friend with number i is in the room xi, and no two friends are in the same room 
+(that is, xi!=xj for all i!=j). 
 Friends win if one of them meets Vlad in any room or corridor before he wins.
 
-For one unit of time, each participant of the game can go through one corridor. All participants move at the same time. Participants may not move. 
+For one unit of time, each participant of the game can go through one corridor. All participants move at the same time. 
+Participants may not move. 
 Each room can fit all participants at the same time.
 
 Friends know the plan of a maze and intend to win. Vlad is a bit afraid of their ardor. Determine if he can guarantee victory 

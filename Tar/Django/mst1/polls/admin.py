@@ -20,6 +20,8 @@ class QuesAdmin(admin.ModelAdmin):
                  ]
                  '''
     list_display = ('ques_text', 'pub_date', 'was_pub_recently')
+    list_filter = ['pub_date']
+    search_fields = ['ques_text']
     inlines = [ChoiceInline]
 
 

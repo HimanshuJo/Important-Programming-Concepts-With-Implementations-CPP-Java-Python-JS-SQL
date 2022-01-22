@@ -57,12 +57,6 @@ class Solution{
             up=upper_bound(nums.begin(), nums.end(), ins);
             int numsLThanIns=low-nums.begin();
             int numsBThanIns=nums.size()-(up-nums.begin());
-            if (numsLThanIns>nums.size()-1){
-                numsLThanIns=nums.size()-1;
-            }
-            if (numsBThanIns>nums.size()-1){
-                numsBThanIns=nums.size()-1;
-            }
             ans+=min(numsLThanIns, numsBThanIns);
             nums.push_back(ins);
         }

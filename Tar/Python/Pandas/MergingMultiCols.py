@@ -12,7 +12,7 @@
 # E.g:
 
 	ridership_cal_stations=ridership.merge(cal, on=['year', 'month', 'day'])\
-	.merge(stations, on='stattion_id')
+	.merge(stations, on='station_id')
 
 # -------
 
@@ -24,7 +24,7 @@
 	.merge(stations, on='station_id')
 
 	filter_criteria=((ridership_cal_stations['month']==7)&
-					 (ridership_cal_stations['day_type']=='Weekday')
+					 (ridership_cal_stations['day_type']=='Weekday')&
 					 (ridership_cal_stations['station_name']=='Wilson'))
 
 # -------

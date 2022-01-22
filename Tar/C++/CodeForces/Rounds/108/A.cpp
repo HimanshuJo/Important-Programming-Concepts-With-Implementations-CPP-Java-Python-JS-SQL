@@ -1,5 +1,5 @@
 // https://codeforces.com/contest/1519
-// 
+// https://codeforces.com/blog/entry/90212
 // A. Red and Blue Beans
 /*
 

@@ -42,7 +42,6 @@ void Graph::connectedComponents()
 		if (visited[v] == false) {
 			set<int>tmp;
 			DFSUtil(v, tmp, visited);
-			cout<<tmp.size()<<endl;
 			allComps.push_back(tmp);
 		}
 	}
@@ -55,7 +54,7 @@ void Graph::DFSUtil(int v, set<int>&tmp, bool visited[])
 	tmp.insert(v);
 	list<int>::iterator i;
 	for (i = adj[v].begin(); i != adj[v].end(); ++i)
-		if (!visited[*i]){
+		if (!visited[*i]) {
 			DFSUtil(*i, tmp, visited);
 		}
 }
@@ -76,20 +75,20 @@ void Graph::addEdge(int v, int w)
 
 int main()
 {
-	int N=5;
+	int N = 5;
 	Graph g(N);
 	g.addEdge(1, 0);
 	g.addEdge(2, 3);
 	g.addEdge(3, 4);
 	g.connectedComponents();
-	cout<<"No. connc. components: "<<allComps.size()<<endl;
+	cout << "No. connc. components: " << allComps.size() << endl;
 	cout << "Following are connected components \n";
-	cout<<"-------\n";
-	for(auto &vals: allComps){
-		for(auto &num: vals){
-			cout<<num<<" ";
+	cout << "-------\n";
+	for (auto &vals : allComps) {
+		for (auto &num : vals) {
+			cout << num << " ";
 		}
-		cout<<endl;
+		cout << endl;
 	}
 	return 0;
 }
