@@ -32,6 +32,50 @@ Explanation: Since there are already no fresh oranges at minute 0, the answer is
 class Solution {
 public:
     
+    bool isNotValid(const int newx, const int newy, const int rw, const int col, int seen[11][11], vector<vector<int>>&grid){
+        return (newx<0||newx>=rw||newy<0||newy>=col||grid[newx][newy]==0||seen[newx][newy]==1||grid[newx][newy]==2);
+    }
+    
+    int orangesRotting(vector<vector<int>>& grid) {
+        int rw=grid.size(), col=grid[0].size();
+        int dir[4][2]={{1, 0}, {-1, 0}, {0, -1}, {0, 1}};
+        int seen[11][11];
+        int freshCnt=0;
+        queue<pair<int, int>>q;
+        for(int i=0; i<rw; ++i)
+            for(int j=0; j<col; ++j){
+                seen[i][j]=-1;
+                if(grid[i][j]==1) freshCnt++;
+                if(grid[i][j]==2) q.push({i, j});
+            }
+        if(freshCnt==0) return 0;
+        int ans=0;
+        while(!q.empty()){
+            int sz=q.size();
+            ans++;
+            while(sz--){
+                int currCord[]={q.front().first, q.front().second};
+                seen[currCord[0]][currCord[1]]=1;
+                q.pop();
+                for(int x=0; x<4; ++x){
+                    int newx=currCord[0]+dir[x][0];
+                    int newy=currCord[1]+dir[x][1];
+                    if(!isNotValid(newx, newy, rw, col, seen, grid)){
+                        freshCnt=grid[newx][newy]==1?--freshCnt:freshCnt;
+                        if(freshCnt==0) return ans;
+                        q.push({newx, newy});
+                        seen[newx][newy]=1;
+                    }
+                }
+            }
+        }
+        return (freshCnt>0?-1:ans);
+    }
+};
+
+class Solution2 {
+public:
+    
     bool areValidCoords(int rw, int col, vector<vector<int>>&grid){
         return (rw>=0&&col>=0&&rw<grid.size()&&col<grid[0].size()&&grid[rw][col]==1);
     }

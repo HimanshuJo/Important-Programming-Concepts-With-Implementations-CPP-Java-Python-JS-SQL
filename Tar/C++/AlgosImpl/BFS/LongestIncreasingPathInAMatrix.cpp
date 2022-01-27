@@ -45,7 +45,8 @@ public:
                 q.pop();
         		for(auto &vals: directions){
         			int nwrw=vals[0]+currCord.first, nwcol=vals[1]+currCord.second;
-        			if(!isNotValidBoundary(matrix, nwrw, nwcol)&&matrix[nwrw][nwcol]>matrix[currCord.first][currCord.second]
+        			if(!isNotValidBoundary(matrix, nwrw, nwcol)
+                        &&matrix[nwrw][nwcol]>matrix[currCord.first][currCord.second]
         				&&!--indegrees[nwrw][nwcol]){
         				q.push({nwrw, nwcol});
         			}
