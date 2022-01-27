@@ -1,4 +1,3 @@
-
 Ques: Count number of Binary Tree possible given Preorder sequence of length n
 
 Suppose we have a binary tree as below:

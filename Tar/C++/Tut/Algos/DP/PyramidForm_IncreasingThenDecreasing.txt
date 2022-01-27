@@ -1,4 +1,3 @@
-
 We have N (where N > 2) stones of various heights laid out in a row
 
 	Task is to make a pyramid from a given arrays of stones

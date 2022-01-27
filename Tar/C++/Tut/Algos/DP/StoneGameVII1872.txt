@@ -12,8 +12,6 @@ The score difference between Alice and Bob is (Alice's score - Bob's score). Ali
 
 Given an integer array stones of length n where stones[i] represents the value of the ith stone from the left, return the score difference between Alice and Bob if they both play optimally.
 
- 
-
 Example 1:
 
 Input: stones = [-1,2,-3,4,-5]
@@ -36,7 +34,7 @@ Let Prefix sum:
 
 	Consider dp[i]:
 		assume the current player chooses to merge stone 0..j (i < j < N), according to the dp definition
-			the maximum score difference the next player can get using the remaining stones is dp[j]
+		the maximum score difference the next player can get using the remaining stones is dp[j]
 
 		So the score difference the current player gets is prefix[j] - dp[j]
 

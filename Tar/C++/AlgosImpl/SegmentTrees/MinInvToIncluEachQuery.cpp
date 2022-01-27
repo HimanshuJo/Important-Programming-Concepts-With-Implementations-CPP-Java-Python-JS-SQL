@@ -1,6 +1,7 @@
 // 1851. Minimum Interval to Include Each Query
 /*
-You are given a 2D integer array intervals, where intervals[i] = [lefti, righti] describes the ith interval 
+You are given a 2D integer array intervals, where intervals[i] = [lefti, righti] 
+describes the ith interval 
 starting at lefti and ending at righti (inclusive). 
 The size of an interval is defined as the number of integers 
 it contains, or more formally righti - lefti + 1.
@@ -44,8 +45,8 @@ class Solution {
 public:
     
     void update(int *tree, int *lazy, int treeidx, int qs, int qe, int ss, int se, int val){
-        int lidx=2*treeidx+1, ridx=2*treeidx+2;
         int mid=(se+ss)/2;
+        int lidx=2*treeidx+1, ridx=2*treeidx+2;
         if(lazy[treeidx]!=INT_MAX){
             if(lazy[treeidx]<tree[treeidx]){
                 tree[treeidx]=lazy[treeidx];
@@ -66,8 +67,8 @@ public:
     }
     
     int query(int *tree, int *lazy, int treeidx, int ss, int se, int idx){
-        int lidx=2*treeidx+1, ridx=2*treeidx+2;
         int mid=(se+ss)/2;
+        int lidx=2*treeidx+1, ridx=2*treeidx+2;
         if(lazy[treeidx]!=INT_MAX){
             if(lazy[treeidx]<tree[treeidx]){
                 tree[treeidx]=lazy[treeidx];

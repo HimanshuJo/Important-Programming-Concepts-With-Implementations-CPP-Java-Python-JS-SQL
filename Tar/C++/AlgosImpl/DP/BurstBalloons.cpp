@@ -1,6 +1,7 @@
 //312. Burst Balloons
 /*
-You are given n balloons, indexed from 0 to n - 1. Each balloon is painted with a number on it represented by an array nums.
+You are given n balloons, indexed from 0 to n - 1. Each balloon is painted with a number on it 
+represented by an array nums.
 You are asked to burst all the balloons.
 
 If you burst the ith balloon, you will get nums[i - 1] * nums[i] * nums[i + 1] coins. 
@@ -24,25 +25,31 @@ for (int k = left; k <= right; ++k)
 	                      nums[left-1] * nums[k] * nums[right+1] + 
 	                      dp[left][k-1] + dp[k+1][right])**
 
-First of all, dp[i][j] in here means, the maximum coins we get after we burst all the balloons between i and j in the original array.
+First of all, dp[i][j] in here means, the maximum coins we get after we burst all 
+the balloons between i and j in the original array.
 
 For example with input [3,1,5,8] :
 
-dp[0][0] means we burst ballons between [0,0], which means we only burst the first balloon in original array. 
+dp[0][0] means we burst ballons between [0,0], which means we only burst the first balloon 
+in original array. 
 So dp[0][0] is 1 * 3 * 1 = 3.
 
-dp[1][1] means we burst balloons between [1][1], which means we only burst the second ballon in the original array. 
+dp[1][1] means we burst balloons between [1][1], which means we only burst the second ballon in 
+the original array. 
 So dp[1][1] is 3 * 1 * 5 = 15.
 
-So in the end for this problem we want to find out dp[0][ arr.length - 1 ], which is the maximum value we can get 
+So in the end for this problem we want to find out dp[0][ arr.length - 1 ], which is the 
+maximum value we can get 
 when we burst all the balloon between [0, length -1]
 
 To get that we need the transition function :
 
 for (int k = left; k <= right; ++k)
-dp[left][right] = max(dp[left][right], nums[left-1] * nums[k] * nums[right+1] + dp[left][k-1] + dp[k+1][right])**
+dp[left][right] = max(dp[left][right], 
+                      nums[left-1] * nums[k] * nums[right+1] + dp[left][k-1] + dp[k+1][right])
 
-This transition function basically says in order to get the maximum value we can get for bursting all the balloons 
+This transition function basically says in order to get the maximum value we can get for 
+bursting all the balloons 
 between [i , j] , we just loop through each balloon between these two indexes and make them to 
 be the last balloon to be burst,
 
@@ -50,10 +57,12 @@ why we pick it as the last balloon to burst ?
 
 For example when calculating dp[0,3] and picking index 2 as the last balloon to burst,
 
-[3 , 1 , 5 , 8] , that means 5 is the last balloon to burst between [0,3] , to get the maximum value when picking 
+[3 , 1 , 5 , 8] , that means 5 is the last balloon to burst between [0,3] , to get 
+the maximum value when picking 
 5 as the last balloon to burst :
 
-max = maximum value of bursting all the balloon on the left side of 5 + maximum value of bursting all the balloon 
+max = maximum value of bursting all the balloon on the left side of 5 + maximum value of 
+bursting all the balloon 
 on the right side of 5 + bursting balloon 5 when left side and right side are gone.
 
 That is dp[0, 1] + nums[0 - 1] * nums[2] * nums[3 + 1] + dp[3,3];

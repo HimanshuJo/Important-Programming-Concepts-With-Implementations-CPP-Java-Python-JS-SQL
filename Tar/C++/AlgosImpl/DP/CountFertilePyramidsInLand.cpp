@@ -1,7 +1,9 @@
 // 2088. Count Fertile Pyramids in a Land
 /*
 A farmer has a rectangular grid of land with m rows and n columns that can be divided into unit cells. 
-Each cell is either fertile (represented by a 1) or barren (represented by a 0). All cells outside the grid are considered barren.
+Each cell is either fertile (represented by a 1) or barren (represented by a 0). 
+
+All cells outside the grid are considered barren.
 
 A pyramidal plot of land can be defined as a set of cells with the following criteria:
 
@@ -27,7 +29,6 @@ The total number of plots is 7 + 6 = 13.
 
 class Solution {
 	public:
-    
     int dfs(vector<vector<int>>&grid, int i, int j, map<pair<int, int>, int>&memo){
         if(j<0||j>=grid[0].size()||!grid[i][j]) return -1;
         else if(memo.find(make_pair(i, j))!=memo.end()) return memo[make_pair(i, j)];

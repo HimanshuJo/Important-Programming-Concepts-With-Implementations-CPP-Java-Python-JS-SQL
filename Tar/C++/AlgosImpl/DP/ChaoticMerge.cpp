@@ -12,7 +12,8 @@ Two merging sequences a and b are different if there is some position i such tha
 
 Let's call a string z chaotic if for all i from 2 to |z| zi−1≠zi.
 
-Let s[l,r] for some 1<=l<=r<=|s| be a substring of consecutive letters of s, starting from position l and ending at position r inclusive.
+Let s[l,r] for some 1<=l<=r<=|s| be a substring of consecutive letters of s, 
+starting from position l and ending at position r inclusive.
 
 Let f(l1,r1,l2,r2) be the number of different merging sequences of x[l1,r1] and y[l2,r2] that produce chaotic merges. 
 Note that only non-empty substrings of x and y are considered.

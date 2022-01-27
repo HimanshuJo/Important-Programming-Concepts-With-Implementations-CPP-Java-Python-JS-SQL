@@ -18,7 +18,8 @@ The first and only line of each test case contains three integers n, m, and k
 Output
 For each test case, if you can reach cell (n,m) spending exactly k burles, print YES. Otherwise, print NO.
 
-You may print every letter in any case you want (so, for example, the strings yEs, yes, Yes and YES are all recognized as positive answer).
+You may print every letter in any case you want 
+(so, for example, the strings yEs, yes, Yes and YES are all recognized as positive answer).
 
 Example
 input

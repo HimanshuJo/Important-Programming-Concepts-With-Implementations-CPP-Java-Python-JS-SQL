@@ -32,8 +32,11 @@ the strings leading to a total of 2lcs lesser deletions, which then leads to the
 
 In order to find the length of the longest common sequence, we make use of a recursive function lcs(s1,s2,i,j)
 which returns the length of the longest common sequence among the strings s1 and s2 considering their 
-lengths upto i and j respectively. For evaluating the function, we check if the characters s1[m-1] and s2[n-1] for equality.
-If they match, we can consider the corresponding strings upto 1 lesser lengths since the last characters have already been 
+lengths upto i and j respectively. 
+
+For evaluating the function, we check if the characters s1[m-1] and s2[n-1] for equality.
+If they match, we can consider the corresponding strings upto 1 lesser lengths since the 
+last characters have already been 
 considered and add 1 to the result to be returned for strings of 1 lesser lengths. 
 Thus, we make the function call lcs(s1, s2, i-1, j-1).
 
@@ -73,8 +76,11 @@ Algorithm
 
 We can observe that in the last approach, while determining the lcs value, a lot of redundant function calls are made, 
 since the same m and n values to be used for the function calls could be obtained going through many different paths.
-We can remove this redundancy by making use of a memo array to store the value to be returned for these function calls if they have been called once 
-with the corresponding parameters. Thus, memo[i][j] is used to store the result for the function call lcs(s1,s2,i,j).
+We can remove this redundancy by making use of a memo array to store the value to be returned for 
+these function calls if they have been called once 
+with the corresponding parameters. 
+
+Thus, memo[i][j] is used to store the result for the function call lcs(s1,s2,i,j).
 
 Thus, by returning the already stored values from the memo array, we can prune the search space to a great extent.
 
@@ -106,30 +112,38 @@ Space complexity : O(m*n). memo array of size mmxnn is used. Also, The depth of 
 Approach #3 Using Longest Common Subsequence- Dynamic Programming [Accepted]
 Algorithm
 
-Another method to obtain the value of lcslcs is to make use of Dynamic Programming. We'll look at the implemenation and carry-on alongside the idea behind it.
-We make use of a 2-D dp, in which dp[i][j] represents the length of the longest common subsequence among the strings s1 and s2 considering their lengths 
-upto (i-1)^th index and (j-1)^{th} index only respectively. We fill the dp array in row-by-row order.
+Another method to obtain the value of lcs is to make use of Dynamic Programming. 
 
-In order to fill the entry for dp[i][j], we can have two cases:
+We'll look at the implemenation and carry-on alongside the idea behind it.
+We make use of a 2-D dp, in which dp[i][j] represents the length of the 
+longest common subsequence among the strings s1 and s2 considering their lengths 
+upto (i-1)^th index and (j-1)^{th} index only respectively. We fill the dp array in row-by-row order.
 
 In order to fill the entry for dp[i][j], we can have two cases:
 
 The characters s1[i-1] and s2[j-1] match with each other. 
 In this case, the entry for dp[i][j] will be one more than the entry obtained for the strings considering their 
-lengths upto one lesser index, since the matched character adds one to the length of LCS formed till the current indices. 
+lengths upto one lesser index, since the matched character adds one to the length of LCS formed 
+till the current indices.
+
 Thus, the dp[i][j] entry is updated as dp[i][j] = 1 + dp[i-1][j-1]=1+dp[i−1][j−1]. 
 Note that dp[i-1][j-1] has been used because the matched character belongs to both s1 and s2.
 
 The characters s1[i-1] and s2[j-1] don't match with each other. 
 In this case, we can't increment the current entry as compared to entries corresponding to the previous indices, 
 but we need to replicate the previous entry again to indicate that the length of LCS upto the current indices also 
-remains the same. But, which entry to pick up? Now, since the current character hasn't matched, we have got two options. 
-We can remove the current character from consideration from either s1 or s2 and use the corresponding dp entries given by 
-dp[i-1][j] and dp[i][j-1] respectively. Since we are considering the length of LCS upto the current indices we need to pick up 
+remains the same. 
+
+But, which entry to pick up? Now, since the current character hasn't matched, we have got two options. 
+We can remove the current character from consideration from either s1 or s2 and use the corresponding dp 
+entries given by 
+dp[i-1][j] and dp[i][j-1] respectively. 
+
+Since we are considering the length of LCS upto the current indices we need to pick up 
 the larger entry out of these two to update the current dpdp entry.
 
 At the end, again, we obtain the number of deletions required as m + n - 2*dp[m][n], 
-where mm and nn refer to the lengths of s1 and s2. dp[m][n] now refers to the length of LCS among the two given strings.
+where m and n refer to the lengths of s1 and s2. dp[m][n] now refers to the length of LCS among the two given strings.
 
 class Solution {
   public:

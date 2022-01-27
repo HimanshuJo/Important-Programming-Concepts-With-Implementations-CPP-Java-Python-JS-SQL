@@ -1,6 +1,6 @@
 /*
 	Count number of subsequences which upon adding produces the required sum
-	e.g. int arr[]{1, 2, 1}
+	e.g. int arr[]{1, 2, 1}, sum=2;
 		 Output: 2 (1 1 and 2)
 */
 

@@ -1,4 +1,3 @@
-
 Use cases of Segment Tree:
 
 	It helps with range query in an array

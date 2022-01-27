@@ -52,7 +52,7 @@ Recursive Solution:
 			// we can return the minimum of two choices
 
 			return Math.min(findMinRec(arr, n - 1, sumCalculated + arr[n - 1], sumTotal),
-						   findMinRec(arr, n - 1, sumCalculated, sumTotal));
+						    findMinRec(arr, n - 1, sumCalculated, sumTotal));
 		}
 
 		// Function to return minimum possible difference between sums of two subsets

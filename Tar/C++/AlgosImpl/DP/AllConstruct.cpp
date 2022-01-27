@@ -1,3 +1,17 @@
+/*
+Given a target string and a vector of string as WordBank. Construct all ways to form the
+target string from the strings in the wordBank. Space between the letters of the
+constructed target string is allowed
+
+E.g: target="homantak" wordBank=["homan", "ho", "man", "hom", "homant", "homantak", "tak"]
+
+Output:
+
+homan tak
+ho man tak
+homantak
+
+*/
 #include<vector>
 #include<iostream>
 #include<map>

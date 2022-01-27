@@ -1,4 +1,3 @@
-
 In the mathematical field of graph theory, a bipartite graph (or bigraph):
 
 	is a graph whose vertices can be divided into two disjoint and independent sets U and V 

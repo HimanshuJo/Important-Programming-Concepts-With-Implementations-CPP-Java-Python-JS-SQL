@@ -4,9 +4,9 @@ using namespace std;
 using ll = long long;
 long long cnt = 0;
 
-vector <int> merge(vector <int> l, vector <int> r)
+vector<int> merge(vector<int> l, vector<int> r)
 {
-    vector <int> ans;
+    vector<int>ans;
     int i = 0; int j = 0;
     while (i < l.size() && j < r.size())
     {
@@ -34,7 +34,7 @@ vector <int> merge(vector <int> l, vector <int> r)
     return ans;
 }
 
-vector <int> mergeSort(vector <int> &v, int l, int r)
+vector<int> mergeSort(vector <int> &v, int l, int r)
 {
     if (l == r)
     {
@@ -42,8 +42,8 @@ vector <int> mergeSort(vector <int> &v, int l, int r)
     }
     else
     {
-        vector <int> lv = mergeSort(v, l, (l + r) / 2);
-        vector <int> rv = mergeSort(v, (l + r) / 2 + 1, r);
+        vector<int> lv = mergeSort(v, l, (l + r) / 2);
+        vector<int> rv = mergeSort(v, (l + r) / 2 + 1, r);
         return merge(lv, rv);
     }
 }

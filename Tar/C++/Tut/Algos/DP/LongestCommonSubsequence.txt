@@ -1,4 +1,3 @@
-
 Suppose we have two string:
 
     String text1 = "abcdef"
