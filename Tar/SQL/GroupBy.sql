@@ -22,4 +22,38 @@
 	-- E.g 1:
 
 		select Shippers.ShipperName, Count(Orders.OrderID) As NumberOfOrders from Orders
-		left Join Shippers On Orders.ShipperId=Shippers.ShipperID group by ShipperName; 
+		left Join Shippers On Orders.ShipperId=Shippers.ShipperID group by ShipperName;
+
+-------
+
+-- E.g 3:
+
+	-- Display list of all Members and how many departments they are allocated to
+
+		select MemberName, Members.MemberID, count(MembersDepartments.DepartmentID) as [Cnt]
+		from Members left join MembersDepartments
+		on Members.MemberID=MembersDepartments.MemberID
+		group by Members.MemberID, Members.MemberName
+
+-------
+
+-- E.g 4:
+
+	-- Display list of all Platform names and how many members they each host. If a platform host the same member
+	-- in two different divs, the count of the student should be incremented
+
+		-- Only selecting the platforms which are hosting
+		select PlatformID, count(Members.MemberID) as [Number]
+		from Divisions inner join Members
+		on Divisions.DivisionID=Members.DivisionID
+		group by Divisions.PlatformID
+
+		-- selecting all platforms
+		select PlatformName, isnull(MembersSize.Number, 0)
+		from Platforms left join
+		(select PlatformID, count(Members.MemberID) as [Number]
+		from Divisions inner join Members
+		on Divisions.DivisionID=Members.DivisionID
+		group by Divisions.PlatformID) MembersSize
+		on Platforms.PlatformID=MembersSize.PlatformID
+		order by MemberSize.Number desc

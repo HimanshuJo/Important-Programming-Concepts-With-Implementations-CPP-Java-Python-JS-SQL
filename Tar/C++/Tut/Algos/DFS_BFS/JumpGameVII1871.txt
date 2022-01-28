@@ -13,6 +13,7 @@ You are given a 0-indexed binary string s and two integers minJump and maxJump.
 
 	Input: s = "011010", minJump = 2, maxJump = 3
 	Output: true
+	
 	Explanation:
 	In the first step, move from index 0 to index 3. 
 	In the second step, move from index 3 to index 5.
@@ -91,7 +92,7 @@ Slight Optimization:
 
  	Pop i from queue front
 
- 	Iterate from max(i+minJump,max_curr) to (i+maxJump) and put all 0's indices in queue.
+ 	Iterate from max(i+minJump, max_curr) to (i+maxJump) and put all 0's indices in queue.
 
  	Update max_curr after complete iteration.
 
