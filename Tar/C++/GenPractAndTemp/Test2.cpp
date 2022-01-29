@@ -1,95 +1,63 @@
-/*
-1) Initialize all vertices as not visited.
-2) Do following for every vertex 'v'.
-       (a) If 'v' is not visited before, call DFSUtil(v)
-       (b) Print new line character
-
-DFSUtil(v)
-1) Mark 'v' as visited.
-2) Print 'v'
-3) Do following for every adjacent 'u' of 'v'.
-    If 'u' is not visited, then recursively call DFSUtil(u)
-*/
-
-// C++ program to print connected components in
-// an undirected graph
-#include <iostream>
-#include <list>
-#include<vector>
-#include<set>
+// C++ program to print distinct
+// subsequences of a given string
+#include <bits/stdc++.h>
 using namespace std;
 
-vector<set<int>>allComps;
+// Create an empty set to store the subsequences
+set<string> sn;
 
-class Graph {
-	int V;
-	list<int>* adj;
-	void DFSUtil(int v, set<int>&tmp, bool visited[]);
-
-public:
-	Graph(int V);
-	~Graph();
-	void addEdge(int v, int w);
-	void connectedComponents();
-};
-
-void Graph::connectedComponents()
+// Function for generating the subsequences
+void subsequences(char s[], char op[], int i, int j)
 {
-	bool* visited = new bool[V];
-	for (int v = 0; v < V; v++)
-		visited[v] = false;
-	for (int v = 0; v < V; v++) {
-		if (visited[v] == false) {
-			set<int>tmp;
-			DFSUtil(v, tmp, visited);
-			cout<<tmp.size()<<endl;
-			allComps.push_back(tmp);
-		}
+
+	// Base Case
+	if (s[i] == '\0') {
+		op[j] = '\0';
+
+		// Insert each generated
+		// subsequence into the set
+		sn.insert(op);
+		return;
 	}
-	delete[] visited;
+
+	// Recursive Case
+	else {
+		// When a particular character is taken
+		op[j] = s[i];
+		subsequences(s, op, i + 1, j + 1);
+
+		// When a particular character isn't taken
+		subsequences(s, op, i + 1, j);
+		return;
+	}
 }
 
-void Graph::DFSUtil(int v, set<int>&tmp, bool visited[])
-{
-	visited[v] = true;
-	tmp.insert(v);
-	list<int>::iterator i;
-	for (i = adj[v].begin(); i != adj[v].end(); ++i)
-		if (!visited[*i]){
-			DFSUtil(*i, tmp, visited);
-		}
-}
-
-Graph::Graph(int V)
-{
-	this->V = V;
-	adj = new list<int>[V];
-}
-
-Graph::~Graph() { delete[] adj; }
-
-void Graph::addEdge(int v, int w)
-{
-	adj[v].push_back(w);
-	adj[w].push_back(v);
-}
-
+// Driver Code
 int main()
 {
-	int N=5;
-	Graph g(N);
-	g.addEdge(1, 0);
-	g.addEdge(2, 3);
-	g.addEdge(3, 4);
-	g.connectedComponents();
-	cout<<"No. connc. components: "<<allComps.size()<<endl;
-	cout << "Following are connected components \n";
-	cout<<"-------\n";
-	for(auto &vals: allComps){
-		for(auto &num: vals){
-			cout<<num<<" ";
-		}
+	char str[] = "abcd";
+	const int m = sizeof(str) / sizeof(char);
+	int n = pow(2, m) + 1;
+
+	// Output array for storing
+	// the generating subsequences
+	// in each call
+	char op[m+1]; //extra one for having \0 at the end
+
+	// Function Call
+	subsequences(str, op, 0, 0);
+
+	// Output will be the number
+	// of elements in the set
+	cout << sn.size()<<endl;
+    for (auto &vals: sn){
+        if (vals.compare("")==0){
+            cout<<"null ";
+        } else{
+            cout<<vals<<" ";
+        }
 		cout<<endl;
-	}
+    }
+	sn.clear();
 	return 0;
 }

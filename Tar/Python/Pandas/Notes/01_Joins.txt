@@ -1,0 +1,195 @@
+import pandas as pd
+
+# stock names
+df_names = pd.DataFrame({
+    'Name': ['Apple', 'Mircosoft', 'Tesla', 'Google', 'Netflix'],
+    'Symbol': ['APPL', 'MSFT', 'TSLA', 'GOOG', 'NFLX']
+})
+
+# sample porfolio
+df_portfolio = pd.DataFrame({
+    'Symbol': ['TSLA', 'APPL', 'GOOG', 'AMZN'],
+    'Shares': [20, 50, 50, 100]
+})
+
+-------
+
+Join syntaxs:
+
+    Inner:
+
+        df_merged = pd.merge(df_left, df_right, on='Key', how='inner')
+                        OR
+        df_merged = df_names.merge(df_portfolio, on='Symbol', how='inner')
+
+    Left:
+
+        df_merged = pd.merge(df_left, df_right, on='Key', how='left')
+                        OR
+        df_merged = df_names.merge(df_portfolio, on='Symbol', how='left')
+
+    Outer:
+
+        df_merged = pd.merge(df_left, df_right, on='Key', how='outer')
+                        OR
+        df_merged = df_names.merge(df_portfolio, on='Symbol', how='outer')
+
+    Right:
+
+        df_merged = pd.merge(df_left, df_right, on='Key', how='right')
+                            OR
+        df_merged = df_names.merge(df_portfolio, on='Symbol', how='right')
+
+-------
+
+1. Inner Join in Pandas
+
+    To implement an inner join in pandas with the merge() function, pass 'inner' to the how parameter.
+
+        df_merged = pd.merge(df_names, df_portfolio, on='Symbol', how='inner')
+        print(df_merged)
+
+    Output:
+
+         Name Symbol  Shares
+    0   Apple   APPL      50
+    1   Tesla   TSLA      20
+    2  Google   GOOG      50
+
+    Only the rows that had common values of the column “Symbol” across the two dataframes were 
+    included in the result of inner join.
+
+-------
+
+2. Left Join in Pandas
+
+    To implement a left join in pandas with the merge() function, pass 'left' to the how parameter.
+
+        df_merged = pd.merge(df_names, df_portfolio, on='Symbol', how='left')
+        print(df_merged)
+
+    Output:
+
+            Name Symbol  Shares
+    0      Apple   APPL    50.0
+    1  Mircosoft   MSFT     NaN
+    2      Tesla   TSLA    20.0
+    3     Google   GOOG    50.0
+    4    Netflix   NFLX     NaN
+
+    You can see that all the rows from the left dataframe df_names were included along with matching values of 
+    Shares from the right dataframe df_portfolio. 
+
+    Also, note that for the rows where a match wasn’t present in the right dataframe we get NaN values for the “Shares” column.
+
+-------
+
+3. Right Join in Pandas
+
+    To implement a right join in pandas with the merge() function, pass 'right' to the how parameter.
+
+        df_merged = pd.merge(df_names, df_portfolio, on='Symbol', how='right')
+        print(df_merged)
+
+    Output:
+
+         Name Symbol  Shares
+    0   Apple   APPL      50
+    1   Tesla   TSLA      20
+    2  Google   GOOG      50
+    3     NaN   AMZN     100
+
+    You can see that all the rows from the right dataframe df_portfolio were included along with matching values 
+    of Name from the left dataframe df_names. 
+
+    Also, note that for the rows where a match wasn’t present in the left dataframe we get NaN values for the “Name” column.
+
+-------
+
+4. Outer Join in Pandas
+
+    To implement an outer join in pandas with the merge() function, pass 'outer' to the how parameter.
+
+        df_merged = pd.merge(df_names, df_portfolio, on='Symbol', how='outer')
+        print(df_merged)
+
+    Output:
+
+            Name Symbol  Shares
+    0      Apple   APPL    50.0
+    1  Mircosoft   MSFT     NaN
+    2      Tesla   TSLA    20.0
+    3     Google   GOOG    50.0
+    4    Netflix   NFLX     NaN
+    5        NaN   AMZN   100.0
+
+    The resulting dataframe from the outer join included all the records from both the dataframes with NaNs where a match 
+    wasn’t found in either of the dataframes.
+
+-------
+
+Other useful parameters of merge()
+
+    The pandas merge() function comes with a number of additional useful parameters to help you better join the dataframes.
+
+    Join on Index
+
+        For example, if you want to join dataframes on indexes, you can use the left_index and/or right_index parameters 
+        which are False by default.
+
+            # set the symbol column as index for df_names
+            df_names.set_index('Symbol', inplace=True)
+
+            # merge df_names on index and df_portfolio on 'Symbol' column
+            df_merged = pd.merge(df_names, df_portfolio, left_index=True, right_on='Symbol', how='inner')
+            print(df_merged)
+
+        Output:
+
+             Name Symbol  Shares
+        1   Apple   APPL      50
+        0   Tesla   TSLA      20
+        2  Google   GOOG      50
+
+        Here, we performed an inner join between the two dataframes using the index of the left and the “Symbol” 
+        column of the right dataframe.
+
+    -------
+
+    Use suffixes to distinguish columns with the same names
+
+        You can use the suffixes parameter to give custom suffixes (of length 2) to columns having same names 
+        from both the dataframes to avoid confusion post merging. 
+        For example, if the above two dataframes have an additional column with the name “Industry”
+
+            # stock names
+            df_names = pd.DataFrame({
+                'Name': ['Apple', 'Mircosoft', 'Tesla', 'Google', 'Netflix'],
+                'Symbol': ['APPL', 'MSFT', 'TSLA', 'GOOG', 'NFLX'],
+                'Industry': ['Tech', 'Tech', 'Auto', 'Tech', 'Content']
+            })
+
+            # sample porfolio
+            df_portfolio = pd.DataFrame({
+                'Symbol': ['TSLA', 'APPL', 'GOOG', 'AMZN'],
+                'Shares': [20, 50, 50, 100],
+                'Industry': ['Technology', 'Technology', 'Technology', 'Technology']
+            })
+
+            # merge with custom suffixes for common columns
+            df_merged = pd.merge(df_names, df_portfolio, on='Symbol', how='left', suffixes=('_n', '_p'))
+            print(df_merged)
+
+        Output:
+
+                Name Symbol Industry_n  Shares  Industry_p
+        0      Apple   APPL       Tech    50.0  Technology
+        1  Mircosoft   MSFT       Tech     NaN         NaN
+        2      Tesla   TSLA       Auto    20.0   Technology
+        3     Google   GOOG       Tech    50.0  Technology
+        4    Netflix   NFLX    Content     NaN         NaN
+
+        Here, both the dataframes have a column named “Industry”, we provided suffixes of length two as a tuple 
+        to the suffixes parameter. 
+
+        Hence, the “Industry” column from the left dataframe has the suffix “_n” and the one from the right dataframe has the suffix “_p”.

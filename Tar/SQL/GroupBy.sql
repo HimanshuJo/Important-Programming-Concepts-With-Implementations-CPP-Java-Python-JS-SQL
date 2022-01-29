@@ -30,7 +30,7 @@
 
 	-- Display list of all Members and how many departments they are allocated to
 
-		select MemberName, Members.MemberID, count(MembersDepartments.DepartmentID) as [Cnt]
+		select Members.MemberName, Members.MemberID, count(MembersDepartments.DepartmentID) as [Cnt]
 		from Members left join MembersDepartments
 		on Members.MemberID=MembersDepartments.MemberID
 		group by Members.MemberID, Members.MemberName
@@ -39,8 +39,9 @@
 
 -- E.g 4:
 
-	-- Display list of all Platform names and how many members they each host. If a platform host the same member
-	-- in two different divs, the count of the student should be incremented
+	-- Display list of all Platform names and how many members they each host. 
+	-- If a platform host the same member in two different divs, 
+	-- the count of the student should be incremented
 
 		-- Only selecting the platforms which are hosting
 		select PlatformID, count(Members.MemberID) as [Number]

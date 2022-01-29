@@ -49,7 +49,7 @@ How does this work?
 	If there are no repetitions, then count becomes double of count for n-1 because we get count(n-1) 
 		more subsequences by adding current character at the end of all subsequences possible with n-1 length. 
 	
-	If there repetitions, then we find a count of all distinct subsequences ending with the previous occurrence. 
+	If there are repetitions, then we find a count of all distinct subsequences ending with the previous occurrence. 
 		This count can be obtained by recursively calling for an index of the previous occurrence. 
 		Since the above recurrence has overlapping subproblems, we can solve it using Dynamic Programming.
 

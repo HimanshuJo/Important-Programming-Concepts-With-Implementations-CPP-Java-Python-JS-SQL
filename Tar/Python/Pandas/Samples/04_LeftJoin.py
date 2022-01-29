@@ -3,6 +3,7 @@
 # E.g:
 
 	movies_financials=movies.merge(financial, on="id", how="left")
+
 	print(movies_financials.shape)
 
 # -------
@@ -13,6 +14,7 @@
 
 	movies_financials=movies.merge(financial, on="id", how="left")
 	number_of_missing_fin=movies_financials['budget'].isnull().sum().sum()
+	
 	print(number_of_missing_fin)
 
 # -------

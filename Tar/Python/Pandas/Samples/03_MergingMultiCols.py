@@ -3,6 +3,7 @@
 # E.g:
 
 	ridership_cal=ridership.merge(cal, on=['year', 'month', 'day'])
+	
 	print(ridership_cal)
 
 # -------

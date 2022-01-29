@@ -28,26 +28,7 @@ Constraints:
 
 /*
 
-Rec with memo
-
-class Solution {
-public:
-    
-    int dfs(vector<int>&nums, int idx, map<int, int>&memo){
-        if(idx>=nums.size()) return 0;
-        if(memo.find(idx)!=memo.end()) return memo[idx];
-        int res=0;
-        res=max(dfs(nums, idx+2, memo)+nums[idx], dfs(nums, idx+1, memo));
-        return memo[idx]=res;
-    }
-    
-    int rob(vector<int>& nums) {
-        map<int, int>memo;
-        int ans=dfs(nums, 0, memo);
-        return ans;
-    }
-};
-*/
+Dp
 
 #include<bits/stdc++.h>
 using namespace std;
@@ -67,6 +48,28 @@ class Solution {
             cout << dp[n];
             return dp[n];
         }
+};
+
+*/
+
+class Solution {
+public:
+    
+    int dfs(vector<int>&nums, int idx, int start,  int memo[]){
+        if(idx<start) return 0;
+        if(memo[idx]!=-1) return memo[idx];
+        int maxx=max(dfs(nums, idx-1, start, memo), dfs(nums, idx-2, start, memo)+nums[idx]);
+        return memo[idx]=maxx;
+    }
+    
+    int rob(vector<int>& nums) {
+        int memo[101];
+        for(int i=0; i<101; ++i)
+            memo[i]=-1;
+        int n=nums.size();
+        int ans=dfs(nums, n-1, 0, memo);
+        return ans;
+    }
 };
 
 int main() {

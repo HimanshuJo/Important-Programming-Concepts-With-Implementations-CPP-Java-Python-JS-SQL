@@ -1,0 +1,75 @@
+1. Merging using left_on and right_on
+
+    It might happen that the column on which you want to merge the DataFrames have different names. 
+
+    For such merges, you will have to specify the left_on as the left DataFrame name and right_on as the right DataFrame name,
+
+    For example:
+
+      pd.merge(df_customer, df_info_2, left_on='id', right_on='customer_id')
+
+-------
+
+2. Using validate to avoid invalid records
+
+    The result of merge() might have an increased number of rows if the merge keys are not unique.
+
+    For example
+    
+      df_customer = pd.DataFrame({
+          'id': [1,2,3,4],
+          'name': ['Tom', 'Jenny', 'James', 'Dan'],
+      })
+
+      df_order_2 = pd.DataFrame({
+          'id': [2, 2, 4, 4],
+          'product': ['A', 'B' ,'A', 'C'],
+          'quantity': [31, 21, 20,40],
+          'date': pd.date_range('2019-02-24', periods=4, freq='D')
+      })
+
+    Both df_customer and df_order_2 have 4 records. 
+
+    But, you will get a result with 6 records when running the following merge statement:
+
+      pd.merge(df_customer, df_order_2, how='left', on='id')
+
+    -------
+
+    Here are the reasons:
+
+      the how='left' will produce all records from df_customer, and the matched records from df_order_2.
+
+      In addition, the id in df_order_2 is not unique and all the matching records will be combined and returned.
+
+      This is an example of one-to-many merge. 
+
+      It is a valid scenario in our example, in which a customer can have multiple orders.
+
+    -------
+
+    * However, one-to-many might be invalid in some other cases, for example, there are two records with the id value 2 in df_info
+
+        df_customer = pd.DataFrame({
+            'id': [1, 2, 3, 4],
+            'name': ['Tom', 'Jenny', 'James', 'Dan'],
+        })
+
+        df_info = pd.DataFrame({
+            'id': [2, 2, 3, 4, 5],
+            'age': [31, 21, 20, 40, 70],
+            'sex': ['F', 'F', 'M', 'M', 'F']
+        })
+
+        And the merge result will be ended up with 2 different records for the same customer Jenny:
+          
+          pd.merge(df_customer, df_info, how='left', on='id')
+
+      This is certainly wrong because the same customer cannot have different information. 
+
+      To avoid this problem, we can set the argument validate to '1:1',
+      so it checks if merges keys are unique in both left and right DataFrames. 
+
+      It will raise a MergeError if the validation fails, for example:
+        
+        pd.merge(df_customer, df_info, how='left', on='id', validate='1:1')

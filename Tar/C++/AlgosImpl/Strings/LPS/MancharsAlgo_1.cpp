@@ -20,10 +20,11 @@ int manachersAlgorithm(string s, int N) {
     int r = 0; //stores the right boundary of the longest palindromic substring until now
     int maxLen = 0;
     for(int i = 0; i < len; i++) {
-        //get mirror index of i
+        //get mirror index of i  
         int mirror = (2 * c) - i;
         
-        //see if the mirror of i is expanding beyond the left boundary of current longest palindrome at center c
+        //see if the mirror of i is expanding beyond the left boundary of 
+        //current longest palindrome at center c
         //if it is, then take r - i as P[i]
         //else take P[mirror] as P[i]
         if(i < r) {
@@ -39,7 +40,8 @@ int manachersAlgorithm(string s, int N) {
             b--;
         }
         
-        //check if the expanded palindrome at i is expanding beyond the right boundary of current longest palindrome at center c
+        //check if the expanded palindrome at i is expanding beyond 
+        //the right boundary of current longest palindrome at center c
         //if it is, the new center is i
         if(i + P[i] > r) {
             c = i;
@@ -55,7 +57,6 @@ int manachersAlgorithm(string s, int N) {
 
 
 int main(){
-
 	string s="abcdMADAMabcd";
 	int maxLen=manachersAlgorithm(s, s.length());
     cout<<maxLen<<endl;
