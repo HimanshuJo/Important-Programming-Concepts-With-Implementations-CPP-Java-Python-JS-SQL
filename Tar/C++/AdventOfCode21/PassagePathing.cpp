@@ -111,5 +111,3 @@ int main(){
 	cout<<ans2<<endl;
 	cout<<"-------\n";
 }
-
-

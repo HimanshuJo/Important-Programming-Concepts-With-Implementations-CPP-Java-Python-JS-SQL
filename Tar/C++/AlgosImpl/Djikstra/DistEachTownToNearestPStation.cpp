@@ -43,15 +43,15 @@ int dist[N];
 // the nearest source calculated till now
 set<pair<int, int>>Q;
 
-void djikstraUtil(vector<int>graph[], int s){
+void djikstraUtil(vector<int>graph[], int currsrc){
     set<pair<int, int>>::iterator it;
-    for (int i=0; i<graph[s].size(); ++i){
-        int v=graph[s][i];
-        if (dist[s]+1<dist[v]){
-            it=Q.find({dist[v], v});
+    for (int i=0; i<graph[currsrc].size(); ++i){
+        int nei=graph[currsrc][i];
+        if (dist[nei]>dist[currsrc]+1){
+            it=Q.find({dist[nei], nei});
             Q.erase(it);
-            dist[v]=dist[s]+1;
-            Q.insert({dist[v], v});
+            dist[nei]=dist[currsrc]+1;
+            Q.insert({dist[nei], nei});
         }
     }
     if (Q.size()==0){

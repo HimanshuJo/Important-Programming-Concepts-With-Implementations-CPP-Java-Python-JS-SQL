@@ -100,5 +100,3 @@ int main(){
 	}
 	cout<<(sum*fnNum)<<"\n";
 }
-
-

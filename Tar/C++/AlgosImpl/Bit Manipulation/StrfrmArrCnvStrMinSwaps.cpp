@@ -3,7 +3,7 @@ Find the string from an array that can be converted to a string S with minimum n
 
 Given a string S and an array of strings arr[] of length N and M respectively,
 the task is to find the string from the given array to the string S by swapping
-minimum number of characters . If no string can be converted to S, print -1.
+minimum number of characters. If no string can be converted to S, print -1.
 
 Examples:
 
@@ -41,12 +41,14 @@ Follow the steps below to solve the problem:
 
 		Similarly, list 1 stores all positions of ‘b’ and so on.
 
-	After complete traversal of the string S1, iterate over the characters of the string S in
-	reverse and for each character, say S[j], get its respective index from the given array of lists, say temp.
+	After complete traversal of the string S1,
+	iterate over the characters of the string S in reverse and for each character,
+	say S[j], get its respective index from the given array of lists, say temp.
 
 	Now, the optimal move is to move the character at the last index in temp to the index j.
 
 	This is optimal because:
+
 		Characters are being moved in every move. Hence, no move is being wasted.
 
 		The last index in temp would be closer to j than other indices as the string is
@@ -67,22 +69,26 @@ Iterate over the characters of S, in reverse, by initializing minMoves with 0.
 
 S = “abca”, i = 3
 Remove last index from list corresponding to ‘a’, i.e. 3.
-Search the Fenwick Tree to check if there are any indices to the left of this index in the Fenwick Tree or not.
+Search the Fenwick Tree to check if there are any indices to the left of this index
+in the Fenwick Tree or not.
 Since the tree is empty now, no need to shift this index.
 Add index 3 to the Fenwick Tree.
 minMoves += (i – index) = (3 – 3). Therefore, minMoves = 0
 
 S = “abca”, i = 2
 Remove the last index from list corresponding to ‘c’, i.e. 0.
-Search the Fenwick Tree to check if there are any indices to the left of this index in the Fenwick Tree or not.
+Search the Fenwick Tree to check if there are any indices to the left of this index
+in the Fenwick Tree or not.
 Since the only index in the tree is 3, and it is to the right of 0, no need to shift this index.
 Add index 0 to the Fenwick Tree.
 minMoves += (i – index) = (2 – 0). Therefore, minMoves = 2
 
 S = “abca”, i = 1
 Remove last index from list corresponding to ‘b’, i.e. 1.
-Search the Fenwick Tree to check if there are any indices to the left of this index in the Fenwick Tree or not.
-The count obtained is 1, i.e. there was one character to the left of index 1, which is now, towards it’s right.
+Search the Fenwick Tree to check if there are any indices to the left of this index
+in the Fenwick Tree or not.
+The count obtained is 1, i.e. there was one character to the left of index 1,
+which is now, towards it’s right.
 Add index 1 to the Fenwick Tree.
 new index = 1 – leftShit = 1 – 1 = 0
 minMoves += (i – new index) = 1 – 0 = 3
@@ -139,7 +145,7 @@ int get(vector<int> &fenwickTree, int index)
 }
 
 // Update function of Fenwick Tree
-void update(vector<int> &fenwickTree,int index)
+void update(vector<int> &fenwickTree, int index)
 {
 	while (index < fenwickTree.size())
 	{
@@ -244,8 +250,7 @@ string getBeststring(string S, vector<string> group)
 
 		// cout<<S1<<endl;
 		// Check if S1 is anagram of S
-		bool anagram = checkIsAnagram(charCountS,
-		                              charCountS1);
+		bool anagram = checkIsAnagram(charCountS, charCountS1);
 		//cout<<anagram<<endl;
 
 		// If not an anagram of S

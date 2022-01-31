@@ -57,7 +57,7 @@ and calculate the answer. But this solution is too slow and works in O(n3).
 
 Instead, we can iterate over the center of the reversed segment and its length.
 If the current segment is [l,r], and we want to go to [l−1,r+1],
-then the answer for the subsegment will increase by al−1∗br+1+ar+1∗bl−1.
+then the answer for the subsegment will increase by (al−1∗br+1)+(ar+1∗bl−1).
 
 It remains to add the answer for [1,l) and (r,n], but without reversion,
 this is easy to do if you pre-calculate the prefix sums of the values ai∗bi.

@@ -1,63 +1,81 @@
-// C++ program to print distinct
-// subsequences of a given string
-#include <bits/stdc++.h>
+// Shortest distance between a given source and a destination
+#include<iostream>
+#include<vector>
+#include<queue>
+#include<algorithm>
+#include<map>
 using namespace std;
 
-// Create an empty set to store the subsequences
-set<string> sn;
-
-// Function for generating the subsequences
-void subsequences(char s[], char op[], int i, int j)
-{
-
-	// Base Case
-	if (s[i] == '\0') {
-		op[j] = '\0';
-
-		// Insert each generated
-		// subsequence into the set
-		sn.insert(op);
-		return;
+void djks(map<char, vector<pair<char, int>>>&gr, char startNode, char endNode){
+	map<char, int>dist;
+	map<char, char>predecessor;
+	priority_queue<pair<int, char>, vector<pair<int, char>>, greater<>>pq;
+	for(auto &entries: gr){
+		char curr=entries.first;
+		dist[curr]=INT_MAX;
 	}
-
-	// Recursive Case
-	else {
-		// When a particular character is taken
-		op[j] = s[i];
-		subsequences(s, op, i + 1, j + 1);
-
-		// When a particular character isn't taken
-		subsequences(s, op, i + 1, j);
-		return;
+	dist[startNode]=0;
+	pq.push({0, startNode});
+	while(!pq.empty()){
+		pair<int, char>temp=pq.top();
+		int d=temp.first;
+		char u=temp.second;
+		pq.pop();
+		if(d>dist[u]) continue;
+		vector<pair<char, int>> currNodeNei=gr[u];
+		for(auto &vals: currNodeNei){
+			int currDist=vals.second;
+			char node=vals.first;
+			if(d+currDist<dist[node]){
+				dist[node]=d+currDist;
+				predecessor[node]=u;
+				pq.push({dist[node], node});
+			}
+		}
+	}
+	char currNode=endNode;
+	vector<char>path;
+	map<char, int>seenNodes;
+	bool flag=false;
+	while(currNode!=startNode){
+		try{
+			auto it=path.begin();
+			path.insert(it, currNode);
+			currNode=predecessor[currNode];
+			if(seenNodes[currNode]==1){
+				flag=true;
+				cout<<"Path not reachable "<<endl;
+				break;
+			}
+			seenNodes[currNode]=1;
+		} catch(...){
+			cout<<"Path not reachable "<<endl;
+			break;
+		}
+	}
+	if(!flag){
+		auto it=path.begin();
+		path.insert(it, startNode);
+		cout<<"Path: ";
+		for(auto &vals: path)
+			cout<<vals<<" ";
+		cout<<"\n-------\n";
+	} else path.clear();
+	auto it=dist.find(endNode);
+	if(dist[endNode]!=INT_MAX&&it!=dist.end()){
+		cout<<"Shortest dist: ";
+		cout<<dist[endNode];
+	} else{
+		cout<<"No shortest distance"<<endl;
 	}
 }
 
-// Driver Code
-int main()
-{
-	char str[] = "abcd";
-	const int m = sizeof(str) / sizeof(char);
-	int n = pow(2, m) + 1;
-
-	// Output array for storing
-	// the generating subsequences
-	// in each call
-	char op[m+1]; //extra one for having \0 at the end
-
-	// Function Call
-	subsequences(str, op, 0, 0);
-
-	// Output will be the number
-	// of elements in the set
-	cout << sn.size()<<endl;
-    for (auto &vals: sn){
-        if (vals.compare("")==0){
-            cout<<"null ";
-        } else{
-            cout<<vals<<" ";
-        }
-		cout<<endl;
-    }
-	sn.clear();
-	return 0;
+int main(){
+	map<char, vector<pair<char, int>>>gr;
+	gr['a']={{'b', 10}, {'c', 3}};
+	gr['b']={{'c', 1}, {'d', 2}};
+	gr['c']={{'b', 4}, {'d', 8}, {'e', 2}};
+	gr['d']={{'e', 7}};
+	gr['e']={{'d', 9}};
+	djks(gr, 'b', 'e');
 }

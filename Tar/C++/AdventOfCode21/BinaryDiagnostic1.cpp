@@ -46,5 +46,3 @@ int main(){
 	cout<<(long(epsilon)*gamma)<<endl;
 	return EXIT_SUCCESS;
 }
-
-

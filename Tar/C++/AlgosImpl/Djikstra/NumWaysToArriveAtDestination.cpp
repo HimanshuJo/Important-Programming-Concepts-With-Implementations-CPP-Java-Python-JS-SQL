@@ -1,8 +1,8 @@
 // Number of Ways to Arrive at Destination
 /*
 You are in a city that consists of n intersections numbered from 0 to n - 1 
-with bi-directional roads between 
-some intersections. The inputs are generated such that you can reach any intersection from 
+with bi-directional roads between some intersections.
+The inputs are generated such that you can reach any intersection from 
 any other intersection and that there is at most one road between any two intersections.
 
 You are given an integer n and a 2D integer array roads where roads[i] = [ui, vi, timei] 
@@ -56,7 +56,7 @@ class Solution{
             pq.pop();
             if (d>dist[u]) continue;
             for (auto [v, time]: graph[u]){
-                if (dist[v]>d+time){
+                if (d+time<dist[v]){
                     dist[v]=d+time;
                     ways[v]=ways[u];
                     pq.push({dist[v], v});

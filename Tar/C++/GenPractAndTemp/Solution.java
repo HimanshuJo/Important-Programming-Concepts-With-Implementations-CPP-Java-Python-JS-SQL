@@ -1,166 +1,32 @@
-import java.io.*;
-import java.util.*;
-
 class Solution {
-    public long subArrayRanges(int[] nums) {
-
-        long result = 0;
-
-        int[] nextSmallestLeft = findNextSmallestLeftIndex(nums);
-        int[] nextSmallestRight = findNextSmallestRightIndex(nums);
-
-        int[] nextLargestLeft = findNextLargestLeftIndex(nums);
-        int[] nextLargestRight = findNextLargestRightIndex(nums);
-
-        for (int index = 0; index < nums.length; index++) {
-
-            // how much left and right the current ELement can be the minimum
-            long minleftCount = (index - nextSmallestLeft[index]) - 1;
-            long minrightCount = (nextSmallestRight[index] - index) - 1;
-
-            // how much left and right the current ELement can be the maximum
-            long maxleftCount = (index - nextLargestLeft[index]) - 1;
-            long maxrightCount = (nextLargestRight[index] - index) - 1;
-
-            // count of subarrays for which current elemnt is minimum
-            long totalMinCount = minleftCount + minrightCount + (minleftCount * minrightCount);
-            // count of subarrays for which current elemnt is maximum
-            long totalMaxCount = maxleftCount + maxrightCount + (maxleftCount * maxrightCount);
-
-            result += (totalMaxCount - totalMinCount) * nums[index];
-            System.out.println(result);
-            System.out.println("-------");
+    public int[] recoverArray(int[] nums) {
+        int N = nums.length;
+        Arrays.sort(nums);
+        List<Integer> diffList = new ArrayList<>();
+        for (int i = 1; i < N; i++) {
+            int diff = Math.abs(nums[i] - nums[0]);
+            if (diff % 2 == 0 && diff > 0) diffList.add(diff / 2);
         }
-
-        return result;
-
-    }
-
-    private int[] findNextSmallestLeftIndex(int[] nums) {
-
-        int[] result = new int[nums.length];
-
-        Stack<Integer> decreasingStack = new Stack<>();
-
-        for (int index = 0; index < nums.length; index++) {
-
-            while (!decreasingStack.isEmpty() && nums[decreasingStack.peek()] > nums[index]) {
-
-                decreasingStack.pop();
-
+        Map<Integer, Integer> map1 = new HashMap<>();
+        for (int i = 0; i < N; i++)
+            map1.put(nums[i], map1.getOrDefault(nums[i], 0) + 1);
+        for (int diff : diffList) {
+            Map<Integer, Integer> map = new HashMap<>(map1);
+            List<Integer> tmp = new ArrayList<>();
+            for (int i = 0; i < N; i++) {
+			    if (tmp.size() == N / 2) break;
+                int low = nums[i];
+                int high = low + 2 * diff;
+                if (map.containsKey(low) && map.containsKey(high)) {
+                    tmp.add(low + diff);
+                    map.put(low, map.get(low) - 1); 
+                    map.put(high, map.get(high) - 1);
+                    if (map.get(low) == 0) map.remove(low);
+                    if (map.get(high) == 0) map.remove(high);
+                }
             }
-
-            if (decreasingStack.isEmpty()) {
-                result[index] = -1;
-
-            } else {
-
-                result[index] = decreasingStack.peek();
-            }
-
-            decreasingStack.push(index);
-
+            if (tmp.size() == N / 2) return tmp.stream().mapToInt(i -> i).toArray();
         }
-        return result;
+        return null;
     }
-
-    private int[] findNextSmallestRightIndex(int[] nums) {
-        int[] result = new int[nums.length];
-
-        Stack<Integer> decreasingStack = new Stack<>();
-
-        for (int index = nums.length - 1; index >= 0; index--) {
-
-            while (!decreasingStack.isEmpty() && nums[decreasingStack.peek()] >= nums[index]) {
-
-                decreasingStack.pop();
-
-            }
-
-            if (decreasingStack.isEmpty()) {
-                result[index] = nums.length;
-
-            } else {
-
-                result[index] = decreasingStack.peek();
-            }
-
-            decreasingStack.push(index);
-
-        }
-
-        return result;
-
-    }
-
-    private int[] findNextLargestLeftIndex(int[] nums) {
-
-        int[] result = new int[nums.length];
-
-        Stack<Integer> increasingStack = new Stack<>();
-
-        for (int index = 0; index < nums.length; index++) {
-
-            while (!increasingStack.isEmpty() && nums[increasingStack.peek()] < nums[index]) {
-
-                increasingStack.pop();
-
-            }
-
-            if (increasingStack.isEmpty()) {
-                result[index] = -1;
-
-            } else {
-
-                result[index] = increasingStack.peek();
-            }
-
-            increasingStack.push(index);
-
-        }
-
-        return result;
-
-    }
-
-    private int[] findNextLargestRightIndex(int[] nums) {
-
-        int[] result = new int[nums.length];
-
-        Stack<Integer> increasingStack = new Stack<>();
-
-        for (int index = nums.length - 1; index >= 0; index--) {
-
-            while (!increasingStack.isEmpty() && nums[increasingStack.peek()] <= nums[index]) {
-
-                increasingStack.pop();
-
-            }
-
-            if (increasingStack.isEmpty()) {
-                result[index] = nums.length;
-
-            } else {
-
-                result[index] = increasingStack.peek();
-            }
-
-            increasingStack.push(index);
-
-        }
-
-        return result;
-
-    }
-
-    public static void main(String[] args){
-        Solution obj=new Solution();
-        int[] nums=new int[3];
-        nums[0]=1;
-        nums[1]=2;
-        nums[2]=3;
-        obj.subArrayRanges(nums);
-    }
-
 }
-
