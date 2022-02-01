@@ -31,7 +31,8 @@ The largest industrial enterprises are located in Cydonia, so it's the priority 
 So, the Government of Mars wants you to remove the signs in the way described above.
 
 Output
-Print a single integer — minimal possible time to drive from Kstolop to Olymp City in minutes, if you remove no more than k road signs.
+Print a single integer — minimal possible time to drive from Kstolop to Olymp City in minutes, 
+if you remove no more than k road signs.
 
 Examples
 input

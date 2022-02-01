@@ -58,6 +58,7 @@ int main(){
     cout<<(*ptr)<<endl;
     *ptr++;
   }
+  delete[] cstr;
 }
 
 Output:

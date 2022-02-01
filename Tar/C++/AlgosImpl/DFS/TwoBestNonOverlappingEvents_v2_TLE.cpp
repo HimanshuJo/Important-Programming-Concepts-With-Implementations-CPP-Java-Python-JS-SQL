@@ -48,8 +48,7 @@ public:
 			}
 		}
 		maxprof+=curr[2];
-		memo[idx][k]=maxprof;
-		return maxprof;
+		return memo[idx][k]=maxprof;;
 	}
 
 	int maxTwoEvents(vector<vector<int>>&events){

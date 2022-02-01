@@ -21,6 +21,7 @@ Explanation:
 - The score of node 4 is: 4 = 4
 The highest score is 4, and three nodes (node 1, node 3, and node 4) have the highest score.
 */
+
 #include<bits/stdc++.h>
 using namespace std;
 

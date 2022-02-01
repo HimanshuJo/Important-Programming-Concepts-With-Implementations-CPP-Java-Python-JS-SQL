@@ -87,6 +87,7 @@ int main(){
 	}
 	for(auto &vals: splitted)
 		cout<<vals<<" ";
+	delete[] cstr;
 	return 0;
 }
 

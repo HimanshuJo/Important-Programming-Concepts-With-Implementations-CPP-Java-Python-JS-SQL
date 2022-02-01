@@ -48,8 +48,7 @@ public:
 			}
 		}
 		maxProf+=curr[2];
-		memo[idx]=maxProf;
-		return maxProf;
+		return memo[idx]=maxProf;;
 	}
 
     int jobScheduling(vector<int>& startTime, vector<int>& endTime, vector<int>& profit) {

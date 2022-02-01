@@ -50,8 +50,7 @@ public:
 			}
 		}
 		maxProf += (curr[1] - curr[0] + curr[2]);
-		memo[idx] = maxProf;
-		return maxProf;
+		return memo[idx] = maxProf;;
 	}
 
 	long long maxTaxiEarnings(int n, vector<vector<int>>& rides) {

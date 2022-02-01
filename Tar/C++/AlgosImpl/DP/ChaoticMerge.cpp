@@ -1,8 +1,10 @@
 // E. Chaotic Merge
 /*
-You are given two strings x and y, both consist only of lowercase Latin letters. Let |s| be the length of string s.
+You are given two strings x and y, both consist only of lowercase Latin letters. 
+Let |s| be the length of string s.
 
-Let's call a sequence a a merging sequence if it consists of exactly |x| zeros and exactly |y| ones in some order.
+Let's call a sequence a a merging sequence if it consists of exactly |x| zeros and 
+exactly |y| ones in some order.
 
 A merge z is produced from a sequence a by the following rules:
 
@@ -15,7 +17,8 @@ Let's call a string z chaotic if for all i from 2 to |z| zi−1≠zi.
 Let s[l,r] for some 1<=l<=r<=|s| be a substring of consecutive letters of s, 
 starting from position l and ending at position r inclusive.
 
-Let f(l1,r1,l2,r2) be the number of different merging sequences of x[l1,r1] and y[l2,r2] that produce chaotic merges. 
+Let f(l1,r1,l2,r2) be the number of different merging sequences of x[l1,r1] and y[l2,r2] 
+that produce chaotic merges. 
 Note that only non-empty substrings of x and y are considered.
 
 Calculate summation(1<=l_1<=r_1<=|x| 1<=l_2<=r_2<=|y|)
