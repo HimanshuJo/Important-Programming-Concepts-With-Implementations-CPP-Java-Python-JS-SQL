@@ -17,11 +17,11 @@ Topological Sorting vs Depth First Traversal (DFS):
 	In DFS, we print a vertex and then recursively call DFS for its adjacent vertices.
 	In topological sorting, we need to print a vertex before its adjacent vertices.
 
-						5 	        4
+						 5 	        4
 					d/       \d  d/   \d
-				   2           0      1
-				    \d               /u
-					 \d             /u
+				    2         0        1
+				    \d                /u
+					 \d              /u
 					          3
 
 		For example, in the given graph, the vertex ‘5’ should be printed before vertex ‘0’,

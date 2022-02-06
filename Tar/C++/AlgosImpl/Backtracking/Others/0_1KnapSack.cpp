@@ -28,13 +28,10 @@ ll max(ll a, ll b) {
 // 	}
 // }
 
-
-// Function that prints items which are put in a knapsack of capacity W
 void printKnapSack(ll W, ll wt[], ll val[], ll n) {
 	int i;
 	ll w;
 	ll dp[rw][cl];
-	// Bottom up DP
 	rep1(i, n) {
 		rep2(w, W) {
 			if (i == 0 || w == 0) {
@@ -48,7 +45,6 @@ void printKnapSack(ll W, ll wt[], ll val[], ll n) {
 			}
 		}
 	}
-	// Storing the result of Knapsack
 	ll res = dp[(int)n][(int)W];
 	cout << res << "\n";
 	w = W;

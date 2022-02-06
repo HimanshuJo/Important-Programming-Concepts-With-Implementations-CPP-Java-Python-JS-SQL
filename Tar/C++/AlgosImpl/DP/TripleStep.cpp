@@ -1,3 +1,5 @@
+// Count number of ways to reach the last step if at a time you can perform 1 jump, 2 jump and 3 jumps
+
 #include<iostream>
 #include<cstring>
 using namespace std;

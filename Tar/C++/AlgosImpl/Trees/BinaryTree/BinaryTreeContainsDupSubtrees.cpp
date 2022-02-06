@@ -19,8 +19,7 @@ Output : Yes
 [ Method 1] 
 A simple solution is that, we pick every node of tree and try to 
 find is any sub-tree of given tree is present in tree which is 
-identical with that sub-tree. Here we can use below post to find 
-if a subtree is present anywhere else in tree. 
+identical with that sub-tree.
 
 [Method 2 ]( Efficient solution ) 
 An Efficient solution based on tree serialization and hashing. 

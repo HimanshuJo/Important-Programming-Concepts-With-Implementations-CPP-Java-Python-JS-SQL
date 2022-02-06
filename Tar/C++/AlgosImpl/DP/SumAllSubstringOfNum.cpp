@@ -1,4 +1,5 @@
-/*Sum of all substrings of a string representing a number
+/*
+Sum of all substrings of a string representing a number
 
 	Given an integer represented as a string, we need to get the sum of all possible substrings of this string.
 	Examples:  
@@ -13,10 +14,11 @@
 	Output : 491
 	Sum = 4 + 2 + 1 + 42 + 21 + 421 = 491
 
-	We can solve this problem by using dynamic programming. We can write a summation of all substrings on basis of the digit 
-	at which they are ending in that case, 
+	We can solve this problem by using dynamic programming. 
+	We can write a summation of all substrings on basis of the digit at which they are ending in that case, 
 	
-	Sum of all substrings = sumofdigit[0] + sumofdigit[1] + sumofdigit[2] … + sumofdigit[n-1] where n is length of string.
+	Sum of all substrings = sumofdigit[0] + sumofdigit[1] + sumofdigit[2] … + sumofdigit[n-1] 
+	where n is length of string.
 	
 		Where sumofdigit[i] stores the sum of all substring ending at ith index digit, in the above example,
 
@@ -32,15 +34,13 @@
 		Each sumofdigit can be represented in terms of previous value as shown below, 
 
 			For above example,
-			sumofdigit[3] = 4 + 34 + 234 + 1234
-			           = 4 + 30 + 4 + 230 + 4 + 1230 + 4
-			           = 4*4 + 10*(3 + 23 +123)
-			           = 4*4 + 10*(sumofdigit[2])
+			sumofdigit[3]  = 4 + 34 + 234 + 1234
+				           = 4 + 30 + 4 + 230 + 4 + 1230 + 4
+				           = 4*4 + 10 * (3 + 23 + 123)
+				           = 4*4 + 10 * sumofdigit[2]
 			In general, 
 				
 				sumofdigit[i]  =  (i+1) * num[i] + 10 * sumofdigit[i-1]
-
-	-------
 */
 
 // C++ program to print sum of all substring of

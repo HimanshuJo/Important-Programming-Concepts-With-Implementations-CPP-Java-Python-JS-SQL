@@ -1,3 +1,19 @@
+/*
+Given a Binary Search Tree return the kth smallest and kth largest node in the tree
+
+E.g:	Given the following Binary Search Tree, 
+			the 3rd smallest node is 3
+			the 3rd largest (or 6th smallest node) node is 6
+
+              5
+			/   \
+		   3     7
+		  / \   / \
+		 1   4 6   8
+		  \
+		   2
+*/
+
 #include<iostream>
 #include<stack>
 #include<queue>
@@ -13,6 +29,24 @@ struct Node* newNode(int val){
 	node->val=val;
 	node->left=node->right=NULL;
 	return node;
+}
+
+int sizeBST(Node* root){
+	int sz=0;
+	queue<Node*>q;
+	q.push(root);
+	while(!q.empty()){
+		Node* currNode=q.front();
+		sz++;
+		q.pop();
+		if(currNode->left!=NULL){
+			q.push(currNode->left);
+		}
+		if(currNode->right!=NULL){
+			q.push(currNode->right);
+		}
+	}
+	return sz;
 }
 
 int KthSmallestNode(Node* root, int k){
@@ -35,25 +69,6 @@ int KthSmallestNode(Node* root, int k){
 		}
 	}
 	return -1;
-}
-
-int sizeBST(Node* root){
-	int sz=1;
-	queue<Node*>q;
-	q.push(root);
-	while(!q.empty()){
-		Node* currNode=q.front();
-		q.pop();
-		if(currNode->left!=NULL){
-			q.push(currNode->left);
-			sz++;
-		}
-		if(currNode->right!=NULL){
-			q.push(currNode->right);
-			sz++;
-		}
-	}
-	return sz;
 }
 
 int KthLargestNode(Node* root, int k){

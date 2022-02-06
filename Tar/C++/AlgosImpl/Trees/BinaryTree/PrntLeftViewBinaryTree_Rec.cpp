@@ -53,11 +53,15 @@ struct Node* newNode(int dt){
   return node;
 };
 
+/*
+maxLevel has already increased a lot, when the first left recursive call start returning
+therefore only print left side
+*/
 void leftViewUtil(struct Node* root, int level, int* maxLevel){
-  if (root==NULL){
+  if(root==NULL){
     return;
   }
-  if (*maxLevel<level){
+  if(*maxLevel<level){
     cout<<root->data<<" ";
     *maxLevel=level;
   }

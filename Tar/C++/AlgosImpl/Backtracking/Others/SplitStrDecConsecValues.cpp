@@ -48,14 +48,16 @@ class Solution {
     }
 
     public boolean backtrack(int pos, String s, ArrayList<Long> list) {
-		// Base case where we reach till end of string and we have atleast 2 parts
+        // Base case where we reach till end of string and we have atleast 2 parts
         if (pos >= s.length()) return list.size() >= 2;
-
         long num = 0;
         for (int i=pos; i<s.length(); i++) {
-            num = num*10 + (s.charAt(i)-'0'); // "070" i = 1 -> 0.. i = 2 -> 7.. i = 3 -> 70
-            if (list.size()==0 || list.get(list.size()-1) - num == 1) { // if it is first digit or difference is +1 valid
-
+             // "070" i = 1 -> 0
+             //       i = 2 -> 7
+             //       i = 3 -> 70
+            num = num*10 + (s.charAt(i)-'0');
+            // if it is first digit or difference is +1 valid
+            if (list.size()==0 || list.get(list.size()-1) - num == 1) {
                 list.add(num);  // add the number and continue to next index
                 if (backtrack(i+1, s, list)) return true;
                 list.remove(list.size()-1); // backtrack, done with that itteration coun't find it
@@ -66,3 +68,31 @@ class Solution {
     }
 }
 */
+
+using dd=double;
+
+class Solution {
+public:
+
+    bool dfs(int idx, string s, int len, vector<dd>&list){
+        if(idx>=len) return list.size()>=2;
+        dd num=0;
+        for(int i=idx; i<len; ++i){
+            num=num*10+(s[i]-'0');
+            if(list.size()==0||list[list.size()-1]-num==1){
+                list.push_back(num);
+                if(dfs(i+1, s, len, list)) return true;
+                list.pop_back();
+            }
+        }
+        return false;
+    }
+
+    bool splitString(string s) {
+        int len=s.length();
+        if(len==1) return false;
+        vector<dd>list;
+        bool res=dfs(0, s, len, list);
+        return res;     
+    }
+};

@@ -18,6 +18,7 @@ Explanation: The queries are processed as follows:
 - Query = 3: The interval [2,4] is the smallest interval containing 3. The answer is 4 - 2 + 1 = 3.
 - Query = 4: The interval [4,4] is the smallest interval containing 4. The answer is 4 - 4 + 1 = 1.
 - Query = 5: The interval [3,6] is the smallest interval containing 5. The answer is 6 - 3 + 1 = 4.
+
 Example 2:
 
 Input: intervals = [[2,3],[2,5],[1,8],[20,25]], queries = [2,19,5,22]
@@ -31,11 +32,11 @@ Explanation: The queries are processed as follows:
 
 Constraints:
 
-1 <= intervals.length <= 105
-1 <= queries.length <= 105
+1 <= intervals.length <= 10^5
+1 <= queries.length <= 10^5
 intervals[i].length == 2
-1 <= lefti <= righti <= 107
-1 <= queries[j] <= 107
+1 <= lefti <= righti <= 10^7
+1 <= queries[j] <= 10^7
 */
 
 class Solution2 {
@@ -72,52 +73,51 @@ public:
     }
 };
 
-
 class Solution {
 public:
     
-    void update(int *tree, int *lazy, int treeidx, int left, int right, int lo, int hi, int val){
+    void update(int *tree, int *lazy, int treeidx, int qs, int qe, int ss, int se, int val){
+        int mid=(se+ss)/2;
         int lidx=2*treeidx+1, ridx=2*treeidx+2;
-        int mid=(hi+lo)/2;
         if(lazy[treeidx]!=INT_MAX){
             if(lazy[treeidx]<tree[treeidx]){
                 tree[treeidx]=lazy[treeidx];
-                if(lo!=hi){
+                if(ss!=se){
                     lazy[lidx]=min(lazy[treeidx], lazy[lidx]);
                     lazy[ridx]=min(lazy[treeidx], lazy[ridx]);
                 }
             }
             lazy[treeidx]=INT_MAX;
         }
-        if(lo>right||hi<left) return;
-        if(lo>=left&&hi<=right){
+        if(ss>qe||se<qs) return;
+        if(ss>=qs&&se<=qe){
             lazy[treeidx]=min(lazy[treeidx], val);
             return;
         }
-        update(tree, lazy, lidx, left, right, lo, mid, val);
-        update(tree, lazy, ridx, left, right, mid+1, hi, val);
+        update(tree, lazy, lidx, qs, qe, ss, mid, val);
+        update(tree, lazy, ridx, qs, qe, mid+1, se, val);
     }
     
-    int query(int *tree, int *lazy, int treeidx, int lo, int hi, int idx){
+    int query(int *tree, int *lazy, int treeidx, int ss, int se, int idx){
+        int mid=(se+ss)/2;
         int lidx=2*treeidx+1, ridx=2*treeidx+2;
-        int mid=(hi+lo)/2;
         if(lazy[treeidx]!=INT_MAX){
             if(lazy[treeidx]<tree[treeidx]){
                 tree[treeidx]=lazy[treeidx];
-                if(lo!=hi){
+                if(ss!=se){
                     lazy[lidx]=min(lazy[treeidx], lazy[lidx]);
                     lazy[ridx]=min(lazy[treeidx], lazy[ridx]);
                 }
             }
             lazy[treeidx]=INT_MAX;
         }
-        if(lo==hi){
+        if(ss==se){
             return tree[treeidx];
         }
         if(idx<=mid){
-            return query(tree, lazy, lidx, lo, mid, idx);
+            return query(tree, lazy, lidx, ss, mid, idx);
         } else{
-            return query(tree, lazy, ridx, mid+1, hi, idx);   
+            return query(tree, lazy, ridx, mid+1, se, idx);   
         }
     }
     

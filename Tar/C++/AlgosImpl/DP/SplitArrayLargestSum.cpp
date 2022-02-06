@@ -21,17 +21,18 @@ Step 2: the dp[i][j] means the min of the max sum among j splits in arr[0 to i],
 Step 3: init dp, init all dp[i][1] to prefix sum, since it does not split (only one group together)
 
 Step 4: iterating all the dp[i][j]
-for i in [0, n - 1]:
-	for j in [2, m]:
-		for k in all possible splitting point in (this time we split only once, since the subproblem has been solved)
-		[ 0 <- k -> (splitted with j - 1 times)| (altogether, so not split) ]
-			max(dp[k][j - 1], |prefix_sum[i] - prefix_sum[k]))
+
+	for i in [0, n - 1]:
+		for j in [2, m]:
+			for k in all possible splitting point in (this time we split only once, since the 
+			                                          subproblem has been solved)
+			[ 0 <- k -> (splitted with j - 1 times)| (altogether, so not split) ]
+				max(dp[k][j - 1], |prefix_sum[i] - prefix_sum[k]))
 
 Analysis:
 
 Time complexity: O(m * n * n)
 Space complexoty: O(m * n)
-
 */
 
 #include<iostream>

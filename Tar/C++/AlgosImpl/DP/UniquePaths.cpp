@@ -18,6 +18,43 @@ From the top-left corner, there are a total of 3 ways to reach the bottom-right 
 3. Down -> Right -> Down
 */
 
+/*
+Bottom up dp
+
+// Time: O(m*n), Space: O(m*n)
+
+class Solution {
+public:
+    int uniquePaths(int m, int n) {
+        vector<vector<int>>dp(m+1, vector<int>(n+1, 1));
+        for(int i=m-1; i>=0; --i){
+            for(int j=n-1; j>=0; --j){
+                if(i+1<m&&j+1<n) dp[i][j]=dp[i+1][j]+dp[i][j+1];
+            }
+        }
+        return dp[0][0];
+    }
+};
+
+-------
+
+// Time: O(m*n), Space: O(n)
+
+class Solution {
+public:
+    int uniquePaths(int m, int n) {
+        vector<int> pre(n, 1), cur(n, 1);
+        for (int i = 1; i < m; i++) {
+            for (int j = 1; j < n; j++) {
+                cur[j] = pre[j] + cur[j - 1];
+            }
+            swap(pre, cur);
+        }
+        return pre[n - 1];
+    }
+};
+*/
+
 #include<vector>
 #include<iostream>
 using namespace std;

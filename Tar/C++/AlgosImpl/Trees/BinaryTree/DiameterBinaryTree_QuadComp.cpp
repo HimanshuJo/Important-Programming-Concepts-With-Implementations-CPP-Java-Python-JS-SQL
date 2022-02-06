@@ -48,14 +48,14 @@ struct Node* newNode(int data){
 };
 
 int height(struct Node* node){
-    if (node==NULL){
+    if(node==NULL){
         return 0;
     }
     return 1+max(height(node->left), height(node->right));
 }
 
 int diameter(struct Node* tree){
-    if (tree==NULL){
+    if(tree==NULL){
         return 0;
     }
     int lHeight=height(tree->left);

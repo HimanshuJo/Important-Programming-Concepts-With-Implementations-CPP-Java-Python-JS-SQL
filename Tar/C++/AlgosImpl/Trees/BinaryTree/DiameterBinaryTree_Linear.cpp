@@ -49,7 +49,7 @@ struct Node* newNode(int data){
 int diameter(struct Node* root, int *height){
     int lH=0, rH=0;
     int lDiameter=0, rDiameter=0;
-    if (root==NULL){
+    if(root==NULL){
         *height=0;
         return 0;
     }
@@ -66,8 +66,8 @@ int main(){
           2   3
          / \
         4   5
-
     */
+
     struct Node* root=newNode(1);
     root->left=newNode(2);
     root->right=newNode(3);
