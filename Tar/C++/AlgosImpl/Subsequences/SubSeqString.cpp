@@ -1,3 +1,21 @@
+/* Generate all distinct subsequences of a string
+	
+	E.g. string input="abba"
+		 
+		 Output:
+			{}
+			a
+			aa
+			ab
+			aba
+			abb
+			abba
+			b
+			ba
+			bb
+			bba
+*/
+
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -8,7 +26,6 @@ set<string> st;
 
 void subsequence(string str)
 {
-
 	for (int i = 0; i < str.length(); i++) {
 		for (int j = str.length(); j > i; j--) {
 			string sub_str = str.substr(i, j);
@@ -29,7 +46,6 @@ int main()
 	for (auto i : st)
 		cout << i <<endl;
 	cout << endl;
-
 	return 0;
 }
 
@@ -55,7 +71,7 @@ void genAllSubSeq(string&str, int n, int idx, set<string>&allSubseq, string&subs
 }
 
 int main(){
-	string str="ababccccc";
+	string str="abba";
 	int n=str.size();
 	int idx=0;
 	set<string>allSubseq;

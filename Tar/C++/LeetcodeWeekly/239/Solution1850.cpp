@@ -40,7 +40,7 @@ Input: num = "00123", k = 1
 Output: 1
 Explanation: The 1st smallest wonderful number is "00132". To get this number:
 - Swap index 3 with index 4: "00123" -> "00132"
- 
+
 
 Constraints:
 
@@ -81,16 +81,16 @@ num only consists of digits.
 
 CATCH : JUST FIND THE MIN NUMBER OF STEPS TO MAKE ABOVE TWO STRINGS EQUAL 👀
 
-Iterate and reach to a point when the character don't match, 
-See below i is pointing at '1' in string1 and 
-          j is pointing at '4' in string2 
+Iterate and reach to a point when the character don't match,
+See below i is pointing at '1' in string1 and
+          j is pointing at '4' in string2
 
           because s1[i] != s2[j]
 
 string1 : 5489355142
 string2 : 5489355421
 
-Then we do j++ in string2 till we find a matching number in string2 same as the number in string1 which i is pointing currently, 
+Then we do j++ in string2 till we find a matching number in string2 same as the number in string1 which i is pointing currently,
 which brings j to '1' in string2 as 5489355421
 
 Now we will swap from j to i and get following results,

@@ -1,0 +1,64 @@
+Key	Action																Followed by
+
+a	enter insertion mode after current character						text, ESC
+b	back word
+c	change command														cursor motion command
+d	delete command														cursor motion command
+e	end of word
+f	find character after cursor in current line							character to find
+h	move left one character
+i	enter insertion mode before current character						text, ESC
+j	move down one line
+k	move up one line
+l	move right one character
+o	open line below and enter insertion mode							text, ESC
+p	put buffer after cursor
+r	replace single character at cursor									replacement character expected
+s	substitute single character with new text							text, ESC
+u	undo
+w	move foreward one word
+x	delete single character
+y	yank command														cursor motion command
+z	position current line												CR = top; “.” = center; “-“=bottom
+A	enter insertion mode after end of line								text, ESC
+B	move back one Word
+C	change to end of line												text, ESC
+D	delete to end of line
+E	move to end of Word
+F	backwards version of “f”											character to find
+G	goto line number prefixed, or goto end if none
+H	home cursor – goto first line on screen
+I	enter insertion mode before first non-whitespace character			text, ESC
+J	join current line with next line
+L	goto last line on screen
+M	goto middle line on screen
+O	open line above and enter insertion mode	text, ESC
+P	put buffer before cursor
+Q	leave visual mode (go into “ex” mode)
+R	replace mode – replaces through end of current line, then inserts	text, ESC
+S	substitute entire line – deletes line, enters insertion mode		text, ESC
+W	forward Word
+X	delete backwards single character
+0	move to column zero
+1-9	numeric precursor to other commands									[additional numbers (0-9)] command
+ 	(SPACE) move right one character
+$	move to end of line
+%	match nearest [],(),{} on line, to its match (same line or others)
+^	move to first non-whitespace character of line
+(	move to previous sentence
+)	move to next sentence
+|	move to column zero
+–	move to first non-whitespace of previous line
+_	similar to “^” but uses numeric prefix oddly
++	move to first non-whitespace of next line
+[	move to previous “{…}” section										“[”
+]	move to next “{…}” section											“]”
+{	move to previous blank-line separated section						“{”
+}	move to next blank-line separated section							“}”
+`	move to marked line, memorized column								character tag (a-z)
+:	ex-submode	ex command
+”	access numbered buffer; load or access lettered buffer				1-9,a-z
+~	reverse case of current character and move cursor forward
+.	repeat last text-changing command
+<	unindent command													cursor motion command
+>	indent command														cursor motion command

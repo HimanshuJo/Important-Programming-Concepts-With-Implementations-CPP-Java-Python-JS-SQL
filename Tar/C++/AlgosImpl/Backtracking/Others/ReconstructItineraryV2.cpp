@@ -24,7 +24,8 @@ using namespace std;
 class Solution {
 public:
     
-    void dfs(string origin, unordered_map<string, priority_queue<string, vector<string>, greater<>>>&gr, vector<string>&ans){
+    void dfs(string origin, unordered_map<string, 
+        priority_queue<string, vector<string>, greater<>>>&gr, vector<string>&ans){
         while(gr[origin].size()>0){
             string nextDest=gr[origin].top();
             gr[origin].pop();

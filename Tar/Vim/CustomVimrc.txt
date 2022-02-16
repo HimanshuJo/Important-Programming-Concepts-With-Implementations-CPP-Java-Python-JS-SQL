@@ -1,0 +1,31 @@
+set tabstop=4
+set backspace=indent,eol,start
+set enc=utf-8
+set autoindent
+set smartindent
+set number
+set cursorline
+syntax on
+
+set showmatch " Shows matching brackets
+set ruler " Always shows location in file (line#)
+set smarttab " Autotabs for certain code
+set shiftwidth=4
+
+if has("gui_running")
+  set lines=500 columns=999
+else
+  if exists("+lines")
+    set lines=50
+  endif
+  if exists("+columns")
+    set columns=100
+  endif
+endif
+
+set t_Co=256
+
+colorscheme zellner
+
+source $VIMRUNTIME/mswin.vim
+behave mswin

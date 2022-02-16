@@ -8,7 +8,8 @@ A height[N] array is also given. Whenever the frog jumps from a stair i to stair
 the energy consumed in the jump is abs(height[i]-height[j]),
 where abs() means the absolute difference.
 
-We need to return the minimum energy that can be used by the frog to jump from stair 0 to stair N-1.
+We need to return the minimum energy that can be used by the frog to jump from
+stair 0 to stair N-1.
 */
 /*
 First, we will see why a greedy approach will not work?
@@ -71,7 +72,7 @@ int solve(int ind, vector<int>& height, vector<int>& dp) {
 
 
 int main() {
-	vector<int> height{30, 10, 60 , 10 , 60 , 50};
+	vector<int> height{30, 10, 60, 10, 60, 50};
 	int n = height.size();
 	vector<int> dp(n, -1);
 	cout << solve(n - 1, height, dp);

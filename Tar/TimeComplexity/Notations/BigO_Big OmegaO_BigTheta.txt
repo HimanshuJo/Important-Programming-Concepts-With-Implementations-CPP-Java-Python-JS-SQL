@@ -1,15 +1,36 @@
 Big Oh notation (O):
 
+	Big O notation is a mathematical notation that describes the 
+	limiting behavior of a function when the argument tends towards a 
+	particular value or infinity.
+
 	Big oh notation is used to describe asymptotic upper bound. 
 
 	Mathematically, if f(n) describe running time of an algorithm; 
-		f(n) is O(g(n)) if there exist positive constant C and (n0) such that 
+		f(n) is O(g(n)) if there exist positive constant c and (n0) such that 
 
 			0 <= f(n) <= c g(n) for all n >= n0
 
 	n = used to give upper bound an a function.
 
-	If a function is O(n), it is automatically O(n-square) as well ! 
+	If a function is O(n), it is automatically O(n-square) as well !
+
+	E.g.:
+
+		A typical algorithm that has the complexity of O(n²) would be the selection sort algorithm.
+
+		Selection sort is a sorting algorithm that iterates through the list to ensure every element at index i is the ith smallest/largest element of the list
+
+			e.g.
+
+				vector<int>arr{3, 6, 2, 4, 1, 5, 7};
+				for(int i=0; i<n; ++i){
+					for(int j=i; j<n; ++j){
+						if(arr[j]<arr[i]){
+							swap(arr[i], arr[j]);
+						}
+					}
+				}
 
 -------
 
@@ -20,9 +41,9 @@ Big Omega notation (Ω):
 
 	Let f(n) define running time of an algorithm; 
 
-		f(n) is said to be Ω(g(n)) if there exists positive constant C and (n0) such that:
+		f(n) is said to be Ω(g(n)) if there exists positive constant c and (n0) such that:
 
-			O <= C g(n) <= f(n) for all n >= n0
+			0 <= c g(n) <= f(n) for all n >= n0
 
 	n = used to given lower bound on a function
 
@@ -38,9 +59,9 @@ Big Omega notation (Ω):
 
 	Mathematically:
 
-		O <= f(n) <= C1 g(n) for n >= n0
+		0 <= f(n) <= C1 g(n) for n >= n0
 
-		O <= C2 g(n) <= f(n) for n >= n0
+		0 <= C2 g(n) <= f(n) for n >= n0
 
 The equation simply means there exist positive constants C1 and C2 such that
 	f(n) is sandwich between C2 g(n) and C1 g(n).
@@ -82,11 +103,12 @@ Difference Between Big O, Big Omega and Big Theta:
 
 		Big Omega (Ω) – Best case
 
-		Big- Ω is take a small amount of time as compare to Big-O it could possibly take for the algorithm to complete.
+		Big- Ω is take a small amount of time as compare to Big-O it could 
+		possibly take for the algorithm to complete.
 
 		Mathematically – Big Omega is:
 
-			O <= C g(n) <= f(n) for all n >= n0
+			0 <= C g(n) <= f(n) for all n >= n0
 
 	-------
 
@@ -102,8 +124,9 @@ Difference Between Big O, Big Omega and Big Theta:
 
 		Big Theta (Θ) – Average case
 
-		Big- Θ is take very short amount of time as compare to Big-O and Big-? it could possibly take for the algorithm to complete.
+		Big- Θ is take very short amount of time as compare to Big-O and Big-? 
+		it could possibly take for the algorithm to complete.
 
 		Mathematically – Big Theta is:
 
-			O <= C2 g(n) <= f(n) <= C1 g(n) for n >= n0
+			0 <= C2 g(n) <= f(n) <= C1 g(n) for n >= n0

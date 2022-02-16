@@ -26,9 +26,9 @@ void genSubseqWithSum(vector<int>&arr, int n, int sum, int currSum, int idx, vec
 }
 
 int main(){
-	vector<int>arr{1, 2, 1};
+	vector<int>arr{1, 2, 3, 4, 5, 6, 7};
 	int n=arr.size();
-	int sum=2;
+	int sum=5;
 	int currSum=0;
 	int idx=0;
 	vector<vector<int>>allSubseq;

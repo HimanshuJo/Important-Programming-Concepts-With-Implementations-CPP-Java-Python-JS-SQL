@@ -33,11 +33,8 @@ int main()
 
 	auto end = chrono::high_resolution_clock::now();
 
-	// Calculating total time taken by the program.
 	double time_taken = chrono::duration_cast<chrono::nanoseconds>(end - start).count();
-
 	time_taken *= 1e-9;
-
 	cout << "Time taken by program is : " << fixed
 		 << time_taken << setprecision(9);
 	cout << " sec" << endl;

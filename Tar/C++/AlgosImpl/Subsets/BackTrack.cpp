@@ -24,7 +24,7 @@ vector<vector<int>> subsets(vector<int> &A)
 }
 
 int main(){
-    vector<int>tmp{2,1,3,0};
+    vector<int>tmp{2,0,1};
     vector<vector<int>>res=subsets(tmp);
     for(auto &vals: res){
     	for(auto &nums: vals)

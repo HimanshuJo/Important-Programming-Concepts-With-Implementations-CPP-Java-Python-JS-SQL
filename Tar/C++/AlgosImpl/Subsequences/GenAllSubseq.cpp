@@ -31,7 +31,7 @@ void genAllSubSeq(vector<int>&arr, int n, int idx, vector<vector<int>>&allSubseq
 }
 
 int main(){
-	vector<int>arr{1, 2, 1};
+	vector<int>arr{2, 0, 1};
 	int n=arr.size();
 	int idx=0;
 	vector<vector<int>>allSubseq;

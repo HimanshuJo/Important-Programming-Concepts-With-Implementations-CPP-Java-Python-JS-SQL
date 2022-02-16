@@ -6,8 +6,8 @@ A wonderful string is a string where at most one letter appears an odd number of
     For example, "ccjjc" and "abab" are wonderful, but "ab" is not.
 
 Given a string word that consists of the first ten lowercase English letters ('a' through 'j'),
-return the number of wonderful non-empty substrings in word. If the same substring appears multiple times
-in word, then count each occurrence separately.
+return the number of wonderful non-empty substrings in word. 
+If the same substring appears multiple times in word, then count each occurrence separately.
 
 A substring is a contiguous sequence of characters in a string.
 
@@ -46,7 +46,7 @@ Explanation: The two wonderful substrings are underlined below:
 
 Constraints:
 
-    1 <= word.length <= 105
+    1 <= word.length <= 10^5
     word consists of lowercase English letters from 'a' to 'j'.
 '''
 
@@ -64,8 +64,8 @@ Constraints:
     -------
     
     For these kind of problems we can use a DP
-        For this the tricky part is how can we efficiently check at the current index, what are the wonderful strings
-            so far
+        For this the tricky part is how can we efficiently check at the current index, 
+            what are the wonderful strings so far
             
         For this problem we can use DP with a bit mask
             the reason being, suppose we have a substring as: 
@@ -74,10 +74,11 @@ Constraints:
             we have 10 bit masks
                 suppose our bit mask is: 1010101010
                 
-            * The way we're maintaining this mask is that, whenever we see any value either 0 or 1, we simply
-                revert them
+            * The way we're maintaining this mask is that, whenever we see any value 
+                either 0 or 1, we simply revert them
                 
-                That basically means that each of the bit value represent the parity for a particular letter
+                That basically means that each of the bit value represent the parity for a 
+                    particular letter
                 
             So our setting for the string and bit mask is as follows:
                 j i h g f e d c b a
@@ -96,8 +97,9 @@ Constraints:
                                               * for info (Even - Even = Even)
                             
                     This covers one scenario that, we have found all the substrings that has 0 odd appearance
-                        (In other words, for all the characters, count of a particular character in the string is even)
-             -------
+                    (In other words, for all the characters, count of a particular character in the string is even)
+         
+            -------
              
              For the scenario of at-most 1:
                 
@@ -145,7 +147,7 @@ suppose our string is: temp = "hhh"
 
 initially we have at temp[0] = 'h' and mask = 0
 
-we'll also maintain a count array to store the count valeu for each of the mask
+we'll also maintain a count array to store the count value for each of the mask
     initially our count array is : count[0] = 1
 
     S1: we will create the index value for this character

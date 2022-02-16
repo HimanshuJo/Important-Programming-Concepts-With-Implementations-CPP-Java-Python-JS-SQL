@@ -72,36 +72,4 @@ public:
     }
 };
 
-// 464ms
-class Solution3 {
-public:
-
-    int dfs(int n, unordered_map<int, int>&mp, unordered_map<int, int>&memo){
-        if(n==0) return 0;
-        if(memo.find(n)!=memo.end()) return memo[n];
-        memo[n]=INT_MAX;
-        if(mp.find(n)==mp.end()) return memo[n];
-        for(int i=n-1; i>=mp[n]; --i){
-            int currans=dfs(i, mp, memo);
-            if(currans!=INT_MAX)
-                memo[n]=min(memo[n], currans+1);
-        }
-        return memo[n];
-    }
-
-    int minTaps(int n, vector<int>&ranges){
-        unordered_map<int, int>mp;
-        for(int i=0; i<ranges.size(); ++i){
-            int begin=max(i-ranges[i], 0);
-            int end=min(i+ranges[i], n);
-            if(mp.find(end)==mp.end())
-                mp[end]=begin;
-            else mp[end]=min(mp[end], begin);
-        }
-        unordered_map<int, int>memo;
-        int ans=dfs(n, mp, memo);
-        return ans==INT_MAX?-1:ans;
-    }
-};
-
 int main(){}

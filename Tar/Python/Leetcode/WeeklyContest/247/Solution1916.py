@@ -13,7 +13,7 @@ every room will be reachable from room 0.
 You can only build one room at a time, and you can travel freely between rooms you have already built only if they are connected.
 You can choose to build any room as long as its previous room is already built.
 
-Return the number of different orders you can build all the rooms in. Since the answer may be large, return it modulo 109 + 7.
+Return the number of different orders you can build all the rooms in. Since the answer may be large, return it modulo 10^9 + 7.
 
 Input: prevRoom = [-1,0,1]
 Output: 1
@@ -33,7 +33,7 @@ The 6 ways are:
 Constraints:
 
     n == prevRoom.length
-    2 <= n <= 105
+    2 <= n <= 10^5
     prevRoom[0] == -1
     0 <= prevRoom[i] < n for all 1 <= i < n
     Every room is reachable from room 0 once all the rooms are built.
@@ -44,7 +44,8 @@ Constraints:
 
 Intuition:
 
-	Since we have to build the previous room (prevRoom[i]) before building the room i, therefore it is a problem of Directed Graph
+	Since we have to build the previous room (prevRoom[i]) before building the room i, 
+	therefore it is a problem of Directed Graph
 
 	Also every room is reachable from room 0, therefore it is tree problem
 

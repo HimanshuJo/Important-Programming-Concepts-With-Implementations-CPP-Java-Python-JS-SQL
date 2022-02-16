@@ -1,61 +1,37 @@
-#include<vector>
-#include<iostream>
-#include<algorithm>
-#include<map>
+// C++ program to find the XOR of
+// all elements in the array
+
+#include <bits/stdc++.h>
 using namespace std;
 
-vector<char> reverseNums(vector<char> nums, int left, int right)
+// Function to find the XOR of
+// all elements in the array
+int xorOfArray(int arr[], int n)
 {
-    while (left < right)
-    {
-        swap(nums.at(left), nums.at(right));
-        left += 1;
-        right -= 1;
-    }
-    return nums;
+	// Resultant variable
+	int xor_arr = 0;
+
+	// Iterating through every element in
+	// the array
+	for (int i = 0; i < n; i++) {
+
+		// Find XOR with the result
+		xor_arr = xor_arr ^ arr[i];
+	}
+
+	// Return the XOR
+	return xor_arr;
 }
 
-vector<char> nextPermutation(vector<char>nums)
+// Driver Code
+int main()
 {
-    vector<char>res;
-    int n = nums.size();
-    int index1 = -1;
-    // starting from the end find the first number that is smaller than nums[i + 1]
-    for (int i = n - 2; i >= 0; --i)
-    {
-        if (nums.at(i) < nums.at(i + 1))
-        {
-            index1 = i;
-            break;
-        }
-    }
-    /*
-        If we couldn't find any index then all the numbers are already in the descending
-        order, and there is no next permutation
-    */
-    if (index1 != -1)
-    {
-        int index2 = -1;
-        for (int i = n - 1; n >= 0; --i)
-        {
-            if (nums.at(i) > nums.at(index1))
-            {
-                index2 = i;
-                break;
-            }
-        }
-        swap(nums.at(index1), nums.at(index2));
-        res = reverseNums(nums, index1 + 1, n - 1);
-    }
-    return res;
-}
 
-int main(){
-    string str="54586";
-    vector<char>num;
-    for(char ch: str)
-    num.push_back(ch);
-    vector<char>res=nextPermutation(num);
-    for(char ch: res)
-        cout<<ch<<" ";
+	int arr[] = { 10,13 };
+	int n = sizeof(arr) / sizeof(arr[0]);
+
+	// Function call
+	cout << xorOfArray(arr, n) << endl;
+
+	return 0;
 }

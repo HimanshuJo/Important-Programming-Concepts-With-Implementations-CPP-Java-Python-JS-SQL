@@ -1,7 +1,7 @@
 -- Converting date to other date and time types
 
-DECLARE @date date= '12-10-2025';  
-DECLARE @datetime datetime= @date;  
+DECLARE @date date = '12-10-2025';  
+DECLARE @datetime datetime = @date;  
   
 SELECT @date AS '@date', @datetime AS '@datetime';  
   

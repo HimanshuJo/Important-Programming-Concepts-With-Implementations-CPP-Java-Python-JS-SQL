@@ -29,7 +29,8 @@ VALUES('A'),('B'),('B'),('C'),('C'),('D'),('E');
 SELECT * FROM sales.dense_rank_demo;
 
 /*
-The following statement uses both DENSE_RANK() and RANK() functions to assign a rank to each row of the result set:
+The following statement uses both DENSE_RANK() and RANK() functions to assign a rank to
+each row of the result set:
 */
 
 SELECT
