@@ -21,6 +21,48 @@ Explanation: The 3 palindromic subsequences of length 3 are:
 - "aca" (subsequence of "aabca")
 */
 
+/*
+Brute Force:
+
+class Solution {
+public:
+    
+    bool isPalindrome(string str){
+        int len=str.length();
+        for(int i=0; i<len/2; ++i){
+            if(str[i]!=str[len-1-i]) return false;
+        }
+        return true;
+    }
+    
+    void dfs(string &s, string curr, int sz, int idx, int &res, unordered_set<string>&st){
+        if(idx==sz){
+            if(curr.size()==3){
+                if(isPalindrome(curr)){
+                    if(st.find(curr)==st.end()){
+                        res++;   
+                        st.insert(curr);
+                    }
+                }
+            }
+            return;
+        }
+        curr.push_back(s[idx]);
+        dfs(s, curr, sz, idx+1, res, st);
+        curr.pop_back();
+        dfs(s, curr, sz, idx+1, res, st);
+    }
+    
+    int countPalindromicSubsequence(string s) {
+        string curr="";
+        unordered_set<string>st;
+        int sz=s.size(), idx=0, res=0;
+        dfs(s, curr, sz, idx, res, st);
+        return res;
+    }
+};
+*/
+
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -45,10 +87,6 @@ public:
             }
         }
         int ans = 0;
-        for (auto &num : v) {
-            cout << num.first << " " << num.second << "\n";
-        }
-        cout << "-------" << "\n";
         for (int i = 0; i < 26; ++i)
         {
             // Only when the alphabet occur for the second time
@@ -60,11 +98,9 @@ public:
                 {
                     st.insert(s[x]);
                 }
-                cout << ans << "\n";
                 ans += ((int)st.size());
             }
         }
-        cout << ans << "\n";
         return ans;
     }
 };
@@ -72,5 +108,5 @@ public:
 int main() {
     Solution obj;
     string s = "bbcbaba";
-    obj.countPalindromicSubsequence(s);
+    cout<<obj.countPalindromicSubsequence(s);
 }

@@ -9,30 +9,29 @@
 #include<iomanip>
 using namespace std;
 
-string& rtrim(string &s)
-{
-	auto it = find_if(s.rbegin(), s.rend(),
-	[](char c) {
+string& rtrim(string &s){
+	auto it=find_if(s.rbegin(), s.rend(),
+	[](char c){
 		return !isspace<char>(c, locale::classic());
 	});
 	s.erase(it.base(), s.end());
 	return s;
 }
 
-string replace_all_copy(const string& s, const string& f, const string& r) {
-	if (s.empty() || f.empty() || f == r || f.size() > s.size()) {
+string replace_all_copy(const string &s, const string &f, const string &r){
+	if (s.empty()||f.empty()||f==r||f.size()>s.size()){
 		return s;
 	}
 	ostringstream buffer;
-	auto start = s.cbegin();
-	while (true) {
-		const auto end = search(start , s.cend(), f.cbegin(), f.cend());
-		copy(start, end,  ostreambuf_iterator<char>(buffer));
-		if (end == s.cend()) {
+	auto start=s.cbegin();
+	while(true){
+		const auto end=search(start, s.cend(), f.cbegin(), f.cend());
+		copy(start, end, ostreambuf_iterator<char>(buffer));
+		if (end==s.cend()){
 			break;
 		}
 		copy(r.cbegin(), r.cend(), ostreambuf_iterator<char>(buffer));
-		start = end + f.size();
+		start=end+f.size();
 	}
 	return buffer.str();
 }

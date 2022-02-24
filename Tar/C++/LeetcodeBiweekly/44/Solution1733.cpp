@@ -30,85 +30,49 @@ Explanation: You can either teach user 1 the second language or user 2 the first
  * 		Find out from all the languages what is the minimum we need to teach
  */
 
-#include <bits/stdc++.h>
-using namespace std;
-
-class Solution
-{
+class Solution {
 public:
-    int minimumTeaching(int n, vector<vector<int>> languages, vector<vector<int>> friendships)
-    {
-        map<int, set<int>> languageMp;
-        for (int i = 0; i < languages.size(); ++i)
-        {
-            languageMp.insert(pair<int, set<int>>(i + 1, set<int>()));
-            for (int l : languages[i])
-            {
-                languageMp[i + 1].insert(l);
+    
+    bool doesNotNeedsTeaching(vector<vector<int>>&languages, int friendl, int friendr, vector<vector<int>>&memo){
+        if(memo[friendl][friendr]!=0) return memo[friendl][friendr]==1;
+        for(int i=0; i<languages[friendr].size(); ++i){
+            if(find(languages[friendl].begin(), languages[friendl].end(), languages[friendr][i])!=languages[friendl].end()){
+                memo[friendl][friendr]=memo[friendr][friendl]=1;
+                return true;
             }
         }
-        for (auto &entry : languageMp)
-        {
-            cout << entry.first << " : ";
-            for (auto &setEntry : entry.second)
-            {
-                cout << setEntry << " ";
-            }
-            cout << endl;
-        }
-        bool alreadyCan[friendships.size()];
-        for (int i = 0; i < friendships.size(); ++i)
-        {
-            alreadyCan[i] = false;
-        }
-        for (int i = 0; i < friendships.size(); ++i)
-        {
-            set<int> curr = languageMp[friendships[i][0]];
-            for (auto it = curr.begin(); it != curr.end(); ++it)
-            {
-                // If second friend has knowledge about any of the languages which the first friend can speak
-                set<int> next = languageMp[friendships[i][1]];
-                if (next.count(*it) != 0)
-                {
-                    alreadyCan[i] = true;
-                    break;
+        memo[friendl][friendr]=memo[friendr][friendl]=-1;
+        return false;
+    }
+    
+    int minimumTeachings(int n, vector<vector<int>>& languages, vector<vector<int>>& friendships) {
+        int lngsz=languages.size();
+        int ans=lngsz;
+        vector<vector<int>>memo(lngsz+1, vector<int>(lngsz+1, 0));
+        for(int lang=1; lang<=n; ++lang){
+            int count=0;
+            vector<bool>needToTeach(lngsz, false);
+            int frsz=friendships.size();
+            for(int x=0; x<frsz; ++x){
+                int friendl=friendships[x][0]-1;
+                int friendr=friendships[x][1]-1;
+                if(doesNotNeedsTeaching(languages, friendl, friendr, memo)) continue;
+                if(find(languages[friendl].begin(), languages[friendl].end(), lang)==languages[friendl].end()){
+                    if(!needToTeach[friendl]){
+                        count++;
+                        needToTeach[friendl]=true;
+                    }
+                }
+                if(find(languages[friendr].begin(), languages[friendr].end(), lang)==languages[friendr].end()){
+                    if(!needToTeach[friendr]){
+                        count++;
+                        needToTeach[friendr]=true;
+                    }
                 }
             }
+            ans=min(ans, count);
         }
-        cout << "--------" << endl;
-        for (bool entry : alreadyCan)
-        {
-            cout << entry << " ";
-        }
-        cout<<endl;
-        cout << "--------" << endl;
-        int minTeach = INT_MAX;
-        // Travel friendship array and check in already can which friendship needs teachings
-        for (int i = 0; i <= n; ++i)
-        {
-            unordered_set<int> teachSet;
-            for (int j = 0; j < friendships.size(); ++j)
-            {
-                if (alreadyCan[j] == 1)
-                {
-                    continue;
-                }
-                set<int> temp1 = languageMp[friendships[j][0]];
-                set<int> temp2 = languageMp[friendships[j][1]];
-                if (temp1.count(i) == 0)
-                {
-                    teachSet.insert(friendships[j][0]);
-                }
-                if (temp2.count(i) == 0)
-                {
-                    teachSet.insert(friendships[j][1]);
-                }
-            }
-            int stSize = teachSet.size();
-            minTeach = min(minTeach, stSize);
-        }
-        cout << minTeach;
-        return minTeach;
+        return ans;
     }
 };
 

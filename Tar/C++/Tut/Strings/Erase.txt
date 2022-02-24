@@ -36,7 +36,6 @@ std::string::erase
 				cout << str;
 			}
 
-			// Driver code
 			int main()
 			{
 				string str("Hello World!");
@@ -77,7 +76,6 @@ std::string::erase
 		    cout << str;
 		}
 		 
-		// Driver code
 		int main()
 		{
 		    string str("Hello World!");
@@ -120,7 +118,6 @@ std::string::erase
 		    cout << str;
 		}
 		 
-		// Driver code
 		int main()
 		{
 		    string str("Hello World!");
@@ -165,7 +162,6 @@ std::string::erase
 		    cout << str;
 		}
 		 
-		// Driver code
 		int main()
 		{
 		    string str("Hello World!");
@@ -188,7 +184,7 @@ std::string::erase
 
 		string& string ::erase (iterator beg, iterator end)
 
-			- Erases all characters of the range [ beg, end)
+			- Erases all characters of the range [beg, end)
 			
 			- Returns end i.e. the first character after the
 		  		last character removed.
@@ -213,7 +209,6 @@ std::string::erase
 		    cout << str;
 		}
 		 
-		// Driver code
 		int main()
 		{
 		    string str("Hello World!");

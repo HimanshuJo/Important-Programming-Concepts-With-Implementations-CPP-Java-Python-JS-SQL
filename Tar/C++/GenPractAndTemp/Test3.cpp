@@ -3,19 +3,15 @@
 #include<algorithm>
 using namespace std;
 
-int main(){
-    vector<int>in{3,9,19,5,21};
-    sort(in.begin(), in.end());
-    for(auto &vals: in)
-        cout<<vals<<" ";
-    cout<<endl;
-    int currval=19;
-    auto it=lower_bound(in.begin(), in.end(), 19);
-    if(*it>currval) it--;
-    if(it!=in.end()&&it>=in.begin()){
-        cout<<*it<<endl;
-        int idx=it-in.begin();
-        cout<<"idx "<<idx<<endl;
+bool isPalindrome(string str){
+    int len=str.length();
+    for(int i=0; i<len/2; ++i){
+        if(str[i]!=str[len-1-i]) return false;
     }
-    else cout<<-1<<endl;
+    return true;
+}
+    
+
+int main(){
+    cout<<(isPalindrome("madam"));
 }

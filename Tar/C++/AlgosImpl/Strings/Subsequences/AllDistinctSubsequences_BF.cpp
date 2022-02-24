@@ -35,7 +35,6 @@ void subsequences(char s[], char op[], int i, int j)
 	}
 }
 
-// Driver Code
 int main()
 {
 	char str[] = "ggg";

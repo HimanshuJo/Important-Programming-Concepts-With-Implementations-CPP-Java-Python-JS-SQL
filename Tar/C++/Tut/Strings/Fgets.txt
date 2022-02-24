@@ -39,8 +39,6 @@ If a read error occurs, the error indicator (ferror) is set and a null pointer i
 /* fgets example */
 #include <stdio.h>
 
-#include <stdio.h>
-
 int main()
 {
 	FILE *pFile;
