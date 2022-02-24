@@ -7,7 +7,7 @@ using namespace std::placeholders;
 template<class T>
 class Eq1: public binary_function<T, T, bool>{
     public:
-        bool operator()(const T&a, const T& b) const{
+        bool operator()(const T &a, const T &b) const{
             return a==b;
         }
 };

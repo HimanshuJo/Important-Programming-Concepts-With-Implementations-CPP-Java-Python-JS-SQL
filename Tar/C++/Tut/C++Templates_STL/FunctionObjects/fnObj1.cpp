@@ -5,7 +5,7 @@ using namespace std;
 template<class T>
 class Eq1: public binary_function<T, T, bool>{
     public:
-    bool operator()(const T& a, const T& b) const{
+    bool operator()(const T &a, const T &b) const{
         return a==b;
     }
 };
@@ -15,8 +15,8 @@ class addVal: public unary_function<T, T>{
     private:
         T val;
     public:
-        addVal(const T& newVal): val(newVal){};
-        T operator()(const T& arg) const{
+        addVal(const T &newVal): val(newVal){};
+        T operator()(const T &arg) const{
             return arg+val;
         }
 };
