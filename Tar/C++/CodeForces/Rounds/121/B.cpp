@@ -2,7 +2,8 @@
 /*
 You are given a decimal representation of an integer x without leading zeros.
 
-You have to perform the following reduction on it exactly once: take two neighboring digits in x and replace them with their sum without leading zeros 
+You have to perform the following reduction on it exactly once: 
+take two neighboring digits in x and replace them with their sum without leading zeros 
 (if the sum is 0, it's represented as a single 0).
 
 For example, if x=10057, the possible reductions are:

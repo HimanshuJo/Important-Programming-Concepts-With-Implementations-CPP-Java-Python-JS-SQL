@@ -1,4 +1,3 @@
-
 C++ Classes/Objects
 
 C++ is an object-oriented programming language.

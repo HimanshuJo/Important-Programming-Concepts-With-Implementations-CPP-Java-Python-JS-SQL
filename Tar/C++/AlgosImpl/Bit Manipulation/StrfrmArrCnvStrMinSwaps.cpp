@@ -25,7 +25,7 @@ Approach:
 */
 /*
 Follow the steps below to solve the problem:
-
+	
 	Traverse the array of strings and for each string present in the array,
 		check if it is an anagram of S or not.
 

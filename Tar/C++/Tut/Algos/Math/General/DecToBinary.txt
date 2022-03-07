@@ -74,7 +74,6 @@ long int decimal_to_binary(int n)
     return binary;
 }
 
-// driver code
 int main()
 {
 	int n = 32;
@@ -114,7 +113,6 @@ void decToBinary(int n)
 		cout << binaryNum[j];
 }
 
-// Driver program to test above function
 int main()
 {
 	int n = 17;

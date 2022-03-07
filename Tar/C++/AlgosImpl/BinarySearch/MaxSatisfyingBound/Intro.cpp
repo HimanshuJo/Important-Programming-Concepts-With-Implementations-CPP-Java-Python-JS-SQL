@@ -1,5 +1,6 @@
 /*
-Given a set of prime numbers somewhere in between an array, find the first and the last prime number in that range.
+Given a set of prime numbers somewhere in between an array, 
+find the first and the last prime number in that range.
 
 E.g: arr=[1, 4, 6, 8, 2, 7, 13, 23, 44, 88]
 	 Output: [2, 23]

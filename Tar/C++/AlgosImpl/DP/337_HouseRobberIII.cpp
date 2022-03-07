@@ -49,6 +49,7 @@ public:
                   (root->left!=nullptr&&root->left->right!=nullptr?dfs(root->left->right, ans, curans, memo):0)+
                   (root->right!=nullptr&&root->right->left!=nullptr?dfs(root->right->left, ans, curans, memo):0)+
                   (root->right!=nullptr&&root->right->right!=nullptr?dfs(root->right->right, ans, curans, memo):0),
+                  
                   (root->left!=nullptr?dfs(root->left, ans, curans, memo):0)+
                   (root->right!=nullptr?dfs(root->right, ans, curans, memo):0)
                   );

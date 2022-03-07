@@ -117,34 +117,17 @@ Since what this does is basically a traversal of a grid, this can be done with a
 Overall complexity: O(nm) per testcase.
 */
 
-#include<vector>
 #include<iostream>
-#include<set>
+#include<queue>
+#include<vector>
 using namespace std;
 
-bool isValid(vector<string>&grd, int N, int M, int i, int j){
-	if(i<0||i>=N||j<0||j>=M||grd[i][j]!='.') return false;
-	return true;
-}
+struct Cell{
+	int x, y;
+};
 
-void dfs(vector<string>&grd, vector<pair<int, int>>&dir, int N, int M, int i, int j){
-	int cnt=0;
-	for(auto &vals: dir){
-		pair<int, int>curr=vals;
-		if(isValid(grd, N, M, i+curr.first, j+curr.second)){
-			cnt++;
-		}
-	}
-	if(cnt<=1){
-		grd[i][j]='+';
-		for(auto &vals: dir){
-			pair<int, int>curr=vals;
-			if(isValid(grd, N, M, i+curr.first, j+curr.second)){
-				dfs(grd, dir, N, M, i+curr.first, j+curr.second);
-			}
-		}
-	}
-}
+int dx[]={-1, 0, 1, 0};
+int dy[]={0, 1, 0, -1};
 
 int main(){
 	ios_base::sync_with_stdio(false);
@@ -154,32 +137,57 @@ int main(){
 	while(t--){
 		int n, m;
 		cin>>n>>m;
-		vector<string>grd(n);
+		vector<string>s(n);
+		int lx=-1, ly=-1;
 		for(int i=0; i<n; ++i){
-			string in;
-			cin>>in;
-			grd[i]=in;
-		}
-		bool flag=false;
-		int i_, j_;
-		for(int i=0; i<n; ++i){
+			cin>>s[i];
 			for(int j=0; j<m; ++j){
-				if(grd[i][j]=='L'){
-					i_=i, j_=j;
-					flag=true;
-					break;
+				if(s[i][j]=='L'){
+					lx=i, ly=j;
 				}
 			}
-			if(flag) break;
 		}
-		vector<pair<int, int>>dir{{-1, 0}, {1, 0}, {0, 1}, {0, -1}};
-		for(auto &vals: dir){
-			pair<int, int>curr=vals;
-			if(isValid(grd, n, m, i_+curr.first, j_+curr.second)){
-				dfs(grd, dir, n, m, i_+curr.first, j_+curr.second);
+		auto in=[&](int x, int y){
+			return 0<=x&&x<n&&0<=y&&y<m;
+		};
+		vector<vector<int>>d(n, vector<int>(m, 0));
+		for(int x=0; x<n; ++x){
+			for(int y=0; y<m; ++y){
+				if(s[x][y]=='.'){
+					for(int i=0; i<4; ++i){
+						int nx=x+dx[i];
+						int ny=y+dy[i];
+						d[x][y]+=in(nx, ny)&&s[nx][ny]!='#';
+					}
+				}
 			}
 		}
-		for(int i=0; i<n; ++i)
-			puts(grd[i].c_str());
+		queue<Cell>q;
+		vector<vector<char>>seen(n, vector<char>(m, 0));
+		q.push({lx, ly});
+		seen[lx][ly]=true;
+		while(!q.empty()){
+			int x=q.front().x;
+			int y=q.front().y;
+			q.pop();
+			for(int i=0; i<4; ++i){
+				int nx=x+dx[i];
+				int ny=y+dy[i];
+				if(!in(nx, ny)||s[nx][ny]=='#'||seen[nx][ny]) continue;
+				--d[nx][ny];
+				if(d[nx][ny]<=1){
+					seen[nx][ny]=true;
+					q.push({nx, ny});
+				}
+			}
+		}
+		for(int i=0; i<n; ++i){
+			for(int j=0; j<m; ++j){
+				if(s[i][j]=='.'&&seen[i][j]){
+					s[i][j]='+';
+				}
+			}
+			cout<<s[i]<<"\n";
+		}
 	}
 }

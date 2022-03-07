@@ -22,8 +22,8 @@ E.g. string="tact coa"
 				next we AND the resultant number with the original number
 				If there is at-most one bit set, we should get 0
 
-				00010000-1=00001111
-				00010000&00001111=0
+				00010000 - 1 = 00001111
+				00010000 & 00001111 = 0
 
 Time: O(N)
 */

@@ -1,3 +1,98 @@
+// B. Absent Remainder
+/*
+You are given a sequence a1,a2,…,an consisting of n pairwise distinct positive integers.
+
+Find ⌊n/2⌋ different pairs of integers x and y such that:
+
+x≠y;
+x and y appear in a;
+x mod y doesn't appear in a.
+Note that some x or y can belong to multiple pairs.
+
+⌊x⌋ denotes the floor function — the largest integer less than or equal to x. x mod y denotes the remainder from dividing x by y.
+
+If there are multiple solutions, print any of them. It can be shown that at least one solution always exists.
+
+Input
+The first line contains a single integer t (1≤t≤10^4) — the number of testcases.
+
+The first line of each testcase contains a single integer n (2≤n≤2⋅10^5) — the length of the sequence.
+
+The second line of each testcase contains n integers a1,a2,…,an (1≤ai≤10^6).
+
+All numbers in the sequence are pairwise distinct. The sum of n over all testcases doesn't exceed 2⋅10^5.
+
+Output
+The answer for each testcase should contain ⌊n/2⌋ different pairs of integers x and y such that x≠y, 
+x and y appear in a and x mod y doesn't appear in a. Print the pairs one after another.
+
+You can print the pairs in any order. However, the order of numbers in the pair should be exactly
+such that the first number is x and the second number is y. All pairs should be pairwise distinct.
+
+If there are multiple solutions, print any of them.
+
+Example
+input
+4
+2
+1 4
+4
+2 8 3 4
+5
+3 8 5 9 7
+6
+2 7 5 3 4 8
+
+output
+4 1
+8 2
+8 4
+9 5
+7 5
+8 7
+4 3
+5 2
+Note
+In the first testcase there are only two pairs: (1,4) and (4,1). ⌊2/2⌋=1, so we have to find one pair. 
+1 mod 4=1, and 1 appears in a, so that pair is invalid. Thus, the only possible answer is a pair (4,1).
+
+In the second testcase, we chose pairs 8 mod 2=0 and 8 mod 4=0. 0 doesn't appear in a, so that answer is valid. 
+There are multiple possible answers for that testcase.
+
+In the third testcase, the chosen pairs are 9 mod 5=4 and 7 mod 5=2. Neither 4, nor 2, appears in a, so that answer is valid.
+
+*/
+/*
+Solution:
+
+There is one important observation: x mod y<y.
+
+Thus, you can obtain at least n−1 pair by choosing y as the minimum number in the sequence and 
+x as anything else. n−1≥⌊n2⌋ for any positive n.
+
+Overall complexity: O(n) per testcase.
+
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main() {
+  int t;
+  cin >> t;
+  while (t--) {
+    int n;
+    cin >> n;
+    vector<int> a(n);
+    for (int &x : a) cin >> x;
+    int mn = *min_element(a.begin(), a.end());
+    for (int i = 0, k = 0; k < n / 2; ++i) if (a[i] != mn) {
+      cout << a[i] << ' ' << mn << '\n';
+      k += 1;
+    }
+  }
+}
+*/
+
 #include<iostream>
 #include<vector>
 #include<map>
@@ -87,4 +182,3 @@ int main(){
 		}
 	}
 }
-

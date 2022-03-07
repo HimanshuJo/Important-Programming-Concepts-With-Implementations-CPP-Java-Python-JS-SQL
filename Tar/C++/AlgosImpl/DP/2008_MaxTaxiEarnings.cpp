@@ -29,6 +29,85 @@ Explanation: We will pick up the following passengers:
 - Drive passenger 5 from point 13 to point 18 for a profit of 18 - 13 + 1 = 6 dollars.
 We earn 9 + 5 + 6 = 20 dollars in total.
 */
+
+/*
+Solution 2:
+
+class Solution {
+public:
+    long long dp[(int)1e5];
+    long long recur(vector<vector<int>>&rides, int nn, int idx)
+    {
+        if(idx>=nn) return 0;
+        if(dp[idx]!=-1) return dp[idx];
+        for(int i=idx+1; i<nn; i++)
+        {
+            if(rides[i][0]>=rides[idx][1])
+                break;
+        }
+        long long op1=recur(rides, nn, idx+1);
+        long long op2=rides[idx][1]-rides[idx][0]+rides[idx][2]+recur(rides,nn,i);
+        return dp[idx]=max(op1, op2);
+    }
+    
+    long long maxTaxiEarnings(int n, vector<vector<int>>& rides) {
+        
+        sort(rides.begin(),rides.end());
+        int nn=rides.size();
+        memset(dp,-1, sizeof dp);
+        return recur(rides, nn, 0);
+    }
+};
+*/
+
+/*
+Solution 3:
+
+#include<vector>
+#include<algorithm>
+#include<iostream>
+using namespace std;
+
+class Solution {
+public:
+
+    long long dfs(vector<vector<int>>&rides, int idx, vector<int>&memo) {
+        if (idx < rides.size() && memo[idx] != -1) {
+            return memo[idx];
+        }
+        vector<int>curr = rides[idx];
+        long long maxProf = 0;
+        for (int i = idx + 1; i < rides.size(); ++i) {
+            vector<int>nxt = rides[i];
+            if (nxt[0] >= curr[1]) {
+                long long prof = dfs(rides, i, memo);
+                maxProf = max(maxProf, prof);
+            }
+        }
+        maxProf += (curr[1] - curr[0] + curr[2]);
+        return memo[idx] = maxProf;;
+    }
+
+    long long maxTaxiEarnings(int n, vector<vector<int>>& rides) {
+        vector<int>memo(n + 1, -1);
+        sort(rides.begin(), rides.end());
+        long long fnprof = 0;
+        for (int i = 0; i < rides.size(); ++i) {
+            long long prof = dfs(rides, i, memo);
+            fnprof = max(fnprof, prof);
+        }
+        return fnprof;
+    }
+};
+
+int main() {
+    int n = 5;
+    vector<vector<int>>rides = {{2, 5, 4}, {1, 5, 1}};
+    Solution obj;
+    cout << obj.maxTaxiEarnings(n, rides);
+}
+*/
+
 #include <bits/stdc++.h>
 using namespace std;
 

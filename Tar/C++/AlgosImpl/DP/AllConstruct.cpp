@@ -1,7 +1,8 @@
 /*
 Given a target string and a vector of string as WordBank. Construct all ways to form the
-target string from the strings in the wordBank. Space between the letters of the
-constructed target string is allowed
+target string from the strings in the wordBank.
+
+Space between the letters of the constructed target string is allowed
 
 E.g: target="homantak" wordBank=["homan", "ho", "man", "hom", "homant", "homantak", "tak"]
 
@@ -31,10 +32,10 @@ vector<vector<string>> allConstruct(string target, vector<string>&wordBank, map<
 		if(strIt!=string::npos&&strIt==0){
 			string suffix=target.substr(word.length(), target.length()-word.length());
 			vector<vector<string>>curres=allConstruct(suffix, wordBank, memo);
-			for(auto &vals: curres)
-				vals.push_back(word);	
-			for(auto &vals: curres)
-				res.push_back(vals);
+			for(auto &vecEntries: curres)
+				vecEntries.push_back(word);	
+			for(auto &vecEntries: curres)
+				res.push_back(vecEntries);
 		}
 	}
 	return memo[target]=res;
