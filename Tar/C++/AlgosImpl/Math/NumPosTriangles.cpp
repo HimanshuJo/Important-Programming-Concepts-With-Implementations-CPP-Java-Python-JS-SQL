@@ -52,7 +52,6 @@ int countPoints(Point arr[], int n)
 }
 
 // Time Complexity: O(n^{3})
-// Driver code
 int main()
 {
 	Point arr[] = {{0, 0}, {1, 1}, {2, 0}, {2, 2}};

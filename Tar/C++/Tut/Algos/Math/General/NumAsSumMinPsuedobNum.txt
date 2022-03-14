@@ -57,7 +57,6 @@ void psuedoBinary(int n)
 	}
 }
 
-// Driver code
 int main()
 {
 	int n = 31;
