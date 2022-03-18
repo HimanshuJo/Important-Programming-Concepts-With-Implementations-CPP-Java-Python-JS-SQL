@@ -23,7 +23,8 @@ Example 2:
 Input: favorite = [1,2,0]
 Output: 3
 Explanation: 
-Each employee is the favorite person of at least one other employee, and the only way the company can invite them is if they invite every employee.
+Each employee is the favorite person of at least one other employee, and the only way the company can 
+invite them is if they invite every employee.
 The seating arrangement will be the same as that in the figure given in example 1:
 - Employee 0 will sit between employees 2 and 1.
 - Employee 1 will sit between employees 0 and 2.
@@ -91,7 +92,7 @@ public:
         int seen[100001];
         for(int i=0; i<100001; ++i)
             seen[i]=-1;
-        // Case 1: Two node slikes each other and there could be max path going across two node
+        // Case 1: Two nodes likes each other and there could be max path going across two node
         int res1=0;
         for(int i=0; i<n; ++i){
             if(seen[i]==1) continue;

@@ -40,9 +40,7 @@ Print the maximum number of edges among all the connected components.
 using namespace std;
 
 // DFS function
-int dfs(int s, vector<int> adj[], vector<bool> visited,
-        int nodes)
-{
+int dfs(int s, vector<int> adj[], vector<bool> visited, int nodes) {
 	// Adding all the edges connected to the vertex
 	int adjListSize = adj[s].size();
 	visited[s] = true;
@@ -67,7 +65,6 @@ int maxEdges(vector<int> adj[], int nodes)
 	return res;
 }
 
-// Driver code
 int main()
 {
 	int nodes = 3;

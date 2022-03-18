@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
+
 // fillPrime function fills primes from 2 to sqrt of high in chprime(vector) array
 void fillPrimes(vector<int>& prime, int high)
 {

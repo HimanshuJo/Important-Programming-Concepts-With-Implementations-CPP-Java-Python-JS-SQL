@@ -9,8 +9,8 @@ Vlad invited k friends to play a game with them.
 Vlad starts the game in the room 1 and wins if he reaches a room other than 1, 
 into which exactly one corridor leads.
 
-Friends are placed in the maze: the friend with number i is in the room xi, and no two friends 
-are in the same room 
+Friends are placed in the maze: the friend with number i is in the room xi, and 
+no two friends are in the same room 
 (that is, xi!=xj for all i!=j). 
 Friends win if one of them meets Vlad in any room or corridor before he wins.
 
@@ -23,7 +23,8 @@ Friends know the plan of a maze and intend to win. Vlad is a bit afraid of their
 Determine if he can guarantee victory 
 (i.e. can he win in any way friends play).
 
-In other words, determine if there is such a sequence of Vlad's moves that lets Vlad win in any way friends play.
+In other words, determine if there is such a sequence of Vlad's moves that 
+lets Vlad win in any way friends play.
 
 Example
 input
