@@ -4,12 +4,8 @@
 using namespace std;
 
 bool isValid(vector<int>&coordCurCr, vector<vector<int>>&progress, 
-	         vector<vector<int>>&wordD, vector<vector<int>>&tWrkSt, int M, int S){
-	for(int i=0; i<S; ++i){
-		for(int j=0; j<M; ++j){
-
-		}
-	}
+	         vector<vector<int>>&wordD, vector<vector<int>>&tWrkSt, int M, int S, int x){
+	return true;
 }
 
 int main(){
@@ -35,27 +31,28 @@ int main(){
 		cin>>dmnds[i];
 		sm+=dmnds[i];
 	}
-	int t=0, flag=0;
+	int t=0, flagB=0;
 	vector<vector<int>>progress(M+1, vector<int>(S+1, 0));
 	vector<int>coordCurCr(M+1, 0);
 	vector<vector<int>>workD(M+1, vector<int>(S+1, -1));
-	while(t!=L||workD[M][S]!=sm){
+	int counter2=0;
+	while(t!=L||counter2<sm){
 		bool tmpFlg=false;
 		for(int k=0; k<M; ++k){
 			coordCurCr[k]=-(k-1)*T;
 			for(int x=0; x<S; ++x){
-				if(coordsS[x]==coordCurC[k]&&workD[k][x]==-1){
+				if(coordsS[x]==coordCurCr[k]&&workD[k][x]!=tWrkSt[k][x]){
 					flagB=1;
-					tmpFlag=true;
+					tmpFlg=true;
 					break;
 				}
 			}
 		}
-		if(!tmpFlag) flagB=0;
+		if(!tmpFlg) flagB=0;
 		for(int x=0; x<S; ++x){
 			bool flag_=false;
 			for(int y=0; y<M; ++y){
-				if(isValid(coordCur, progress, workD, tWrkSt, M, S)){
+				if(isValid(coordCurCr, progress, workD, tWrkSt, M, S, x)){
 					workD[y][x]+=1;
 					flag_=true;
 					break;
@@ -65,10 +62,17 @@ int main(){
 		}
 		if(flagB==0){
 			for(int k=0; k<M; ++k){
-				coordCurC[k]+=1;
+				coordCurCr[k]+=1;
 			}
 		}
 		t++;
+		counter2=0;
+		for(int i=0; i<M; ++i)
+			for(int j=0; j<S; ++j){
+				if(workD[i][j]==tWrkSt[i][j]){
+					counter2++;
+				}
+			}
 	}
 	int counter=0;
 	for(int i=0; i<M; ++i){
