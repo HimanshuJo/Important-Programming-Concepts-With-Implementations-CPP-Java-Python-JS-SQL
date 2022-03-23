@@ -103,7 +103,8 @@ public:
     unordered_set<string>st1;
     unordered_set<string>st2;
     
-    bool dfs(vector<string>&recipes, vector<vector<string>>&ingredients, unordered_map<string, int>&mp, int idx, vector<bool>&seen){
+    bool dfs(vector<string>&recipes, vector<vector<string>>&ingredients, unordered_map<string, int>&mp, 
+             int idx, vector<bool>&seen){
         if(st1.find(recipes[idx])!=st1.end()) return true;
         if(st2.find(recipes[idx])!=st2.end()) return false;
         if(seen[idx]) return false;

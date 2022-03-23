@@ -45,7 +45,7 @@ row_from_bottom = n-1-row_from_top
 				= n-1-(s-1)/n;
 (s-1) because of '0' based indexing and take care of corner cases when s%n == 0; 
 to understand it better, please dry run following case.
-e.g n=6, s=24
+e.g n=6,s=24
 	row_from_top = (24-1)/6 = 3
 	row_from_bottom = 6-1-3 = 2;
 

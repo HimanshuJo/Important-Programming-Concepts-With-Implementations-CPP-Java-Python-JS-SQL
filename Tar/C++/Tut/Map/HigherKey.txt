@@ -1,3 +1,5 @@
+// Retrieve the key strictly higher than the specified key
+
 #include<iostream>
 #include<map>
 using namespace std;
