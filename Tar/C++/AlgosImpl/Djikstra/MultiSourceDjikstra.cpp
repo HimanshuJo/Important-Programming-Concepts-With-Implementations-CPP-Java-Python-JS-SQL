@@ -19,6 +19,8 @@ void djikstra(vector<vector<pair<int, int>>>&gr, vector<int>&dist, int curSource
 			pair<int, int>cur=pq.top();
 			pq.pop();
 			int curVert=cur.second;
+			int curWt=cur.first;
+			if(curWt>dist[curVert]) continue;
 			for(auto &nei: gr[curVert]){
 				pair<int, int>curpair=nei;
 				int nwV=curpair.first, nwW=curpair.second;

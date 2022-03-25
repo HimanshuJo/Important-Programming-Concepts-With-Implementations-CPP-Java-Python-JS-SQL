@@ -8,7 +8,6 @@
 #define infi 1000000000
 using namespace std;
 
-// Class of the node
 class Node
 {
 public:
@@ -131,30 +130,20 @@ void printPath(vector<int> path, int i, int s)
 	}
 }
 
-// Driver Code
 int main()
 {
 	vector<Node *> v;
 	int n = 3, s = 0, e = 3;
-
-	// Loop to create the nodes
 	for (int i = 0; i < n; i++)
 	{
 		Node *a = new Node(i);
 		v.push_back(a);
 	}
-
-	// Creating directed
-	// weighted edges
 	v[0]->add_child(2, 1);
 	v[0]->add_child(3, 1);
 	v[2]->add_child(3, 1);
-
 	vector<int> path(v.size());
 	vector<int> dist = dijkstraDist(v, s, path);
-
-	// Loop to print the distance of
-	// every node from source vertex
 	for (int i = 0; i < dist.size(); i++)
 	{
 		if (dist[i] == infi)

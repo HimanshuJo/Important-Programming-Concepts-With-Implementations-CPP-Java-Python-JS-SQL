@@ -1,58 +1,76 @@
-// A C++ program to find minimum possible
-// time by the car chassis to complete
-#include <bits/stdc++.h>
+#include<vector>
+#include<iostream>
+#include<cmath>
 using namespace std;
-#define NUM_LINE 2
-#define NUM_STATION 4
 
-// Utility function to find a minimum of two numbers
-int min(int a, int b)
-{
-	return a < b ? a : b;
+int max(int x, int y, int z){
+	return max(max(x, y), z);
 }
 
-int carAssembly(int a[][NUM_STATION],
-				int t[][NUM_STATION],
-				int *e, int *x)
-{
-	int T1[NUM_STATION], T2[NUM_STATION], i;
+int minVal(vector<int>&hist, int i, int j){
+	if(i==-1) return j;
+	if(j==-1) return i;
+	return (hist[i]<hist[j])?i:j;
+}
 
-	// time taken to leave first station in line 1
-	T1[0] = e[0] + a[0][0];
-	
-	// time taken to leave first station in line 2
-	T2[0] = e[1] + a[1][0];
+int getMid(int s, int e){
+	return (s+(e-s)/2);
+}
 
-	// Fill tables T1[] and T2[] using the
-	// above given recursive relations
+int RMQUtil(vector<int>&hist, vector<int>&st, int ss, int se, int qs, int qe, int sidx){
+	if(se<qs||ss>qe) return -1;
+	if(ss>=qs&&se<=qe) return st[sidx];
+	int mid=getMid(ss, se);
+	return (minVal(hist, RMQUtil(hist, st, ss, mid, qs, qe, sidx*2+1), 
+		                 RMQUtil(hist, st, mid+1, se, qs, qe, sidx*2+2)));
+}
 
-	cout<<T1[0]<<" "<<T2[0]<<endl;
-	for (i = 1; i < NUM_STATION; ++i)
-	{
-		T1[i] = min(T1[i - 1] + a[0][i],
-					T2[i - 1] + t[1][i] + a[0][i]);
-		T2[i] = min(T2[i - 1] + a[1][i],
-					T1[i - 1] + t[0][i] + a[1][i]);
+int RMQ(vector<int>&hist, vector<int>&st, int n, int qs, int qe){
+	if(qs<0||qe>n-1||qs>qe){
+		cout<<"Invalid Input"<<endl;
+		return -1;
 	}
-	for(int i=0; i<NUM_STATION; ++i)
-		cout<<T1[i]<<" ";
-	// Consider exit times and return minimum
-	return min(T1[NUM_STATION - 1] + x[0],
-			T2[NUM_STATION - 1] + x[1]);
+	int ss=0, se=n-1, sidx=0;
+	return RMQUtil(hist, st, ss, se, qs, qe, sidx);
 }
 
-// Driver Code
-int main()
-{
-	int a[][NUM_STATION] = {{4, 5, 3, 2},
-							{2, 10, 1, 4}};
-	int t[][NUM_STATION] = {{0, 7, 4, 5},
-							{0, 9, 2, 8}};
-	int e[] = {10, 12}, x[] = {18, 7};
+int constructStUtil(vector<int>&hist, vector<int>&st, int ss, int se, int sidx){
+	if(ss==se){
+		return (st[sidx]=ss);
+	}
+	int mid=getMid(ss, se);
+	st[sidx]=minVal(hist, constructStUtil(hist, st, ss, mid, sidx*2+1),
+		                  constructStUtil(hist, st, mid+1, se, sidx*2+2));
+	return st[sidx];
+}
 
-	cout << carAssembly(a, t, e, x);
+vector<int> constructSt(vector<int>&hist, int n){
+	int x=(int)(ceil(log2(n)));
+	int maxSz=2*(int)pow(2, x)-1;
+	vector<int>st(maxSz);
+	int ss=0, se=n-1, sidx=0;
+	constructStUtil(hist, st, ss, se, sidx);
+	return st;
+}
 
+int getMaxAreaUtil(vector<int>&hist, vector<int>&st, int n, int l, int r){
+	if(l>r) return INT_MIN;
+	if(l==r) return hist[l];
+	int minVal=RMQ(hist, st, n, l, r);
+	return (max(getMaxAreaUtil(hist, st, n, l, minVal-1),
+		        getMaxAreaUtil(hist, st, n, minVal+1, r),
+		        (r-l+1)*hist[minVal]));
+}
+
+int getMaxArea(vector<int>&hist, int n){
+	vector<int>st=constructSt(hist, n);
+	int l=0, r=n-1;
+	return getMaxAreaUtil(hist, st, n, l, r);
+}
+
+int main(){
+	vector<int>hist{6, 1, 5, 4, 5, 2, 6};
+	int n=hist.size();
+	cout<<getMaxArea(hist, n);
 	return 0;
 }
-
-// This is code is contributed by rathbhupendra
