@@ -23,6 +23,7 @@ output
 gcd(a1)+gcd(a1,a2)+gcd(a1,a2,a3)+gcd(a1,a2,a3,a4)+gcd(a1,a2,a3,a4,a5)+gcd(a1,a2,a3,a4,a5,a6)=6+2+2+2+1+1=14.
 */
 
+// TLE
 #include<iostream>
 #include<vector>
 using namespace std;

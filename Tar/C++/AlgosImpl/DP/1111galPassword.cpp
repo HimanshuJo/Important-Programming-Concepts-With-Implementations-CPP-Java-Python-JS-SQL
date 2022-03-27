@@ -72,8 +72,8 @@ For each integer 1≤i≤9, do the following operation.
 
 	For every element E in list[D][i], add E succeeded by j to list[D+1][j].
 
-For example, we have list[2][9]={89,99}, so we will add to list[3][8] every element of 
-list[2][9] succeeded by 8, that is, {898,998}. 
+For example, we have list[2][9]={89,99}, 
+so we will add to list[3][8] every element of list[2][9] succeeded by 8, that is, {898,998}. 
 
 This kind of operations are done in the increasing order of D.
 
