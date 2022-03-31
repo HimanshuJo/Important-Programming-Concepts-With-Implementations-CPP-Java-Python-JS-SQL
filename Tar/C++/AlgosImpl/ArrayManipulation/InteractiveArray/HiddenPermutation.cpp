@@ -9,15 +9,16 @@ Depending on t, she will answer:
 
 t=1: max(min(x,pi),min(x+1,pj));
 t=2: min(max(x,pi),max(x+1,pj)).
-You can ask Nastia at most ⌊3⋅n2⌋+30 times. It is guaranteed that she will not change her 
+You can ask Nastia at most ⌊3⋅n/2⌋+30 times. It is guaranteed that she will not change her 
 permutation depending on your queries. Can you guess the permutation?
 
 Input
-The input consists of several test cases. In the beginning, you receive the integer T (1≤T≤10000) — the number of test cases.
+The input consists of several test cases. In the beginning, you receive the integer T (1≤T≤10000) — 
+the number of test cases.
 
 At the beginning of each test case, you receive an integer n (3≤n≤10^4) — the length of the permutation p.
 
-It's guaranteed that the permutation is fixed beforehand and that the sum of n in one test doesn't exceed 2⋅104.
+It's guaranteed that the permutation is fixed beforehand and that the sum of n in one test doesn't exceed 2⋅10^4.
 
 Interaction
 To ask a question, print "? t i j x" (t=1 or t=2, 1≤i,j≤n, i≠j, 1≤x≤n−1) Then, you should read the answer.
@@ -26,7 +27,8 @@ If we answer with −1 instead of a valid answer, that means you exceeded the nu
 Exit immediately after receiving −1 and you will see the Wrong Answer verdict. 
 Otherwise, you can get an arbitrary verdict because your solution will continue to read from a closed stream.
 
-To print the answer, print "! p1 p2 … pn (without quotes). Note that answering doesn't count as one of the ⌊3⋅n/2⌋+30 queries.
+To print the answer, print "! p1 p2 … pn (without quotes). 
+Note that answering doesn't count as one of the ⌊3⋅n/2⌋+30 queries.
 
 After printing a query or printing the answer, do not forget to output end of line and flush the output. 
 Otherwise, you will get Idleness limit exceeded. To do this, use:

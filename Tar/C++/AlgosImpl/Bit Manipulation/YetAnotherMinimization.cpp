@@ -46,9 +46,9 @@ output
 Note
 In the second test case, in one of the optimal answers after all operations a=[2,6,4,6], b=[3,7,6,1].
 
-The cost of the array a equals to (2+6)2+(2+4)2+(2+6)2+(6+4)2+(6+6)2+(4+6)2=508.
+The cost of the array a equals to (2+6)^2+(2+4)^2+(2+6)^2+(6+4)^2+(6+6)^2+(4+6)^2=508.
 
-The cost of the array b equals to (3+7)2+(3+6)2+(3+1)2+(7+6)2+(7+1)2+(6+1)2=479.
+The cost of the array b equals to (3+7)^2+(3+6)^2+(3+1)^2+(7+6)^2+(7+1)^2+(6+1)^2=479.
 
 The total cost of two arrays equals to 508+479=987.
 
