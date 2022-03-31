@@ -31,46 +31,15 @@ Explanation: The queries are processed as follows:
 
 Constraints:
 
-1 <= intervals.length <= 105
-1 <= queries.length <= 105
+1 <= intervals.length <= 10^5
+1 <= queries.length <= 10^5
 intervals[i].length == 2
-1 <= lefti <= righti <= 107
-1 <= queries[j] <= 107
+1 <= lefti <= righti <= 10^7
+1 <= queries[j] <= 10^7
 */
 
-class Solution2 {
-public:
-    vector<int> minInterval(vector<vector<int>>& intervals, vector<int>& queries) {
-        unordered_map<int, int>mp;
-        vector<int>res;
-        priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>>pq;
-        int i=0, szI=intervals.size();
-        vector<int>tmp=queries;
-        int szT=tmp.size();
-        sort(queries.begin(), queries.end());
-        sort(intervals.begin(), intervals.end());
-        for(int q: queries){
-            // prepare pq for current query, take into account all possible intervals
-            while(i<szI&&intervals[i][0]<=q){
-                if(intervals[i][1]>=q){
-                    int sz=intervals[i][1]-intervals[i][0]+1;
-                    pq.push({sz, intervals[i][1]});   
-                }
-                ++i;
-            }
-            while(!pq.empty()&&pq.top().second<q){
-                pq.pop();
-            }
-            if(!pq.empty()){
-                mp[q]=pq.top().first;
-            } else mp[q]=-1;
-        }
-        for(int i=0; i<szT; ++i){
-            res.push_back(mp[tmp[i]]);
-        }
-        return res;
-    }
-};
+/*
+Solution2:
 
 
 class Solution {
@@ -149,5 +118,40 @@ public:
         }
         delete[] tree, delete[] lazy;
         return ans;
+    }
+};
+*/
+
+class Solution {
+public:
+    vector<int> minInterval(vector<vector<int>>& intervals, vector<int>& queries) {
+        unordered_map<int, int>mp;
+        vector<int>res;
+        priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>>pq;
+        int i=0, szI=intervals.size();
+        vector<int>tmp=queries;
+        int szT=tmp.size();
+        sort(queries.begin(), queries.end());
+        sort(intervals.begin(), intervals.end());
+        for(int q: queries){
+            // prepare pq for current query, take into account all possible intervals
+            while(i<szI&&intervals[i][0]<=q){
+                if(intervals[i][1]>=q){
+                    int sz=intervals[i][1]-intervals[i][0]+1;
+                    pq.push({sz, intervals[i][1]});   
+                }
+                ++i;
+            }
+            while(!pq.empty()&&pq.top().second<q){
+                pq.pop();
+            }
+            if(!pq.empty()){
+                mp[q]=pq.top().first;
+            } else mp[q]=-1;
+        }
+        for(int i=0; i<szT; ++i){
+            res.push_back(mp[tmp[i]]);
+        }
+        return res;
     }
 };

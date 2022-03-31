@@ -1,58 +1,75 @@
-// A C++ program to find minimum possible
-// time by the car chassis to complete
-#include <bits/stdc++.h>
+#include<vector>
+#include<iostream>
+#include<algorithm>
+#include<cmath>
 using namespace std;
-#define NUM_LINE 2
-#define NUM_STATION 4
 
-// Utility function to find a minimum of two numbers
-int min(int a, int b)
-{
-	return a < b ? a : b;
-}
+const int N=510;
 
-int carAssembly(int a[][NUM_STATION],
-				int t[][NUM_STATION],
-				int *e, int *x)
-{
-	int T1[NUM_STATION], T2[NUM_STATION], i;
+int parent[N], sz[N];
 
-	// time taken to leave first station in line 1
-	T1[0] = e[0] + a[0][0];
-	
-	// time taken to leave first station in line 2
-	T2[0] = e[1] + a[1][0];
-
-	// Fill tables T1[] and T2[] using the
-	// above given recursive relations
-
-	cout<<T1[0]<<" "<<T2[0]<<endl;
-	for (i = 1; i < NUM_STATION; ++i)
-	{
-		T1[i] = min(T1[i - 1] + a[0][i],
-					T2[i - 1] + t[1][i] + a[0][i]);
-		T2[i] = min(T2[i - 1] + a[1][i],
-					T1[i - 1] + t[0][i] + a[1][i]);
+void initialize(){
+	for(int i=1; i<N; ++i){
+		parent[i]=i;
+		sz[i]=i;
 	}
-	for(int i=0; i<NUM_STATION; ++i)
-		cout<<T1[i]<<" ";
-	// Consider exit times and return minimum
-	return min(T1[NUM_STATION - 1] + x[0],
-			T2[NUM_STATION - 1] + x[1]);
 }
 
-// Driver Code
-int main()
-{
-	int a[][NUM_STATION] = {{4, 5, 3, 2},
-							{2, 10, 1, 4}};
-	int t[][NUM_STATION] = {{0, 7, 4, 5},
-							{0, 9, 2, 8}};
-	int e[] = {10, 12}, x[] = {18, 7};
+int root(int node){
+	if(parent[node]==node) return node;
+	return (parent[node]=root(parent[node]));
+}
 
-	cout << carAssembly(a, t, e, x);
+void connect(int a, int b){
+	a=root(a);
+	b=root(b);
+	if(a!=b){
+		if(sz[a]<sz[b]){
+			swap(a, b);
+		}
+		sz[a]+=sz[b];
+		parent[b]=a;
+	}
+}
 
+double minCost(vector<pair<int, int>>&p){
+	int n=(int)p.size();
+	vector<pair<double, pair<int, int>>>cost;
+	for(int i=0; i<n; ++i){
+		for(int j=0; j<n; ++j){
+			if(i!=j){
+				int x=abs(p[i].first-p[j].first)+abs(p[i].second-p[j].second);
+				if(x==1){
+					cost.push_back({0, {i+1, j+1}});
+					cost.push_back({0, {j+1, i+1}});
+				} else{
+					int a=p[i].first-p[j].first;
+					int b=p[i].second-p[j].second;
+					a*=a, b*=b;
+					double d=sqrt(a+b);
+					cost.push_back({d, {i+1, j+1}});
+					cost.push_back({d, {j+1, i+1}});
+				}
+			}
+		}
+	}
+	sort(cost.begin(), cost.end());
+	initialize();
+	double ans=0.00;
+	for(auto &vals: cost){
+		double c=vals.first;
+		int a=vals.second.first, b=vals.second.second;
+		if(root(a)!=root(b)){
+			connect(a, b);
+			ans+=c;
+		}
+	}
+	return ans;
+}
+
+int main(){
+	vector<pair<int, int>>points{{ 1, 1 }, { 2, 2 }, { 2, 3 }};
+	double res=minCost(points);
+	cout<<res<<endl;
 	return 0;
 }
-
-// This is code is contributed by rathbhupendra

@@ -1,4 +1,5 @@
-// Given an array sequence arr[] i.e [A1, A2 …An] and an integer k, the task is to find the maximum possible sum of
+// Given an array sequence arr[] i.e [A1, A2 …An] and an integer k, 
+// the task is to find the maximum possible sum of
 // increasing subsequence S of length k such that S1<=S2<=S3………<=Sk.
 /*
 Input: arr[] = {-1, 3, 4, 2, 5}, K = 3
@@ -14,7 +15,8 @@ Declare a vector of pairs container say, use[] to store elements with their indi
 Traverse arr[] and push all the elements in use[] with their indices.
 Sort use[] in non-decreasing order.
 Declare a vector ans[] to store the final subsequence.
-Traverse use[] with i and Take the last K element from use and push their indices(use[i].second) into ans[].
+Traverse use[] with i and Take the last K element from use and push their 
+indices(use[i].second) into ans[].
 Sort ans[] in non-decreasing order so that indices should be in increasing order.
 Now Traverse ans[] with i and replace each element with arr[ans[i]].
 Return ans[] as the final maximum sum subsequence.

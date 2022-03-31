@@ -66,12 +66,9 @@ void dijkstra(int graph[V][V], int src)
 			if (!sptSet[v] && graph[u][v] && dist[u] != INT_MAX && dist[u] + graph[u][v] < dist[v])
 				dist[v] = dist[u] + graph[u][v];
 	}
-
-	// print the constructed distance array
 	printSolution(dist);
 }
 
-// driver program to test above function
 int main()
 {
 
@@ -90,5 +87,3 @@ int main()
 
 	return 0;
 }
-
-// This code is contributed by shivanisinghss2110

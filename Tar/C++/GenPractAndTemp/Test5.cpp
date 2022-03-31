@@ -1,48 +1,46 @@
-#include <bits/stdc++.h>
+#include<vector>
+#include<iostream>
+#include<set>
 using namespace std;
- 
-constexpr int MAXSUM = 100 * 100 + 10;
- 
-int sqr(int x) {
-    return x * x;
+
+int parent[100000];
+
+int root(int a){
+	if(a==parent[a]) return a;
+	return (parent[a]=root(parent[a]));
 }
- 
-void solve() {
-    int n;
-    cin >> n;
-    vector<int> a(n), b(n);
-    for (auto& u : a)
-        cin >> u;
- 
-    for (auto& u : b)
-        cin >> u;
- 
-    int sumMin = 0, sumMax = 0, sumSq = 0;
-    for (int i = 0; i < n; i++) {
-        if (a[i] > b[i])
-            swap(a[i], b[i]);
- 
-        sumSq += sqr(a[i]) + sqr(b[i]);
-        sumMin += a[i];
-        sumMax += b[i];
-    }
- 
-    bitset<MAXSUM> dp;
-    dp[0] = 1;
-    for (int i = 0; i < n; i++)
-        dp |= dp << (b[i] - a[i]);
- 
-    int ans = sqr(sumMin) + sqr(sumMax);
-    for (int i = 0; i <= sumMax - sumMin; i++)
-        if (dp[i])
-            ans = min(ans, sqr(sumMin + i) + sqr(sumMax - i));
-    cout<<ans<<endl;
-    cout << sumSq * (n - 2) + ans << '\n';
+
+void connect(int a, int b){
+	a=root(a);
+	b=root(b);
+	if(a!=b){
+		parent[b]=a;
+	}
 }
- 
-int main() {
-    int t;
-    cin >> t;
-    while (t--)
-        solve();
+
+int connectedComponentsUtil(int n){
+	set<int>s;
+	for(int i=0; i<n; ++i){
+		s.insert(root(parent[i]));
+	}
+	return s.size();
+}
+
+int connectedComponents(int n, vector<vector<int>>&edges){
+	for(int i=0; i<=n; ++i){
+		parent[i]=i;
+	}
+	int sz=edges.size();
+	for(int i=0; i<sz; ++i){
+		connect(edges[i][0], edges[i][1]);
+	}
+	int ans=connectedComponentsUtil(n);
+	return ans;
+}
+
+int main(){
+	int n=8;
+	vector<vector<int>>edges{{1, 0},  {0, 2}, {5, 3}, {3, 4}, {6, 7}};
+	int cnt=connectedComponents(n, edges);
+	cout<<cnt<<endl;
 }

@@ -46,20 +46,73 @@ that walks through each edge exactly once.
 Some Properties of Eulerian Path
 
 I will use in[i] (and out[i]) to denote the in (and out) degree of a node i.
+
 Existence:
 A graph has an Eulerian Path if and only if
 we have out[i] == in[i] for each node i. Or
 we have out[i] == in[i] for all nodes i except exactly two nodes x and y, with out[x] = in[x] + 1, out[y] = in[y] - 1.
 this problem guarantees that an Eulerian Path exists. So we don't need to check for its existence here.
-In the first case (out[i] == in[i] for each node i), all Eulerian Paths are also Eulerian Circuits (Eulerian Path with starting point == ending point).
+
+In the first case (out[i] == in[i] for each node i), all Eulerian Paths are also Eulerian Circuits 
+(Eulerian Path with starting point == ending point).
+
 a node with out[i] == in[i] + 1 must be the starting point of an Eulerian Path (if there exists one).
+
 Algorithm
 
 find the starting point of an Eulerian Path.
 if we have out[i] == in[i] for all i, we can start at an arbitrary node.
 perform postorder DFS on the graph, as we "walk" through an edge, we erase (or mark it visited) the walked edge.
 we may reach the same node many times, but we have to pass each edge exactly once.
-I use stack in my code for erasing edges.
+*/
+
+/*
+TLE:
+
+#include<iostream>
+#include<vector>
+using namespace std;
+
+class Solution {
+public:
+    
+    void dfs(vector<vector<int>>&pairs, vector<vector<int>>&res, int n, int idx, vector<bool>&seen){
+        if(idx>=n) return;
+        if(res.size()==n) return;
+        vector<int>curr=pairs[idx];
+        for(int i=0; i<n; ++i){
+            if(seen[i]!=true){
+                vector<int>next=pairs[i];
+                if(next[0]==curr[1]){
+                    res.push_back(next);
+                    seen[i]=true;
+                    dfs(pairs, res, n, i, seen);
+                }
+            }
+        }
+		if(res.size()!=n){
+            res.pop_back();
+            seen[idx]=false;
+        }
+    }
+    
+    vector<vector<int>> validArrangement(vector<vector<int>>& pairs) {
+        vector<vector<int>>res;
+        int n=pairs.size();
+        vector<bool>seen(n+1);
+        for(int i=0; i<n; ++i){
+            for(int i=0; i<n; ++i)
+                seen[i]=false;
+            res.push_back(pairs[i]);
+            seen[i]=true;
+            dfs(pairs, res, n, i, seen);
+            if(res.size()==n) return res;
+            res.clear();
+            seen.clear();
+        }
+        return res;
+    }
+};
 */
 
 #include<iostream>
