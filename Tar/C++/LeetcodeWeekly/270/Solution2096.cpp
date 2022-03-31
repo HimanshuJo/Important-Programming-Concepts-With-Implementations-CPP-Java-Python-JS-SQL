@@ -28,6 +28,7 @@ Explanation: The shortest path is: 3 → 1 → 5 → 2 → 6.
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+
 class Solution {
 public:
     
@@ -96,7 +97,6 @@ public:
     
     string getDirections(TreeNode* root, int startValue, int destValue) {
         TreeNode* lcaNode=findLCA(root, startValue, destValue);
-        //cout<<lcaNode->val<<" "<<endl;
         int cnt=0;
         if(lcaNode->val==startValue){
             cnt=dfs(lcaNode, destValue);
@@ -130,8 +130,6 @@ public:
         }
         vector<int>path;
         dfs2(lcaNode, path, destValue);
-        //for(auto &vals: path)
-            //cout<<vals<<" ";
         bfs(lcaNode, path, ans);
         return ans;
     }

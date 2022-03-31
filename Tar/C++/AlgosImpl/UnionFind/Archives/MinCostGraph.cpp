@@ -1,3 +1,25 @@
+// Minimum Cost Graph
+/*
+	Given N nodes on a 2-D plane represented as (xi, yi).
+	The nodes are said to be connected if the manhattan distance between them is 1. 
+	You can connect two nodes that are not connected at the cost of euclidean distance 
+	between them. The task is to connect the graph such that every node has a path from 
+	any node with minimum cost.
+
+Input: N = 3, edges[][] = {{1, 1}, {1, 1}, {2, 2}, {3, 2}} 
+Output: 1.41421 
+Since (2, 2) and (2, 3) are already connected. 
+So we try to connect either (1, 1) with (2, 2) 
+or (1, 1) with (2, 3) but (1, 1) with (2, 2) 
+yields the minimum cost.
+
+Input: N = 3, edges[][] = {{1, 1}, {2, 2}, {3, 3}} 
+Output: 2.82843
+*/
+
+// Time Complexity: O(N*N)
+// Auxiliary Space: O(N*N)
+
 #include<vector>
 #include<iostream>
 #include<algorithm>

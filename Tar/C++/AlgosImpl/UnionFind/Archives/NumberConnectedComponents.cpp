@@ -1,3 +1,19 @@
+/*
+In DSU algorithm, there are two main functions, i.e. connect() and root() function.
+
+connect(): Connects an edge.
+root(): Recursively determine the topmost parent of a given edge.
+
+For each edge {a, b}, check if a is connected to b or not. 
+	If found to be false, connect them by appending their top parents.
+
+After completing the above step for every edge, print the total number of the 
+distinct top-most parents for each vertex.
+
+Time Complexity: O(N+M)
+Auxiliary Space: O(N+M)
+*/
+
 #include<vector>
 #include<iostream>
 #include<set>

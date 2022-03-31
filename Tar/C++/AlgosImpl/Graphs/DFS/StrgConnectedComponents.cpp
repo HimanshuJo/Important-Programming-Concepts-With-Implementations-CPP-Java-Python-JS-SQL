@@ -2,7 +2,10 @@
 Check if a graph is strongly connected | Set 1 (Kosaraju using DFS)
 
 Given a directed graph, find out whether the graph is strongly connected or not.
-A directed graph is strongly connected if there is a path between any two pair of vertices.
+
+Strong Connected Graph:
+
+    "A directed graph is strongly connected if there is a path between any two pair of vertices"
 
 For example, following is a strongly connected graph.
 
