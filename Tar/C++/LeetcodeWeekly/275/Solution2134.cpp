@@ -29,6 +29,35 @@ There is no way to group all 1's together with 0 or 1 swaps.
 Thus, the minimum number of swaps required is 2.
 */
 
+/*
+Solution2:
+
+Intuition:
+Whenever you are faced with a circular array question, you can just append the 
+array to itself to get rid of the circular array part of the problem
+
+Explanation:
+
+Count number of ones in nums, let the number of ones be stored in the variable ones
+Append nums to nums because we have to look at it as a circular array
+Find the maximum number of ones in a window of size ones in the new array
+Number of swaps = ones - maximum number of ones in a window of size ones
+
+int minSwaps(vector<int>& nums) {
+    int ones = 0, x = 0, onesInWindow = 0, i = 0, n = nums.size();
+    ones = count(begin(nums), end(nums), 1);
+    vector<int> nums2(n * 2);
+    for (i = 0; i < n * 2; i++)
+        nums2[i] = nums[i % n];
+    for (i = 0; i < n * 2; i++) {
+        if (i >= ones && nums2[i - ones] == 1) x--;
+        if (nums2[i] == 1) x++;
+        onesInWindow = max(x, onesInWindow);
+    }
+    return ones - onesInWindow;
+}
+*/
+
 #include<iostream>
 #include<vector>
 using namespace std;

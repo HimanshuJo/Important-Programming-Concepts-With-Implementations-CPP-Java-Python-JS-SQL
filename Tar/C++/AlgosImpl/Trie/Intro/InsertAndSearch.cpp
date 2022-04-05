@@ -89,14 +89,11 @@ There are efficient representation of trie nodes (e.g. compressed trie, ternary 
 to minimize memory requirements of trie.
 */
 
-// C++ implementation of search and insert
-// operations on Trie
 #include <bits/stdc++.h>
 using namespace std;
 
 const int ALPHABET_SIZE = 26;
 
-// trie node
 struct TrieNode
 {
 	struct TrieNode *children[ALPHABET_SIZE];
@@ -157,7 +154,6 @@ bool search(struct TrieNode *root, string key)
 	return (pCrawl->isEndOfWord);
 }
 
-// Driver
 int main()
 {
 	// Input keys (use only 'a' through 'z'

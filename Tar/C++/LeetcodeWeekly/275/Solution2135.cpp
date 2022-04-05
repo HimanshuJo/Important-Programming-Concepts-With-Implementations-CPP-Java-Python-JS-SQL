@@ -11,6 +11,7 @@ The conversion operation is described in the following two steps:
 Append any lowercase letter that is not present in the string to its end.
 For example, if the string is "abc", the letters 'd', 'e', or 'y' can be added to it, 
 but not 'a'. If 'd' is added, the resulting string will be "abcd".
+
 Rearrange the letters of the new string in any arbitrary order.
 For example, "abcd" can be rearranged to "acbd", "bacd", "cbda", and so on. 
 
