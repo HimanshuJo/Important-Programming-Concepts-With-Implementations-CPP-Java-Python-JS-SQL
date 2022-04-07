@@ -16,7 +16,8 @@ Examples:
     Input: arr[] = {“a”, “b”, “ab”, “d”}
     Output: 2
     Explanation:
-    As strings “b” and “ab” have ‘b’ as the same character, they are equivalent also “ab” and  the string”a” have ‘a’ as the same character, so the strings “a”, “b”, “ab” are equivalent and “d” is another string.
+    As strings “b” and “ab” have ‘b’ as the same character, they are equivalent also “ab” and 
+    the string”a” have ‘a’ as the same character, so the strings “a”, “b”, “ab” are equivalent and “d” is another string.
 
     Therefore, the count of distinct group of strings formed is 2.
 
