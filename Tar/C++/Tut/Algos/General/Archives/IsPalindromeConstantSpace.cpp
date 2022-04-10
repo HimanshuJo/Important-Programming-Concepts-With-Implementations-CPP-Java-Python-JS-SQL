@@ -1,9 +1,11 @@
+/*
 To check a number is palindrome or not without using any extra space
 
-Given a number ‘n’ and our goal is to find out it is palindrome or not without using 
-any extra space. We can’t make a new copy of number .
-Examples: 
- 
+Given a number ‘n’ and our goal is to find out it is palindrome or not without using
+any extra space. We can’t make a new copy of number
+
+Examples:
+
 Input  : 2332
 Output : Yes it is Palindrome.
 Explanation:
@@ -16,27 +18,23 @@ Output :Yes it is Palindrome.
 
 Input : 1234
 Output : No not Palindrome.
+*/
+/*
+1) We can compare the first digit and the last digit, then we repeat the process.
+2) For the first digit, we need the order of the number. Say, 12321.
+	Dividing this by 10000 would get us the leading 1.
+	The trailing 1 can be retrieved by taking the mod with 10.
+3) Now, to reduce this to 232.
 
--------
+(12321 % 10000)/10 = (2321)/10 = 232
 
-In this post a different solution is discussed. 
-1) We can compare the first digit and the last digit, then we repeat the process. 
-2) For the first digit, we need the order of the number. Say, 12321. 
-	Dividing this by 10000 would get us the leading 1. 
-	The trailing 1 can be retrieved by taking the mod with 10. 
-3) Now, to reduce this to 232. 
-
-(12321 % 10000)/10 = (2321)/10 = 232 
-
-4 ) And now, the 10000 would need to be reduced by a factor of 100. 
+4) And now, the 10000 would need to be reduced by a factor of 100.
 Here is the implementation of the above algorithm:
+*/
 
--------
-
-// C++ program to find number is palindrome
-// or not without using any extra space
 #include <bits/stdc++.h>
 using namespace std;
+
 bool isPalindrome(int);
 
 bool isPalindrome(int n)
@@ -68,14 +66,15 @@ bool isPalindrome(int n)
 	return true;
 }
 
-// Driver code
 int main()
 {
 	isPalindrome(1001) ? cout << "Yes, it is Palindrome" :
-	cout << "No, not Palindrome";
+	                     cout << "No, not Palindrome";
 	return 0;
 }
 
-Output: 
- 
+/*
+Output:
+
 Yes, it is Palindrome
+*/

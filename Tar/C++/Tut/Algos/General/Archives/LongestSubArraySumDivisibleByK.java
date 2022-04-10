@@ -1,4 +1,4 @@
-
+/*
 Given an arr[] containing n integers and a positive integer k
 
 	The problem is to find the length of the longest subarray with sum of the elements
@@ -28,17 +28,17 @@ Given an arr[] containing n integers and a positive integer k
 
 	-------
 
-	Effecient Approach:
+	Efficient Approach:
 
-		Create an array mod_arr[] where 
-			
+		Create an array mod_arr[] where
+
 			mod_arr[i] stores (sum(arr[0] + arr[1] + .... arr[i]) % k)
 
 		Create a hash table having tuples as (ele, idx) where
-			
+
 			ele represents an element of mod_arr[]
 
-			and idx represents the elements's index of first occurrence in mod_arr[]
+			and idx represents the element's index of first occurrence in mod_arr[]
 
 			Now we traverse mod_arr[] from i = 0 to n
 				and follow the steps given below:
@@ -56,14 +56,13 @@ Given an arr[] containing n integers and a positive integer k
 					4. if maxLen < (i - idx) then update maxLen = (i - idx)
 
 		Return maxLen
-
--------
+*/
 
 import java.util.*;
 import java.io.*;
 
 class CFG {
-	
+
 	static int longSubarrayWithSumDivByK(int arr[], int n, int k) {
 
 		HashMap<Integer, Integer> map = new HashMap<>();
@@ -74,9 +73,8 @@ class CFG {
 
 		//traversing arr[] and building the array 'mod_arr[]'
 		for (int i = 0; i < n; ++i) {
-			curr_sum += arr[i]
-
-			as the sum can be negative, therefore taking modulo twice
+			curr_sum += arr[i];
+			//as the sum can be negative, therefore taking modulo twice
 			mod_arr[i] = ((curr_sum % k) + k) % k;
 		}
 
@@ -94,10 +92,10 @@ class CFG {
 			else
 				//if true then update max
 				// Based on the idea that, if at any index of mod_arr[]
-					//first getting the index of that element and then
-					//getting it's value from the map (which, if the number is divisible by x will be 0)
-					//will always result in i getting bigger than map.get(mod_arr[i])
-					//so in that case we have to update the value
+				//first getting the index of that element and then
+				//getting it's value from the map (which, if the number is divisible by x will be 0)
+				//will always result in i getting bigger than map.get(mod_arr[i])
+				//so in that case we have to update the value
 				if (max < (i - map.get(mod_arr[i])))
 					max = i - map.get(mod_arr[i]);
 		}

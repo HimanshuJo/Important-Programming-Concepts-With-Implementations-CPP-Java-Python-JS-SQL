@@ -1,4 +1,4 @@
-
+/*
 Height balanced binary tree:
 
     A tree where no leaf is much farther away from the root than any other leaf
@@ -17,7 +17,7 @@ Height balanced binary tree:
 
         3) The difference between heights of left subtree and right subtree is not more than 1
 
--------
+*/
 
 /* A binary tree node has data, pointer to left child, and a pointer to right child */
 

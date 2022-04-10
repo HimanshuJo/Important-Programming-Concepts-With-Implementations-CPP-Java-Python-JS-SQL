@@ -1,4 +1,4 @@
-
+/*
 Backtracking Algorithms:
 
     Backtracking is an algorithmic-technique for solving problems recursively by trying to build a
@@ -112,24 +112,18 @@ The Knight’s tour problem | Backtracking-1:
                will remove the previously added item in recursion and if false is
                returned by the initial call of recursion then "no solution exists" )
 
--------
-
-// Java program for Knight Tour problem
+*/
 
 public class KnightTour {
     static int N = 8;
 
     /* A utility function to check if i,j are
        valid indexes for N*N chessboard */
-    static boolean isSafe(int x, int y, int sol[][])
-    {
+    static boolean isSafe(int x, int y, int sol[][]) {
         return (x >= 0 && x < N && y >= 0 && y < N && sol[x][y] == -1);
     }
 
-    /* A utility function to print solution
-       matrix sol[N][N] */
-    static void printSolution(int sol[][])
-    {
+    static void printSolution(int sol[][]) {
         for (int x = 0; x < N; x++) {
             for (int y = 0; y < N; y++)
                 System.out.print(sol[x][y] + " ");
@@ -145,8 +139,7 @@ public class KnightTour {
        Please note that there may be more than one
        solutions, this function prints one of the
        feasible solutions.  */
-    static boolean solveKT()
-    {
+    static boolean solveKT() {
         int sol[][] = new int[8][8];
 
         /* Initialization of solution matrix */
@@ -168,17 +161,13 @@ public class KnightTour {
         if (!solveKTUtil(0, 0, 1, sol, xMove, yMove)) {
             System.out.println("Solution does not exist");
             return false;
-        }
-        else
+        } else
             printSolution(sol);
 
         return true;
     }
 
-    /* A recursive utility function to solve Knight
-       Tour problem */
-    static boolean solveKTUtil(int x, int y, int movei, int sol[][], int xMove[], int yMove[])
-    {
+    static boolean solveKTUtil(int x, int y, int movei, int sol[][], int xMove[], int yMove[]) {
         int k, next_x, next_y;
         if (movei == N * N)
             return true;
@@ -200,10 +189,7 @@ public class KnightTour {
         return false;
     }
 
-    /* Driver Code */
-    public static void main(String args[])
-    {
-        // Function Call
+    public static void main(String args[]) {
         solveKT();
     }
 }

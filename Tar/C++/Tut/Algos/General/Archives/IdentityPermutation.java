@@ -1,12 +1,13 @@
+/*
 Minimum number of given operations required to convert a permutation into an identity permutation
 
-	Given a permutation P (P1, P2, P3, … Pn) of first n natural numbers. 
+	Given a permutation P (P1, P2, P3, … Pn) of first n natural numbers.
 
-	Find the minimum number of operations to convert it into an identity permutation i.e. 1, 2, 3, …, n 
+	Find the minimum number of operations to convert it into an identity permutation i.e. 1, 2, 3, …, n
 		where each operation is defined as:
-		
+
 		P[i] = P[P[P[i]]]
-			for all i from 1 to n (1 based indexing). 
+			for all i from 1 to n (1 based indexing).
 
 		If there is no way to convert then print -1.
 
@@ -14,7 +15,7 @@ Minimum number of given operations required to convert a permutation into an ide
 
     Input: arr[] = {2, 3, 1}
     Output: 1
-    After 1 operation: 
+    After 1 operation:
     P[1] = P[P[P[1]]] = P[P[2]] = P[3] = 1
     P[2] = P[P[P[2]]] = P[P[3]] = P[1] = 2
     P[3] = P[P[P[3]]] = P[P[1]] = P[2] = 3
@@ -32,7 +33,7 @@ Minimum number of given operations required to convert a permutation into an ide
 
     	Firstly we have to find all the cycles in a given permutation
 
-    	Here a cycle is a directed graph in which there is an edge from an 
+    	Here a cycle is a directed graph in which there is an edge from an
 
     		element e to the element on position e
 
@@ -46,7 +47,7 @@ Minimum number of given operations required to convert a permutation into an ide
 
 				After 1 operation:
 
-					4 -> 2 -> 4, 
+					4 -> 2 -> 4,
 					1 -> 5 -> 1,
 					6 -> 3 -> 6,
 
@@ -60,12 +61,12 @@ Minimum number of given operations required to convert a permutation into an ide
 
 				The answer would then be the maximum of log(base3) of all the cycles lengths
 
--------
+*/
 
 import java.util.*;
 
 class CFG {
-	
+
 	static int calculateCycleOperation(int len) {
 
 		int cycle_operation = 0;
@@ -113,3 +114,4 @@ class CFG {
 
 		return ans;
 	}
+}

@@ -1,12 +1,13 @@
+/*
 Program to print all substrings of a given string
 
-Given a string as an input. We need to write a program that will print all non-empty 
+Given a string as an input. We need to write a program that will print all non-empty
 substrings of that given string.
 
-Examples : 
+Examples :
 
 Input :  abcd
-Output :  a 
+Output :  a
           b
           c
           d
@@ -17,20 +18,22 @@ Output :  a
           bcd
           abcd
 
--------
+*/
+/*
+We can run three nested loops,
 
-We can run three nested loops, the outermost loop picks a starting character,
-mid-loop considers all characters on the right of the picked character as the 
-ending character of the substring. The innermost loop prints characters from the 
-currently picked starting point to the picked ending point.
+	the outermost loop picks a starting character,
 
-// C++ program to print all possible
-// substrings of a given string
+	mid-loop considers all characters on the right of the picked character as the
+	ending character of the substring.
+
+	The innermost loop prints characters from the currently picked starting point
+	to the picked ending point.
+*/
 
 #include<bits/stdc++.h>
 using namespace std;
 
-// Function to print all sub strings
 void subString(char str[], int n)
 {
 	// Pick starting point
@@ -42,16 +45,15 @@ void subString(char str[], int n)
 			// Print characters from current
 			// starting point to current ending
 			// point.
-			int j = i + len - 1;		
+			int j = i + len - 1;
 			for (int k = i; k <= j; k++)
 				cout << str[k];
-			
+
 			cout << endl;
 		}
 	}
 }
 
-// Driver program to test above function
 int main()
 {
 	char str[] = "abc";
@@ -59,7 +61,8 @@ int main()
 	return 0;
 }
 
-Output: 
+/*
+Output:
 
 a
 b
@@ -67,18 +70,15 @@ c
 ab
 bc
 abc
+*/
+/*
+Method 2 (Using substr() function)
 
--------
-
-Method 2 (Using substr() function) 
     s.substr(i, len) prints substring of length ‘len’ starting from index i in string s.
 
-// C++ program to print all possible
-// substrings of a given string
 #include<bits/stdc++.h>
 using namespace std;
 
-// Function to print all sub strings
 void subString(string s, int n)
 {
 	// Pick starting point in outer loop
@@ -89,7 +89,6 @@ void subString(string s, int n)
 			cout << s.substr(i, len) << endl;
 }
 
-// Driver program to test above function
 int main()
 {
 	string s = "abcd";
@@ -97,7 +96,7 @@ int main()
 	return 0;
 }
 
-Output: 
+Output:
 
 a
 ab
@@ -109,31 +108,23 @@ bcd
 c
 cd
 d
-
--------
-
-Method 3 (Generate a substring using the previous substring)
-
-/*
-* C++ program to print all possible
-* substrings of a given string
-* without checking for duplication.
 */
+/*
+Method 3 (Generate a substring using the previous substring)
 
 #include<bits/stdc++.h>
 using namespace std;
 
-/*
-* Function to print all (n * (n + 1)) / 2
-* substrings of a given string s of length n.
-*/
+//Function to print all (n * (n + 1)) / 2
+//substrings of a given string s of length n.
+
 void printAllSubstrings(string s, int n)
 {
-	/*
-	* Fix start index in outer loop.
-	* Reveal new character in inner loop till end of string.
-	* Print till-now-formed string.
-	*/
+
+	//Fix start index in outer loop.
+	//Reveal new character in inner loop till end of string.
+	//Print till-now-formed string.
+
 	for (int i = 0; i < n; i++)
 	{
 		char temp[n - i + 1];
@@ -147,7 +138,6 @@ void printAllSubstrings(string s, int n)
 	}
 }
 
-// Driver program to test above function
 int main()
 {
 	string s = "Geeky";
@@ -155,7 +145,7 @@ int main()
 	return 0;
 }
 
-Output: 
+Output:
 
 G
 Ge
@@ -172,31 +162,29 @@ eky
 k
 ky
 y
-
--------
-
+*/
+/*
 Method 4 (using three nested loops)
 
-// C program for the above approach
 #include <stdio.h>
 void printSubstrings(char str[])
 {
-	
+
 	// outermost for loop
 	// this is for the selection
 	// of starting point
 	for (int start = 0; str[start] != '\0'; start++) {
-		
+
 		// 2nd for loop is for selection
 		// of ending point
 		for (int end = start; str[end] != '\0'; end++) {
-			
+
 			// 3rd loop is for printing from
 			// starting point to ending point
 			for (int i = start; i <= end; i++) {
 				printf("%c", str[i]);
 			}
-		
+
 			// changing the line after printing
 			// from starting point to ending point
 			printf("\n");
@@ -204,13 +192,9 @@ void printSubstrings(char str[])
 	}
 }
 
-// Driver Code
 int main()
 {
-
-	// code
 	char str[] = { 'a', 'b', 'c', 'd', '\0' };
-	// calling the method to print the substring
 	printSubstrings(str);
 	return 0;
 }
@@ -230,6 +214,7 @@ d
 
 -------
 
-Time complexity: O(N3)
+Time complexity: O(N^3)
 
 Space complexity: O(1), where N is the length of the input string
+*/

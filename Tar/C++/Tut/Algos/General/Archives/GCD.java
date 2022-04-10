@@ -1,4 +1,4 @@
-
+/*
 GCD or HCF:
 
 	of two numbers is the largest number that divides both of them
@@ -78,9 +78,9 @@ GCD or HCF:
 
 		-------
 
-		Now Fibonacci series is an exponentially growing series where the ratio of 
+		Now Fibonacci series is an exponentially growing series where the ratio of
 
-			n'th/(n-1)'th term 
+			n'th/(n-1)'th term
 
 				approaches (sqrt(5)-1)/2 which is also called the golden ratio
 
@@ -105,28 +105,28 @@ GCD of more than two numbers:
  		we will also check for the result if the result at any step becomes 1, we will just return 1
  			as gcd(1, x) = 1
 
-	-------
+*/
 
-	public class Solution {
+public class Solution {
 
-		static int gcd(int a, int b) {
+	static int gcd(int a, int b) {
 
-			if (a == 0) return b;
+		if (a == 0) return b;
 
-			return (a, a % b);
-		}
-
-		static int findGCD(int arr[], int n) {
-
-			int result = 0;
-
-			for (int element : arr) {
-				
-				result = gcd(result, element);
-
-				if (result == 1) return 1;
-			}
-
-			return result;
-		}
+		return (a, a % b);
 	}
+
+	static int findGCD(int arr[], int n) {
+
+		int result = 0;
+
+		for (int element : arr) {
+
+			result = gcd(result, element);
+
+			if (result == 1) return 1;
+		}
+
+		return result;
+	}
+}

@@ -1,4 +1,4 @@
-    
+/*
 AVL tree is a self-balancing Binary Search Tree (BST) where the difference between heights of
     left and right sub-trees cannot be more than one for all nodes.
 
@@ -55,8 +55,8 @@ Steps to follow for insertion
         1) Perform standard BST insert for w.
 
         2) Starting from w, travel up and find the first unbalanced node.
-            Let z be the first unbalanced node, 
-                y be the child of z that comes on the path from w to z and 
+            Let z be the first unbalanced node,
+                y be the child of z that comes on the path from w to z and
                 x be the grandchild of z that comes on the path from w to z.
 
         3) Re-balance the tree by performing appropriate rotations on the subtree rooted with z.
@@ -151,9 +151,8 @@ Implementation:
 
         To check whether it is Right Right case or not, compare the newly inserted key with the
             key in right subtree root.
-
--------
-
+*/
+/*
 class Node {
 
     int key, height;
@@ -170,7 +169,7 @@ class AVLTree {
     Node root;
 
     int height(Node N) {
-    
+
         if (N == null)
             return 0;
 
@@ -227,7 +226,7 @@ class AVLTree {
 
     Node insert(Node node, int key) {
 
-        /* 1. Perform the normal BST insertion */
+        // 1. Perform the normal BST insertion
         if (node == null)
             return (new Node(key));
 
@@ -240,12 +239,12 @@ class AVLTree {
         else // Duplicate keys not allowed
             return node;
 
-        /* 2. Update height of this ancestor node */
+        // 2. Update height of this ancestor node
         node.height = 1 + max(height(node.left), height(node.right));
 
-        /* 3. Get the balance factor of this ancestor
-              node to check whether this node became
-              unbalanced */
+        // 3. Get the balance factor of this ancestor
+        //    node to check whether this node became
+        //    unbalanced
 
         int balance = getBalance(node);
 
@@ -271,7 +270,7 @@ class AVLTree {
             return leftRotate(node);
         }
 
-        /* return the (unchanged) node pointer */
+        // return the (unchanged) node pointer
         return node;
     }
 
@@ -290,7 +289,7 @@ class AVLTree {
     public static void main(String[] args) {
         AVLTree tree = new AVLTree();
 
-        /* Constructing tree given in the above figure */
+        // Constructing tree given in the above figure
         tree.root = tree.insert(tree.root, 10);
         tree.root = tree.insert(tree.root, 20);
         tree.root = tree.insert(tree.root, 30);
@@ -298,19 +297,19 @@ class AVLTree {
         tree.root = tree.insert(tree.root, 50);
         tree.root = tree.insert(tree.root, 25);
 
-        /* The constructed AVL Tree would be
+        The constructed AVL Tree would be
              30
             /  \
           20   40
          /  \     \
         10  25    50
-        */
+
         System.out.println("Preorder traversal" +  " of constructed tree is : ");
         tree.preOrder(tree.root);
     }
 }
 
-Output: 
+Output:
 
   Preorder traversal of the constructed AVL tree is
   30 20 10 25 40 50
@@ -327,12 +326,11 @@ Time:
 
     Therefore AVL tree is height balanced -> O(log n)
 
--------
+*/
 
 #include <bits/stdc++.h>
 using namespace std;
 
-// An AVL tree node
 class Node
 {
 public:
@@ -342,13 +340,11 @@ public:
     int height;
 };
 
-// A utility function to get the maximum of two integers
 int max(int a, int b)
 {
     return (a > b) ? a : b;
 }
 
-// A utility function to get the height of the tree
 int height(Node *N)
 {
     if (N == NULL)

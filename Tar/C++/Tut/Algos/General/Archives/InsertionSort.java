@@ -1,3 +1,4 @@
+/*
 Insertion Sort:
 
     Insertion sort is a simple sorting algorithm that builds the final sorted array
@@ -8,7 +9,7 @@ Insertion Sort:
 
         it then progress to the next item in the list
 
-     It is much less efficient on large lists than more advanced algorithms such as
+    It is much less efficient on large lists than more advanced algorithms such as
         quicksort, heapsort, or merge sort.
 
     However, insertion sort provides several advantages:
@@ -120,9 +121,9 @@ Slightly improved Pseudocode
         i <- i + 1
     end while
 
--------
+*/
 
-Insertion sort in java:
+class InsertionSort {
 
     public int[] insertionSort(int[] arr) {
 
@@ -139,29 +140,30 @@ Insertion sort in java:
         }
         return arr;
     }
+}
 
-    -------
+/*
 
-    Faster version:
+Faster version:
 
-        public int[] insertionSortFaster(int[] arr) {
+    public int[] insertionSortFaster(int[] arr) {
 
-            int i = 1;
-            while (i < arr.length) {
-                int temp = arr[i];
-                int j = i - 1;
-                while (j >= 0 && arr[j] > temp) {
-                    arr[j + 1] = arr[j];
-                    j--;
-                }
-                arr[j + 1] = temp;
-                i++;
+        int i = 1;
+        while (i < arr.length) {
+            int temp = arr[i];
+            int j = i - 1;
+            while (j >= 0 && arr[j] > temp) {
+                arr[j + 1] = arr[j];
+                j--;
             }
-            return arr;
+            arr[j + 1] = temp;
+            i++;
         }
+        return arr;
+    }
 
--------
-
+*/
+/*
 Best Case complexity:
 
     The best case input is an array that is already sorted.
@@ -265,3 +267,4 @@ While some divide-and-conquer algorithms such as quicksort and mergesort outperf
 
         (the exact size varies by environment and implementation, but is typically
             between 7 and 50 elements).
+*/

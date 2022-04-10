@@ -1,4 +1,4 @@
-
+/*
 Use cases of DFS:
 
     Letter Combination of Phone Numbers
@@ -24,7 +24,7 @@ Use cases of DFS:
                            3 could be d, e, f
 
             since 2 is followed by 3 therefore we can form the combinations like
-                
+
                 ad  ae  af
                 bd  be  bf
                 cd  ce  cf
@@ -51,7 +51,7 @@ Implementation of DFS could be done recursively and iteratively
     Recursive implementation is preferred as we don't need to define an explicit stack or a data structure
         instead we can just use the recursion call stack
 
--------
+*/
 
 class Solution {
     public List letterCombinations(String digits) {
@@ -59,7 +59,7 @@ class Solution {
 
         // check input and call DFS
         if (digits != null && digit.length() > 0) {
-            String arr [] = {"", "abc", "def", "ghi", "jkl","mno", "pqrs", "tuv","wxyz"};
+            String arr [] = {"", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
             dfs(digits, arr, result, new StringBuilder(), 0);
         }
 

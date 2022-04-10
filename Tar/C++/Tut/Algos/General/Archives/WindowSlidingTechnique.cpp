@@ -1,3 +1,4 @@
+/*
 Window sliding technique shows how a nested loop in some problems can be converted to a single for loop
 	to reduce the time complexity
 
@@ -36,7 +37,7 @@ Window sliding technique shows how a nested loop in some problems can be convert
 
 	-------
 
-	//O(n * k) solution for finding maximum sum of a subarray of size k
+	O(n * k) solution for finding maximum sum of a subarray of size k
 
 		#include <bits/stdc++.h>
 		using namespace std;
@@ -60,7 +61,6 @@ Window sliding technique shows how a nested loop in some problems can be convert
 			return max_sum;
 		}
 
-		// Driver code
 		int main()
 		{
 			int arr[] = { 1, 4, 2, 10, 2, 3, 1, 0, 20 };
@@ -74,9 +74,8 @@ Window sliding technique shows how a nested loop in some problems can be convert
 	24
 
 	It can be observed that the above code has the time complexity O(k * n) as it contains two nested loops
-
--------
-
+*/
+/*
 Window sliding technique:
 
 	The technique can be best understood with the window pane in a bus,
@@ -91,7 +90,7 @@ Window sliding technique:
 
 			The pane will cover next k consecutive elements
 
-		Conside an array arr[] = {5, 2, -1, 0, 3} and the value of k = 3 and n = 5
+		Consider an array arr[] = {5, 2, -1, 0, 3} and the value of k = 3 and n = 5
 
 	-------
 
@@ -100,12 +99,12 @@ Window sliding technique:
 		1. We can compute the sum of first k elements out of n terms using a linear loop and store the sum
 			in a variable 'window_sum'
 
-		2. Then we will graze linearly over the array till it reaches the end and simultaneously keep track	
+		2. Then we will graze linearly over the array till it reaches the end and simultaneously keep track
 			of the maximum sum
 
-		3. To get the current sum of block of k elements just 
+		3. To get the current sum of block of k elements just
 
-			substract the first element from the previous block and 
+			subtract the first element from the previous block and
 
 			add the last element of the current block
 
@@ -119,20 +118,18 @@ Window sliding technique:
 
 					Hence, we will get our new window sum by subtracting 5 and then adding 0 to it
 
-					So, our window_sum will be {2 + (-1) + 0} 
+					So, our window_sum will be {2 + (-1) + 0}
 
 					current_sum becomes (window_sum - 5)
 
 		we follow the same procedure until the sliding window reaches the end of the array
-
--------
+*/
 
 //O(n) solution for finding maximum sum of a sub-array of size k
 
 #include <iostream>
 using namespace std;
 
-// Returns maximum sum in a subarray of size k.
 int maxSum(int arr[], int n, int k)
 {
 	// n must be greater
@@ -159,7 +156,6 @@ int maxSum(int arr[], int n, int k)
 	return max_sum;
 }
 
-// Driver code
 int main()
 {
 	int arr[] = { 1, 4, 2, 10, 2, 3, 1, 0, 20 };
@@ -169,6 +165,7 @@ int main()
 	return 0;
 }
 
+/*
 Output
 24
 
@@ -203,3 +200,4 @@ Illustration:
 	   	17 + 1 - 2 = 16, 18
 	   	16 + 0 - 10 = 6, 18
 	   	6 + 20 - 2 = 24, 18
+*/
