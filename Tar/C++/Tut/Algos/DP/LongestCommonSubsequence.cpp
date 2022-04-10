@@ -1,3 +1,4 @@
+/*
 Suppose we have two string:
 
     String text1 = "abcdef"
@@ -68,7 +69,7 @@ Suppose the length of String text1 is n, and the length of String text2 is m
 
             so LCS will be 0 on this case
 
--------
+*/
 
 class Solution {
     public int longestCommonSubsequence(String text1, String text2) {
@@ -78,14 +79,14 @@ class Solution {
 
         // our base case is set up by default, since java arrays are initialized with 0's
         // this is good because we want the 0th row and the 0th column of our matrix to be all 0's
-            // since comparing an empty String to another String means that there is no common letters
+        // since comparing an empty String to another String means that there is no common letters
 
         for (int i = 1; i < n + 1; i++) {  // we start at 1 because 0 represent an empty String in our matrix
 
         // the position [0][0] is comparing empty String to empty String
         // the position [1][1] is comparing the first letter of each String
         // because of that when we are filling a particular spot of our matrix, we've to subtract 1 to compensate
-            // for it
+        // for it
             for (int j = 1; j < m + 1; j++) {
                 if (text1.charAt(i - 1) == text2.charAt(j - 1)) {
                     dp[i][j] =  1 + dp[i - 1][j - 1];

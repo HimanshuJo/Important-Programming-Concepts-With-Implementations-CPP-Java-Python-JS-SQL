@@ -1,3 +1,5 @@
+'''
+
 Number of ways to Rearrange sticks with K sticks visible:
 
 	There are n uniquely-sized sticks whose lengths are integers from 1 to n.
@@ -46,8 +48,7 @@ Easiest way to solve it is to try some examples
 		 			Now the only thing that we can guarantee is that, this stick will definitely be seen
 
 		 			and now if we try to use this stick and try to break it down into further sub-problems
-		 				so, we can say 
-		 					now we have n-1 number and k-1 sticks to be seen
+		 				so, we can say now we have n-1 number and k-1 sticks to be seen
 
  					However, the way dp works is that the previous state should never affect the next state
 
@@ -67,7 +68,9 @@ Easiest way to solve it is to try some examples
 
 				suppose we put n=6 at the last place, no matter what stick we have before 6, 6 will always be visible
 
-				In this case we can guarantee that, if we put a largest number here, the problems can be break down into smaller subproblems
+				In this case we can guarantee that, if we put a largest number here, the problems can be 
+				break down into smaller subproblems
+					
 					The sub-problem becomes, given now 5 sticks we need to see k-1 sticks from the left
 						dp(n-1, k-1)
 
@@ -98,30 +101,8 @@ Easiest way to solve it is to try some examples
 
 				so that will be a invalid case
 
--------
-
-class Solution:
-	def rearrangeSticks(self, n: int, k: int) -> int:
-		def dp(n, k):
-			if n == k:
-				return 1
-			if k == 0:
-				return 0
-			ans = 0
-			
-			# case 1: put the largest stick in the end
-			ans += dp(n - 1, k - 1)
-
-			# case 2: put non largest stick in the end
-			ans += (n - 1) * dp(n - 1, k)
-
-			return ans % mod
-
-		mod = 10**9 + 7 
-
-		return dp(n, k)
-
--------
+'''
+'''
 
 Steps:
 
@@ -153,3 +134,26 @@ class Solution {
         return (int) (memo[n][k] % MOD);
 	}	
 }
+
+'''
+
+class Solution:
+	def rearrangeSticks(self, n: int, k: int) -> int:
+		def dp(n, k):
+			if n == k:
+				return 1
+			if k == 0:
+				return 0
+			ans = 0
+			
+			# case 1: put the largest stick in the end
+			ans += dp(n - 1, k - 1)
+
+			# case 2: put non largest stick in the end
+			ans += (n - 1) * dp(n - 1, k)
+
+			return ans % mod
+
+		mod = 10**9 + 7 
+
+		return dp(n, k)

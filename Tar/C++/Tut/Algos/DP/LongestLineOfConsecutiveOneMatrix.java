@@ -1,3 +1,4 @@
+/*
 Given a 01 matrix M, find the longest line of consecutive one in the matrix. 
 
 The line could be horizontal, vertical, diagonal or anti-diagonal.
@@ -50,7 +51,7 @@ Space Complexity:
 
 	O(m*n)
 
--------
+*/
 
 class Solution {
 

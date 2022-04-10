@@ -1,4 +1,4 @@
-
+/*
 Ugly Numbers:
 
 	These are the numbers whose only prime factors are 2, 3 or 5
@@ -52,11 +52,10 @@ Naive:
 
 		Since finally we get 1, therefore 300 is an ugly number
 
--------
-
+*/
+/*
 class CFG {
-	
-	// utility function to divide a by the greatest divisible power of b
+
 	static int maxDivide(int a, int b) {
 		while (a % b == 0) {
 			a = a / b;
@@ -65,7 +64,6 @@ class CFG {
 		return a;
 	}
 
-	// function to check whether a number is ugly or not
 	static int isUgly(int num) {
 		num = maxDivide(num, 2);
 		num = maxDivide(num, 3);
@@ -74,7 +72,6 @@ class CFG {
 		return (num == 1) ? 1 : 0;
 	}
 
-	// function to get the n'th ugly number
 	static int getNthUglyNum(int n) {
 		int i = 1;
 
@@ -90,7 +87,8 @@ class CFG {
 		return i;
 	}
 }
-
+*/
+/*
 Above method is not time efficient, as it checks for all the integers until ugly number
 	count becomes n, but space complexity is O(1)
 
@@ -157,8 +155,8 @@ Dynamic Programming:
 
 	6.	return next_ugly_no;
 
--------
-
+*/
+/*
 Example:
 
 initialize
@@ -207,12 +205,12 @@ initialize
 	    ugly[] =  | 1 | 2 | 3 |  4 | 5 | 6 |
 	    i2 = 3,  i3 =  2, i5 = 1  (i2 and i3 got incremented)
 
--------
+*/
 
 import java.lang.Math;
 
 class UglyNumber {
-	
+
 	int getNthUglyNo(int n) {
 		int ugly[] = new int[n];
 		int i2 = 0, i3 = 0, i5 = 0;
@@ -246,4 +244,3 @@ class UglyNumber {
 		System.out.println(obj.getNthUglyNo(n));
 	}
 }
-

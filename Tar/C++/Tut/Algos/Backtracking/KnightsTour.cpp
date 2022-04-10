@@ -1,4 +1,3 @@
-// C++ program for Knight Tour problem
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -61,8 +60,6 @@ int solveKT()
 	return 1;
 }
 
-/* A recursive utility function to solve Knight Tour
-problem */
 int solveKTUtil(int x, int y, int movei, int sol[N][N], int xMove[N], int yMove[N])
 {
 	int k, next_x, next_y;
@@ -79,19 +76,15 @@ int solveKTUtil(int x, int y, int movei, int sol[N][N], int xMove[N], int yMove[
 			if (solveKTUtil(next_x, next_y, movei + 1, sol, xMove, yMove) == 1)
 				return 1;
 			else
-			// backtracking
+				// backtracking
 				sol[next_x][next_y] = -1;
 		}
 	}
 	return 0;
 }
 
-// Driver Code
 int main()
 {
-	// Function Call
 	solveKT();
 	return 0;
 }
-
-// This code is contributed by ShubhamCoder

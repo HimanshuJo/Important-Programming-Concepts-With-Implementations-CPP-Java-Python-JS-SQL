@@ -1,8 +1,8 @@
-
+/*
 Given a set of positive integers, find all its subsets
 
 Input: array = {1, 2, 3}
-Output: // this space denotes null element. 
+Output: // this space denotes null element.
          1
          1 2
          1 2 3
@@ -10,15 +10,15 @@ Output: // this space denotes null element.
          2
          2 3
          3
-Explanation: These are all the subsets that 
+Explanation: These are all the subsets that
 can be formed using the array.
 
 Input: 1 2
-Output: 
-         1 
+Output:
+         1
          2
          1 2
-Explanation: These are all the subsets that 
+Explanation: These are all the subsets that
 can be formed using the array.
 
 -------
@@ -37,8 +37,8 @@ Backtracking Approach:
 	Algorithm:
 
 		1. Create a recursive function that takes the following parameters,
-				an input array, 
-				the current index, 
+				an input array,
+				the current index,
 				the output array or the current subset
 
 				if all the subsets needs to be stored then a vector of array is needed
@@ -54,7 +54,7 @@ Backtracking Approach:
 		5. Insert the current element in the subset and call the recursive function with the current subset and next
 			index, i.e: i + 1
 
--------
+*/
 
 #include<bits/stdc++.h>
 using namespace std;
@@ -102,20 +102,21 @@ int main() {
 	return 0;
 }
 
+/*
 Output:
 
-1 
-1 2 
-1 2 3 
-1 3 
-2 
-2 3 
-3 
+1
+1 2
+1 2 3
+1 3
+2
+2 3
+3
 
 -------
 
 Complexity:
-	
+
 	Time: O(2^n)
 
 		For every index two recursive cases originates.
@@ -134,7 +135,7 @@ Sample Question:
 
     For example, the XOR total of the array [2,5,6] is 2 XOR 5 XOR 6 = 1.
 
-	Given an array nums, return the sum of all XOR totals for every subset of nums. 
+	Given an array nums, return the sum of all XOR totals for every subset of nums.
 
 	Note: Subsets with the same elements should be counted multiple times.
 
@@ -177,3 +178,4 @@ Sample Question:
 			}
 		}
 	}
+*/

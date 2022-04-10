@@ -1,3 +1,4 @@
+/*
 Ques: Count number of Binary Tree possible given Preorder sequence of length n
 
 Suppose we have a binary tree as below:
@@ -240,7 +241,7 @@ Pseudo-code:
 		}
 	}
 
--------
+*/
 
 /**
  * Given a preorder sequence how many unique trees can be created

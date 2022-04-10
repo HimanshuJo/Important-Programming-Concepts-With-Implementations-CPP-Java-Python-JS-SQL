@@ -1,3 +1,4 @@
+/*
 Given two strings word1 and word2, return the minimum number of operations required to 
 convert word1 to word2.
 
@@ -136,8 +137,9 @@ Here we can utilize Bottom-Up DP
 
 								dp[i][j] = min (dp[i - 1][j] + 1, dp[i][j - 1] + 1, dp[i - 1][j - 1] + 1)
 
--------
+*/
 
+/*
 class Solution:
 	def minDistance(self, word1: str, word2: str) -> int:
 		m = len(word1)
@@ -175,7 +177,7 @@ class Solution:
 					dp[i][j] = min(dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1]) + 1
 		return dp[m][n]
 
--------
+*/
 
 class Solution {
 public:

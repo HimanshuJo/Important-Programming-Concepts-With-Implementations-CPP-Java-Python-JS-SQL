@@ -1,3 +1,4 @@
+/*
 We have N (where N > 2) stones of various heights laid out in a row
 
 	Task is to make a pyramid from a given arrays of stones
@@ -147,35 +148,35 @@ Dynamic Programming Approach:
 
 		Then by identifying the maximum, we can calculate the minimum cost of constructing a pyramid
 
--------
+*/
 
-import java.util.*:
+import java.util.*;
 
 class CFG {
-	
+
 	static int minPyramidCost(int[] arr, int N) {
 		int left[] = new int[N];
 		int right[] = new int[N];
 		// maximum height at start is 1
 		left[0] = Math.min(arr[0], 1);
 		// for each position calculate maximum height
-		for (int i=0; i<N; ++i) {
-			left[i] = Math.min(arr[i], Math.min(left[i-1] + 1, i+1));
+		for (int i = 0; i < N; ++i) {
+			left[i] = Math.min(arr[i], Math.min(left[i - 1] + 1, i + 1));
 		}
 		// maximum height at the end is 1
-		right[N-1] = Math.min(arr[N-1], 1);
+		right[N - 1] = Math.min(arr[N - 1], 1);
 		// for each position calculate maximum height
-		for (int i=N-2; i>=0; --i) {
-			right[i] = Math.min(arr[i], Math.min(right[i+1] + 1, N-i));
+		for (int i = N - 2; i >= 0; --i) {
+			right[i] = Math.min(arr[i], Math.min(right[i + 1] + 1, N - i));
 		}
 		// finding minimum possible among the calculated values
 		int tot[] = new int[N];
-		for (int i=0; i<N; ++i) {
+		for (int i = 0; i < N; ++i) {
 			tot[i] = Math.min(right[i], left[i]);
 		}
 		// finding maximum height of the pyramid
 		int max_ind = 0;
-		for (int i=0; i<N; ++i) {
+		for (int i = 0; i < N; ++i) {
 			if (tot[i] > tot[max_ind]) {
 				max_ind = i;
 			}
@@ -185,13 +186,13 @@ class CFG {
 		int height = tot[max_ind];
 
 		// calculate cost of left half
-		for (int x=max_ind; x >= 0; --x) {
+		for (int x = max_ind; x >= 0; --x) {
 			cost += arr[x] - height;
 			if (height > 0) --height;
 		}
 		// calculate cost of the right half
 		height = tot[max_ind] - 1;
-		for (int x=max_ind+1; x<N; ++x) {
+		for (int x = max_ind + 1; x < N; ++x) {
 			cost += arr[x] - height;
 			if (height > 0) --height;
 		}

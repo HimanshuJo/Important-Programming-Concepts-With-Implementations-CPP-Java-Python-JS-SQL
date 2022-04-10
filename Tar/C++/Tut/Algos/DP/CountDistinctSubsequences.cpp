@@ -1,25 +1,26 @@
-Given a string, find the count of distinct subsequences of it. 
+/*
+Given a string, find the count of distinct subsequences of it.
 
-Examples: 
+Examples:
 
 Input  : str = "gfg"
 Output : 7
 The seven distinct subsequences are "", "g", "f",
-"gf", "fg", "gg" and "gfg" 
+"gf", "fg", "gg" and "gfg"
 
 Input  : str = "ggg"
 Output : 4
 The four distinct subsequences are "", "g", "gg"
 and "ggg"
 
-The problem of counting distinct subsequences is easy if all characters of input string are distinct. 
+The problem of counting distinct subsequences is easy if all characters of input string are distinct.
 	The count is equal to nC0 + nC1 + nC2 + … nCn = 2n.
 
-How to count distinct subsequences when there can be repetition in input string? 
-	
-	A Simple Solution to count distinct subsequences in a string with duplicates is to generate all subsequences. 
+How to count distinct subsequences when there can be repetition in input string?
 
-	For every subsequence, store it in a hash table if it doesn’t exist already. 
+	A Simple Solution to count distinct subsequences in a string with duplicates is to generate all subsequences.
+
+	For every subsequence, store it in a hash table if it doesn’t exist already.
 		The time complexity of this solution is exponential and it requires exponential extra space.
 
 -------
@@ -27,11 +28,11 @@ How to count distinct subsequences when there can be repetition in input string?
 Using DP:
 
 	Let countSub(n) be count of subsequences of first n characters in input string. We can
-		recursively write it as below. 
+		recursively write it as below.
 
 		countSub(n) = 2*Count(n-1) - Repetition
 
-	If current character, i.e., str[n-1] of str has not appeared before, then 
+	If current character, i.e., str[n-1] of str has not appeared before, then
 	   Repetition = 0
 
 	Else:
@@ -46,29 +47,23 @@ Using DP:
 
 How does this work?
 
-	If there are no repetitions, then count becomes double of count for n-1 because we get count(n-1) 
-		more subsequences by adding current character at the end of all subsequences possible with n-1 length. 
-	
-	If there are repetitions, then we find a count of all distinct subsequences ending with the previous occurrence. 
-		This count can be obtained by recursively calling for an index of the previous occurrence. 
+	If there are no repetitions, then count becomes double of count for n-1 because we get count(n-1)
+		more subsequences by adding current character at the end of all subsequences possible with n-1 length.
+
+	If there are repetitions, then we find a count of all distinct subsequences ending with the previous occurrence.
+		This count can be obtained by recursively calling for an index of the previous occurrence.
 		Since the above recurrence has overlapping subproblems, we can solve it using Dynamic Programming.
 
--------
+*/
 
-// C++ program to count number of distinct
-// subsequences of a given string.
 #include <bits/stdc++.h>
 using namespace std;
 const int MAX_CHAR = 256;
 
-// Returns count of distinct sunsequences of str.
 int countSub(string str)
 {
-	// Create an array to store index
-	// of last
 	vector<int> last(MAX_CHAR, -1);
 
-	// Length of input string
 	int n = str.length();
 
 	// dp[i] is going to store count of distinct
@@ -78,7 +73,6 @@ int countSub(string str)
 	// Empty substring has only one subsequence
 	dp[0] = 1;
 
-	// Traverse through all lengths from 1 to n.
 	for (int i = 1; i <= n; i++) {
 		// Number of subsequences with substring
 		// str[0..i-1]
@@ -97,16 +91,17 @@ int countSub(string str)
 	return dp[n];
 }
 
-// Driver code
 int main()
 {
 	cout << countSub("gfg");
 	return 0;
 }
 
-Output: 
+/*
+Output:
 
 7
 
-Time Complexity: O(n) 
-Auxiliary Space: O(n
+Time Complexity: O(n)
+Auxiliary Space: O(n)
+*/

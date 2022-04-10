@@ -140,6 +140,6 @@ To get the first index of the element that is strictly less than the current ele
 
 		lowInd = low - v.begin();
 
-	3. Decrement the index
+	3. Decrement the index (out of bounds check)
 
 		lowInd--
