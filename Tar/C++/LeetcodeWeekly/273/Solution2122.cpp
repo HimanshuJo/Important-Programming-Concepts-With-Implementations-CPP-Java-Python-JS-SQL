@@ -220,7 +220,7 @@ public:
 		while(left<=right){
 			int mid=left+(right-left)/2;
 			/*
-				here we are visiting target from left to right so in case of mutiple target with same value we sure that 
+				here we are visiting target from left to right so in case of multiple target with same value we sure that 
 				we not miss any element.
     			example from the mentioned array in case of [9, 9, 9] 
     			if we visit  middle 9 then for the next 9  we can't predict whether to go right or left.

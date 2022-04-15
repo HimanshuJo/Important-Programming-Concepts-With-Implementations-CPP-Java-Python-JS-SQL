@@ -1,66 +1,23 @@
+// Efficient CPP program to find sum of first
+// n natural numbers.
 #include<iostream>
-#include<vector>
-#include<string>
 using namespace std;
 
-double eval(string expr)
+// Returns sum of first n natural
+// numbers
+int findSum(int n)
 {
-    string xxx;
-    for (int i = 0; i < expr.length(); i++)
-    {
-        if (expr[i] != ' ')
-        {
-            xxx += expr[i];
-        }
-    }
-    string tok = "";
-    for (int i = 0; i < xxx.length(); i++)
-    {
-        if (xxx[i] == '(')
-        {
-            int iter = 1;
-            string token;
-            i++;
-            while (true)
-            {
-                if (xxx[i] == '(')
-                {
-                    iter++;
-                } else if (xxx[i] == ')')
-                {
-                    iter--;
-                    if (iter == 0)
-                    {
-                        i++;
-                        break;
-                    }
-                }
-                token += xxx[i];
-                i++;
-            }
-            tok += to_string(eval(token));
-        }
-        tok += xxx[i];
-    }
-    for (int i = 0; i < tok.length(); i++)
-    {
-        if (tok[i] == '+')
-        {
-            return eval(tok.substr(0, i)) + eval(tok.substr(i+1, tok.length()-i-1));
-        } else if (tok[i] == '-')
-        {
-            return eval(tok.substr(0, i)) - eval(tok.substr(i+1, tok.length()-i-1));
-        }
-    }
-    for (int i = 0; i < tok.length(); i++)
-    {
-        if (tok[i] == '*')
-        {
-            return eval(tok.substr(0, i)) * eval(tok.substr(i+1, tok.length()-i-1));
-        } else if (tok[i] == '/')
-        {
-            return eval(tok.substr(0, i)) / eval(tok.substr(i+1, tok.length()-i-1));
-        }
-    }
-    return stod(tok.c_str());
+return n * (n + 1) / 2;
+}
+
+// Driver code
+int main()
+{
+int n1 = 8, n2=6;
+cout << (findSum(n1)-findSum(n2))<<endl;
+cout << findSum(n2)<<endl;
+int ans=0;
+for(int i=4; i<=9; ++i)
+ans+=i;
+cout<<(ans)<<endl;
 }

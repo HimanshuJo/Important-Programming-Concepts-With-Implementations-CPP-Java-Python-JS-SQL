@@ -91,7 +91,7 @@ public:
         int seen[100001];
         for(int i=0; i<100001; ++i)
             seen[i]=-1;
-        // Case 1: Two node slikes each other and there could be max path going across two node
+        // Case 1: Two nodes likes each other and there could be max path going across two node
         int res1=0;
         for(int i=0; i<n; ++i){
             if(seen[i]==1) continue;

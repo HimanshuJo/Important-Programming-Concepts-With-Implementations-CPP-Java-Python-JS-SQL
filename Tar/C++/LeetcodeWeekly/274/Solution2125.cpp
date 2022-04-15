@@ -41,7 +41,7 @@ bank[i][j] is either '0' or '1'.
 class Solution {
 public:
     
-    vector<int>findGoodRws(vector<string>&bank){
+    vector<int> findGoodRws(vector<string>&bank){
         vector<int>allrws;
         int sz=bank.size();
         for(int i=0; i<sz; ++i){

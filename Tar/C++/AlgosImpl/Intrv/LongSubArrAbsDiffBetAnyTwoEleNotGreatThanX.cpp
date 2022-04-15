@@ -11,13 +11,13 @@ Examples:
 Input: arr = { 8, 4, 2, 6, 7 }, X = 4 
 Output: 4 2 6 
 Explanation: 
-The sub-array described by indexs [1, 3], i.e, { 4, 2, 6 } contains 
+The sub-array described by indexes [1, 3], i.e, { 4, 2, 6 } contains 
 no such difference of two elements which is greater than 4.
 
 Input: arr = { 15, 10, 1, 2, 4, 7, 2}, X = 5 
 Output: 2 4 7 2 
 Explanation: 
-The sub-array described by indexs [3, 6], i.e, { 2, 4, 7, 2 } contains 
+The sub-array described by indexes [3, 6], i.e, { 2, 4, 7, 2 } contains 
 no such difference of two elements which is greater than 5. 
 */
 
@@ -71,7 +71,7 @@ void longestSubArray(int* A, int N, int X){
     // a given window
     map<int, int>window;
 
-    // initiaize the window
+    // initialize the window
     int start=0, end=0;
 
     for (; end<N; ++end){

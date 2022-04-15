@@ -39,7 +39,7 @@ Double again so x = 10
  
 Constraints:
 
-1 <= target <= 109
+1 <= target <= 10^9
 0 <= maxDoubles <= 100
 */
 

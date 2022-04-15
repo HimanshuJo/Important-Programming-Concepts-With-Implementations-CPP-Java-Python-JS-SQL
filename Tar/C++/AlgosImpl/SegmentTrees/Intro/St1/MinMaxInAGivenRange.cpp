@@ -1,4 +1,3 @@
-// C++ program to find minimum and maximum using segment tree
 #include <bits/stdc++.h>
 using namespace std;
 
