@@ -45,8 +45,7 @@ Data is random because we haven’t assigned
 anything yet */
 
 	head->data = 1; // assign data in first node
-	head->next = second; // Link first node with
-	// the second node
+	head->next = second; // Link first node with the second node
 
 	/* data has been assigned to the data part of first
 	block (block pointed by the head). And next
@@ -105,5 +104,3 @@ anything yet */
 
 	return 0;
 }
-
-// This code is contributed by rathbhupendra

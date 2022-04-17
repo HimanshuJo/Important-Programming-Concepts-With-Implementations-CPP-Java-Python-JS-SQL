@@ -4,7 +4,6 @@ Convert a sorted Linked List into Binary Search Tree
 #include <bits/stdc++.h>
 using namespace std;
 
-/* Link list node */
 class LNode
 {
 public:
@@ -65,7 +64,7 @@ TNode *sortedListToBSTRecur(LNode **head_ref, int n)
 		subtree and link it with root
 		The number of nodes in right subtree
 		is total nodes - nodes in
-		left subtree - 1 (for root) which is n-n/2-1*/
+		left subtree - 1 (for root) which is n-n/2-1 */
     root->right = sortedListToBSTRecur(head_ref, n - n / 2 - 1);
 
     return root;
@@ -104,7 +103,6 @@ void push(LNode **head_ref, int new_data)
     (*head_ref) = new_node;
 }
 
-/* Function to print nodes in a given linked list */
 void printList(LNode *node)
 {
     while (node != NULL)
@@ -114,8 +112,6 @@ void printList(LNode *node)
     }
 }
 
-/* Helper function that allocates a new node with the
-given data and NULL left and right pointers. */
 TNode *newNode(int data)
 {
     TNode *node = new TNode();
@@ -126,8 +122,6 @@ TNode *newNode(int data)
     return node;
 }
 
-/* A utility function to
-print preorder traversal of BST */
 void preOrder(TNode *node)
 {
     if (node == NULL)
@@ -137,10 +131,8 @@ void preOrder(TNode *node)
     preOrder(node->right);
 }
 
-/* Driver code*/
 int main()
 {
-    /* Start with the empty list */
     LNode *head = NULL;
 
     /* Let us create a sorted linked list to test the functions
@@ -155,11 +147,8 @@ int main()
 
     cout << "Given Linked List ";
     printList(head);
-
-    /* Convert List to BST */
     TNode *root = sortedListToBST(head);
     cout << "\nPreOrder Traversal of constructed BST ";
     preOrder(root);
-
     return 0;
 }

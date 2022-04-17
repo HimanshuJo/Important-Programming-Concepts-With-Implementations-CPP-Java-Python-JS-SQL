@@ -1,4 +1,5 @@
-Given a stack s, the task is to print the elements of the stack from bottom to top, such that the elements are still present in the stack without their order being changed in the stack.
+Given a stack s, the task is to print the elements of the stack from bottom to top, 
+such that the elements are still present in the stack without their order being changed in the stack.
 
 Examples: 
 
@@ -11,7 +12,7 @@ Input :
 |   1    |
 |________|
 
-Output :1 2 3 4
+Output: 1 2 3 4
 
 Approach 1 (Recursion): 
 
@@ -39,7 +40,6 @@ void PrintStack(stack<int> s)
 	if (s.empty())
 		return;
 	
-
 	int x = s.top();
 
 	// Pop the top element of the stack
@@ -57,7 +57,6 @@ void PrintStack(stack<int> s)
 	s.push(x);
 }
 
-// Driver code
 int main()
 {
 	// Stack s
@@ -112,12 +111,9 @@ void PrintStack(stack<int> s)
 	}
 }
 
-// Driver code
 int main()
 {
-	// Stack s
 	stack<int> s;
-
 	s.push(1);
 	s.push(2);
 	s.push(3);
