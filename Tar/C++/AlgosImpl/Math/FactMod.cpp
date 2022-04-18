@@ -22,8 +22,7 @@ int largestPower(int n, int p)
 int power(int x, int y, int p)
 {
 	int res = 1; // Initialize result
-	x = x % p; // Update x if it is more than or
-	// equal to p
+	x = x % p; // Update x if it is more than or equal to p
 	while (y > 0) {
 		// If y is odd, multiply x with result
 		if (y & 1)
@@ -68,7 +67,6 @@ int modFact(int n, int p)
 	return res;
 }
 
-// Driver method
 int main()
 {
 	int n = 25, p = 29;

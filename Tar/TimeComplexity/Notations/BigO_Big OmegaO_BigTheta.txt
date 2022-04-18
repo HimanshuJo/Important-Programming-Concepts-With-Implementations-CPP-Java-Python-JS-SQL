@@ -13,8 +13,6 @@ Big Oh notation (O):
 
 	n = used to give upper bound an a function.
 
-	If a function is O(n), it is automatically O(n-square) as well !
-
 	E.g.:
 
 		A typical algorithm that has the complexity of O(n²) would be the selection sort algorithm.

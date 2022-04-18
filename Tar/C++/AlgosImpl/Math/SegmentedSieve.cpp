@@ -24,7 +24,7 @@ void fillPrimes(vector<int>& prime, int high)
 // in segmented sieve we check for prime from range [low, high]
 void segmentedSieve(int low, int high)
 {
-	if (low<2 and high >= 2) {
+	if (low < 2 and high >= 2) {
 		low = 2;
 	}//for handling corner case when low = 1 and we all know 1 is not prime no.
 	bool prime[high - low + 1];

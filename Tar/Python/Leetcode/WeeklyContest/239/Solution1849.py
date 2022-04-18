@@ -1,4 +1,5 @@
-''' 1849. Splitting a String Into Descending Consecutive Values
+'''
+1849. Splitting a String Into Descending Consecutive Values
 
 You are given a string s that consists of only digits.
 
@@ -95,6 +96,7 @@ public:
         return res;     
     }
 };
+
 '''
 
 def splitString(self, s: str) -> bool:

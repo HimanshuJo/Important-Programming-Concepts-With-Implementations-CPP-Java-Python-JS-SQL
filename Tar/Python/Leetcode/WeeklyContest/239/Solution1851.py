@@ -1,4 +1,5 @@
-''' 1851. Minimum Interval to Include Each Query
+'''
+1851. Minimum Interval to Include Each Query
 
 You are given a 2D integer array intervals, where intervals[i] = [lefti, righti] describes the ith interval 
 starting at lefti and ending at righti (inclusive). The size of an interval is defined as the number of integers 

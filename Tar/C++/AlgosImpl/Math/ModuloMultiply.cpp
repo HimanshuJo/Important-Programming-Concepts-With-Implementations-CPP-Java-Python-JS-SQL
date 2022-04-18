@@ -1,5 +1,5 @@
 /*
-Given an integer a, b, m. Find (a * b ) mod m, where a, b may be large and their direct multiplication may cause overflow. 
+Given an integer a, b, m. Find (a * b) mod m, where a, b may be large and their direct multiplication may cause overflow. 
 However they are smaller than half of the maximum allowed long long int value.
 
 Input: a = 426, b = 964, m = 235

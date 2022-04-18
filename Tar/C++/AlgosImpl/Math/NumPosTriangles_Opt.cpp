@@ -11,7 +11,7 @@ A simple solution is to check if the determinant of the three points selected is
 he following determinant gives the area of a Triangle (Also known as Cramer’s rule).
 Area of the triangle with corners at (x1, y1), (x2, y2) and (x3, y3) is given by:
 
-{ Area = \pm \frac{1}{2}\begin{bmatrix} x1 & y1 & 1\\ x2 & y2 & 1\\ x3 & y3 & 1 \end{bmatrix}}
+{Area = \pm \frac{1}{2}\begin{bmatrix} x1 & y1 & 1\\ x2 & y2 & 1\\ x3 & y3 & 1 \end{bmatrix}}
 
 We can solve this by taking all possible combination of 3 points and finding the determinant
 */
@@ -69,7 +69,6 @@ int countTriangles(pair<int, int> P[], int N)
 	return ans;
 }
 
-// Driver Code to test above function
 int main()
 {
 	pair<int, int> P[] = { { 0, 0 }, { 2, 0 }, { 1, 1 }, { 2, 2 } };

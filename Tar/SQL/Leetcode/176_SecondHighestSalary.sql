@@ -45,3 +45,9 @@ WITH CTE AS
 SELECT Salary SecondHighestSalary
 FROM CTE
 WHERE DENSERANK = 2;
+
+# Solution 3 example 2
+
+
+with cte as (select msk_id, dense_rank() over (order by msk_id desc) as denseRank from msk)
+select msk_id fifthmost from cte where denseRank=5;

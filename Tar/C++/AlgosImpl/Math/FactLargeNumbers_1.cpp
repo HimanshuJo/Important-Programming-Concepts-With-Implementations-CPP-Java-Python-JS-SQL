@@ -1,4 +1,3 @@
-// C++ program to compute factorial of big numbers
 #include<iostream>
 using namespace std;
 
@@ -7,8 +6,6 @@ using namespace std;
 
 int multiply(int x, int res[], int res_size);
 
-// This function finds factorial of large numbers
-// and prints them
 void factorial(int n)
 {
 	int res[MAX];

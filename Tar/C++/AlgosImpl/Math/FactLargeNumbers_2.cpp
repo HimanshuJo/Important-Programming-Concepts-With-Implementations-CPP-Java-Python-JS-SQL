@@ -1,6 +1,3 @@
-// C++ program to compute the
-// factorial of big numbers
-
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -14,8 +11,7 @@ using namespace std;
 string factorial(long long n)
 {
 	if (n > MAX) {
-		cout << " Integer Overflow"
-		     << endl;
+		cout << " Integer Overflow" << endl;
 		return "";
 	}
 
@@ -29,8 +25,7 @@ string factorial(long long n)
 	// Calculate the sum of
 	// logarithmic values
 
-	for (counter = 1; counter <= n;
-	        counter++) {
+	for (counter = 1; counter <= n; counter++) {
 		sum = sum + log(counter);
 	}
 
@@ -40,13 +35,11 @@ string factorial(long long n)
 	// Answer is sometimes under
 	// estimated due to floating point
 	// operations so round() is used
-	string result
-	    = to_string(round(exp(sum)));
+	string result = to_string(round(exp(sum)));
 
 	return result;
 }
 
-// Driver code
 int main()
 {
 	clock_t tStart = clock();
