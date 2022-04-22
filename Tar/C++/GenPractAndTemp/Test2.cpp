@@ -1,58 +1,39 @@
 #include<iostream>
 #include<vector>
+#include<cstring>
 using namespace std;
 
-int dfs(vector<int>&a, vector<int>&b, int n, int idx, int curmin, int &minn){
-	if(idx>=n) return 0;
-	int ans1=0, ans2=0;
-	for(int x=0; x<=n-1; ++x){
-		for(int y=x+1; y<n; ++y){
-			ans1+=((a[x]+a[y])*(a[x]+a[y]));
+int numWaysThreeContiguousPartsEqSum(vector<int>&arr, int sz){
+	int sum=0;
+	for(auto &vals: arr){
+		sum+=vals;
+	}
+	if(sum%3!=0) return 0;
+	int prtsSm=sum/3;
+	vector<int>cntprtsSmArr(sz, 0);
+	int tmpSm=0;
+	for(int i=sz-1; i>=0; --i){
+		tmpSm+=arr[i];
+		if(tmpSm==prtsSm){
+			cntprtsSmArr[i]=1;
 		}
 	}
-	for(int x=0; x<=n-1; ++x){
-		for(int y=x+1; y<n; ++y){
-			ans2+=((b[x]+b[y])*(b[x]+b[y]));
+	for(int i=sz-2; i>=0; --i){
+		cntprtsSmArr[i]+=cntprtsSmArr[i+1];
+	}
+	int tmpSm_=0, ans=0;
+	for(int i=0; i+2<sz; ++i){
+		tmpSm_+=arr[i];
+		if(tmpSm_==prtsSm){
+			ans+=cntprtsSmArr[i+2];
 		}
 	}
-	int curmintmp1=ans1+ans2;
-	vector<int>tempa=a;
-	vector<int>tempb=b;
-	swap(tempa[idx], tempb[idx]);
-	int ans1_=0, ans2_=0;
-	for(int x=0; x<=n-1; ++x){
-		for(int y=x+1; y<n; ++y){
-			ans1_+=((tempa[x]+tempa[y])*(tempa[x]+tempa[y]));
-		}
-	}
-	for(int x=0; x<=n-1; ++x){
-		for(int y=x+1; y<n; ++y){
-			ans2_+=((tempb[x]+tempb[y])*(tempb[x]+tempb[y]));
-		}
-	}
-	int curmintmp2=ans1_+ans2_;
-	cout<<curmintmp1<<" "<<curmintmp2<<endl;
-	minn=min(minn, min(curmintmp1, curmintmp2));
-	cout<<"-------\n";
-	curmin=min(dfs(a, b, n, idx+1, curmintmp1, minn), dfs(tempa, tempb, n, idx+1, curmintmp2, minn));
-	return curmin;
+	return ans;
 }
 
 int main(){
-	ios_base::sync_with_stdio(false);
-	cin.tie(nullptr);
-	int t;
-	cin>>t;
-	while(t--){
-		int n;
-		cin>>n;
-		vector<int>a(n), b(n);
-		for(int i=0; i<n; ++i)
-			cin>>a[i];
-		for(int i=0; i<n; ++i)
-			cin>>b[i];
-		int minn=INT_MAX, curmin=0;
-		dfs(a, b, n, 0, curmin, minn);
-		cout<<minn<<"\n";
-	}
+	vector<int>arr{3, 3, 3, 3, 3, 3};
+	int sz=arr.size();
+	int ans=numWaysThreeContiguousPartsEqSum(arr, sz);
+	cout<<ans<<endl;
 }

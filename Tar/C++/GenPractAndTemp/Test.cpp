@@ -1,119 +1,73 @@
-// C++ program for the above approach
+// C++ implementation to increment values in the
+// given range by a value d for multiple queries
 #include <bits/stdc++.h>
+
 using namespace std;
 
-// Function to implement sieve of
-// erastosthenes
-void sieveOfEratosthenes(int N, int s[])
+// structure to store the (start, end) index pair for
+// each query
+struct query {
+	int start, end;
+};
+
+// function to increment values in the given range
+// by a value d for multiple queries
+void incrementByD(int arr[], struct query q_arr[],
+				int n, int m, int d)
 {
-	// Create a boolean array and
-	// initialize all entries as false
-	vector<bool> prime(N + 1, false);
+	int sum[n];
+	memset(sum, 0, sizeof(sum));
 
-	// Initializing smallest
-	// factor equal to 2
-	// for all the even numbers
-	for (int i = 2; i <= N; i += 2)
-		s[i] = 2;
+	// for each (start, end) index pair perform the
+	// following operations on 'sum[]'
+	for (int i = 0; i < m; i++) {
 
-	// Iterate for odd numbers
-	// less then equal to n
-	for (int i = 3; i <= N; i += 2) {
+		// increment the value at index 'start' by
+		// the given value 'd' in 'sum[]'
+		sum[q_arr[i].start] += d;
 
-		if (prime[i] == false) {
-
-			// s(i) for a prime is
-			// the number itself
-			s[i] = i;
-
-			// For all multiples of
-			// current prime number
-			for (int j = i; j * i <= N; j += 2) {
-
-				if (prime[i * j] == false) {
-					prime[i * j] = true;
-
-					// i is the smallest
-					// prime factor for
-					// number "i*j"
-					s[i * j] = i;
-				}
-			}
-		}
-	}
-	for(int i=1; i<=N; ++i){
-		if(prime[i]==false){
-			cout<<i<<endl;
-		}
-	}
-	cout<<"-------\n";
-}
-
-// Function to generate prime
-// factors and its power
-int generatePrimeFactors(int N)
-{
-	// s[i] is going to store
-	// smallest prime factor of i
-	int s[N + 1];
-	int sum = 0;
-
-	sieveOfEratosthenes(N, s);
-
-	// Current prime factor of N
-	int curr = s[N];
-
-	// Power of current prime factor
-	int cnt = 1;
-
-	// Calculating prime factors
-	// and their powers sum
-	while (N > 1) {
-
-		N /= s[N];
-
-		if (curr == s[N]) {
-
-			// Increment the count and
-			// continue the process
-			cnt++;
-			continue;
-		}
-
-		// Add count to the sum
-		sum = sum + cnt;
-
-		curr = s[N];
-
-		// Reinitialize count
-		cnt = 1;
+		// if the index '(end+1)' exists then decrement
+		// the value at index '(end+1)' by the given
+		// value 'd' in 'sum[]'
+		if ((q_arr[i].end + 1) < n)
+			sum[q_arr[i].end + 1] -= d;
 	}
 
-	// Return the result
-	return sum;
+	// Now, perform the following operations:
+	// accumulate values in the 'sum[]' array and
+	// then add them to the corresponding indexes
+	// in 'arr[]'
+	arr[0] += sum[0];
+	for (int i = 1; i < n; i++) {
+		sum[i] += sum[i - 1];
+		arr[i] += sum[i];
+	}
 }
 
-// Function to find the sum of all the
-// power of prime factors of N
-void findSum(int N)
+// function to print the elements of the given array
+void printArray(int arr[], int n)
 {
-
-	int sum = 0;
-
-	// Iterate for in [2, N]
-	//for (int i = 2; i <= N; i++) {
-		sum += generatePrimeFactors(100);
-	//}
-	cout << sum << endl;
+	for (int i = 0; i < n; i++)
+		cout << arr[i] << " ";
 }
 
-// Driver Code
+// Driver program to test above
 int main()
 {
-	// Given Number N
-	int N = 100;
+	int arr[] = { 3, 5, 4, 8, 6, 1 };
+	struct query q_arr[] = { { 0, 3 }};
+	int n = sizeof(arr) / sizeof(arr[0]);
+	int m = sizeof(q_arr) / sizeof(q_arr[0]);
+	int d = 2;
 
-	// Function Call
-	findSum(N);
+	cout << "Original Array:\n";
+	printArray(arr, n);
+
+	// modifying the array for multiple queries
+	incrementByD(arr, q_arr, n, m, d);
+
+	cout << "\nModified Array:\n";
+	printArray(arr, n);
+
 	return 0;
 }
