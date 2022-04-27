@@ -48,4 +48,3 @@ let target2="eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
 console.log(countConstructDp(target2, wordBank2));
 console.log('-------');
 console.log(countConstructTab(target2, wordBank2));
-

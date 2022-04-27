@@ -1,128 +1,60 @@
-/*
-Friend Class:
+//C++ program for the above approach
+#include <bits/stdc++.h>
 
-	A friend class can access private and protected members of other class in which it is declared as friend. 
+using namespace std;
 
-	It is sometimes useful to allow a particular class to access private members of other class. 
+// Program to find missing element
+int findFirstMissing(vector<int> arr , int start ,
+						int end,int first)
+{
 
-	For example, a LinkedList class may be allowed to access private members of Node.
+if (start <= end)
+{
+	int mid = (start + end) / 2;
 
-	class Node {
-	private:
-		int key;
-		Node* next;
-		// Other members of Node Class
+	/** Index matches with value
+	at that index, means missing
+	element cannot be upto that po*/
+	if (arr[mid] != mid+first)
+	return findFirstMissing(arr, start,
+								mid , first);
+	else
+	return findFirstMissing(arr, mid + 1,
+								end , first);
+}
+return start + first;
 
-		// Now class LinkedList can
-		// access private members of Node
-		friend class LinkedList;
-	};
+}
 
--------
+// Program to find Smallest
+// Missing in Sorted Array
+int findSmallestMissinginSortedArray(vector<int> arr)
+{
 
-Friend Function Like friend class, 
+// Check if 0 is missing
+// in the array
+if(arr[0] != 0)
+	return 0;
 
-a friend function can be given a special grant to access private and protected members.
+// Check is all numbers 0 to n - 1
+// are present in array
+if(arr[arr.size() - 1] == arr.size() - 1)
+	return arr.size();
 
-A friend function can be: 
-	
-	a) A member of another class 
-	b) A global function 
+int first = arr[0];
 
-	class Node {
-	private:
-		int key;
-		Node* next;
+return findFirstMissing(arr, 0, arr.size() - 1, first);
+}
 
-		// Other members of Node Class
-		friend int LinkedList::search();
-		// Only search() of linkedList
-		// can access internal members
-	};
 
--------
-
-Following are some important points about friend functions and classes:
-
-1) Friends should be used only for limited purpose. too many functions or external classes are declared 
-as friends of a class with protected or private data, it lessens the value of encapsulation of 
-separate classes in object-oriented programming.
-
-2) Friendship is not mutual. If class A is a friend of B, then B doesn’t become a friend of A automatically.
-
-3) Friendship is not inherited
-
-4) The concept of friends is not there in Java.
-
-*/
-
-#include <iostream>
-class A {
-private:
-	int a;
-
-public:
-	A() { a = 0; }
-	friend class B; // Friend Class
-};
-
-class B {
-private:
-	int b;
-
-public:
-	void showA(A& x)
-	{
-		// Since B is friend of A, it can access
-		// private members of A
-		std::cout << "A::a=" << x.a;
-	}
-};
-
+// Driver program to test the above function
 int main()
 {
-	A a;
-	B b;
-	b.showA(a);
-	return 0;
+	vector<int> arr = {0, 1, 2, 2, 2, 3, 7};
+	int n = arr.size();
+
+	// Function Call
+	cout<<"First Missing element is : "<<findSmallestMissinginSortedArray(arr);
 }
 
-/*
-Output: 
-
-A::a=0
-*/
-/*
-#include <iostream>
-
-class B;
-
-class A {
-public:
-	void showB(B&);
-};
-
-class B {
-private:
-	int b;
-
-public:
-	B() { b = 0; }
-	friend void A::showB(B& x); // Friend function
-};
-
-void A::showB(B& x)
-{
-	// Since showB() is friend of B, it can
-	// access private members of B
-	std::cout << "B::b = " << x.b;
-}
-
-int main()
-{
-	A a;
-	B x;
-	a.showB(x);
-	return 0;
-}
-*/
+// This code is contributed by mohit kumar 29.
