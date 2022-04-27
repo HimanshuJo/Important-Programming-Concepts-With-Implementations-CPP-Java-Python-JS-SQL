@@ -16,8 +16,6 @@ Output: -1
 #include <bits/stdc++.h>
 using namespace std;
 
-// Function to print the
-// index of an element
 void getIndex(vector<int> v, int K)
 {
 	auto it = find(v.begin(), v.end(), K);
@@ -37,13 +35,10 @@ void getIndex(vector<int> v, int K)
 		cout << "-1" << endl;
 	}
 }
-// Driver Code
+
 int main()
 {
-	// Vector
 	vector<int> v = { 1, 45, 54, 71, 76, 17 };
-	// Value whose index
-	// needs to be found
 	int K = 54;
 	getIndex(v, K);
 	return 0;

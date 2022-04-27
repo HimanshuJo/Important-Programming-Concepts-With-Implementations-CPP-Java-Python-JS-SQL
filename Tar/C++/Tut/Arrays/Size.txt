@@ -1,4 +1,3 @@
-
 Find the length of an array:
 
 	1. Using sizeof()

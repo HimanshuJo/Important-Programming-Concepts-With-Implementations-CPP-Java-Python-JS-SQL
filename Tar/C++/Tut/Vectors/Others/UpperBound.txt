@@ -1,23 +1,49 @@
-upper_bound() is a standard library function in C++ defined in the header.
+upper_bound():
 
-It returns an iterator pointing to the first element in the range [first, last) that is greater than value, 
-or last if no such element is found. The elements in the range shall already be sorted or at least partitioned with respect to val.
+	is a standard library function in C++ defined in the header.
 
-Syntax 1:
-ForwardIterator upper_bound (ForwardIterator first, ForwardIterator last, const T& val);
-Syntax 2:
-ForwardIterator upper_bound (ForwardIterator first, ForwardIterator last, const T& val, Compare comp);
+	It returns an iterator pointing to the first element in the range [first, last) 
+	that is greater than value, or last if no such element is found. 
 
-first, last: The range used is [first, last), which contains all the elements between first and last, including the element pointed by first but not the element pointed by last.
+	The elements in the range shall already be sorted or at least partitioned with respect to val.
 
 -------
 
-val: Value of the upper bound to search for in the range.
+Syntax 1:
 
-comp: Binary function that accepts two arguments (the first of the type pointed by ForwardIterator, and the second, always val), and returns a value convertible to bool. The function shall not modify any of its arguments. This can either be a function pointer
-or a function object.
+	ForwardIterator upper_bound (ForwardIterator first, ForwardIterator last, const T& val);
 
-Return type : An iterator to the upper bound of val in the range. If all the element in the range compare less than val, the function returns last.
+Syntax 2:
+
+	ForwardIterator upper_bound (ForwardIterator first, ForwardIterator last, const T& val, Compare comp);
+
+-------
+
+first, last: 
+
+	The range used is [first, last), which contains all the elements between first and last, 
+	including the element pointed by first but not the element pointed by last.
+
+-------
+
+val: 
+
+	Value of the upper bound to search for in the range.
+
+comp: 
+
+	Binary function that accepts two arguments (the first of the type pointed by ForwardIterator, and the second, always val), 
+	and returns a value convertible to bool. 
+
+	The function shall not modify any of its arguments. 
+
+	This can either be a function pointer or a function object.
+
+Return type: 
+
+	An iterator to the upper bound of val in the range. 
+
+	If all the element in the range compare less than val, the function returns last.
 
 -------
 
@@ -38,12 +64,10 @@ Output : upper_bound for element 60 is at index 5
 // std :: upper_bound with vectors
 #include <bits/stdc++.h>
 
-// Driver code
 int main()
 {
 	std::vector<int> v{ 10, 20, 30, 40, 50 };
 
-	// Print vector
 	std::cout << "Vector contains :";
 	for (int i = 0; i < v.size(); i++)
 		std::cout << " " << v[i];
@@ -76,12 +100,10 @@ upper_bound for element 45 is at position : 4
 #include <bits/stdc++.h>
 using namespace std;
 
-// Main Function
 int main()
 {
 	int arr[] = { 10, 20, 30, 40, 50 };
 
-	// Print elements of array
 	cout << "Array contains :";
 	for (int i = 0; i < 5; i++)
 		cout << " " << arr[i];
@@ -105,4 +127,9 @@ Array contains : 10 20 30 40 50
 upper_bound for element 35 is at position : 3
 upper_bound for element 45 is at position : 4
 
-Time Complexity : The number of comparisons performed is logarithmic in the distance between first and last. i.e, (at most log2(last – first) + O(1) comparisons).
+-------
+
+Time Complexity: 
+
+	The number of comparisons performed is logarithmic in the distance between first and last. i.e, 
+	(at most log2(last – first) + O(1) comparisons).

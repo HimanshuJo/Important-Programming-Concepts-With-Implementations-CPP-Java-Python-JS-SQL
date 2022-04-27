@@ -92,6 +92,7 @@ Output:
 
 A::a=0
 */
+
 /*
 #include <iostream>
 
@@ -125,4 +126,10 @@ int main()
 	a.showB(x);
 	return 0;
 }
+
+-------
+
+Output: 
+
+B::b = 0
 */

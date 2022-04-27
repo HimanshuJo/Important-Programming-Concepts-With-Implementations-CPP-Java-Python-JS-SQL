@@ -1,4 +1,3 @@
-
 Queues are a type of container adaptors which operate in a first in first out (FIFO) type of arrangement. 
 
 Elements are inserted at the back (end) and are deleted from the front. 
@@ -47,7 +46,6 @@ Queues use an encapsulated object of deque or list (sequential container class) 
 
 using namespace std;
 
-// Print the queue
 void showq(queue<int> gq)
 {
 	queue<int> g = gq;
@@ -58,7 +56,6 @@ void showq(queue<int> gq)
 	cout << '\n';
 }
 
-// Driver Code
 int main()
 {
 	queue<int> gquiz;

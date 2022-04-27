@@ -1,4 +1,3 @@
-
 In vector elements are indexed from 0 to size() – 1. 
 
 To access any element in vector by index vector provides two member functions i.e.
@@ -58,10 +57,10 @@ Access an element in vector using operator []
 
 		While accessing any element through operator [] we need to make sure that given index is in range 
 			i.e. less than the size of vector, 
-			otherwise it will result in undefined behaviour and can also crash application.
+			otherwise it will result in undefined behavior and can also crash application.
 
 		Therefore we should always check the size before accessing element using operator [] i.e.
-		// Accessing out of range element using [] results in undefined behaviour
+		// Accessing out of range element using [] results in undefined behavior
 		int index = 100;
 		if (index < vecOfNums.size())
 		{
@@ -116,7 +115,7 @@ vector::operator[] vs vector::at()
 
 	Both operator[] & at() provides random access to elements in vector in O(1) Complexity. 
 
-	But in case of out of range access operator[] causes undefined behaviour, 
+	But in case of out of range access operator[] causes undefined behavior, 
 		whereas at() returns proper out_of_range exception. 
 
 	So, at() is more safe to use as compared to operator[].
@@ -168,7 +167,7 @@ int main()
     std::cout << "Modified vecOfNums = ";
     print(vecOfNums);
     
-    // Accessing out of range element using [] results in undefined behaviour
+    // Accessing out of range element using [] results in undefined behavior
     int index = 100;
     
     if (index < vecOfNums.size())

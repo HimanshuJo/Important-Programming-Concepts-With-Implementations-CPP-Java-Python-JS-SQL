@@ -1,4 +1,3 @@
-
 Insert element in vector at specific position | vector::insert() examples:
 
 	Vector provides different overloaded version of member function insert(), 

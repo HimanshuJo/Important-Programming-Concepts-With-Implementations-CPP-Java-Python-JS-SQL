@@ -99,7 +99,6 @@ int main()
 
 	myvector.erase(it1, it2);  // [it1, it2)
 
-	// Printing the Vector
 	for (auto it = myvector.begin(); it != myvector.end(); ++it)
 		cout << ' ' << *it;
 	return 0;
@@ -141,7 +140,6 @@ int main()
 		}
 	}
 
-	// Printing the vector
 	for (auto it = myvector.begin(); it != myvector.end(); ++it)
 		cout << ' ' << *it;
 	return 0;

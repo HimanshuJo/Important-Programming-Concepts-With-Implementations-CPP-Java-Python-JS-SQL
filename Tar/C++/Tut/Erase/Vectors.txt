@@ -1,6 +1,8 @@
-The idea is to use iterators to iterate the vector and call the vector::erase function if the current element matches the predicate. 
+The idea is to use iterators to iterate the vector and call the vector::erase function 
+if the current element matches the predicate. 
 
-Since calling the erase() function on the vector element invalidates the iterator, special care needs to be taken while erasing an element. 
+Since calling the erase() function on the vector element invalidates the iterator, 
+special care needs to be taken while erasing an element. 
 
 We can do that in many ways:
 
@@ -105,8 +107,11 @@ Output:
 Another solution is to use the std::remove_if with vector::erase.
 This solution is valid as std::remove_if uses the loop behind the scenes.
 
-Notice that the std::remove_if algorithm has no knowledge of the underlying container. 
-It does not actually remove elements from the container but move all safe elements to the front and returns an iterator pointing to where the end should be, so they can be deleted using a single call to std::erase. 
+Notice that the std::remove_if algorithm has no knowledge of the underlying container.
+
+It does not actually remove elements from the container but move all safe elements to the 
+front and returns an iterator pointing to where the end should be, 
+so they can be deleted using a single call to std::erase. 
 
 This technique is commonly known as the Erase-remove idiom.
 

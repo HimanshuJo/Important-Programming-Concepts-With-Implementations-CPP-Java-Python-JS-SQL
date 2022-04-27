@@ -1,4 +1,3 @@
-
 References in C++:
 
 	When a variable is declared as a reference, it becomes an alternative name for an existing variable. 
@@ -121,7 +120,6 @@ Applications :
 				for (int &x : vect)
 					x = x + 5;
 
-				// Printing elements
 				for (int x : vect)
 				cout << x << " ";
 
@@ -174,7 +172,7 @@ References vs Pointers:
 
 			int a = 10;
 			void* aa = &a;. //it is valid
-			void &ar = a; // it is not valid
+			void &ar = a; //it is not valid
 
 	2. The pointer variable has n-levels/multiple levels of indirection 
 		i.e. single-pointer, double-pointer, triple-pointer. 
@@ -203,6 +201,20 @@ References vs Pointers:
 				// All the above references do not differ in their values
 				// as they all refer to the same variable.
 			}
+
+			/*
+				Sample output:
+
+				i=10    
+				p=0x3fb55ff7bc  
+				pt=0x3fb55ff7b0     
+				ptr=0x3fb55ff7a8
+				-------
+				a=5     
+				S=5     
+				S0=5    
+				S1=5
+			*/
 
 -------
 
@@ -260,6 +272,7 @@ Example 1:
 		static int x = 10;
 		return x;
 	}
+
 	int main()
 	{
 		fun() = 30;
@@ -281,6 +294,7 @@ Example 2:
 	    x += 1;
 	    return x;
 	}
+
 	int main()
 	{
 	    int a = 10;
@@ -306,6 +320,7 @@ Example 3:
 	{
 		return x;
 	}
+
 	int main()
 	{
 		cout << fun(10);

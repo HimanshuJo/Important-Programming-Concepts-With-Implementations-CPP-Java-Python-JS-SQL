@@ -1,4 +1,3 @@
-
 Auto and auto && cover most of the cases:
 
 	Use auto when you need a local copy. 
@@ -31,12 +30,12 @@ auto & and auto const & are a little more specific:
 
 -------
 
-    Use auto && for the ability to modify and discard values of the sequence within the loop. 
-    	(That is, unless the container provides a read-only view, such as std::initializer_list, 
-    	in which case it will be effectively an auto const &.)
+Use auto && for the ability to modify and discard values of the sequence within the loop. 
+	(That is, unless the container provides a read-only view, such as std::initializer_list, 
+	in which case it will be effectively an auto const &.)
 
-    Use auto & to modify the values of the sequence in a meaningful way.
+Use auto & to modify the values of the sequence in a meaningful way.
 
-    Use auto const & for read-only access.
-    
-    Use auto to work with (modifiable) copies.
+Use auto const & for read-only access.
+
+Use auto to work with (modifiable) copies.

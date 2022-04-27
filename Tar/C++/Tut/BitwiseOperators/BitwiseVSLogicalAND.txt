@@ -1,4 +1,3 @@
-
 A Bitwise And operator is represented as ‘&’ and a logical operator is represented as ‘&&’. 
 
 	The following are some basic differences between the two operators.

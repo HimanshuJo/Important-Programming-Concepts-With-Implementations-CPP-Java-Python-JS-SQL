@@ -29,7 +29,7 @@ ios::openmode Flags
 	ios::out		Open for writing
 	ios::trunc		Empty the contents of the file after opening
 	ios::ate		Go to the end of the file after opening
-
+          
 	These flags are additive which means you can combine multiple flags using the bitwise OR | operator. 
 
 	If I want to open the file in binary mode and append, I can combine the flags as follows:

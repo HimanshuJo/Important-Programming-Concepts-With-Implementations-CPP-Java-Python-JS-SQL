@@ -2,11 +2,18 @@ C++ Classes/Objects
 
 C++ is an object-oriented programming language.
 
-Everything in C++ is associated with classes and objects, along with its attributes and methods. For example: in real life, a car is an object. The car has attributes, such as weight and color, and methods, such as drive and brake.
+  Everything in C++ is associated with classes and objects, along with its attributes and methods. 
 
-Attributes and methods are basically variables and functions that belongs to the class. These are often referred to as "class members".
+  For example: in real life, a car is an object. 
 
-A class is a user-defined data type that we can use in our program, and it works as an object constructor, or a "blueprint" for creating objects.
+    The car has attributes, such as weight and color, and methods, such as drive and brake.
+
+  Attributes and methods are basically variables and functions that belongs to the class. 
+
+    These are often referred to as "class members".
+
+  A class is a user-defined data type that we can use in our program, and it works as an 
+  object constructor, or a "blueprint" for creating objects.
 
 -------
 
@@ -26,11 +33,15 @@ class MyClass {       // The class
 
 Create an Object
 
-In C++, an object is created from a class. We have already created the class named MyClass, so now we can use this to create objects.
+  In C++, an object is created from a class. 
 
-To create an object of MyClass, specify the class name, followed by the object name.
+  We have already created the class named MyClass, so now we can use this to create objects.
 
-To access the class attributes (myNum and myString), use the dot syntax (.) on the object:
+  To create an object of MyClass, specify the class name, followed by the object name.
+
+  To access the class attributes (myNum and myString), use the dot syntax (.) on the object:
+
+-------
 
 Example
 
@@ -48,7 +59,6 @@ int main() {
   myObj.myNum = 15; 
   myObj.myString = "Some text";
 
-  // Print attribute values
   cout << myObj.myNum << "\n";
   cout << myObj.myString;
   return 0;

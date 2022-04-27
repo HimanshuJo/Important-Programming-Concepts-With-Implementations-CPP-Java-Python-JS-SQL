@@ -55,8 +55,11 @@ A BaseballPlayer class
 
 Let’s say we wanted to write a program that keeps track of information about some baseball players. 
 
-Baseball players need to contain information that is specific to baseball players -- for example, 
-we might want to store a player’s batting average, and the number of home runs they’ve hit.
+Baseball players need to contain information that is specific to baseball players -- 
+
+for example, 
+    
+    we might want to store a player’s batting average, and the number of home runs they’ve hit.
 
 Here’s our incomplete Baseball player class:
 
@@ -79,9 +82,12 @@ We have three choices for how to add name and age to BaseballPlayer:
 
 	Add name and age to the BaseballPlayer class directly as members. 
 
-		This is probably the worst choice, as we’re duplicating code that already exists in our Person class. Any updates to Person will have to be made in BaseballPlayer too.
+		This is probably the worst choice, as we’re duplicating code that already exists in our Person class. 
 
-	Add Person as a member of BaseballPlayer using composition. 
+        Any updates to Person will have to be made in BaseballPlayer too.
+
+	Add Person as a member of BaseballPlayer using composition.
+    
 	But we have to ask ourselves, “does a BaseballPlayer have a Person”? No, it doesn’t. So this isn’t the right paradigm.
 
 	Have BaseballPlayer inherit those attributes from Person. 

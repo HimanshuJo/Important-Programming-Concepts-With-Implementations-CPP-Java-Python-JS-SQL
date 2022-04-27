@@ -19,18 +19,14 @@ using namespace std;
 #define ROW 4
 #define COL 5
 
-// Driver Code
 int main()
 {
-	// Initialize vector of sets
 	vector<set<int>> v;
 
 	// Elements to insert
 	// in column
 	int num = 10;
 
-	// Inserting elements
-	// into vector
 	for (int i = 0; i < ROW; i++) {
 
 		// Stores the column elements
@@ -41,11 +37,9 @@ int main()
 			num += 5;
 		}
 
-		// Push the set in the vector
 		v.push_back(s);
 	}
 
-	// Display the vector of sets
 	for (int i = 0; i < v.size(); i++) {
 
 		for (auto x : v[i])
@@ -79,11 +73,8 @@ Removal or Deletion in a Vector of Sets
 		#define ROW 4
 		#define COL 5
 
-		// Driver Code
 		int main()
 		{
-			// Initialize the
-			// vector of sets
 			vector<set<int>> v;
 
 			// Elements to insert
@@ -103,13 +94,9 @@ Removal or Deletion in a Vector of Sets
 					num += 5;
 				}
 
-				// Push the set
-				// into the vector
 				v.push_back(s);
 			}
 
-			// Display the vector of sets
-			// before removal of sets
 			cout << "Before Removal:" << endl;
 			for (int i = 0; i < v.size(); i++) {
 
@@ -123,8 +110,6 @@ Removal or Deletion in a Vector of Sets
 			v.pop_back();
 			v.pop_back();
 
-			// Display the vector of sets
-			// after removal of sets
 			cout << endl
 				<< "After Removal:" << endl;
 
@@ -163,18 +148,14 @@ Removal or Deletion in a Vector of Sets
 		#define ROW 4
 		#define COL 5
 
-		// Driver Code
 		int main()
 		{
-			// Initialize vector of sets
 			vector<set<int> > v;
 
 			// Elements to insert
 			// in column
 			int num = 10;
 
-			// Inserting elements
-			// into vector
 			for (int i = 0; i < ROW; i++) {
 
 				// Vector to store
@@ -186,13 +167,9 @@ Removal or Deletion in a Vector of Sets
 					num += 5;
 				}
 
-				// Push the set
-				// into the vector
 				v.push_back(s);
 			}
 
-			// Display the vector of sets
-			// before removal of sets
 			cout << "Before Removal:" << endl;
 
 			for (int i = 0;
@@ -240,7 +217,8 @@ Removal or Deletion in a Vector of Sets
 
 Application:
 
-Given a string S, the task is to separate the given string S into three different set of characters i.e., vowel, consonants, or a special character.
+Given a string S, the task is to separate the given string S into three different set of characters 
+i.e., vowel, consonants, or a special character.
 
 // C++ program to implement vector of sets
 #include <bits/stdc++.h>
@@ -250,10 +228,8 @@ using namespace std;
 // of different characters
 void separateChar(string s)
 {
-	// Vector of set
 	vector<set<char> > v(3);
 
-	// Insert data in vector of set
 	for (int i = 0;
 		i < s.length(); i++) {
 
@@ -273,13 +249,11 @@ void separateChar(string s)
 			v[2].insert(s[i]);
 	}
 
-	// Iterate over all the sets
 	for (int i = 0; i < 3; i++) {
 
 		cout << "Elements of set "
 			<< i + 1 << " :";
 
-		// Print elements of each set
 		for (auto it : v[i]) {
 
 			cout << it << " ";
@@ -288,7 +262,6 @@ void separateChar(string s)
 	}
 }
 
-// Driver Code
 int main()
 {
 	string s = "geeks@for&geeks@";
