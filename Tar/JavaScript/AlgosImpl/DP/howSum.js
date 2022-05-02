@@ -9,7 +9,7 @@ const howSumSp=(targetSum, numbers)=>{
 		}
 	}
 	return null;
-}
+};
 
 const howSumDp=(targetSum, numbers, memo={})=>{
 	if(targetSum===0) return [];
@@ -23,7 +23,7 @@ const howSumDp=(targetSum, numbers, memo={})=>{
 		}
 	}
 	return memo[targetSum]=null;
-}
+};
 
 var targetSum=1500;
 const numbers=[100, 15];

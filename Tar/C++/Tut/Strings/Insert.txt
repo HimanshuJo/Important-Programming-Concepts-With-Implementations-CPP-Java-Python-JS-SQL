@@ -1,14 +1,21 @@
-insert() is used to insert characters in string at specified position. It supports various syntaxes to facilitate same, here we will describe them.
+insert() is used to insert characters in string at specified position. 
+
+It supports various syntaxes to facilitate same, here we will describe them.
 
 Syntax 1: Inserts the characters of str starting from index idx.
 
 	string& string::insert (size_type idx, const string& str)
 
 		idx : is the index number
+
 		str : is the string from which characters is to be picked to insert 
+
 		Returns *this.
-		Errors: 
+
+		Errors:
+
 			Throws out_of_range if idx > size().
+
 			Throws length_error if the resulting size exceeds the maximum number of characters.
 
 -------
@@ -17,10 +24,8 @@ Syntax 1: Inserts the characters of str starting from index idx.
 
 #include <iostream>
 #include <string>
-
 using namespace std;
 
-// Function to demonstrate insert
 void insertDemo(string str1, string str2)
 {
 
@@ -31,7 +36,6 @@ void insertDemo(string str1, string str2)
 	cout << str1;
 }
 
-// Driver code
 int main()
 {
 	string str1("Hello World! ");
@@ -55,13 +59,21 @@ Syntax 2: Inserts at most, str_num characters of str, starting with index str_id
 	string& string::insert (size_type idx, const string &str, size_type str_idx, size_type str_num)
 		
 		idx : is the index number where insertion is to be made.
+
 		str : is the string from which characters are to be picked to insert.
+
 		str_idx : is the index number in str.
+
 		str_num : is the number of characters to be inserted from str.
+
 		Returns *this.
+
 		Errors: 
+
 			Throws out_of_range if idx > size().
+
 			Throws out_of_range if str_idx > str.size().
+
 			Throws length_error if the resulting size exceeds the maximum number of characters.
 
 -------
@@ -71,10 +83,8 @@ Syntax 2: Inserts at most, str_num characters of str, starting with index str_id
 
 #include <iostream>
 #include <string>
-
 using namespace std;
 
-// Function to demonstrate insert
 void insertDemo(string str1, string str2)
 {
 
@@ -84,7 +94,6 @@ void insertDemo(string str1, string str2)
 	cout << str1;
 }
 
-// Driver code
 int main()
 {
 	string str1("Hello World! ");
@@ -108,10 +117,15 @@ Syntax 3: Inserts the characters of the C-string cstr so that the new characters
 	string& string::insert (size_ type idx, const char* cstr)
 		
 		idx : is the index number where insertion is to be made.
+
 		*cstr : is the pointer to the C-string which is to be inserted.
+
 		Returns *this.
+
 		Errors: 
+
 			Throws out_of_range if idx > size().
+
 			Throws length_error if the resulting size exceeds the maximum number of characters.
 
 		Note: cstr may not be a null pointer (NULL).
@@ -122,10 +136,8 @@ Syntax 3: Inserts the characters of the C-string cstr so that the new characters
 
 #include <iostream>
 #include <string>
-
 using namespace std;
 
-// Function to demonstrate insert
 void insertDemo(string str)
 {
 
@@ -135,7 +147,6 @@ void insertDemo(string str)
 	cout << str;
 }
 
-// Driver code
 int main()
 {
 	string str("GeeksforGeeks ");
@@ -158,11 +169,17 @@ Syntax 4: Inserts chars_len characters of the character array chars so that the 
 	string& string::insert (size_type idx, const char* chars, size_type chars_len)
 		
 		idx : index number where insertion is to be made.
+
 		*chars : is the pointer to the array.
+
 		chars_len : is the number of characters to be inserted from character array.
+
 		Returns : *this
+
 		Errors: 
+
 			Throws out_of_range if idx > size().
+
 			Throws length_error if the resulting size exceeds the maximum number of characters.
 
 	Note : chars must have at least chars_len characters.
@@ -174,10 +191,8 @@ Syntax 4: Inserts chars_len characters of the character array chars so that the 
 
 #include <iostream>
 #include <string>
-
 using namespace std;
 
-// Function to demonstrate insert
 void insertDemo(string str)
 {
 
@@ -188,7 +203,6 @@ void insertDemo(string str)
 	cout << str;
 }
 
-// Driver code
 int main()
 {
 	string str("GeeksforGeeks ");
@@ -211,11 +225,17 @@ Syntax 5: Inserts num occurrences of character c at the position specified by id
 	string& string ::insert (size_type idx, size_type num, char c)
 		
 		idx : is the index number where insertion is to be made.
+
 		c : is the character to be inserted.
+
 		num : is the number of repetition of character c
+
 		Returns : *this
+
 		Errors: 
+
 			Throw out_of_range if idx > size().
+
 			Throw length_error if the resulting size exceeds the maximum number of characters.
 
 -------
@@ -224,10 +244,8 @@ Syntax 5: Inserts num occurrences of character c at the position specified by id
 
 #include <iostream>
 #include <string>
-
 using namespace std;
 
-// Function to demonstrate insert
 void insertDemo(string str)
 {
 
@@ -238,7 +256,6 @@ void insertDemo(string str)
 	cout << str;
 }
 
-// Driver code
 int main()
 {
 	string str("**********");
@@ -261,10 +278,15 @@ Syntax 6: Inserts num occurrences of character c at the position specified by it
 	void string ::insert (iterator pos, size_type num, char c)
 		
 		pos : is the position of iterator.
+
 		c : is the character which is to be inserted.
+
 		Returns : *this
+
 		Errors: 
+
 			Throws out_of_range if pos > size().
+
 			Throws length_error if the resulting size exceeds the maximum number of characters.
 
 -------
@@ -272,10 +294,8 @@ Syntax 6: Inserts num occurrences of character c at the position specified by it
 // CPP code for :insert (iterator pos, size_type num, char c)
 #include <iostream>
 #include <string>
-
 using namespace std;
 
-// Function to demonstrate insert
 void insertDemo(string str)
 {
 
@@ -286,7 +306,6 @@ void insertDemo(string str)
 	cout << str;
 }
 
-// Driver code
 int main()
 {
 	string str("**********");
@@ -306,23 +325,25 @@ Using insert : *****$$$$$*****
 
 Syntax 7: Inserts a copy of character c before the character to which iterator pos refers.
 
-	iterator string ::insert (iterator pos, char c )
+	iterator string ::insert (iterator pos, char c)
 		
 		pos : is the position of iterator.
+
 		c : is the character which is to be inserted.
+
 		Returns :  iterator pointing to the first character inserted.
+
 		Error: 
+
 			Throws length_error if the resulting size exceeds the maximum number of characters.
 
 -------
 
-// CPP code for :insert (iterator pos, char c )
+// CPP code for :insert (iterator pos, char c)
 #include <iostream>
 #include <string>
-
 using namespace std;
 
-// Function to demonstrate insert
 void insertDemo(string str)
 {
 	std::string::iterator pos;
@@ -336,7 +357,6 @@ void insertDemo(string str)
 	
 }
 
-// Driver code
 int main()
 {
 	string str("**********");
@@ -355,26 +375,27 @@ Value at Iterator returned : $
 
 -------
 
-Syntax 8: Inserts all characters of the range [ beg,end ) before the character to which iterator pos refers.
+Syntax 8: Inserts all characters of the range [ beg, end ) before the character to which iterator pos refers.
 
-	void string ::insert (iterator pos, InputIterator beg, InputIterator end )
+	void string ::insert (iterator pos, InputIterator beg, InputIterator end)
 		
 		pos : is the iterator position.
+
 		beg, end : Input iterators to the initial and final positions in a sequence.
+
 		Error: 
+
 			Throws length_error if the resulting size exceeds the maximum number of characters.
 
 -------
 
 // CPP code for insert (iterator pos, InputIterator beg,
-// InputIterator end )
+// InputIterator end)
 
 #include <iostream>
 #include <string>
-
 using namespace std;
 
-// Function to demonstrate insert
 void insertDemo(string str1, string str2)
 {
 
@@ -385,7 +406,6 @@ void insertDemo(string str1, string str2)
 	cout << str1;
 }
 
-// Driver code
 int main()
 {
 	string str1("Hello World! ");

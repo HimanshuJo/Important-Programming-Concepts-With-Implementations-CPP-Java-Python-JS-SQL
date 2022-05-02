@@ -39,7 +39,7 @@ var dfs=function(digits, length, curr, isUsed, set){
         dfs(digits, length+1, curr+digits[i], isUsed, set);
         isUsed[i]=false;
     }
-}
+};
 
 var findEvenNumbers = function(digits) {
     const set=new Set();

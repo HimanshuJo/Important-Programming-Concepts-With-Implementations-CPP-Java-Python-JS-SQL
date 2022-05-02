@@ -63,8 +63,8 @@ using namespace std;
 
 int main()
 {
-    const char* str = "hello #world, friend of mine!";
-    const char* sep = "#";
+      const char* str = "hello #world, friend of mine!";
+      const char* sep = "#";
       str=strpbrk(str, sep);
       cout<<str;
 }

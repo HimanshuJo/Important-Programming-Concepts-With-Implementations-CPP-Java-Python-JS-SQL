@@ -12,7 +12,7 @@ If the string does not contain a numeric value then it returns NaN i.e, not a nu
 
 Syntax:
 
-parseInt(Value, radix)
+	parseInt(Value, radix)
 
 -------
 
@@ -53,7 +53,6 @@ Output: a = 1000(Number)
 <html>
 <body>
 	<script>
-	
 		a = parseInt("100");
 		document.write('parseInt("100") = ' +
 		a + "<br>");
@@ -79,15 +78,15 @@ Output: a = 1000(Number)
 		e + "<br>");
 		console.log('done');
 	</script>
+
+	<!--
+		Output:
+
+		parseInt("100") = 100
+		parseInt("2018@geeksforgeeks") = 2018
+		parseInt("geeksforgeeks@2018") = NaN
+		parseInt("3.14") = 3
+		parseInt("21 7 2018") = 21
+	-->
 </body>
 </html>					
-
-<!--
-Output:
-
-parseInt("100") = 100
-parseInt("2018@geeksforgeeks") = 2018
-parseInt("geeksforgeeks@2018") = NaN
-parseInt("3.14") = 3
-parseInt("21 7 2018") = 21
--->

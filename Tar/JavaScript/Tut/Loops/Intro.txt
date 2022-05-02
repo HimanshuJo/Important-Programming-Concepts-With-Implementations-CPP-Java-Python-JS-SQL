@@ -30,7 +30,7 @@ For-Of Loop:
             console.log(object[i]);
         }
 
-    If the object is an array, the for-of loop will print out the values of the array’s indexes in order. 
+    If the object is an array, the for-of loop will print out the 'values' of the array’s indexes in order. 
 
     If the object contains key-value pairs, the for-of loop will print out every value that exists.
 

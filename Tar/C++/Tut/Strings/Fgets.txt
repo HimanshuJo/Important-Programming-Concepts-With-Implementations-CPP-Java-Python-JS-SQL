@@ -1,38 +1,58 @@
 fgets
-char * fgets ( char * str, int num, FILE * stream );
+
+	char *fgets(char *str, int num, FILE *stream );
+
+-------
 
 Get string from stream
-Reads characters from stream and stores them as a C string into str until (num-1) characters have been read or either a newline or the end-of-file is reached, whichever happens first.
+
+Reads characters from stream and stores them as a C string into str 
+until (num-1) characters have been read or either a newline or the 
+end-of-file is reached, whichever happens first.
 
 A newline character makes fgets stop reading, but it is considered a valid character by the function and included in the string copied to str.
 
 A terminating null character is automatically appended after the characters copied to str.
 
-Notice that fgets is quite different from gets: not only fgets accepts a stream argument, but also allows to specify the maximum size of str and includes in the string any ending newline character.
+Notice that fgets is quite different from gets: 
+
+	not only fgets accepts a stream argument, but also allows to 
+	specify the maximum size of str and includes in the string any 
+	ending newline character.
 
 -------
 
 Parameters:
 
 str
-Pointer to an array of chars where the string read is copied.
+
+	Pointer to an array of chars where the string read is copied.
 
 num
-Maximum number of characters to be copied into str (including the terminating null-character).
+
+	Maximum number of characters to be copied into str 
+	(including the terminating null-character).
 
 stream
-Pointer to a FILE object that identifies an input stream.
-stdin can be used as argument to read from the standard input.
+
+	Pointer to a FILE object that identifies an input stream.
+	
+	stdin can be used as argument to read from the standard input.
 
 -------
 
 Return Value:
 
-On success, the function returns str.
+	On success, the function returns str.
 
-If the end-of-file is encountered while attempting to read a character, the eof indicator is set (feof). If this happens before any characters could be read, the pointer returned is a null pointer (and the contents of str remain unchanged).
+	If the end-of-file is encountered while attempting to read a character, 
+	the eof indicator is set (feof). 
 
-If a read error occurs, the error indicator (ferror) is set and a null pointer is also returned (but the contents pointed by str may have changed).
+	If this happens before any characters could be read, the pointer returned 
+	is a null pointer (and the contents of str remain unchanged).
+
+	If a read error occurs, the error indicator (ferror) is set and a 
+	null pointer is also returned (but the contents pointed by str may have changed).
 
 -------
 
@@ -57,7 +77,8 @@ int main()
 }
 
 Output:
-This is a test string. This is a test string. This is a test string. This is a test string
+
+	This is a test string. This is a test string. This is a test string. This is a test string
 
 -------
 

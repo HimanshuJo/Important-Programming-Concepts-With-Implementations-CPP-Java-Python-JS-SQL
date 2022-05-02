@@ -44,7 +44,7 @@ n == nums.length
 
 let numscpy, memo, n;
 
-const dfs=(idx, comb)=>{
+const dfs=(idx, comb)=>{ // const dfs=function(idx, comb){};
     if(idx===n) return 0;
     let nwComb=idx+' '+JSON.stringify(comb);
     if(memo.has(nwComb)) return memo.get(nwComb);
@@ -58,7 +58,7 @@ const dfs=(idx, comb)=>{
     }
     memo.set(nwComb, res);
     return res;
-}
+};
 
 var maximumANDSum = function(nums, numSlots) {
     numscpy=nums;

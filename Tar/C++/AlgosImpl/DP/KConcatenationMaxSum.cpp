@@ -9,8 +9,6 @@ length of the sub-array can be 0 and its sum in that case is 0.
 
 As the answer can be very large, return the answer modulo 10^9 + 7.
 
- 
-
 Example 1:
 
 Input: arr = [1,2], k = 3

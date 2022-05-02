@@ -2,7 +2,6 @@
 #include <chrono>
 using namespace std;
 
-
 // A sample function whose time taken to
 // be measured
 void fun()

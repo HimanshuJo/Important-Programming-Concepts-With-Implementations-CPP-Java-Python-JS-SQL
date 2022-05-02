@@ -22,7 +22,8 @@ void fun()
 
 int main()
 {
-    /* int clock_gettime( clockid_t clock_id, struct
+    /* 
+    int clock_gettime( clockid_t clock_id, struct
     timespec *tp ); The clock_gettime() function gets
     the current time of the clock specified by clock_id,
     and puts it into the buffer pointed to by tp.tp
@@ -38,7 +39,8 @@ int main()
     CLOCK_PROCESS_CPUTIME_ID : High-resolution per-process timer
                             from the CPU.
     CLOCK_MONOTONIC : High resolution timer that is unaffected
-                    by system date changes (e.g. NTP daemons). */
+                    by system date changes (e.g. NTP daemons). 
+    */
     struct timespec start, end;
 
     // start timer.

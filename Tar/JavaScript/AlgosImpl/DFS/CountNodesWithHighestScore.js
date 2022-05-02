@@ -27,7 +27,7 @@ The highest score is 4, and three nodes (node 1, node 3, and node 4) have the hi
  * @return {number}
  */
 
-const initializeGraph=(n)=>{
+const initializeGraph=(n)=>{ // const initializeGraph=function(n){};
     let G=[];
     for(let i=0; i<n; ++i){
         G.push([]);
@@ -37,7 +37,7 @@ const initializeGraph=(n)=>{
 
 let g, n, res, count;
 
-const dfs=(x)=>{
+const dfs=(x)=>{ // const dfs=function(x){};
     let subtree=0, p=1;
     for(const child of g[x]){
         let tmp=dfs(child);
@@ -54,7 +54,7 @@ const dfs=(x)=>{
         count++;
     }
     return subtree+1;
-}
+};
 
 var countHighestScoreNodes = function(parents) {
     res=-1, count=0, n=parents.length;

@@ -7,9 +7,7 @@ int main()
     clock_gettime(CLOCK_MONOTONIC, &start);
     ios_base::sync_with_stdio(false);
 
-
     //fun();
-
 
     clock_gettime(CLOCK_MONOTONIC, &end);
     double time_taken;

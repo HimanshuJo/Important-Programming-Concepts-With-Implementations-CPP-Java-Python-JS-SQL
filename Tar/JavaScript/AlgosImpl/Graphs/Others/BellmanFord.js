@@ -103,6 +103,6 @@ function bellmanFord(graph, V, E, src){
 	for(let i=0; i<V; ++i){
 		document.write(i+" "+dist[i]+"<br>");
 	}
-}
+};
 
 bellmanFord(graph, V, E, 0);

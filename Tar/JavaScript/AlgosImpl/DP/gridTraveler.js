@@ -26,7 +26,7 @@ const gridTravelerTab=(m, n)=>{
 		}
 	}
 	return dp[m][n];
-}
+};
 
 console.log(gridTravelerSp(2, 3));
 console.log(gridTravelerSp(3, 3));

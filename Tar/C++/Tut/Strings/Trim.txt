@@ -1,7 +1,7 @@
 Remove all white spaces:
 
 string s1 = "hem n shh";
-s1.erase(std::remove(s1.begin(), s1.end(), ' '), s1.end());
+s1.erase(remove(s1.begin(), s1.end(), ' '), s1.end());
 
 Output:
 

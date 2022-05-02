@@ -1,12 +1,24 @@
-In C++, std::substr() is a predefined function used for string handling. string.h is the header file required for string functions.
+In C++, std::substr() is a predefined function used for string handling. 
 
-This function takes two values pos and len as an argument and returns a newly constructed string object with its value initialized to a copy of a sub-string of this object. Copying of string start from pos and done till pos+len means [pos, pos+len).
+	string.h is the header file required for string functions.
+
+This function takes two values pos and len as an argument and returns a newly 
+constructed string object with its value initialized to a copy of a sub-string of this object. 
+
+	Copying of string start from pos and done till pos+len means [pos, pos+len).
+
+-------
 
 Important points:
 
 	The index of the first character is 0 (not 1).
+
 	If pos is equal to the string length, the function returns an empty string.
-	If pos is greater than the string length, it throws out_of_range. If this happen, there are no changes in the string.
+
+	If pos is greater than the string length, it throws out_of_range. 
+
+		If this happen, there are no changes in the string.
+
 	If for the requested sub-string len is greater than size of string, then returned sub-string is [pos, size()).
 
 Syntax:
@@ -16,7 +28,9 @@ Syntax:
 	Parameters:
 
 		pos: Position of the first character to be copied.
+
 		len: Length of the sub-string.
+
 		size_t: It is an unsigned integral type.
 
 Return value: It returns a string object.
@@ -48,7 +62,10 @@ int main()
 Applications :
 
 	1. How to get sub-string after a character?
-		In this a string and a character is given and you have to print the sub-string followed by the given character.
+
+		In this a string and a character is given and you have to print the sub-string 
+		followed by the given character.
+		
 		Extract everything after the “:” in the string “dog:cat”.
 
 		// CPP program to illustrate substr()

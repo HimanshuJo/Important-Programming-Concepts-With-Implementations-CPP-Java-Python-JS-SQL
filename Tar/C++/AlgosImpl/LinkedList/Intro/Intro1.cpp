@@ -1,5 +1,3 @@
-// A simple CPP program to introduce
-// a linked list
 #include <bits/stdc++.h>
 using namespace std;
 
